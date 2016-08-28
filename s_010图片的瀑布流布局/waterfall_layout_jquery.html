@@ -3,8 +3,15 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<script src="http://cdn.bootcss.com/jquery/1.12.3/jquery.js"></script>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
 	<style type="text/css">
+		/*#main{
+			-webkit-column-width:199px;
+			-moz-column-width:199px;
+			-o-column-width:199px;
+			-ms-column-width:199px;
+		}*/
+
 	    *{padding: 0;margin:0;}
 	    #main{
 	        position: relative;
@@ -27,9 +34,8 @@
 
 	<script>
 		$(window).on("load",function() {
-			console.log("window onloaded ");
 			waterfall();
-			var dataimage={"image":[{'src':'image/data/26.jpg'},
+			var dataimage={"images":[{'src':'image/data/26.jpg'},
 								{'src':'image/data/27.jpeg'},
 								{'src':'image/data/28.jpg'},
 								{'src':'image/data/29.jpg'},
@@ -56,20 +62,31 @@
 								{'src':'image/data/50.jpg'},
 								{'src':'image/data/51.jpg'},
 								]};
-			window.onscroll=function(){
-	       		// 拖动滚动条时
-	     	}
+			$(window).on("scroll",function(){
+				//判断是否具备了加载的条件
+				if(check){
+					$.each(dataimage.images,function(key,value){
+						var appendbox = $("<div>").addClass("box").appendTo($("#main"));
+						var appendpic = $("<div>").addClass("pic").appendTo($(appendbox));
+						$("<img>").attr("src",$(value).attr("src")).appendTo($(appendpic));
+						console.log($(value).attr('src'));
+						
+					})
+					waterfall();
+				}
+			})
 		})
 	function waterfall(){
+		var windowWidth = $(window).width();
 		$boxs = $("#main>div");
 		$pics = $(".pic");
 		var boxw = $boxs.eq(0).outerWidth();
-		var cols =Math.floor($(window).width/boxw);
-		$("#main").width(boxw*cols).css("margin","0 auto"); 
+		var cols =Math.floor(windowWidth/boxw);
+		//$("#main").width(boxw*cols).css("margin","0 auto"); 
 		var picH = [];
 		$boxs.each(function(index,value){
-			var h=$boxs.eq(index).outerHeight();
-			console.log(h);
+			var h = $boxs.eq(index).outerHeight();
+			
 			if(index < cols){
 				picH[index] = h;
 			}
@@ -83,8 +100,16 @@
 				})
 				picH[minHIndex] += $boxs.eq(index).outerHeight();
 			}
-			console.log(picH);
+			
+			
 		})
+	}
+	function check(){
+		var $lastbox = $("#main > div").last();
+		var lastBoxDis = $lastbox.offset().top + Math.floor($lastbox.outerHeight()/2);
+		var windowScroll = $(window).scrollTop();
+		var documentH = $(document).Height();
+		return (lastBoxDis < windowScroll+documentH)?ture:false;
 	}
 </script>
 	

@@ -29,3 +29,4 @@ function getByClass(clsName, parent){
     }
     return box;
     }
+仍然遗留一个问题，就是图片不能根据浏览器的宽度自适应排布，自动去改变列数？？？
