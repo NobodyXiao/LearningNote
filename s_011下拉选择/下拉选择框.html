@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+    <style>
+
+        #frame{
+            margin:0 auto;
+            height:30px;
+            width:202px;
+        }
+        #cite{
+            margin:0 auto;
+            display:inline;
+            float:left;
+            height:25px;
+            width:195px;
+            border:1px solid #000;
+            padding-top:5px;
+            color: #C0C0C0;
+            font-weight: bold;
+            font-family:"微软雅黑";
+            padding-left:5px;
+
+        }
+        ul{
+            list-style:none;
+            height:160px;
+            width:160px;
+            margin:0 auto;
+            border:1px solid #000;
+            border-top:none;
+            display:none;
+
+
+        }
+        li{
+            margin-left:-40px;
+            line-height:30px;
+
+        }
+        a{
+
+            margin-left:10px;
+            text-decoration:none;
+            color:#000;
+        }
+        #triangle{
+            display:inline;
+            float:right;
+            border-left:8px solid transparent;
+            border-right:8px solid transparent;
+            border-top:12px solid red;
+            margin-top:-20px;
+            margin-right:10px;
+            cursor:pointer;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload=function(){
+
+
+            //点击三角形，选项卡出现，并且要阻止事件冒泡
+            triangle.onclick=function(e){
+            var triangle=document.getElementById("triangle");
+            var ul=document.getElementsByTagName("ul");
+            ul[0].style.display="block";
+            //阻止事件冒泡函数
+            //e=e||window.event;
+                    if(e.stopPropagation){
+
+                        e.stopPropagation();
+                    }else{
+                        e.cancelBubble=true;
+                    }
+
+            }
+            //通过键盘控制方向，并且按下回车时，选中高亮的选项
+            var index=-1;
+          document.onkeyup = function(e){
+           var ul=document.getElementsByTagName("ul");
+          var li=document.getElementsByTagName("li");
+          e = e||window.event;
+          for (var i = 0; i < li.length; i++) {
+            li[i].style.backgroundColor = null;
+          }
+
+          if (e.keyCode == 40) {
+            index++;
+            if (index>=li.length) {
+              index = 0;
+            }
+            li[index].style.backgroundColor = '#999';
+          }
+
+          if (e.keyCode == 38) {
+            if (index<=0) {
+              index = li.length;
+            }
+            index--;
+            li[index].style.backgroundColor = '#999';
+          }
+          if (e.keyCode == 13) {
+            cite.innerHTML = li[index].innerHTML;
+            ul[0].style.display="none";
+            index = -1;
+          }
+        }
+             //切换选项卡的内容，并隐藏列表
+             var li=document.getElementsByTagName("li");
+            for(var i=0;i<li.length;i++){
+                li[i].onmouseover=function(){
+                    this.style.background="#ababab";
+                }
+                 li[i].onmouseout=function(){
+                    this.style.background="#fff";
+                }
+                li[i].onclick=function(e){
+                    e=e||window.event;
+                    if(e.stopPropagation){
+                        e.stopPropagation();
+                    }else{
+                        e.cancelBubble=true;
+                    }
+                }
+                li[i].onclick=function(){
+                    //var id=this.id;
+                    var ul=document.getElementsByTagName("ul");
+                    var cite=document.getElementById("cite");
+                    ul[0].style.display="none";
+
+                    cite.innerHTML=this.innerHTML;
+
+
+                }
+
+            }
+
+                //点击页面空白区域，隐藏列表
+                    document.onclick=function(){
+                        var ul=document.getElementsByTagName("ul");
+                     ul[0].style.display="none";
+                    }
+
+        }
+
+    </script>
+</head>
+<body>
+    <div id="divselect">
+    <div id="frame">
+         <div id="cite">请选择分类</div>
+         <div id="triangle"></div>
+    </div>
+
+      <ul>
+         <li id="1"><a href="javascript:;" selectid="1" > ASP开发</a></li>
+         <li id="2"><a href="javascript:;" selectid="2" > .NET开发</a></li>
+         <li id="3"><a href="javascript:;" selectid="3" > PHP开发</a></li>
+         <li id="4"><a href="javascript:;" selectid="4" > Javascript开发</a></li>
+         <li id="5"><a href="javascript:;" selectid="5" > Java特效</a></li>
+      </ul>
+    </div>
+
+</body>
+</html>
