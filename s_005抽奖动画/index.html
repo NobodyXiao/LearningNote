@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        div {
+            height: 500px;
+            width: 500px;
+        }
+        
+        li {
+            height: 100px;
+            width: 100px;
+            background: pink;
+            list-style: none;
+            float: left;
+            display: inline;
+            margin: 0 10px 10px 0;
+            border: 5px solid #ababab;
+            text-align: center;
+            line-height: 100px;
+            border-radius: 20px;
+            filter: alpha(opacity=50);
+            opacity: 0.5;
+        }
+        
+        #start {
+            cursor: pointer;
+        }
+        
+        .selected {
+            filter: alpha(opacity=100);
+            opacity: 1;
+            height: 102px;
+            width: 102px;
+        }
+        
+        ul {
+            float: left;
+            display: inline;
+            margin: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <ul id="box1">
+            <li class="selected">1</li>
+            <li>2</li>
+            <li>3</li>
+
+        </ul>
+        <ul id="box2`">
+            <li>8</li>
+            <li>开始抽奖</li>
+            <li>4</li>
+
+        </ul>
+        <ul id="box3">
+            <li>7</li>
+            <li>6</li>
+            <li>5</li>
+
+        </ul>
+        </divi>
+        <script>
+        window.onload=function(){
+            var items = document.getElementsByTagName("li");
+            items[4].onclick=Start;
+        }
+        var i=0; // this indicator which one is currently selected 
+        var Start=function(){
+            var timer=null;
+            var times=0;
+            var getRandom=function(min,max){
+                var range=max-min;
+                var Random=min+Math.floor(Math.random()*range);
+                return Random;
+            }
+            var loop_times = getRandom(12,20);
+
+            var items=document.getElementsByTagName("li");
+            items[4].innerHTML="Wait"; 
+            // items[0].className="selected";
+            var subscriptArray=[0,1,2,5,8,7,6,3];
+            var loop=function() {
+                
+                var li_position = subscriptArray[i];
+                items[li_position].className=""; //clear old
+                i == 7 ? i = 0 : i++; //calculate next index
+                li_position = subscriptArray[i]; //get the element index in "items"
+                /* it has issue of performance
+                for(var j=0; j < items.length; j++) {
+                    items[j].className=" ";
+                }*/
+                items[li_position].className="selected";
+                console.log(li_position);
+                times++;
+                //i == 7 ? i = 0 : i++; 
+                /*if (li_position == li_position[7]) {
+                    i=0;
+                } else {
+                    i++;
+                }*/
+                if(times==loop_times) {
+                    items[4].innerHTML="开始抽奖";
+                    items[4].className="selected"; 
+                } else {
+                    setTimeout(loop,50);
+                }
+            
+            }
+            timer=setTimeout(loop,50);
+        }
+        </script>
+
+</body>
+
+</html>
