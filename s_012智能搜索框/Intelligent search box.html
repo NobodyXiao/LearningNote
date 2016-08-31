@@ -3,19 +3,30 @@
 <head>
 	<meta charset="UTF-8">
 	<title>bing search box</title>
+	<script src="http://apps.bdimg.com/libs/jquery/1.6.4/jquery.min.js"></script>
+	<script src='search.js'></script>
+
 	<style>
 	    *{
 	    	margin:0;
 	    	padding:0;
 	    }
-		body{
+
+		body,a{
 			background: rgb(51,51,51);
+			color:rgb(172,172,172);
+			font-size:small;
 		}
+		#wrap{
+	    	position: fixed;
+	    	height: 668px;
+	    	width:1366px;
+        }
 		.bground{
 			position: relative;
 			height:591px;
 			background-image:url(Wallpapers.jpg);
-			margin-top:40px;
+			margin-top:44px;
 		}
 		.pic,form{
 
@@ -51,13 +62,98 @@
 			width:45px;
 			height:45px;
 			background-image: url(hpc18.png);
-		
+			cursor: pointer;
+		}
+		a{
+			text-decoration: none;
+			font-family:"Segoe UI",Segoe,Tahoma,Arial,Verdana,sans-serif;
 		}
 		
-		
+		#part1{
+			position: absolute;
+			top: 13px;
+			left: 52px;
+		}
+		#part2{
+			position: absolute;
+			top: 14px;
+			right: 45px;
+			float:right;
+		}
+		#part3{
+			position: absolute;
+			bottom: 9px;
+			right: 30px;
+		}
+
+		#part1 a{
+			
+			margin-right:26px;	
+		}
+		#part2 a{
+			
+			padding-right:10px;
+		  
+		}
+		#part2 span{display:block;float:left;}
+		#part3 a{
+			
+			margin-right:5px;
+		}
+		.language{
+			display: block;
+			float:left;
+			width: 20px;
+			height: 20px;
+			margin-left: -40px;
+			background-image: url(global.png);
+		}
+		.login{
+			display: block;
+			float:left;
+			width: 50px;
+			height: 50px;
+			margin: -16px 9px 0 0;
+			background-image: url(Login.png);
+		}	
+		a:hover{color:#fff}
+		#menu-box{
+			position: absolute;
+			top:44px;
+			left: 430px;
+			width: 352px;
+			height: 330px;
+			background-color:rgb(0,0,0);
+			filter:alpha(opacity=30);
+			opacity:0.7;
+		}
+		#inner-box{
+
+			margin:10px 0 0 35px;
+		}
+
+		ul{
+			margin:0;
+            padding:0;
+            float:left;
+            list-style: none;
+
+           }
+        li{
+            height:85px;
+            width:80px;
+            margin-top:20px;
+            margin-right:20px;
+            text-align:center;
+
+            }
+        li span{display:block;}
+        #first-menu{padding-bottom:14px;}
+        #menu-box-hover{display:block;}
 	</style>
 </head>
 <body>
+<div id="wrap">
 	<div class="bground">
 		<div class="mainbox">
 			<div class="pic"><img src="hp_zh_cn.png" alt=""></div>
@@ -67,5 +163,116 @@
 			</form> 
 		</div>
 	</div>
+	<dl id="page-header">
+		<dt id="part1" style="float:left">
+			<a href="#">图片</a>
+			<a href="#">视频</a>
+			<a href="#">学术</a>
+			<a href="#">词典</a>
+			<a href="#">地图</a>
+			<a href="#">更多</a>
+			<span style="padding-right:28px">|</span>
+			<a href="#" id="first-menu">Office Online</a>
+			<a href="#">Outlook.com</a>
+
+		</dt>
+		<dt id="part2">
+			<a href="#">
+			<span class="language"></span>
+			<span>Switch to	 Bing in English</span>
+			</a>
+			<span style="padding:0 15px 0 15px">|</span>
+			<a href="#">
+			<span style="padding:0 8px 0 0">登录</span>
+			<span class="login"></span>
+			</a>
+			<a href="#" id="set"><img src="setting2.png" alt=""></a>
+		</dt>
+	</dl>
+	<dl id="page-foot">
+		<dt id="part3" style="float:right">
+			<a href="#">© 2016 Microsoft</a>
+			<span style="padding-right:5px">|</span>
+			<a href="#">京ICP备10036305号</a>
+			<span style="padding-right:5px">|</span>
+			<a href="#">隐私声明和 Cookie</a>
+			<span style="padding-right:5px">|</span>
+			<a href="#">使用条款</a>
+			<span style="padding-right:5px">|</span>
+			<a href="#">广告</a>
+			<span style="padding-right:5px">|</span>
+			<a href="#">举报问题</a>
+			<span style="padding-right:5px">|</span>
+			<a href="#">帮助</a>
+			<span style="padding-right:5px">|</span>
+			<a href="#">反馈</a>
+		</dt>
+		<div id="menu-box" style="display:none">
+			<div id="inner-box">
+				<ul id="menu2">
+					<li>
+						<a href="#">
+							<span><img src="wOnline.png" alt=""></span>
+							<span>Word Online</span>
+						</a>
+					</li>
+			
+					<li>
+						<a href="#">
+							<span><img src="note.png" alt=""></span>
+							<span>OneNote Online</span>
+						</a>
+					</li>
+
+					<li>
+						<a href="#">
+							<span><img src="cloud.png" alt=""></span>
+							<span>OneDrive</span>	
+						</a>
+					</li>
+				</ul>
+				<ul>
+					<li>
+						<a href="#">
+							<span><img src="excel.png" alt=""></span>
+							<span>Excel Online</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span><img src="sway.png" alt=""></span>
+							<span>Sway</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span><img src="date.png" alt=""></span>
+							<span>日历</span>	
+						</a>
+					</li>
+				</ul>
+				<ul>
+					<li>
+						<a href="#">
+							<span><img src="ppt.png" alt=""></span>
+							<span>PowerPoint Online</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span><img src="doc.png" alt=""></span>
+							<span>Docs.com</span>
+						</a>
+					</li>
+					<li>
+						<a href="#">
+							<span><img src="people.png" alt=""></span>
+							<span>人脉</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+</div>
 </body>
 </html>
