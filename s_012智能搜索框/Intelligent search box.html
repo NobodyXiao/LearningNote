@@ -2,159 +2,15 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>bing search box</title>
+	<title>bing search </title>
 	<script src="http://apps.bdimg.com/libs/jquery/1.6.4/jquery.min.js"></script>
 	<script src='search.js'></script>
+	<link rel="stylesheet" href="search box.css"/>
 
-	<style>
-	    *{
-	    	margin:0;
-	    	padding:0;
-	    }
-
-		body,a{
-			background: rgb(51,51,51);
-			color:rgb(172,172,172);
-			font-size:small;
-		}
-		#wrap{
-	    	position: fixed;
-	    	height: 668px;
-	    	width:1366px;
-        }
-		.bground{
-			position: relative;
-			height:591px;
-			background-image:url(Wallpapers.jpg);
-			margin-top:44px;
-		}
-		.pic,form{
-
-			float: left;
-		}
-		.mainbox{
-			position: absolute;
-			top: 88px;
-			left: 110px;
-		}
-		form{
-			margin: 6px 0 0 18px;
-			background: #fff;
-			height:45px;
-			width: 545px;
-
-		}
-		.edit{
-			float: left;
-			border: 0;
-			outline: none;
-			width: 490px;
-			height: 30px;
-			padding-left: 10px;
-			padding-top: 8px;
-			line-height: 30px;
-			font-size: 24px;
-		}
-		.search{
-			float: left;
-			border: 0;
-			outline: none;
-			width:45px;
-			height:45px;
-			background-image: url(hpc18.png);
-			cursor: pointer;
-		}
-		a{
-			text-decoration: none;
-			font-family:"Segoe UI",Segoe,Tahoma,Arial,Verdana,sans-serif;
-		}
-		
-		#part1{
-			position: absolute;
-			top: 13px;
-			left: 52px;
-		}
-		#part2{
-			position: absolute;
-			top: 14px;
-			right: 45px;
-			float:right;
-		}
-		#part3{
-			position: absolute;
-			bottom: 9px;
-			right: 30px;
-		}
-
-		#part1 a{
-			
-			margin-right:26px;	
-		}
-		#part2 a{
-			
-			padding-right:10px;
-		  
-		}
-		#part2 span{display:block;float:left;}
-		#part3 a{
-			
-			margin-right:5px;
-		}
-		.language{
-			display: block;
-			float:left;
-			width: 20px;
-			height: 20px;
-			margin-left: -40px;
-			background-image: url(global.png);
-		}
-		.login{
-			display: block;
-			float:left;
-			width: 50px;
-			height: 50px;
-			margin: -16px 9px 0 0;
-			background-image: url(Login.png);
-		}	
-		a:hover{color:#fff}
-		#menu-box{
-			position: absolute;
-			top:44px;
-			left: 430px;
-			width: 352px;
-			height: 330px;
-			background-color:rgb(0,0,0);
-			filter:alpha(opacity=30);
-			opacity:0.7;
-		}
-		#inner-box{
-
-			margin:10px 0 0 35px;
-		}
-
-		ul{
-			margin:0;
-            padding:0;
-            float:left;
-            list-style: none;
-
-           }
-        li{
-            height:85px;
-            width:80px;
-            margin-top:20px;
-            margin-right:20px;
-            text-align:center;
-
-            }
-        li span{display:block;}
-        #first-menu{padding-bottom:14px;}
-        #menu-box-hover{display:block;}
-	</style>
 </head>
 <body>
 <div id="wrap">
-	<div class="bground">
+	<div class="bground"></div>
 		<div class="mainbox">
 			<div class="pic"><img src="hp_zh_cn.png" alt=""></div>
 			<form>
@@ -162,7 +18,6 @@
 				<input type="submit" class="search" value=" ">
 			</form> 
 		</div>
-	</div>
 	<dl id="page-header">
 		<dt id="part1" style="float:left">
 			<a href="#">图片</a>
@@ -182,7 +37,7 @@
 			<span>Switch to	 Bing in English</span>
 			</a>
 			<span style="padding:0 15px 0 15px">|</span>
-			<a href="#">
+			<a href="#" class="checkin">
 			<span style="padding:0 8px 0 0">登录</span>
 			<span class="login"></span>
 			</a>
@@ -272,6 +127,48 @@
 					</li>
 				</ul>
 			</div>
+		</div>
+		<div id="login-box">
+			<span class="account">帐户</span>
+			<a href="#">
+				<span><img src="windows.png" alt=""></span>
+				<span>Microsoft 帐户</span>
+				<span style="margin-left:68px">连接</span>
+			</a>
+		</div>
+		<div id="Drop-down">
+			<ul id="suggest">
+				<li><a href="#">搜索结果1</a></li>
+				<li><a href="#">搜索结果2</a></li>
+				<li><a href="#">搜索结果3</a></li>
+				<li><a href="#">搜索结果4</a></li>
+				<li><a href="#">搜索结果5</a></li>
+				<li><a href="#">搜索结果6</a></li>
+				<li><a href="#">搜索结果7</a></li>
+				<li><a href="#">搜索结果8</a></li>
+			</ul>
+		</div>
+		<div id="part4">
+			<a href="#" id="QWW"><span style="display:none;" id="QQ"></span></a>
+			<a href="#" id="QWW"><span style="display:none;" id="weixin"></span></a>
+			<a href="#" id="QWW"><span style="display:none;" id="weibo"></span></a>
+			<a href="#"><span id="share"></span></a>
+			<a href="#"><span id="QRcode"></span></a>
+			<a href="#"><span id="former"></span></a>
+			<a href="#"><span id="next"></span></a>
+			<a href="#"><span id="side"></span></a>
+		</div>
+		<div id="select-box">
+			<ul id= "tab">
+				<li id="tab-1">
+					<a href="#">音乐</a>
+				</li>
+
+				<li id="tab-2">
+					<a href="#">视频</a>
+				</li>
+
+			</ul>
 		</div>
 </div>
 </body>

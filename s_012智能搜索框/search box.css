@@ -1,0 +1,264 @@
+
+	<style>
+	    *{
+	    	margin:0;
+	    	padding:0;
+	    }
+
+		body,a{
+			background: rgb(51,51,51);
+			color:rgb(172,172,172);
+			font-size:small;
+		}
+		#wrap{
+	    	position: fixed;
+	    	height: 668px;
+	    	width:1366px;
+        }
+		.bground{
+			position: relative;
+			height:591px;
+			background-image:url(Wallpapers.jpg);
+			margin-top:36px;
+			margin-left:-8px;
+		}
+	
+		.pic,form{
+
+			float: left;
+		}
+		.mainbox{
+			position: absolute;
+			top: 133px;
+			left: 110px;
+		}
+		form{
+			margin: 6px 0 0 18px;
+			background: #fff;
+			height:45px;
+			width: 545px;
+
+		}
+		.edit{
+			float: left;
+			border: 0;
+			outline: none;
+			width: 490px;
+			height: 30px;
+			padding-left: 10px;
+			padding-top: 8px;
+			line-height: 30px;
+			font-size: 24px;
+		}
+		.search{
+			float: left;
+			border: 0;
+			outline: none;
+			width:45px;
+			height:45px;
+			background-image: url(hpc18.png);
+			cursor: pointer;
+		}
+		a{
+			text-decoration: none;
+			font-family:"Segoe UI",Segoe,Tahoma,Arial,Verdana,sans-serif;
+		}
+		
+		#part1{
+			position: absolute;
+			top: 5px;
+			left: 52px;
+		}
+		#part2{
+			position: absolute;
+			top: 5px;
+			right: 45px;
+			float:right;
+		}
+		#part3{
+			position: absolute;
+			bottom: 17px;
+			right: 30px;
+		}
+
+		#part1 a{
+			
+			margin-right:26px;	
+		}
+		#part2 a{
+			
+			padding-right:10px;
+		  
+		}
+		#part2 span{display:block;float:left;}
+		#part3 a{
+			
+			margin-right:5px;
+		}
+		.language{
+			display: block;
+			float:left;
+			width: 20px;
+			height: 20px;
+			margin-left: -40px;
+			background-image: url(global.png);
+		}
+		.login{
+			display: block;
+			float:left;
+			width: 50px;
+			height: 50px;
+			margin: -16px 9px 0 0;
+			background-image: url(Login.png);
+		}	
+		a:hover{color:#fff}
+		#menu-box{
+			position: absolute;
+			top:35px;
+			left: 430px;
+			width: 352px;
+			height: 330px;
+			background-color:rgb(0,0,0);
+			filter:alpha(opacity=30);
+			opacity:0.7;
+		}
+		#inner-box{
+
+			margin:10px 0 0 35px;
+		}
+
+		#menu-box ul{
+			margin:0;
+            padding:0;
+            float:left;
+            list-style: none;
+
+           }
+        #menu-box li{
+            height:85px;
+            width:80px;
+            margin-top:20px;
+            margin-right:20px;
+            text-align:center;
+
+            }
+        #menu-box li span{display:block;}
+        #first-menu{padding-bottom:14px;}
+        #menu-box-hover{display:block;}
+		#login-box{
+			height: 86px;
+			width: 242px;
+			background: #fff;
+			position:absolute;
+			top:36px;
+			right:26px;
+			border: 1px solid #cdcdcd;
+			display: none;
+		}
+		#login-box .account{
+			display: block;
+			float: left;
+			margin: 16px 0 0 24px;
+			color: black;
+			font-size: 16px;
+			font-family: "微软雅黑";
+		}
+		#login-box a{
+			
+			float: left;
+			margin: 16px 0 0 24px;
+			background: #fff;
+			color: black;
+		}
+		#Drop-down{
+			height: 250px;
+			width: 543px;
+			background: #fff;
+			position: absolute;
+			top:184px;
+			left:235px;
+			border: 1px solid #cdcdcd;
+			display: none;
+		}
+		#Drop-down ul{
+			list-style:none;
+			padding-left: 12px;
+			margin-top: 0px;
+			
+		}
+		#Drop-down li{
+			height: 31px;
+			line-height: 31px;
+			margin-left: -12px;	
+		}
+		#Drop-down li:hover{
+			background: #cdcdcd; 
+			cursor:pointer;
+			text-decoration: underline;
+		}
+		#Drop-down li a{
+			font-size: 16px;
+			font-family: "微软雅黑";
+			background: transparent;
+			color: black;
+			padding-left: 10px;
+		}
+		#part4{
+			position: absolute;
+			bottom: 60px;
+			right: 20px;
+		}
+		#part4 a{
+			display:inline;
+			float:left;
+			background:transparent;
+		}
+		#part4 span{
+			display: block;
+			float: left;
+			height:42px;
+			width: 42px;
+			margin-left: 20px;
+		}
+
+		#share{background: url("pic.png");}
+		#share:hover{background-position:420px 0;}
+		#former{background: url("pic.png");background-position:0 -84px}
+		#former:hover{background-position:420px -84px;}
+		#next{background: url("pic.png");background-position:0 -126px}
+		#next:hover{background-position:420px -126px;}
+		#side{background: url("pic.png");background-position:0 -42px}
+		#side:hover{background-position:420px -42px}
+		#QRcode{background:url('QR Code1.png');background-repeat:no-repeat;}
+		#QRcode:hover{background:url('QR Code2.png');background-repeat:no-repeat;}
+		#QQ{background: url("pic.png");background-position:0 -294px}
+		#QQ:hover{background-position:420px -42px}
+		#weixin{background: url("pic.png");background-position:0 -210px}
+		#weixin:hover{background: url("pic.png");background-position:0 -210px}
+		#weibo{background: url("pic.png");background-position:0 -252px}
+		#weibo:hover{background: url("pic.png");background-position:0 -252px}
+
+		#select-box{
+			margin: 0;
+			padding: 0;
+			position: absolute;
+			top: 139px;
+			left: 780px;
+		}
+		#select-box ul{
+			text-decoration:none;
+			list-style:none;
+			margin: 0;
+			padding: 0;
+		}
+		#select-box ul li{
+			height: 45px;
+			width: 60px;
+			line-height: 45px;
+			text-align: center;
+			background:#595959;
+		}
+		#tab-2{display: none;}
+		#select-box ul li a{background:transparent;font-size: 16px;font-family: "微软雅黑";}
+		#select-box ul li:hover a{color:black;font-weight: bold;font-size:18px;}
+	</style>
