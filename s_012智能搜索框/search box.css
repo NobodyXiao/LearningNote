@@ -19,14 +19,11 @@ a {
 	color: rgb(172, 172, 172);
 	font-size: small;
 	text-decoration: none;
-}
-
-#wrap {
-	width: 100%;
-	height: 100%;
+	font-family: "Segoe UI", Segoe, Tahoma, Arial, Verdana, sans-serif;
 }
 
 /* */
+/*搜索框的格式设置*/
 .pic, form {
 	float: left;
 }
@@ -65,23 +62,21 @@ form {
 	background-image: url(hpc18.png);
 	cursor: pointer;
 }
-
-a {
-	text-decoration: none;
-	font-family: "Segoe UI", Segoe, Tahoma, Arial, Verdana, sans-serif;
-}
+/*搜索框的格式设置*/
 
 
 /* */
+/* office 下拉列表的格式设置*/
 #office-list {
 	position: absolute;
-	top: 35px;
-	left: 430px;
+	top: 43px;
+	left: 425px;
 	width: 352px;
 	height: 330px;
 	background-color: rgb(0, 0, 0);
 	filter: alpha(opacity=30);
 	opacity: 0.7;
+	display:none;
 }
 
 #inner-box {
@@ -101,16 +96,16 @@ a {
 	margin-top: 20px;
 	margin-right: 20px;
 	text-align: center;
+
 }
 
 #office-list li span {
 	display: block;
 }
+/* office 下拉列表的格式设置*/
 
-#office-list-hover {
-	display: block;
-}
 
+/*登陆下拉框的格式设置*/
 #login-box {
 	height: 86px;
 	width: 242px;
@@ -137,8 +132,21 @@ a {
 	background: #fff;
 	color: black;
 }
+#setting-box{
+	position: absolute;
+	top: 43px;
+	right: 0;
+	background: #fff;
+}
+#setting-box a{
+	display:inline-block;
+	background: #fff;
 
-#Drop-down {
+}
+/*登陆下拉框的格式设置*/
+
+/*搜索结果列表的格式设置*/
+#search-result-list {
 	height: 250px;
 	width: 543px;
 	background: #fff;
@@ -149,52 +157,51 @@ a {
 	display: none;
 }
 
-#Drop-down ul {
+#search-result-list ul {
 	list-style: none;
 	padding-left: 12px;
 	margin-top: 0px;
 }
 
-#Drop-down li {
+#search-result-list li {
 	height: 31px;
 	line-height: 31px;
 	margin-left: -12px;
 }
 
-#Drop-down li:hover {
+#search-result-list li:hover {
 	background: #cdcdcd;
 	cursor: pointer;
 	text-decoration: underline;
 }
 
-#Drop-down li a {
+#search-result-list li a {
 	font-size: 16px;
 	font-family: "微软雅黑";
 	background: transparent;
 	color: black;
 	padding-left: 10px;
 }
+/*搜索结果列表的格式设置*/
 
-#part4 {
+/*分享，翻页，二维码等等部分格式设置*/
+#buttons{
 	position: absolute;
-	bottom: 60px;
+	bottom: 20px;
 	right: 20px;
 }
-
-#part4 a {
+#buttons a{
 	display: inline;
 	float: left;
 	background: transparent;
 }
-
-#part4 span {
+#buttons span{
 	display: block;
 	float: left;
 	height: 42px;
 	width: 42px;
 	margin-left: 20px;
 }
-
 #share {
 	background: url("pic.png");
 }
@@ -268,45 +275,8 @@ a {
 	background: url("pic.png");
 	background-position: 0 -252px
 }
+/*分享，翻页，二维码等等部分格式设置*/
 
-#select-box {
-	margin: 0;
-	padding: 0;
-	position: absolute;
-	top: 139px;
-	left: 780px;
-}
-
-#select-box ul {
-	text-decoration: none;
-	list-style: none;
-	margin: 0;
-	padding: 0;
-}
-
-#select-box ul li {
-	height: 45px;
-	width: 60px;
-	line-height: 45px;
-	text-align: center;
-	background: #595959;
-}
-
-#tab-2 {
-	display: none;
-}
-
-#select-box ul li a {
-	background: transparent;
-	font-size: 16px;
-	font-family: "微软雅黑";
-}
-
-#select-box ul li:hover a {
-	color: black;
-	font-weight: bold;
-	font-size: 18px;
-}
 /**/
 
 #wrap #header-div {
@@ -383,11 +353,13 @@ a {
 	position: relative;
 	height: 720px;
 	overflow: hidden;
+	max-height: 1080px;
+	max-width: 1920px;
+}
+.bground{
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-image: url(Wallpapers.jpg);
-	max-height: 1080px;
-	max-width: 1920px;
 }
 
 .bingapp-qr-hide {

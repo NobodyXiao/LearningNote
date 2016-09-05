@@ -25,25 +25,25 @@
 					<a href="#">Outlook.com</a>
 				</dt>
 
-				<div id="office-list" style="display:none">
+				<div id="office-list">
 					<div id="inner-box">
 						<ul id="menu2">
 							<li>
-								<a href="#">
+								<a href="#" style="background: transparent;">
 									<span><img src="wOnline.png" alt=""></span>
 									<span>Word Online</span>
 								</a>
 							</li>
 
 							<li>
-								<a href="#">
+								<a href="#" style="background: transparent;">
 									<span><img src="note.png" alt=""></span>
 									<span>OneNote Online</span>
 								</a>
 							</li>
 
 							<li>
-								<a href="#">
+								<a href="#" style="background: transparent;">
 									<span><img src="cloud.png" alt=""></span>
 									<span>OneDrive</span>
 								</a>
@@ -51,19 +51,19 @@
 						</ul>
 						<ul>
 							<li>
-								<a href="#">
+								<a href="#" style="background: transparent;">
 									<span><img src="excel.png" alt=""></span>
 									<span>Excel Online</span>
 								</a>
 							</li>
 							<li>
-								<a href="#">
+								<a href="#" style="background: transparent;">
 									<span><img src="sway.png" alt=""></span>
 									<span>Sway</span>
 								</a>
 							</li>
 							<li>
-								<a href="#">
+								<a href="#" style="background: transparent;">
 									<span><img src="date.png" alt=""></span>
 									<span>日历</span>
 								</a>
@@ -71,19 +71,19 @@
 						</ul>
 						<ul>
 							<li>
-								<a href="#">
+								<a href="#" style="background: transparent;">
 									<span><img src="ppt.png" alt=""></span>
 									<span>PowerPoint Online</span>
 								</a>
 							</li>
 							<li>
-								<a href="#">
+								<a href="#" style="background: transparent;">
 									<span><img src="doc.png" alt=""></span>
 									<span>Docs.com</span>
 								</a>
 							</li>
 							<li>
-								<a href="#">
+								<a href="#" style="background: transparent;">
 									<span><img src="people.png" alt=""></span>
 									<span>人脉</span>
 								</a>
@@ -96,7 +96,7 @@
 					<div>
 						<a href="#">
 							<span class="language"></span>
-							Switch to	 Bing in English
+							Switch to Bing in English
 						</a>
 						<span>|</span>
 					</div>
@@ -111,11 +111,15 @@
 					<div>
 						<a href="#" id="settings"><img src="setting2.png" alt=""></a>
 					</div>
-				</dt>
+					<div id="setting-box">
+						<a href="#" style="color:blue;display:block;">搜索历史纪录</a>
+						<a href="#" style="color:blue;display:block;">设置</a>
+					</div>
+				</dt> 
 				
 				<div id="login-box" style="display: none;">
 					<span class="account">帐户</span>
-					<a href="#">
+					<a href="#" style="color:black;margin-left:23px">
 						<span><img src="windows.png" alt=""></span>
 						<span>Microsoft 帐户</span>
 						<span style="margin-left:68px">连接</span>
@@ -124,18 +128,16 @@
 		</div>
 
 		<div id="content-div">
-			<div class="bground">
-				<div class="mainbox">
+			<div class="bground" style="height:100%;z-index:0"></div>
+			<div class="mainbox" style="z-index:1">
 					<div class="pic"><img src="hp_zh_cn.png" alt=""></div>
 					<form>
 						<input type="text" class="edit">
 						<input type="submit" class="search" value=" ">
 					</form>
 				</div>
-			</div>
-			
-			<div id="Drop-down">
-				<ul id="suggest">
+			<div id="search-result-list">
+				<ul id="search-result">
 					<li><a href="#">搜索结果1</a></li>
 					<li><a href="#">搜索结果2</a></li>
 					<li><a href="#">搜索结果3</a></li>
@@ -146,11 +148,12 @@
 					<li><a href="#">搜索结果8</a></li>
 				</ul>
 			</div>
+
 			<div id="bingapp-QrCode" class="bingapp-qr-hide">
 				<div id="qrcode-img"></div>
 				<div id="bingapp-qrcode-lin"></div>
 			</div>
-			<div id="part4">
+			<div id="buttons">
 				<a href="#" id="QWW"><span style="display:none;" id="QQ"></span></a>
 				<a href="#" id="QWW"><span style="display:none;" id="weixin"></span></a>
 				<a href="#" id="QWW"><span style="display:none;" id="weibo"></span></a>
@@ -182,19 +185,6 @@
 				</dt>
 		</div>
 
-
-		<!--div id="select-box">
-			<ul id="tab">
-				<li id="tab-1">
-					<a href="#">音乐</a>
-				</li>
-
-				<li id="tab-2">
-					<a href="#">视频</a>
-				</li>
-
-			</ul>
-		</div-->
 	</div>
 </body>
 <script src='js/style.js'></script>
