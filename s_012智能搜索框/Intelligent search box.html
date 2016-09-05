@@ -1,165 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<title>bing search </title>
 	<script src="http://apps.bdimg.com/libs/jquery/1.6.4/jquery.min.js"></script>
 	<script src='search.js'></script>
-	<link rel="stylesheet" href="search box.css"/>
+	<link rel="stylesheet" href="search box.css" />
 
 </head>
+
 <body>
-<div id="wrap">
-	<div class="bground"></div>
-		<div class="mainbox">
-			<div class="pic"><img src="hp_zh_cn.png" alt=""></div>
-			<form>
-				<input type="text" class="edit">
-				<input type="submit" class="search" value=" ">
-			</form> 
+	<div id="wrap">
+		<div id="header-div">
+				<dt id="nav-hdu">
+					<a href="#">图片</a>
+					<a href="#">视频</a>
+					<a href="#">学术</a>
+					<a href="#">词典</a>
+					<a href="#">地图</a>
+					<a href="#">更多</a>
+					<a>|</a>
+					<a href="#" id="office-menu">Office Online</a>
+					<a href="#">Outlook.com</a>
+				</dt>
+
+				<div id="office-list" style="display:none">
+					<div id="inner-box">
+						<ul id="menu2">
+							<li>
+								<a href="#">
+									<span><img src="wOnline.png" alt=""></span>
+									<span>Word Online</span>
+								</a>
+							</li>
+
+							<li>
+								<a href="#">
+									<span><img src="note.png" alt=""></span>
+									<span>OneNote Online</span>
+								</a>
+							</li>
+
+							<li>
+								<a href="#">
+									<span><img src="cloud.png" alt=""></span>
+									<span>OneDrive</span>
+								</a>
+							</li>
+						</ul>
+						<ul>
+							<li>
+								<a href="#">
+									<span><img src="excel.png" alt=""></span>
+									<span>Excel Online</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span><img src="sway.png" alt=""></span>
+									<span>Sway</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span><img src="date.png" alt=""></span>
+									<span>日历</span>
+								</a>
+							</li>
+						</ul>
+						<ul>
+							<li>
+								<a href="#">
+									<span><img src="ppt.png" alt=""></span>
+									<span>PowerPoint Online</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span><img src="doc.png" alt=""></span>
+									<span>Docs.com</span>
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span><img src="people.png" alt=""></span>
+									<span>人脉</span>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<dt id="header-options">
+					<div>
+						<a href="#">
+							<span class="language"></span>
+							Switch to	 Bing in English
+						</a>
+						<span>|</span>
+					</div>
+
+					<div>
+						<a href="#" class="login">
+							<span style="">登录</span>
+							<span class="login-post"></span>
+							</a>
+					</div>
+
+					<div>
+						<a href="#" id="settings"><img src="setting2.png" alt=""></a>
+					</div>
+				</dt>
+				
+				<div id="login-box" style="display: none;">
+					<span class="account">帐户</span>
+					<a href="#">
+						<span><img src="windows.png" alt=""></span>
+						<span>Microsoft 帐户</span>
+						<span style="margin-left:68px">连接</span>
+					</a>
+				</div>
 		</div>
-	<dl id="page-header">
-		<dt id="part1" style="float:left">
-			<a href="#">图片</a>
-			<a href="#">视频</a>
-			<a href="#">学术</a>
-			<a href="#">词典</a>
-			<a href="#">地图</a>
-			<a href="#">更多</a>
-			<span style="padding-right:28px">|</span>
-			<a href="#" id="first-menu">Office Online</a>
-			<a href="#">Outlook.com</a>
 
-		</dt>
-		<dt id="part2">
-			<a href="#">
-			<span class="language"></span>
-			<span>Switch to	 Bing in English</span>
-			</a>
-			<span style="padding:0 15px 0 15px">|</span>
-			<a href="#" class="checkin">
-			<span style="padding:0 8px 0 0">登录</span>
-			<span class="login"></span>
-			</a>
-			<a href="#" id="set"><img src="setting2.png" alt=""></a>
-		</dt>
-	</dl>
-	<dl id="page-foot">
-		<dt id="part3" style="float:right">
-			<a href="#">© 2016 Microsoft</a>
-			<span style="padding-right:5px">|</span>
-			<a href="#">京ICP备10036305号</a>
-			<span style="padding-right:5px">|</span>
-			<a href="#">隐私声明和 Cookie</a>
-			<span style="padding-right:5px">|</span>
-			<a href="#">使用条款</a>
-			<span style="padding-right:5px">|</span>
-			<a href="#">广告</a>
-			<span style="padding-right:5px">|</span>
-			<a href="#">举报问题</a>
-			<span style="padding-right:5px">|</span>
-			<a href="#">帮助</a>
-			<span style="padding-right:5px">|</span>
-			<a href="#">反馈</a>
-		</dt>
-		<div id="menu-box" style="display:none">
-			<div id="inner-box">
-				<ul id="menu2">
-					<li>
-						<a href="#">
-							<span><img src="wOnline.png" alt=""></span>
-							<span>Word Online</span>
-						</a>
-					</li>
+		<div id="content-div">
+			<div class="bground">
+				<div class="mainbox">
+					<div class="pic"><img src="hp_zh_cn.png" alt=""></div>
+					<form>
+						<input type="text" class="edit">
+						<input type="submit" class="search" value=" ">
+					</form>
+				</div>
+			</div>
 			
-					<li>
-						<a href="#">
-							<span><img src="note.png" alt=""></span>
-							<span>OneNote Online</span>
-						</a>
-					</li>
-
-					<li>
-						<a href="#">
-							<span><img src="cloud.png" alt=""></span>
-							<span>OneDrive</span>	
-						</a>
-					</li>
-				</ul>
-				<ul>
-					<li>
-						<a href="#">
-							<span><img src="excel.png" alt=""></span>
-							<span>Excel Online</span>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<span><img src="sway.png" alt=""></span>
-							<span>Sway</span>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<span><img src="date.png" alt=""></span>
-							<span>日历</span>	
-						</a>
-					</li>
-				</ul>
-				<ul>
-					<li>
-						<a href="#">
-							<span><img src="ppt.png" alt=""></span>
-							<span>PowerPoint Online</span>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<span><img src="doc.png" alt=""></span>
-							<span>Docs.com</span>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<span><img src="people.png" alt=""></span>
-							<span>人脉</span>
-						</a>
-					</li>
+			<div id="Drop-down">
+				<ul id="suggest">
+					<li><a href="#">搜索结果1</a></li>
+					<li><a href="#">搜索结果2</a></li>
+					<li><a href="#">搜索结果3</a></li>
+					<li><a href="#">搜索结果4</a></li>
+					<li><a href="#">搜索结果5</a></li>
+					<li><a href="#">搜索结果6</a></li>
+					<li><a href="#">搜索结果7</a></li>
+					<li><a href="#">搜索结果8</a></li>
 				</ul>
 			</div>
+			<div id="bingapp-QrCode" class="bingapp-qr-hide">
+				<div id="qrcode-img"></div>
+				<div id="bingapp-qrcode-lin"></div>
+			</div>
+			<div id="part4">
+				<a href="#" id="QWW"><span style="display:none;" id="QQ"></span></a>
+				<a href="#" id="QWW"><span style="display:none;" id="weixin"></span></a>
+				<a href="#" id="QWW"><span style="display:none;" id="weibo"></span></a>
+				<a href="#"><span id="share"></span></a>
+				<a href="#"><span id="QRcode"></span></a>
+				<a href="#"><span id="former"></span></a>
+				<a href="#"><span id="next"></span></a>
+				<a href="#"><span id="side"></span></a>
+			</div>
 		</div>
-		<div id="login-box">
-			<span class="account">帐户</span>
-			<a href="#">
-				<span><img src="windows.png" alt=""></span>
-				<span>Microsoft 帐户</span>
-				<span style="margin-left:68px">连接</span>
-			</a>
+
+		<div id="footer-div" style="backgroud:yellow">
+				<dt style="float:right;">
+					<a href="#">© 2016 Microsoft</a>
+					<span style="padding-right:5px">|</span>
+					<a href="#">京ICP备10036305号</a>
+					<span style="padding-right:5px">|</span>
+					<a href="#">隐私声明和 Cookie</a>
+					<span style="padding-right:5px">|</span>
+					<a href="#">使用条款</a>
+					<span style="padding-right:5px">|</span>
+					<a href="#">广告</a>
+					<span style="padding-right:5px">|</span>
+					<a href="#">举报问题</a>
+					<span style="padding-right:5px">|</span>
+					<a href="#">帮助</a>
+					<span style="padding-right:5px">|</span>
+					<a href="#">反馈</a>
+				</dt>
 		</div>
-		<div id="Drop-down">
-			<ul id="suggest">
-				<li><a href="#">搜索结果1</a></li>
-				<li><a href="#">搜索结果2</a></li>
-				<li><a href="#">搜索结果3</a></li>
-				<li><a href="#">搜索结果4</a></li>
-				<li><a href="#">搜索结果5</a></li>
-				<li><a href="#">搜索结果6</a></li>
-				<li><a href="#">搜索结果7</a></li>
-				<li><a href="#">搜索结果8</a></li>
-			</ul>
-		</div>
-		<div id="part4">
-			<a href="#" id="QWW"><span style="display:none;" id="QQ"></span></a>
-			<a href="#" id="QWW"><span style="display:none;" id="weixin"></span></a>
-			<a href="#" id="QWW"><span style="display:none;" id="weibo"></span></a>
-			<a href="#"><span id="share"></span></a>
-			<a href="#"><span id="QRcode"></span></a>
-			<a href="#"><span id="former"></span></a>
-			<a href="#"><span id="next"></span></a>
-			<a href="#"><span id="side"></span></a>
-		</div>
-		<div id="select-box">
-			<ul id= "tab">
+
+
+		<!--div id="select-box">
+			<ul id="tab">
 				<li id="tab-1">
 					<a href="#">音乐</a>
 				</li>
@@ -169,7 +194,8 @@
 				</li>
 
 			</ul>
-		</div>
-</div>
+		</div-->
+	</div>
 </body>
+<script src='js/style.js'></script>
 </html>
