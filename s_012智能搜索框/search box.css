@@ -59,7 +59,7 @@ form {
 	outline: none;
 	width: 45px;
 	height: 45px;
-	background-image: url(hpc18.png);
+	background-image: url(image/hpc18.png);
 	cursor: pointer;
 }
 /*搜索框的格式设置*/
@@ -77,6 +77,7 @@ form {
 	filter: alpha(opacity=30);
 	opacity: 0.7;
 	display:none;
+	z-index: 2;
 }
 
 #inner-box {
@@ -111,7 +112,7 @@ form {
 	width: 242px;
 	background: #fff;
 	position: absolute;
-	top: 36px;
+	top: 43px;
 	right: 26px;
 	border: 1px solid #cdcdcd;
 	display: none;
@@ -119,8 +120,9 @@ form {
 
 #login-box .account {
 	display: block;
-	float: left;
-	margin: 16px 0 0 24px;
+	height: 43px;
+	line-height: 43px;
+	margin-left: 24px;
 	color: black;
 	font-size: 16px;
 	font-family: "微软雅黑";
@@ -128,7 +130,9 @@ form {
 
 #login-box a {
 	float: left;
-	margin: 16px 0 0 24px;
+	height: 43px;
+	line-height: 43px;
+	margin-left:24px;
 	background: #fff;
 	color: black;
 }
@@ -136,12 +140,18 @@ form {
 	position: absolute;
 	top: 43px;
 	right: 0;
+	height: 70px;
+	width: 180px;
 	background: #fff;
 }
 #setting-box a{
 	display:inline-block;
 	background: #fff;
+	height: 35px;
 
+}
+#setting-box a:hover{
+	text-decoration: underline;
 }
 /*登陆下拉框的格式设置*/
 
@@ -189,6 +199,11 @@ form {
 	position: absolute;
 	bottom: 20px;
 	right: 20px;
+	z-index: 2;
+}
+#buttons div{
+	display: inline;
+	float: left;
 }
 #buttons a{
 	display: inline;
@@ -196,14 +211,14 @@ form {
 	background: transparent;
 }
 #buttons span{
-	display: block;
+	
 	float: left;
 	height: 42px;
 	width: 42px;
 	margin-left: 20px;
 }
 #share {
-	background: url("pic.png");
+	background: url("image/pic.png");
 }
 
 #share:hover {
@@ -211,7 +226,7 @@ form {
 }
 
 #former {
-	background: url("pic.png");
+	background: url("image/pic.png");
 	background-position: 0 -84px
 }
 
@@ -220,7 +235,7 @@ form {
 }
 
 #next {
-	background: url("pic.png");
+	background: url("image/pic.png");
 	background-position: 0 -126px
 }
 
@@ -228,53 +243,63 @@ form {
 	background-position: 420px -126px;
 }
 
-#side {
-	background: url("pic.png");
+#side-button {
+	background: url("image/pic.png");
 	background-position: 0 -42px
 }
 
-#side:hover {
+#side-button:hover{
 	background-position: 420px -42px
 }
 
 #QRcode {
-	background: url('QR Code1.png');
+	background: url('image/QR Code1.png');
 	background-repeat: no-repeat;
 }
 
 #QRcode:hover {
-	background: url('QR Code2.png');
+	background: url('image/QR Code2.png');
 	background-repeat: no-repeat;
 }
 
 #QQ {
-	background: url("pic.png");
+	background: url("image/pic.png");
 	background-position: 0 -294px
 }
 
 #QQ:hover {
-	background-position: 420px -42px
+	background-position: 420px -294px
 }
 
 #weixin {
-	background: url("pic.png");
+	background: url("image/pic.png");
 	background-position: 0 -210px
 }
 
 #weixin:hover {
-	background: url("pic.png");
-	background-position: 0 -210px
+	background: url("image/pic.png");
+	background-position: 420px -210px
 }
 
 #weibo {
-	background: url("pic.png");
+	background: url("image/pic.png");
 	background-position: 0 -252px
 }
 
 #weibo:hover {
-	background: url("pic.png");
-	background-position: 0 -252px
+	background: url("image/pic.png");
+	background-position: 420px -252px
 }
+#shareWay{
+	height: 42px;
+	width: 0;
+	margin-right: -20px;
+}
+#QWW span{ 
+	display: none;
+}
+
+
 /*分享，翻页，二维码等等部分格式设置*/
 
 /**/
@@ -282,7 +307,6 @@ form {
 #wrap #header-div {
 	display: block;
 	height: 43px;
-    z-index: 9;
     width: 100%;
     border: 0;
     padding: 0;
@@ -327,7 +351,7 @@ form {
 	height: 20px;
 	margin-right: 8px;
 	vertical-align: text-top;
-	background-image: url(global.png);
+	background-image: url(image/global.png);
 	display: inline-block;
 }
 
@@ -340,7 +364,7 @@ form {
 	height: 50px;
 	margin-top: -16px;
 	vertical-align: text-top;
-	background-image: url(Login.png);
+	background-image: url(image/Login.png);
 	display: inline-block;
 }
 
@@ -359,16 +383,40 @@ form {
 .bground{
 	background-size: cover;
 	background-repeat: no-repeat;
-	background-image: url(Wallpapers.jpg);
+	background-image: url(image/Wallpapers.jpg);
 }
-
-.bingapp-qr-hide {
+#bingapp-QrCode{
+	height: 255px;
+	width: 145px;
+	position: absolute;
+	bottom: 124px;
+	right: 156px;
 	display: none;
+	z-index: 2;
 }
-.bingapp-qr-show {
-	display: block;
+#qrcode-box{
+	 border:1px solid #fff;
+	 padding:22px;
+	 background:black;
+	 opacity:0.7;
+}
+#bingapp-qrcode-lin{
+	 border-left:1px solid #fff;
+	 height:136px;
+	 margin-left:72px;
 }
 
+#sidebar{
+	
+	width: 440px;
+	background: black;
+	opacity: 0.6;
+	position: absolute;
+	top: 0px;
+	right: 0;
+	display:none;
+
+}
 #footer-div {
 	position: relative;
 	bottom: 0;
@@ -382,10 +430,15 @@ form {
 	margin-right: 30px;
 }
 
+
+
+
 #footer-div dt a {
 	margin-right: 5px;
 	text-align: center;
 }
-
+#footer-div a:hover{
+	color: #fff;
+}
 
 </style>

@@ -1,21 +1,25 @@
 $(document).ready(function(){
-	
 	initialization();
 
 })
 
 var initialization=function(){
+        
+        
 //展示搜索的下拉框	
 	$(".edit").bind("keyup",function(){
 		$("#search-result-list").show();
 		$(document).bind('click', function() {  
         $('#search-result-list').hide(); 
-    });	
+        });	
 	})
     tagle();
 	shade();
 	login();
+    set();
 	showIcon();
+    showCode();
+    side();
 }
 //hover Office Online时候出现下拉框
 var tagle = function(){
@@ -27,7 +31,7 @@ var tagle = function(){
             e.cancelBubble = true;  
     }
     // show logic 
-    $('#office-menu').mouseenter(function () {
+    $('#office-menu').mouseenter(function (e) {
         clearTimeout(timeout_id);
         $('#office-list').show(50);
         stopPropagation(e); 
@@ -73,6 +77,9 @@ var shade=function(){
   
     $('.edit').bind('click', function(e) {  
         $('.bground').css('opacity', '0.6');
+        $('#login-box').hide(); 
+        $('#setting-box').hide();
+        $('#sidebar').hide(); 
         stopPropagation(e);  
     });
     //当鼠标点击搜索结果的时候，输入框的内容变成点击的文字内容
@@ -87,7 +94,7 @@ var shade=function(){
 
 //点击登录按钮，出现登录下拉框，实现效果
     var login=function(){
-    	var flag=0;
+    	
     	function stopPropagation(e) 
     {  
         if (e.stopPropagation)  
@@ -97,29 +104,48 @@ var shade=function(){
     }  
   
     $(document).bind('click', function() {  
-        $('#login-box').hide(); 
-        flag=0; 
+        $('#login-box').hide();
     });  
   
-    $('.login').bind('click', function(e) {  
-    	
-    	if(flag==0){
-	         $('#login-box').show();
-	         flag=1;
-         } 
-         else{
-	         $('#login-box').hide();
-	         flag=0;	
-         }
+    $('.login').bind('click', function(e) {
+      
+          $('#setting-box').hide();
+          $('#sidebar').hide(); 
+          $('.bground').css('opacity', '1'); 
+	      $('#login-box').toggle();
+          stopPropagation(e); 
+    });
+     $('.account').bind('click', function(e) {  
+         $('#login-box').show();
          stopPropagation(e); 
     });
-     $('#login-box').bind('click', function(e) {  
-         $('#login-box').show();
+    }
+
+    //点击设置按钮，出现设置下拉框，实现效果
+    var set=function(){
+        function stopPropagation(e) 
+    {  
+        if (e.stopPropagation)  
+            e.stopPropagation();  
+        else  
+            e.cancelBubble = true;  
+    }  
+    $(document).bind('click', function() {  
+        $('#setting-box').hide();
+    });  
+  
+    $('#settings').bind('click', function(e) {  
+         
+         $('#setting-box').toggle();
+         $('#login-box').hide(); 
+         $('#sidebar').hide();  
+         $('.bground').css('opacity', '1');  
          stopPropagation(e); 
     });
     }
     //在鼠标hover分享的时候显示微博，微信，QQ3个并排的分享图标
     var showIcon=function(){
+        var timer1,timer2;
     function stopPropagation(e) 
     {  
         if (e.stopPropagation)  
@@ -127,17 +153,71 @@ var shade=function(){
         else  
             e.cancelBubble = true;  
     } 
-    	$("#share").bind("mouseenter",function(e){
-    		$("#QQ").show(250);
-    		$("#weixin").show(150);
-    		$("#weibo").show(50);
-    		stopPropagation(e);
 
-    	})
-    	$(document).bind("mouseout",function(){
-    		$("#QQ").hide(250);
-    		$("#weixin").hide(150);
-    		$("#weibo").hide(50);
-    	})
+        $("#share").bind("mouseenter",function(e){
+            clearTimeout(timer2);
+            $("#QWW span").show();
+            $("#shareWay").animate({width:"206"});
+            stopPropagation(e);
+
+        })
+
+        $("#share").bind("mouseleave",function(e){
+            timer1=setTimeout(function(){
+               $("#QWW span").hide();
+               $("#shareWay").animate({width:0});
+            },100)
+            stopPropagation(e); 
+        })
+        $("#shareWay").bind("mouseenter",function(){
+            clearTimeout(timer1);
+        })
+        $("#shareWay").bind("mouseleave",function(){
+            timer2=setTimeout(function(){
+               $("#QWW span").hide();
+               $("#shareWay").animate({width:0});  
+            },100)
+        })
+        
+    
+    }
+
+    
+    //鼠标hover二维码按钮的时候，二维码显示出来
+    var showCode = function(){
+
+    $("#QRcode").bind('mouseenter', function() {  
+        $('#bingapp-QrCode').show(); 
+    });
+     $("#QRcode").bind('mouseleave', function() {  
+        $('#bingapp-QrCode').hide(); 
+    });
+    }
+
+
+    //边栏部分的函数
+    var side = function(){
+       
+          function stopPropagation(e) 
+    {  
+        if (e.stopPropagation)  
+            e.stopPropagation();  
+        else  
+            e.cancelBubble = true;  
+    } 
+
+        $("#side-button").bind("click",function(e){
+        $('#login-box').hide(); 
+        $('#setting-box').hide();   
+        var sideBar = document.getElementById("sidebar");
+        sideBar.style.height = $(document.body).outerHeight(true) + "px";
+        $('.bground').css('opacity', '1');  
+        $('#sidebar').toggle();
+         stopPropagation(e); 
+        })
+
+        $(document).bind('click', function() {  
+        $('#sidebar').hide(); 
+    });
     }
   
