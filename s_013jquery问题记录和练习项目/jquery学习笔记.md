@@ -197,7 +197,9 @@
 
    scrollTop() 方法:   返回或设置匹配元素的滚动条的垂直位置。
 
-13. 慕课网的练习
+13. 表格中的border-collapse:折叠表格的边框，border-space：0；使边距为0 
+    ctrl+shift+g,在sublime中给子元素设置包裹父元素
+    ctrl+/,注释代码；ctrl+shift+/,取消注释
 
    
 

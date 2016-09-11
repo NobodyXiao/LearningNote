@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		table{
+			border-collapse:collapse;
+			border-spacing:0;
+		}
+	</style>
+	<script src="http://apps.bdimg.com/libs/jquery/1.6.4/jquery.min.js"></script>
+	<script>
+		var data = [
+			{name:"Lily",score:"95"},
+			{name:"jack",score:"80"},
+			{name:"rose",score:"75"}];
+		$(document).ready(function(){
+			// var tbhtml = "";
+			// for(var i = 0;i < data.length;i++){
+			// 	var temp = data[i];
+			// 	tbhtml += "<tr>";
+			// 	tbhtml +=		"<td>" + temp.name + "</td>";
+			// 	tbhtml +=		"<td>" + temp.score + "</td>";
+			// 	tbhtml += "</tr>";	
+			// }
+			// $("#tb").html(tbhtml);
+			//清空所有子节点
+			$("#tb").empty();
+			for(var i = 0;i<data.length;i++){
+				var temp = data[i];
+				var $tbhtml =$("<tr> </tr>");
+				$tbhtml.append("<td>" + temp.name + "</td>");
+				$tbhtml.append("<td>" + temp.score + "</td>");
+				$("#tb").append($tbhtml);
+			}
+			
+		})
+	</script>
+</head>
+<body>
+	<table border=1>
+		<thead>
+			<th>姓名</th>
+			<th>分数</th>
+		</thead>
+		<tbody id="tb">
+			
+		</tbody>
+	</table>
+</body>
+</html>
