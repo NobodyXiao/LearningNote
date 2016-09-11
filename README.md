@@ -3,7 +3,6 @@
 前端学习小记
 ---
 
-
 Practice List
 ---
 
@@ -13,6 +12,12 @@ Practice List
 - [编辑表格添加与删除](./s_003表格增删/README.md)
 - [仿照分享按钮那种侧边栏动画](./s_004侧边栏滑动动画/分享侧边栏.html)
 
+
+- <img src="xxxxxxxx" alt="gonghuan post image">
+- var imgsrc = xxxxxxxxx;
+- var imgdesc = "gonghuan post image"
+
+var img_tag = 
 
 
 
