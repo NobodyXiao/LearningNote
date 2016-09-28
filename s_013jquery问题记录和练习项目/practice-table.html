@@ -1,52 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<style>
-		table{
-			border-collapse:collapse;
-			border-spacing:0;
-		}
-	</style>
-	<script src="http://apps.bdimg.com/libs/jquery/1.6.4/jquery.min.js"></script>
-	<script>
-		var data = [
-			{name:"Lily",score:"95"},
-			{name:"jack",score:"80"},
-			{name:"rose",score:"75"}];
-		$(document).ready(function(){
-			// var tbhtml = "";
-			// for(var i = 0;i < data.length;i++){
-			// 	var temp = data[i];
-			// 	tbhtml += "<tr>";
-			// 	tbhtml +=		"<td>" + temp.name + "</td>";
-			// 	tbhtml +=		"<td>" + temp.score + "</td>";
-			// 	tbhtml += "</tr>";	
-			// }
-			// $("#tb").html(tbhtml);
-			//清空所有子节点
-			$("#tb").empty();
-			for(var i = 0;i<data.length;i++){
-				var temp = data[i];
-				var $tbhtml =$("<tr> </tr>");
-				$tbhtml.append("<td>" + temp.name + "</td>");
-				$tbhtml.append("<td>" + temp.score + "</td>");
-				$("#tb").append($tbhtml);
-			}
-			
-		})
-	</script>
+    <meta charset="UTF-8">
+    <title>利用CSS-border属性实现圆饼图表</title>
 </head>
+<style>
+    *{margin:0;padding:0;border:none;}
+    .border-i{
+        margin:5px;
+        float:left;
+        width:80px;
+        height:80px;
+        border-radius:40px;
+        background:#ffd203;
+        overflow:hidden;
+        position:relative;    
+    }
+    .border-i p{
+        position:absolute;
+        left:20px;
+        top:30px;
+        font-size:20px;
+    }
+    .border-i i{
+        width:0;
+        height:0;
+        border:40px transparent dotted;
+        position:absolute;
+    }
+    .border-i .i1{
+        right:-40px;
+        top:-40px;
+    }
+    .border-i .i2{
+        right:-40px;
+        bottom:-40px;
+    }
+    .border-i .i3{
+        left:-40px;
+        bottom:-40px;
+    }
+    .border-i .i4{
+        left:-40px;
+        top:-40px;
+    }
+    /* 默认0% */
+    /* 15% h = 40*tan(360deg * 15%) = 55 (px) */
+    .pct15 .i1{
+        right:-55px;
+        border-left:55px solid  #fd9500;
+    }
+    /* 25% */
+    .pct25 .i1{
+        border-color:#fd9500;
+    }
+    /* 40% h=40*tan(360deg*(40%-25%))=55 (px) */
+    .pct40 .i1{
+        border-color:#fd9500;
+    }
+    .pct40 .i2{
+        bottom:-55px;
+        border-top:55px solid #fd9500;
+    }
+    /* 50% */
+    .pct50 .i1,
+    .pct50 .i2{
+        border-color:#fd9500;
+    }
+    /* 65% h=40*tan(360deg*(65%-50%))=55 (px) */
+    .pct65 .i1,
+    .pct65 .i2{
+        border-color:#fd9500;
+    }
+    .pct65 .i3{
+        left:-55px;
+        border-right:55px solid #fd9500;
+    }
+    /* 75% */
+    .pct75 .i1,
+    .pct75 .i2,
+    .pct75 .i3{border-color:#fd9500;}
+    /* 90% h=40*tan(360deg*(90%-75%))=55 (px) */
+    .pct90 .i1,
+    .pct90 .i2,
+    .pct90 .i3{
+        border-color:#fd9500;
+    }
+    .pct90 .i4{
+        top:-55px;
+        border-bottom:55px solid #fd9500;
+    }
+    /* 100% */
+    .pct100 .i1,
+    .pct100 .i2,
+    .pct100 .i3,
+    .pct100 .i4{border-color:#fd9500;}
+</style>
 <body>
-	<table border=1>
-		<thead>
-			<th>姓名</th>
-			<th>分数</th>
-		</thead>
-		<tbody id="tb">
-			
-		</tbody>
-	</table>
+    <div class="border-i pct0">
+        <i class="i1"></i>
+        <i class="i2"></i>
+        <i class="i3"></i>
+        <i class="i4"></i>
+        <p>0%</p>
+    </div>
+    <div class="border-i pct15">
+        <i class="i1"></i>
+        <!-- <i class="i2"></i>
+        <i class="i3"></i>
+        <i class="i4"></i> -->
+        <p>15%</p>
+    </div>
+    <div class="border-i pct25">
+        <i class="i1"></i>
+        <i class="i2"></i>
+        <i class="i3"></i>
+        <i class="i4"></i>
+        <p>25%</p>
+    </div>
+    <div class="border-i pct40">
+        <i class="i1"></i>
+        <i class="i2"></i>
+        <i class="i3"></i>
+        <i class="i4"></i>
+        <p>40%</p>
+    </div>
+    <div class="border-i pct50">
+        <i class="i1"></i>
+        <i class="i2"></i>
+        <i class="i3"></i>
+        <i class="i4"></i>
+        <p>50%</p>
+    </div>
+    <div class="border-i pct65">
+        <i class="i1"></i>
+        <i class="i2"></i>
+        <i class="i3"></i>
+        <i class="i4"></i>
+        <p>65%</p>
+    </div>
+    <div class="border-i pct75">
+        <i class="i1"></i>
+        <i class="i2"></i>
+        <i class="i3"></i>
+        <i class="i4"></i>
+        <p>75%</p>
+    </div>
+    <div class="border-i pct90">
+        <i class="i1"></i>
+        <i class="i2"></i>
+        <i class="i3"></i>
+        <i class="i4"></i>
+        <p>90%</p>
+    </div>
+    <div class="border-i pct100">
+        <i class="i1"></i>
+        <i class="i2"></i>
+        <i class="i3"></i>
+        <i class="i4"></i>
+        <p>100%</p>
+    </div>
 </body>
 </html>

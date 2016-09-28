@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="jquery-1.11.1.min.js"></script>
+	<style>
+		html,body{
+			height: 100%;
+			overflow: hidden;
+			margin: 0;
+			padding: 0;
+		}
+		aside{
+			height: 100%;
+			line-height: 670px;
+			float: left;
+			background: #e0e0e0;
+			width: 260px;
+			font-size: 20px;
+			text-align: center;
+			font-family: "微软雅黑";
+			border: 5px red dashed;
+		}
+		.action{
+			 box-shadow: 0 0 80px red inset;
+		}
+		div{
+	       background-color: #f5f5f5;
+	       height: 100%;
+	       margin-left: 220px;
+	       padding: 20px;
+	       overflow: scroll;
+	       text-align: center;
+
+    }
+	</style>
+</head>
+<body>
+	<aside id = "sidebar" class="">
+		put me here!
+		<ul id="result" class="list-group"></ul>
+	</aside>
+	<div id = "content">
+		<h1>drag&drop</h1>
+		<p>
+			假如生活欺骗了你，
+			不要悲伤，不要心急！
+			忧郁的日子里须要镇静：
+			相信吧，快乐的日子将会来临！
+			心儿永远向往着未来；
+			现在却常是忧郁。
+			一切都是瞬息，一切都将会过去；
+			而那过去了的，就会成为亲切的怀恋
+			假如生活欺骗了你，
+			不要悲伤，不要心急！
+			忧郁的日子里须要镇静：
+			相信吧，快乐的日子将会来临！
+			心儿永远向往着未来；
+			现在却常是忧郁。
+			一切都是瞬息，一切都将会过去；
+			而那过去了的，就会成为亲切的怀恋
+			假如生活欺骗了你，
+			不要悲伤，不要心急！
+			忧郁的日子里须要镇静：
+			相信吧，快乐的日子将会来临！
+			心儿永远向往着未来；
+			现在却常是忧郁。
+			一切都是瞬息，一切都将会过去；
+			而那过去了的，就会成为亲切的怀恋
+			假如生活欺骗了你，
+			不要悲伤，不要心急！
+			忧郁的日子里须要镇静：
+			相信吧，快乐的日子将会来临！
+			心儿永远向往着未来；
+			现在却常是忧郁。
+			一切都是瞬息，一切都将会过去；
+			而那过去了的，就会成为亲切的怀恋
+			假如生活欺骗了你，
+			不要悲伤，不要心急！
+			忧郁的日子里须要镇静：
+			相信吧，快乐的日子将会来临！
+			心儿永远向往着未来；
+			现在却常是忧郁。
+			一切都是瞬息，一切都将会过去；
+			而那过去了的，就会成为亲切的怀恋
+			</p>
+			<div>
+				<img src="toy.png" alt="">
+				<img src="toy1.png" alt="">
+				<img src="toy2.png" alt="">
+				<img src="toy3.png" alt="">
+				<img src="toy4.png" alt="">
+			</div>
+	</div>
+	<script>
+		window.onload = function(){
+			var sideBar = document.querySelector("#sidebar");
+			var fileList = document.querySelector("#result");
+			sideBar.addEventListener('dragenter',function(){
+				sideBar.classList.add('action');
+			})
+			// sideBar.addEventListener('dragleave',function(){
+			// 	sideBar.classList.remove('action');
+			// })
+			// 如果想要捕获drop事件 就一定得在该事件中阻止默认事件
+			sideBar.addEventListener('dragover', function(e) {
+			        e.preventDefault();
+			        e.stopPropagation();
+			      });
+			sideBar.addEventListener('drop',function(e){
+				if(e.dataTransfer.files.length){
+					 var files = e.dataTransfer.files;
+					 for(var i=0;i<files.length;i++){
+					var li = document.createElement('li');
+					li.setAttribute('class','file-item');
+					li.innerHTML = '<h5 class = "file-item-name">'+files[i].name+'</h5><p file-item-info>'+files[i].lastModifiedDate.toLocaleDateString()+ ' '+files[i].lastModifiedDate.toLocaleTimeString()+' '+(files[i].size/1024).toFixed(2)+'KB</p>';
+				fileWrap.appendChild(li);
+			}
+				}else{
+					var data = e.dataTransfer.getData('text/plain');
+					if(data){
+						sideBar.innerHTML = data;
+					}else{
+					var img = document.querySelector("img");
+					var data = e.dataTransfer.getData('text/uri-list');	
+					sideBar.appendChild(img);
+					}
+					
+				}
+				this.classList.remove('action');
+
+        		e.preventDefault();
+        		e.stopPropagation();
+			})
+		}
+	</script>	
+</body>
+</html>

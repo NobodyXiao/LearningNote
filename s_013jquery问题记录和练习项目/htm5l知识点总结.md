@@ -174,39 +174,79 @@ var x = document.getElementById("myDIV").classList;//获取类名的列表
 console.log(x);//打印myDIV的类名为mystyle anotherClass thirdClass
 ```
 
+**杂记** 
+
+1. new Date()获取的是时间对象
+
+   toLocaleString() 方法
+
+   ```
+   var d=new Date();
+   var n=d.toLocaleString();//输出结果 2016/9/19 上午11:52:14
+   ```
+
+   .toLocaleTimeString()方法
+
+   ```
+   var d=new Date();
+   var n=d.toLocaleTimeString();//输出结果 上午11:55:53
+   ```
+
+   .toLocaleDateString()方法
+
+   ```
+   var d=new Date();
+   var n=d.toLocaleDateString();//输出结果 2016/9/19
+   ```
+
+2. HTML5 则通过 Application Cache 接口处理了离线应用中的一些问题，Application Cache(或 AppCache)让一个开发者可以指定浏览器需要保存哪个文件。当用户在离线情况下时，即使他们按了刷新按钮，你的应用也能正确加载和工作。
+
+      使用这个接口让你的应用拥有三方面的优势：
+
+      ***1)***离线浏览——用户在不能联网的时候依然能浏览整个站点
+
+      ***2)***高速——缓存资源是存储在本地的，因此能更快加载。
+
+      ***3)***更小的服务器负载——浏览器只需要从服务器端下载有改变的资源即可，相同资源不需要重复下载。
+
+   为了让一个应用能启用application cache，需要在文档的html标签中包含manifest属性
+
+   ```
+   <html manifest=”example.appcache”>
+    
+     …
+    
+   </html>
+   ```
+
+   一个manifest文件可能包括三个部分：CACHE, NETWORK 以及 FALLBACK.
+
+   CACHE:
+
+   这是默认部分，列在这个条目下的文件（或者紧跟在CACHE MANIFEST字符串之后的）都会在第一次被下载后进入cache。
+
+   NETWORK:
+
+   这一部分中所列出的资源都是需要联网使用的资源。它们都不会进入cache中，即使用户处于离线状态。这部分可能会使用Wildcards。
+
+   FALLBACK:
+
+   可选部分，指定了如果资源获取失败，将会呈现怎样的页面。第一个URL是资源，第二个就是fallback页面。两个URL都必须是相对地址，并且由同一个manifest文件指定。可以使用Wildcards。
+
+   **更新缓存** 
+
+   一旦应用被缓存，它就会保持缓存直到发生下列情况：
+
+   - 用户清空浏览器缓存
+
+   - manifest 文件被修改（参阅下面的提示）
+
+   - 由程序来更新应用缓存
+
+     ​
 
 
-Application cache,网页离线访问,html标签中引入manifest属性，之后设置一下，manifest = “cache.manifest”,配置一下cache.manifest文件，对于客户端比较有用
 
-
-
-new Date()获取的是时间对象，.toLcalTimeString()转换成我们可以认识的时间字符串。.toLcalDateString()转换成我们可以认识的日期字符串
-
-
-
-
-
-
-
-
-
-
-
-
-
-怎么把自己电脑上的文件部署到本地服务器？？
-
-全屏API?
-
-
-
-对于表单里边的input可以直接通过name属性找到的:document.form[0].input_file，其中input_file是name名
-
-bootstrap了解一下，
-
-文件操作，选取文件，读取文件列表，保留两位小数，去掉读取列表按钮，给点击按钮变化的时候就去执行函数，change
-
-drag&&drop//花时间写一个例子
 
 
 
