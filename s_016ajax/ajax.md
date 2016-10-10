@@ -1,4 +1,6 @@
-1. 关于域名和IP的理解
+1. Jquery的ajax返回类型？json,html,script,text,xml,jsonp
+
+2. 关于域名和IP的理解
 
    每一台机都有一个唯一的IP地址，域名相当于是IP地址，当IP地址很难记的时候就会出现域名，通过
 
@@ -20,7 +22,7 @@
 
    一个IP地址可以对应多个域名。
 
-2. URL地址
+3. URL地址
 
    URL组成部分：**<scheme>://<user>:<password>@<host>:<port>/<path>;<params>?<query>#<frag>**
 
@@ -52,7 +54,7 @@
 
    frag：html资源片段，譬如html文档过大的时候，frag定位到html的一部分
 
-3. IPv6是Internet Protocol Version 6的缩写，其中Internet Protocol译为 ”互联网协议“。IPv6是IETF（互联网工程任务组，Internet Engineering Task Force）设计的用于替代现行版本IP协议（IPv4）的下一代IP协议，规范IP的样式 。
+4. IPv6是Internet Protocol Version 6的缩写，其中Internet Protocol译为 ”互联网协议“。IPv6是IETF（互联网工程任务组，Internet Engineering Task Force）设计的用于替代现行版本IP协议（IPv4）的下一代IP协议，规范IP的样式 。
 
    由于IPv4最大的问题在于网络地址资源有限，严重制约了互联网的应用和发展。IPv6的使用，不仅能解决网络地址资源数量的问题，而且也解决了多种接入设备连入互联网的障碍。
 
@@ -60,19 +62,19 @@
 
    在使用IPv6网络中用户可以对网络层的数据进行加密并对IP报文进行校验,这极大的增强了网络安全.
 
-4. 静态网站和动态网站的区别![1](file:///C:/Users/wochu/Desktop/LearningNote/s_016ajax/1.png?lastModify=1474986254)
+5. 静态网站和动态网站的区别![1](file:///C:/Users/wochu/Desktop/LearningNote/s_016ajax/1.png?lastModify=1474986254)
 
-5. B/S模式和C/S模式:    Browser/Server结构      Client/Server结构
+6. B/S模式和C/S模式:    Browser/Server结构      Client/Server结构
 
-6. ajax异步的JavaScript和XML，通过和服务器进行数据交换来实现在不重复加载页面的情况下，更新局部网页，网页实现异步最早的时候使用iframe进行实现，现在使用ajax
+7. ajax异步的JavaScript和XML，通过和服务器进行数据交换来实现在不重复加载页面的情况下，更新局部网页，网页实现异步最早的时候使用iframe进行实现，现在使用ajax
 
    ​	 ![2](2.png)
 
-7. JavaScript中不按照程序中的顺序执行的函数都有定时器，回调函数，以及ajax代码等等。
+8. JavaScript中不按照程序中的顺序执行的函数都有定时器，回调函数，以及ajax代码等等。
 
-8. *JSON*(JavaScript Object Notation) 是一种轻量级的数据交换格式。在json字符串中必须使用双引号，另外json字符串与数组之间相互转化的关系：JSON.parse（将json字符串转化成数组）；JSON*.*stringify();
+9. *JSON*(JavaScript Object Notation) 是一种轻量级的数据交换格式。在json字符串中必须使用双引号，另外json字符串与数组之间相互转化的关系：JSON.parse（将json字符串转化成数组）；JSON*.*stringify();
 
-9. onreadystatechange：存储函数（或函数名），每当 readyState 属性改变时，就会调用该函数。
+10. onreadystatechange：存储函数（或函数名），每当 readyState 属性改变时，就会调用该函数。
 
    readyState：存有 XMLHttpRequest 的状态。从 0 到 4 发生变化。
 
@@ -82,25 +84,25 @@
    - 3: 请求处理中
    - 4: 请求已完成，且响应已就绪
 
-10. **节点类型回顾：**  ![3](3.png)
+11. **节点类型回顾：**  ![3](3.png)
 
-11. **GET和POST的区别：**
+12. **GET和POST的区别：**
 
-    get请求的时候url代码里边传中文的话，需要进行编码，处理方式：var param=encodeURLComponent(param);
+   get请求的时候url代码里边传中文的话，需要进行编码，处理方式：var param=encodeURLComponent(param);
 
-      参数要用encodeURIComponent进行编码，（URI:是一个用于标识某一互联网资源名称的字符串）
+     参数要用encodeURIComponent进行编码，（URI:是一个用于标识某一互联网资源名称的字符串）
 
-      URL只支持大约2K的长度，即2048字符数；使用GET进行AJAX请求时候会缓存导致出现的页面不是正确的，一般方法加random参数值；ajax.send(null)。
+     URL只支持大约2K的长度，即2048字符数；使用GET进行AJAX请求时候会缓存导致出现的页面不是正确的，一般方法加random参数值；ajax.send(null)。
 
-      **POST**
+     **POST**
 
-      向服务器提交数据用到。
+     向服务器提交数据用到。
 
-      需要将form表单中的值先取出转换成字符串，用&符号连接，（同GET传参数一样）；提交数据量2GB ；使用ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')，处理提交的字符串;ajax.send(strings)，这个strings表示form中需要提交的内容，例如a=1&b=2类似这样的字符串。
+     需要将form表单中的值先取出转换成字符串，用&符号连接，（同GET传参数一样）；提交数据量2GB ；使用ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')，处理提交的字符串;ajax.send(strings)，这个strings表示form中需要提交的内容，例如a=1&b=2类似这样的字符串。
 
-      另外如果使用POST方式请求服务器的时候，以防出现表单编码错误，一般会加xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded')；另外xhr.send();中一定要带参数。
+     另外如果使用POST方式请求服务器的时候，以防出现表单编码错误，一般会加xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded')；另外xhr.send();中一定要带参数。
 
-12.    同步和异步的区别：
+13. 同步和异步的区别：
 
    1）同步
 
@@ -112,7 +114,7 @@
 
 13. JavaScript 函数 eval() 可用于将 JSON 文本转换为 JavaScript 对象。语法：var obj = eval ("(" + txt + ")");
 
-14. Jsonp(JSON with Padding) 是 json 的一种"使用模式"，可以让网页从别的域名（网站）那获取资料，即跨域读取数据。
+23. Jsonp(JSON with Padding) 是 json 的一种"使用模式"，可以让网页从别的域名（网站）那获取资料，即跨域读取数据。
 
    ​
 
