@@ -167,7 +167,7 @@ form {
 
 /*搜索结果列表的格式设置*/
 #search-result-list {
-	height: 250px;
+	
 	width: 543px;
 	background: #fff;
 	position: absolute;
@@ -195,7 +195,7 @@ form {
 	text-decoration: underline;
 }
 
-#search-result-list li a {
+#search-result-list li  {
 	font-size: 16px;
 	font-family: "微软雅黑";
 	background: transparent;

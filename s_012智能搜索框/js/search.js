@@ -1,18 +1,9 @@
 $(document).ready(function(){
 	initialization();
-
 })
 
 var initialization=function(){
-        
-        
-//展示搜索的下拉框	
-	$(".edit").bind("keyup",function(){
-		$("#search-result-list").show();
-		$(document).bind('click', function() {  
-        $('#search-result-list').hide(); 
-        });	
-	})
+    search();    
     tagle();
 	shade();
 	login();
@@ -21,6 +12,54 @@ var initialization=function(){
     showCode();
     side();
 }
+//展示搜索的下拉列表,并且根据输入内容动态显示结果
+var search = function(){
+     
+    $(".edit").bind("keyup",function(){
+        $("#search-result-list").show();
+        $(document).bind('click', function() {  
+        $('#search-result-list').hide(); 
+        }); 
+        var searchkey = $('.edit').val();
+        // console.log(searchkey);
+        var url = 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd='+searchkey;
+        querySUG(url);//querySUG()函数的作用？？？
+    })    
+}
+
+function querySUG(url){
+        // document.getElementById('list').innerHTML = '';
+        $.ajax({
+            type : "get",
+            async: true,
+            url : url,
+            dataType : "jsonp",
+            jsonp: "cb",//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(默认为:callback)
+            jsonpCallback:"callback",//自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名(类似：jQuery1102016820125747472048_1450147653563(["zhangsan", "lisi", "wangwu"]);)
+            success : function(data){
+                var tag = '<ul id ="search-result">';
+                for(var i=0;i<data.s.length;i++){
+                    tag += '<li>'+data.s[i]+'</li>';
+                }
+                tag += '</ul>';
+                $('#search-result-list').html(tag).show();
+                 //当鼠标点击搜索结果的时候，输入框的内容变成点击的文字内容
+                 
+                var result = document.getElementById("search-result");
+                var resultList = result.getElementsByTagName("li");
+                $.each(resultList,function(){
+                    $(this).bind("click",function(){
+                        $(".edit").val($(this).text());
+                    })
+                })
+               //当鼠标点击搜索结果的时候，输入框的内容变成点击的文字内容 
+            },
+            error:function(){
+                console.log('fail');
+            }
+        });
+    }
+
 //hover Office Online时候出现下拉框
 var tagle = function(){
     var timeout_id;
@@ -82,14 +121,7 @@ var shade=function(){
         $('#sidebar').hide(); 
         stopPropagation(e);  
     });
-    //当鼠标点击搜索结果的时候，输入框的内容变成点击的文字内容
-    var result = document.getElementById("search-result");
-    var resultList = result.getElementsByTagName("li");
-    $.each(resultList,function(){
-        $(this).bind("click",function(){
-            $(".edit").val($(this).text());
-        })
-    })
+   
     }
 
 //点击登录按钮，出现登录下拉框，实现效果
@@ -220,4 +252,6 @@ var shade=function(){
         $('#sidebar').hide(); 
     });
     }
+    //调用必应搜索的接口，动态的匹配搜索结果
+    //
   
