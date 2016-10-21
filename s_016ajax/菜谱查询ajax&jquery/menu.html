@@ -34,6 +34,7 @@
             }
         </style>
         <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="template-native-debug.js"></script>
     </head>
     <body>
         <div id ="wrap">
@@ -43,8 +44,12 @@
                 <input type="button" value = "查询" id = "btn"/>
             </div>
             <div id = "resultBox"></div>
+            <!-- <div id = "template"> -->
+
+            </div>
         </div>
         <script>
+
         window.onload = function(){
             var btn = $('#btn');
             var dishNode = $('#name');
@@ -62,7 +67,8 @@
                             return;
                         }else{
                             console.log(data);
-
+                            var html = template("tpl",data.result);
+                            result.html(html);
                             for(var i=0; i< data.result.data.length;i++){
                                 var myData = data.result.data[i];
 
@@ -70,21 +76,26 @@
                                 var title = $('<div>'+myData.title+'</div>');
                                 result.append(title);
 
+
                                 //添加菜品描述到页面
                                 var content =$('<p>'+myData.imtro+'</p>');
                                 result.append(content);
+
 
                                 //添加图片和到页面中
                                 var image =$('<img src ='+myData.albums[0]+'>');
                                 result.append(image);
 
+
                                 //添加主料到页面
                                 var zlbox =$('<p>主料：'+myData.ingredients+'</p>');
                                 result.append(zlbox);
 
+
                                 //添加辅料到页面
                                 var flbox =$('<p>辅料：'+myData.burden+'</p>');
                                 result.append(flbox);
+
 
                                 //添加烹饪方法到页面
                                 var steps = $('<div class="steps"></div>');
@@ -113,6 +124,8 @@
 
 
                             }
+
+
                         }
                     },
                     error:function(){

@@ -187,6 +187,10 @@ form {
 	height: 31px;
 	line-height: 31px;
 	margin-left: -12px;
+	font-size: 16px;
+	font-family: "微软雅黑";
+	color: black;
+	padding-left: 10px;
 }
 
 #search-result-list li:hover {
@@ -195,14 +199,7 @@ form {
 	text-decoration: underline;
 }
 
-#search-result-list li  {
-	font-size: 16px;
-	font-family: "微软雅黑";
-	background: transparent;
-	color: black;
-	padding-left: 10px;
-}
-/*搜索结果列表的格式设置*/
+
 
 /*分享，翻页，二维码等等部分格式设置*/
 #buttons{

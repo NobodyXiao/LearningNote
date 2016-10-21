@@ -23,7 +23,7 @@ var search = function(){
         var searchkey = $('.edit').val();
         // console.log(searchkey);
         var url = 'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd='+searchkey;
-        querySUG(url);//querySUG()函数的作用？？？
+        querySUG(url);//querySUG()函数是用函数体包裹了一下jquery的ajax函数，方便调用和代码的规范化
     })    
 }
 
@@ -59,6 +59,7 @@ function querySUG(url){
             }
         });
     }
+
 
 //hover Office Online时候出现下拉框
 var tagle = function(){
