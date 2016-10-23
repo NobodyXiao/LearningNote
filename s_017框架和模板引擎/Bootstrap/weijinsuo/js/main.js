@@ -9,6 +9,7 @@
 $(document).ready(function(){
 $('[data-toggle="tooltip"]').tooltip();
 })
+
 $(window).on('resize',resize).trigger('resize');
 //当页面刚刚加载的时候，可能还没有执行resize中的命令，trigger函数是手动触发一下函数
 function resize(){
@@ -28,6 +29,31 @@ function resize(){
                     $item.empty();
                 }
          })
+        setUlwidth();
         }
+function setUlwidth(){
+    var ulWidth = 162;
+    var liWrapper =$("#ul-wrapper>ul");
+    // console.log(ulWrapper);
+
+    //获取ul的所有子元素
+    var ulChildren = liWrapper.children();
+    console.log(ulChildren);
+    ulChildren.each(function(index,element){
+        element = $(element);
+        // console.log(element.width());
+        ulWidth += element.width();
+    })
+
+    //当屏幕宽度小于ul的宽度的时候再给外边的容器加滚动条
+    if($(window).width() < ulWidth){
+        liWrapper.css("width",ulWidth);
+        $('#ul-wrapper').css('overflowX','scroll');
+    }else{
+        liWrapper.css("width",'100%');
+        $('#ul-wrapper').css('overflowX','hidden');
+
+    }
+}
 
 
