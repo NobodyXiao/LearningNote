@@ -2,12 +2,14 @@
 * @Author: anchen
 * @Date:   2016-10-17 20:29:13
 * @Last Modified by:   anchen
-* @Last Modified time: 2016-10-21 09:15:24
+* @Last Modified time: 2016-10-24 23:09:49
 */
 
 'use strict';
 $(document).ready(function(){
 $('[data-toggle="tooltip"]').tooltip();
+addbga();
+changeTitle();
 })
 
 $(window).on('resize',resize).trigger('resize');
@@ -56,4 +58,26 @@ function setUlwidth(){
     }
 }
 
+// 新闻部分，当鼠标点击的时候会改变图标的颜色
+    function addbga(){
+        var picList = $(".news-pics>a>span");
+        picList.each(function(index,element){
+
+            $(element).on('click',function(){
+                // 先把所有的a背景都设置成白色
+                $(".news-pics>a>span").css('background',"#d0d0d0");
+                $(this).css('background',"#e61e25");
+            })
+        })
+    }
+
+//利用js动态的改变标题的内容
+   function changeTitle(){
+       var newsTitle = $(".news-pics>a");
+       newsTitle.on('click',function(){
+           var  $this = $(this);
+           var  title = $this.data('title');
+           $('.news-list-title').text(title);
+       })
+   }
 
