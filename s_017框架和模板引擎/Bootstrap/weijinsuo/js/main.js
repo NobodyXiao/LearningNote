@@ -2,7 +2,7 @@
 * @Author: anchen
 * @Date:   2016-10-17 20:29:13
 * @Last Modified by:   anchen
-* @Last Modified time: 2016-10-24 23:09:49
+* @Last Modified time: 2016-10-25 20:57:22
 */
 
 'use strict';
@@ -10,6 +10,7 @@ $(document).ready(function(){
 $('[data-toggle="tooltip"]').tooltip();
 addbga();
 changeTitle();
+changeCarousel();
 })
 
 $(window).on('resize',resize).trigger('resize');
@@ -40,7 +41,7 @@ function setUlwidth(){
 
     //获取ul的所有子元素
     var ulChildren = liWrapper.children();
-    console.log(ulChildren);
+    // console.log(ulChildren);
     ulChildren.each(function(index,element){
         element = $(element);
         // console.log(element.width());
@@ -80,4 +81,32 @@ function setUlwidth(){
            $('.news-list-title').text(title);
        })
    }
+
+//利用js实现手左滑右滑的时候切换轮播图
+//1.获取轮播图容器，之后添加事件，获取到鼠标在轮播图容器上的位置
+//2.根据两个鼠标开始位置和结束位置的对比，来决定是在像走滑动还是向右滑动
+
+  function  changeCarousel(){
+    //获取页面上的轮播图容器
+    //并且给轮播图容器添加事件
+    var $carousels = $(".carousel");
+    var startX;
+    var endX;
+    $carousels.on('touchstart',function(e){
+        startX =e.originalEvent.touches[0].clientX;
+        // console.log(startX);
+    })
+    //获取到最后的水平坐标值，touchend函数不能使用，因为会始终找不到最后的坐标值
+    $carousels.on('touchmove',function(e){
+        endX =e.originalEvent.touches[0].clientX;
+        var distance = Math.abs(startX-endX);
+          // 当绝对值大于一定值是，认为产生了滑动
+        if(distance>30){
+            $(this).carousel(startX>endX?'next':'prev');
+        }
+        // console.log(endX);
+    })
+
+
+  }
 
