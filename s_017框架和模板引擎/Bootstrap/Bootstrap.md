@@ -131,11 +131,9 @@
 
 3. target伪类写一个table选项卡    CSS3实现
 
-4. 元素浮动之后，外部容器撑不起来，解决办法：position：relative，overflow：hidden
+4. rem，viewport，设备模拟器？？屏幕像素比?物理像素？设计图切图
 
-5. rem，viewport，设备模拟器？？屏幕像素比?物理像素？设计图切图
-
-   ​
+5. 今天更新一下github上边的最外边的描述部分，base.css ,index.css,两个CSS文件
 
    ​
 
