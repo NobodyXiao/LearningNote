@@ -19,6 +19,32 @@
             <a href="#" class="icon-backup"></a>
             <p>购物车</p>
             <a href="#" class="icon-category"></a>
+            <ul class="jd-hiddenMenu">
+                <li>
+                    <a href="">
+                        <span class="pic1"></span>
+                        <strong>首页</strong>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <span class="pic2"></span>
+                        <strong>分类搜索</strong>
+                    </a>
+                </li>
+                <li class="selected">
+                    <a href="">
+                        <span class="pic3"></span>
+                        <strong>购物车</strong>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <span class="pic4"></span>
+                        <strong>我的京东</strong>
+                    </a>
+                </li>
+            </ul>
         </header>
         <section id="mainBox">
             <div id="tipBar">
@@ -71,6 +97,12 @@
                                             <span>小米 红米Note3 全网通版 2GB+16GB 金色 移动联通电信4G手机 双卡双待</span>
                                         </a>
                                     </div>
+                                    <div class="edit-model">
+                                        <span class="edit-model1-left">颜色:金 版本:标准版全网通</span>
+                                        <a href="">
+                                           <span class="edit-arrow"></span>
+                                        </a>
+                                    </div>
                                     <div class="pro-prop">
                                         <span class="pro-prop1">颜色:金</span>
                                         <span class="pro-prop2">版本:标准版全网通</span>
@@ -88,8 +120,14 @@
                                 </div>
                             </div>
                             <div class="pro-edit">
-                                <a href="">
+                                <a href="" class="edit">
                                     <span>编辑</span>
+                                </a>
+                                <a href="" class="finish">
+                                    <span>完成</span>
+                                </a>
+                                <a href="" class="delete">
+                                    <span>删除</span>
                                 </a>
                             </div>
                         </div>
@@ -116,6 +154,12 @@
                                             <span>小米 红米Note3 全网通版 2GB+16GB 金色 移动联通电信4G手机 双卡双待</span>
                                         </a>
                                     </div>
+                                    <div class="edit-model">
+                                        <span class="edit-model1-left">颜色:金 版本:标准版全网通</span>
+                                        <a href="">
+                                           <span class="edit-arrow"></span>
+                                        </a>
+                                    </div>
                                     <div class="pro-prop">
                                         <span class="pro-prop1">颜色:金</span>
                                         <span class="pro-prop2">版本:标准版全网通</span>
@@ -133,8 +177,14 @@
                                 </div>
                             </div>
                             <div class="pro-edit">
-                                <a href="">
+                                <a href="" class="edit">
                                     <span>编辑</span>
+                                </a>
+                                <a href="" class="finish">
+                                    <span>完成</span>
+                                </a>
+                                <a href="" class="delete">
+                                    <span>删除</span>
                                 </a>
                             </div>
                         </div>
@@ -161,6 +211,12 @@
                                                 <span>小米 红米Note3 全网通版 2GB+16GB 金色 移动联通电信4G手机 双卡双待</span>
                                             </a>
                                         </div>
+                                        <div class="edit-model">
+                                            <span class="edit-model1-left">颜色:金 版本:标准版全网通</span>
+                                            <a href="">
+                                               <span class="edit-arrow"></span>
+                                            </a>
+                                        </div>
                                         <div class="pro-prop">
                                             <span class="pro-prop1">颜色:金</span>
                                             <span class="pro-prop2">版本:标准版全网通</span>
@@ -178,8 +234,14 @@
                                     </div>
                                 </div>
                                 <div class="pro-edit">
-                                    <a href="">
+                                    <a href="" class="edit">
                                         <span>编辑</span>
+                                    </a>
+                                    <a href="" class="finish">
+                                        <span>完成</span>
+                                    </a>
+                                    <a href="" class="delete">
+                                        <span>删除</span>
                                     </a>
                                 </div>
                         </div>
@@ -193,33 +255,47 @@
             </div>
         </section>
         <footer class="addUp">
-            <div class="selectAll">
+            <section>
+               <div class="selectAll">
                 <div class="pro-checkBox">
                     <span></span>
                 </div>
                 <i>全选</i>
             </div>
             <div class="amount">
-                <div class="amount-part1">
+                <strong class="amount-part1">
                     合计:&yen;
                     <span>1049</span>.00
-                </div>
+                </strong>
                 <div class="amount-part2">
-                    <div class="amount-part2-left">
+                    <span class="amount-part2-left">
                         总额:&yen;
                         <span>1099</span>.00
-                    </div>
-                    <div class="amount-part2-right">
+                    </span>
+                    <span class="amount-part2-right">
                         立减:&yen;
                         <span>50</span>.00
-                    </div>
+                    </span>
                 </div>
             </div>
             <a href="" class="submit">
-                去结算(
-                <span>1</span>)
+                去结算
+                <span>(1)</span>
             </a>
+            </section>
         </footer>
-
+        <!-- 删除按钮的模态框 -->
+        <div id="deleteLayer">
+            <div class="cover"></div>
+            <div class="deleteBox">
+                <div class="delete-tips">
+                    <span>确认要删除此商品吗？</span>
+                </div>
+                <div class="delete-choice">
+                    <a href="" class="cancel">取消</a>
+                    <a href="" class="sure">确认</a>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

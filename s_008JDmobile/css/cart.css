@@ -2,7 +2,7 @@
 * @Author: anchen
 * @Date:   2016-10-31 19:50:59
 * @Last Modified by:   anchen
-* @Last Modified time: 2016-11-02 08:27:10
+* @Last Modified time: 2016-11-03 08:02:17
 */
 /* 公共样式 */
 [class*='-checkBox']{
@@ -22,7 +22,7 @@
     background-size:50px 150px;
 }
 body{
-    position:absolute;
+    position:relative;
     width:100%;
     height:100%;
     background:rgb(248,248,248);
@@ -32,14 +32,14 @@ body{
 
 }
 body>#jd-cart-topBar{
-    height:45px;
+    height:auto;
     width:100%;
     background:#e0e0e0 url('../images/category/header-bg.png') repeat-x 0 0;
     background-size:1px 44px;
     border-bottom:1px solid #e0e0e0;
-    position:absolute;
+/*     position:absolute;
     top:0;
-    left:0;
+    left:0; */
     z-index:100;
 }
 /* 返回按钮 */
@@ -61,7 +61,7 @@ body>#jd-cart-topBar>p{
     padding-right:40px;
     margin-bottom:0;
     text-align:center;
-    box-sizing:border-box;/* 为什么加上这个属性之后，p元素的宽度就不是100%了 */
+    box-sizing:border-box;
     margin-top:0;
 }
 body>#jd-cart-topBar>.icon-category{
@@ -74,13 +74,64 @@ body>#jd-cart-topBar>.icon-category{
     top:0;
     right:0;
 }
+body>#jd-cart-topBar>.jd-hiddenMenu{
+    height:57px;
+    width:100%;
+    background:#404042;
+    display: table;
+    margin:0;
+    padding:0;
+    display: none;
+}
+body>#jd-cart-topBar>.jd-hiddenMenu>li{
+    float:left;
+    height:100%;
+    width:25%;
+    text-align:center;
+}
+body>#jd-cart-topBar>.jd-hiddenMenu>.selected{
+    background:#2d2d2d;
+}
+body>#jd-cart-topBar>.jd-hiddenMenu>li strong{
+    color:#fff;
+    font-weight: normal;
+    font-size: 12px;
+}
+body>#jd-cart-topBar>.jd-hiddenMenu>li span{
+    display:block;
+    height:30px;
+    width:30px;
+    margin:0 auto;
+    margin-top:6px;
+}
+body>#jd-cart-topBar>.jd-hiddenMenu>li .pic1{
+    background:url("../images/cart/jd-sprites.png");
+    background-size:200px 200px;
+    background-position:-30px -27px;
+}
+body>#jd-cart-topBar>.jd-hiddenMenu>li .pic2{
+    background:url("../images/cart/jd-sprites.png");
+    background-size:200px 200px;
+    background-position:-60px -27px;
+}
+body>#jd-cart-topBar>.jd-hiddenMenu>li .pic3{
+    background:url("../images/cart/jd-sprites.png");
+    background-size:200px 200px;
+    background-position:-90px -27px;
+}
+body>#jd-cart-topBar>.jd-hiddenMenu>li .pic4{
+    background:url("../images/cart/jd-sprites.png");
+    background-size:200px 200px;
+    background-position:-120px -27px;
+}
 /* 购物车的内容区 */
 body>#mainBox{
     width:100%;
     height:auto;
-    padding-top:45px;
+/*     padding-top:45px; */
     position:relative;
     z-index:99;
+    padding-bottom: 50px;
 }
 body>#mainBox>#tipBar{
     height:40px;
@@ -104,7 +155,7 @@ body>#mainBox>#content{
     height:100%;
     margin:0 5px 10px 5px;
     box-sizing:border-box;
-    padding-bottom:50px;
+    padding-bottom:10px;
 }
 body>#mainBox>#content>.product-item{
     height:100%;
@@ -284,6 +335,25 @@ body>#mainBox>#content>.product-item{
     right:0;
     top:0;
 }
+.pro-detial-middle>.pro-info>.pro-info-right>.edit-model{
+    background:#f0f2f5;
+    color:#81838e;
+    height:35px;
+    line-height:35px;
+    margin:0 0 13px 0;
+    position:relative;
+    border-radius: 3px;
+    display:none;
+}
+.pro-detial-middle>.pro-info>.pro-info-right>.edit-model .edit-arrow{
+    position: absolute;
+    right: 12px;
+    top: 14px;
+    width: 13px;
+    height: 7px;
+    background: url("../images/cart/shopping.cart.spirits.icns1.png") -25px -50px no-repeat;
+    background-size: 50px 150px;
+}
 .pro-detial-middle>.pro-info>.pro-info-right>.pro-priceNum{
     margin-top:15px;
     /* width:; */
@@ -342,14 +412,12 @@ body>#mainBox>#content>.product-item{
     line-height: 13px;
     color:#232326;
     font-size:12px;
-    position: relative;
     margin:15px 10px 10px 0;
+    padding-bottom: 10px;
 }
 .pro-detial-middle>.pro-edit>a{
     display:block;
-    position:absolute;
-    top:0;
-    right:0;
+    float:right;
 }
 .pro-detial-middle>.pro-edit span{
     display:inline-block;
@@ -357,6 +425,20 @@ body>#mainBox>#content>.product-item{
     padding-left:10px;
     border-left:1px solid #e0e0e0;
 }
+/* 当点击编辑的时候这两个元素显示出来，平时隐藏 */
+.pro-detial-middle>.pro-edit>.finish,
+.pro-detial-middle>.pro-edit>.delete{
+    display:none;
+}
+.pro-detial-middle>.pro-edit>.delete>span{
+    color:#81838e;
+    border-left:none;
+    padding-right:10px;
+}
+.pro-detial-middle>.pro-edit>.finish>span{
+    padding-right:10px;
+}
+
 .pro-detial-bottom{
     width:100%;
     margin-left:50px;
@@ -372,20 +454,24 @@ body>#mainBox>#content>.product-item{
     position:fixed;
     bottom:0;
     left:0;
-    background:lightblue;
+    background:#fff;
     width:100%;
     height:50px;
-    z-index:1000;
+    z-index:200;
+    border-top: 1px solid #e3e5e9;
+}
+.addUp>section{
     position:relative;
 }
-.addUp>.selectAll{
+.addUp .selectAll{
     position:absolute;
-    height:100%;
+    height:50px;
     width:60px;
     top:0;
     left:0;
+    margin-left:5px;
 }
-.addUp>.selectAll>i{
+.addUp .selectAll>i{
     position:relative;
     top:13px;
     left:32px;
@@ -393,21 +479,107 @@ body>#mainBox>#content>.product-item{
     font-size:12px;
     font-weight:bold;
 }
-.addUp>.submit{
+.addUp .submit{
     display:inline-block;
     height:100%;
     width:98px;
     position:absolute;
     top:0px;
     right:0;
-    text-align:center;
     background:#f23030;
+    color: #fff;
+    font-size: 16px;
+    font-weight:700;
+    text-align:center;
+    line-height: 50px;
 }
-.addUp>.amount{
-    height:100%;
+.addUp .submit>span{
+    font-size:12px;
+}
+.addUp .amount{
+    height:50px;
     margin-right:100px;
-    margin-left:60px;
+    margin-left:70px;
     box-sizing:border-box;
+}
+.amount>.amount-part1{
+    display:inline-block;
+    margin:10px 0 2px 0;
+    font-size:14px;
+}
+.amount>.amount-part2{
+    font-size:10px;
+}
+/* 删除模态框的CSS */
+#deleteLayer{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    vertical-align: middle;
+    display:none;
+}
+#deleteLayer>.cover{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background: rgba(0,0,0,.7);
+    display: block;
+    vertical-align: middle;
+    margin: 0 auto;
+    font-size: .875em;
+    z-index:301;
+}
+#deleteLayer>.deleteBox{
+    width: 85%;
+    position: fixed;
+    overflow: hidden;
+    background: #f8f8f8;
+    border-radius: 5px;
+    padding-bottom: 1em;
+    z-index:302;
+    margin-left:7%;
+    margin-top:40%;
+}
+#deleteLayer>.deleteBox>.delete-tips{
+    line-height: 74px;
+    text-align: center;
+    font-size: 18px;
+    color: #4d4d4d;
+}
+#deleteLayer>.deleteBox>.delete-tips::after{
+    border-top: 1px solid #E0E0E0;
+    content: " ";
+    display: block;
+    width: 85%;
+    margin: 0 auto;
+}
+#deleteLayer>.deleteBox>.delete-choice{
+    text-align: center;
+    padding: 1em 25px;
+}
+#deleteLayer>.deleteBox>.delete-choice>a{
+    width: 45%;
+    height: 2.5em;
+    line-height: 2.5em;
+    font-size: 15px;
+}
+#deleteLayer>.deleteBox>.delete-choice>.cancel{
+    border: 1px solid #e0e0e0;
+    background: #fff;
+    border-radius: 3px;
+    color: #686868;
+    text-align: center;
+    float: left;
+}
+#deleteLayer>.deleteBox>.delete-choice>.sure{
+    border: 1px solid #f35656;
+    background: #f35656;
+    border-radius: 3px;
+    color: #fff;
+    text-align: center;
+    float: right;
 }
 
 
