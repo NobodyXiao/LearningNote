@@ -2,7 +2,7 @@
 * @Author: anchen
 * @Date:   2016-10-26 08:27:48
 * @Last Modified by:   anchen
-* @Last Modified time: 2016-10-28 16:08:28
+* @Last Modified time: 2016-11-05 19:40:42
 */
 html,body{
     margin:0;
@@ -42,4 +42,20 @@ input,textarea{
 [class^="icon-"]{
     background:url('../images/jd-sprites.png') no-repeat;
     background-size:200px 200px;
+}
+[class*='-checkBox']{
+    position: absolute;
+    left: 0;
+    margin-top: 0;
+    margin-left: 10px;
+    height:100%;
+    top:25%;
+}
+[class*='-checkBox']>span{
+    display:block;
+    width: 20px;
+    height: 20px;
+    background:url('../images/cart/shopping.cart.spirits.icns1.png');
+    background-position:0 0;
+    background-size:50px 150px;
 }
