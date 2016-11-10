@@ -2,7 +2,7 @@
 * @Author: anchen
 * @Date:   2016-10-26 08:27:48
 * @Last Modified by:   anchen
-* @Last Modified time: 2016-11-07 14:17:52
+* @Last Modified time: 2016-11-10 22:41:07
 */
 /* 头部样式 */
 #jd-wrap{
@@ -490,18 +490,17 @@
 }
 #content>#floor>.floor-title{
     width:100%;
-    height:100%;
     position:relative;
 }
 #content>#floor>.floor-title>span{
-    display:block;
-    width:100%;
-    height:100%;
-    position:absolute;
-    top:0;
-    left:0;
-    text-align:center;
-    padding-top:6px;
+    display: block;
+    width: 100%;
+    height: 75%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    text-align: center;
+    margin: auto;
 }
 #content{
     width:100%;

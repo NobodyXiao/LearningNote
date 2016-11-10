@@ -2,7 +2,7 @@
 * @Author: anchen
 * @Date:   2016-10-30 20:44:06
 * @Last Modified by:   anchen
-* @Last Modified time: 2016-11-08 22:26:47
+* @Last Modified time: 2016-11-10 21:31:24
 */
 body{
     position:absolute;
@@ -77,6 +77,12 @@ body>#jd-topBar>.jd-hiddenMenu>li{
     height:100%;
     width:25%;
     text-align:center;
+}
+body>#jd-topBar>.jd-hiddenMenu>li>a{
+    display:block;
+    height:100%;
+    width:100%;
+    padding-top:5px;
 }
 body>#jd-topBar>.jd-hiddenMenu>.selected{
     background:#2d2d2d;
