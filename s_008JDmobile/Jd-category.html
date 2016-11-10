@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
-        <title>JD-category</title>
+        <title>分类页</title>
         <link rel="stylesheet" href="css/category.css" />
         <link rel="stylesheet" href="css/base.css" />
         <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css" />
@@ -28,13 +28,13 @@
                         <strong>首页</strong>
                     </a>
                 </li>
-                <li>
+                <li class="selected">
                     <a href="">
                         <span class="pic2"></span>
                         <strong>分类搜索</strong>
                     </a>
                 </li>
-                <li class="selected">
+                <li>
                     <a href="">
                         <span class="pic3"></span>
                         <strong>购物车</strong>
@@ -51,28 +51,28 @@
         <main id="jd-content">
             <section class="jd-category-left">
                 <div class="jd-category-leftBox">
-                   <ul>
-                    <li class="now">
+                   <ul id="categoryLiList">
+                    <li class="now" data-class="recommend">
                         <a href="#">
                            热门推荐
                         </a>
                     </li>
-                    <li>
+                    <li data-class="female-cloth">
                         <a href="#">
                            潮流女装
                         </a>
                     </li>
-                    <li>
+                    <li data-class="male-cloth">
                         <a href="#">
                             品牌男装
                         </a>
                     </li>
-                    <li>
+                    <li data-class="makeUp">
                         <a href="#">
                             个护化妆
                         </a>
                     </li>
-                    <li>
+                    <li data-class="makeUp">
                         <a href="#">
                            家用电器
                         </a>
@@ -150,8 +150,9 @@
                 </ul>
                 </div>
             </section>
-             <section class="jd-category-right">
-                <div class="jd-category-rightBox">
+        <section>
+             <div class="jd-category-right">
+                <div class="rightBox recommend">
                     <div class="jd-category-banner">
                         <a href="">
                             <img src="images/category/banner1.jpg" alt="" />
@@ -259,10 +260,228 @@
                                     <span>MacBook新品</span>
                                 </a>
                             </li>
+                            <li>
+                                <a href="">
+                                    <img src="images/category/macbookxinpin.jpg"/>
+                                    <span>MacBook新品</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <img src="images/category/macbookxinpin.jpg"/>
+                                    <span>MacBook新品</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <img src="images/category/macbookxinpin.jpg"/>
+                                    <span>MacBook新品</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <img src="images/category/macbookxinpin.jpg"/>
+                                    <span>MacBook新品</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <img src="images/category/macbookxinpin.jpg"/>
+                                    <span>MacBook新品</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <img src="images/category/macbookxinpin.jpg"/>
+                                    <span>MacBook新品</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <img src="images/category/macbookxinpin.jpg"/>
+                                    <span>MacBook新品</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <img src="images/category/macbookxinpin.jpg"/>
+                                    <span>MacBook新品</span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
-            </section>
+                <div class="rightBox female-cloth initialHide">
+                    <div class="jd-category-banner">
+                        <a href="">
+                            <img src="images/category/chaoliunvzhuangbanner.jpg" alt="" />
+                        </a>
+                    </div>
+                    <div class="jd-category-content-top">
+                        <h4>热门活动</h4>
+                        <ul>
+                            <li>
+                                <a href="">
+                                    <img src="images/category/remenhuodong.jpg"/>
+                                    <span>秋冬上新</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <img src="images/category/remenhuodong2.jpg"/>
+                                    <span>京东羽绒节</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <img src="images/category/remenhuodong3.jpg"/>
+                                    <span>自营女装</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="jd-category-content-main">
+
+                        <h4>裙装</h4>
+                        <ul>
+                            <li>
+                                <a href="">
+                                    <img src="images/category/qunzhuang1.jpg"/>
+                                    <span>针织连衣裙</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <img src="images/category/qunzhuang2.png"/>
+                                    <span>棉麻连衣裙</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <img src="images/category/qunzhuang3.jpg"/>
+                                    <span>套装裙</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <img src="images/category/qunzhuang3.jpg"/>
+                                    <span>套装裙</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <img src="images/category/qunzhuang1.jpg"/>
+                                    <span>针织连衣裙</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <img src="images/category/qunzhuang2.png"/>
+                                    <span>棉麻连衣裙</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <img src="images/category/qunzhuang3.jpg"/>
+                                    <span>套装裙</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <img src="images/category/qunzhuang1.jpg"/>
+                                    <span>针织连衣裙</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <img src="images/category/qunzhuang3.jpg"/>
+                                    <span>套装裙</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="rightBox male-cloth initialHide">
+                    <div class="jd-category-banner">
+                        <a href="">
+                            <img src="images/category/pinpainanzhuang.jpg" alt="" />
+                        </a>
+                    </div>
+                    <div class="jd-category-content-top">
+                        <h4>热卖选购</h4>
+                        <ul>
+                            <li>
+                                <a href="">
+                                    <img src="images/category/shishangyurong.jpg"/>
+                                    <span>时尚羽绒</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <img src="images/category/shishangyurong.jpg"/>
+                                    <span>时尚羽绒</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <img src="images/category/shishangyurong.jpg"/>
+                                    <span>时尚羽绒</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <img src="images/category/xiuxianku.jpg"/>
+                                    <span>休闲裤</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <img src="images/category/xiuxianku.jpg"/>
+                                    <span>休闲裤</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <img src="images/category/xiuxianku.jpg"/>
+                                    <span>休闲裤</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <img src="images/category/jingpinchenshan.jpg"/>
+                                    <span>精品衬衫</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="jd-category-content-main">
+
+                        <h4>专场推荐</h4>
+                        <ul>
+                            <li>
+                                <a href="">
+                                    <img src="images/category/chaoliunanzhuang.jpg"/>
+                                    <span>潮流男装</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <img src="images/category/nanzhuangguan.jpg"/>
+                                    <span>男装馆</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <img src="images/category/ziyingnanzhuang.jpg"/>
+                                    <span>自营男装</span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
         </main>
         <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
         <script src="js/category.js"></script>

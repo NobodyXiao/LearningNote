@@ -2,7 +2,7 @@
 * @Author: anchen
 * @Date:   2016-10-30 20:44:06
 * @Last Modified by:   anchen
-* @Last Modified time: 2016-11-05 16:11:05
+* @Last Modified time: 2016-11-08 22:26:47
 */
 body{
     position:absolute;
@@ -132,13 +132,19 @@ body>#jd-topBar>.jd-hiddenMenu>li .pic4{
     overflow:hidden;
     z-index:20;
 }
-#jd-content>.jd-category-right{
-    width:100%;
+#jd-content>section{
     height:100%;
+}
+#jd-content>section>.jd-category-right{
+    width:100%;
+    height:auto;
     padding-left:76px;
     position:relative;
     z-index:10;
     background: rgb(243,243,243);
+}
+#jd-content>section>.jd-category-right>div{
+    height:auto;
 }
 #jd-content>.jd-category-left>.jd-category-leftBox>ul{
     height:100%;
@@ -175,13 +181,17 @@ body>#jd-topBar>.jd-hiddenMenu>li .pic4{
     font-size:11px;
 }
 /* 右边的分类内容区 */
-.jd-category-rightBox>.jd-category-banner{
+.initialHide{
+    display:none;
+}
+.jd-category-right>div>.jd-category-banner{
     margin:7px 7px 0 7px;
 }
-.jd-category-rightBox>.jd-category-banner img{
+.jd-category-right>div>.jd-category-banner img{
     width:100%;
     height:auto;
 }
+
 [class^="jd-category-content-"]{
     margin:19px 7px 0 7px;
 }

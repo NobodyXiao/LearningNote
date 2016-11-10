@@ -2,9 +2,10 @@
 * @Author: anchen
 * @Date:   2016-10-31 19:50:59
 * @Last Modified by:   anchen
-* @Last Modified time: 2016-11-03 08:02:17
+* @Last Modified time: 2016-11-10 08:03:57
 */
 /* 公共样式 */
+
 [class*='-checkBox']{
     position: absolute;
     left: 0;
@@ -21,15 +22,14 @@
     background-position:0 0;
     background-size:50px 150px;
 }
-body{
+html,body{
     position:relative;
     width:100%;
     height:100%;
+    padding-bottom:50px;
     background:rgb(248,248,248);
-    overflow-y: scroll;
-    overflow-x: hidden;
     font-family:PingFangSC-Regular,Helvetica,"Droid Sans",Arial,sans-serif;
-
+    overflow-x: hidden;
 }
 body>#jd-cart-topBar{
     height:auto;
@@ -133,14 +133,14 @@ body>#mainBox{
     z-index:99;
     padding-bottom: 50px;
 }
-body>#mainBox>#tipBar{
+body>#mainBox #tipBar{
     height:40px;
     text-align:center;
     background:#f9f9f9;
     color:#666;
     font-size:13px;
 }
-body>#mainBox>#tipBar>a{
+body>#mainBox #tipBar>a{
     display:inline-block;
     height:16px;
     width:26px;
@@ -151,27 +151,28 @@ body>#mainBox>#tipBar>a{
     margin-top:8px;
     margin-left:10px;
 }
-body>#mainBox>#content{
+body>#mainBox #content{
     height:100%;
     margin:0 5px 10px 5px;
     box-sizing:border-box;
     padding-bottom:10px;
 }
-body>#mainBox>#content>.product-item{
+body>#mainBox #content>.product-item{
     height:100%;
     width:100%;
 }
-#mainBox>#content>.product-item>.pro-title{
+#mainBox #content>.product-item>.pro-title{
     width:100%;
     height:44px;
     background:#fff;
     position:relative;
     border-bottom:1px solid #e0e0e0;
 }
-#mainBox>#content>.product-item>.pro-title>.pro-checkBox{
+#mainBox #content>.product-item>.pro-title>.pro-checkBox{
     top: 12px;
+    z-index: 10;
 }
-#mainBox>#content>.product-item>.pro-title>.pro-checkBox[checked]{
+#mainBox #content>.product-item>.pro-title>.pro-checkBox[checked]{
     display:inline-block;
     width: 20px;
     height: 20px;
@@ -179,7 +180,7 @@ body>#mainBox>#content>.product-item{
     background-position:25px 0;
     background-size:50px 150px;
 }
-#mainBox>#content>.product-item>.pro-title>.seller{
+#mainBox #content>.product-item>.pro-title>.seller{
     padding-left:40px;
     padding-right:144px;
     height:100%;
@@ -187,14 +188,14 @@ body>#mainBox>#content>.product-item{
     padding-top:14px;
     position:relative;
 }
-#mainBox>#content>.product-item>.pro-title>.seller>.shop-logo{
+#mainBox #content>.product-item>.pro-title>.seller>.shop-logo{
     display:inline-block;
     width: 16px;
     height: 13px;
     background:url('../images/cart/JDshopTitle.png');
     background-size:16px 13px;
 }
-#mainBox>#content>.product-item>.pro-title>.message-else{
+#mainBox #content>.product-item>.pro-title>.message-else{
     height:100%;
     position:absolute;
     top:0;
@@ -415,19 +416,19 @@ body>#mainBox>#content>.product-item{
     margin:15px 10px 10px 0;
     padding-bottom: 10px;
 }
-.pro-detial-middle>.pro-edit>a{
+.pro-edit>a{
     display:block;
     float:right;
 }
-.pro-detial-middle>.pro-edit span{
+.pro-edit span{
     display:inline-block;
     height:100%;
     padding-left:10px;
     border-left:1px solid #e0e0e0;
 }
 /* 当点击编辑的时候这两个元素显示出来，平时隐藏 */
-.pro-detial-middle>.pro-edit>.finish,
-.pro-detial-middle>.pro-edit>.delete{
+.pro-edit>.finish,
+.pro-edit>.delete{
     display:none;
 }
 .pro-detial-middle>.pro-edit>.delete>span{
