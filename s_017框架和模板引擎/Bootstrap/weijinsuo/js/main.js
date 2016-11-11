@@ -2,7 +2,7 @@
 * @Author: anchen
 * @Date:   2016-10-17 20:29:13
 * @Last Modified by:   anchen
-* @Last Modified time: 2016-10-25 20:57:22
+* @Last Modified time: 2016-11-08 08:26:38
 */
 
 'use strict';
@@ -20,7 +20,7 @@ function resize(){
     var isSmallScreen = windowWidth<768;
     //利用each函数进行遍历，来为每个item根据情况添加url地址
         $('#main_ad>.carousel-inner>.item').each(function(i,item){
-            var $item = $(item);//获取item对象,转换成jquery对象，重要的知识点，血的教训
+            var $item = $(item);//获取item对象,转换成jquery对象，血的教训
             var imgSrc = $item.data(isSmallScreen?'image-xs':'image-lg');
             //使用data属性来获取image-xs和image-lg后边对应的属性值
             $item.css('backgroundImage','url("'+imgSrc+'")');
