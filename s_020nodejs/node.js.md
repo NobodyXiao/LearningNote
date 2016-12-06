@@ -736,7 +736,7 @@ rl.on('line', (line) => {
 
 ​		––fs.writeFileSync(file,data,[,option])；
 
-​	3）流式文件写入
+​	3）流式文件写入（后边将详细了解）
 
 ​		––fs.createWriteStream(path[,option])；
 
@@ -805,25 +805,243 @@ rl.on('line', (line) => {
 
 该函数通过对指定你的字符串进行一次匹配检测，获取字符串中的第一个与正则表达式的内容，并且将匹配的内容和子匹配的结果存放在返回数组中 
 
-### 33.文件流的概念###
-文件读取流和文件写入流，以及pipe的概念
+### 33.流的概念###
 
-socket？？
-本地回环地址？？http://127.0.0.1:port//端口号？？
-telnet客户端？？net模块？？http基础？？
+#### 1.Stream是一个抽象接口，Node中很多对象都实现了这个接口。在node中有4种流类型####
+
+​	**Readable** - 可读操作。
+
+​	**Writable** - 可写操作。
+
+​	**Duplex** - 可读可写操作.
+
+​	**Transform** - 操作被写入数据，然后读出结果。
+
+​	所有的 Stream 对象都是 EventEmitter 的实例。
+
+​	**data** - 当有数据可读时触发。
+
+​	**end** - 没有更多的数据可读时触发。
+
+​	**error** - 在接收和写入过程中发生错误时触发。
+
+​	**finish** - 所有数据已被写入到底层系统时触发。
+
+#### 2.常用的流操作####
+
+​	**1）从流中读取数据**	
+
+```
+var fs = require("fs");
+var data = '';//定义一个装数据的变量
+// 创建可读流，读取input.txt文件
+var readerStream = fs.createReadStream('input.txt');
+// 设置编码为 utf8。
+readerStream.setEncoding('UTF8');
+// 处理流事件 --> data, end, and error
+readerStream.on('data', function(chunk) {
+   data += chunk;
+});
+readerStream.on('end',function(){
+   console.log(data);
+});
+readerStream.on('error', function(err){
+   console.log(err.stack);
+});
+console.log("程序执行完毕");
+```
+
+**2.写入流**
+
+```
+var fs = require("fs");
+var data = '菜鸟教程官网地址：www.runoob.com';
+// 创建一个可以写入的流，写入到文件 output.txt 中
+var writerStream = fs.createWriteStream('output.txt');
+// 使用 utf8 编码写入数据
+writerStream.write(data,'UTF8');
+// 标记文件末尾
+writerStream.end();
+// 处理流事件 --> data, end, and error
+writerStream.on('finish', function() {
+    console.log("写入完成。");
+});
+writerStream.on('error', function(err){
+   console.log(err.stack);
+});
+console.log("程序执行完毕");
+```
+
+**3.pipe管道流**
+
+​	管道提供了一个输出流到输入流的机制。通常我们用于从一个流中获取数据并将数据传递到另外一个流中，实现大文件的复制过程
+
+```
+var fs = require("fs");
+// 创建一个可读流
+var readerStream = fs.createReadStream('input.txt');
+// 创建一个可写流
+var writerStream = fs.createWriteStream('output.txt');
+// 管道读写操作
+// 读取 input.txt 文件内容，并将内容写入到 output.txt 文件中
+readerStream.pipe(writerStream);
+console.log("程序执行完毕");
+```
+
+### 34.Socket（双向通信）###
+
+网络上的两个程序通过一个双向的通信连接实现数据的交换，这个连接的一端称为一个socket。
+
+Socket的英文原义是“孔”或“插座”，通常也称作"[套接字](http://baike.baidu.com/view/538713.htm)"，用于描述IP地址和端口，可以用来实现不同虚拟机或不同计算机之间的通信。
+
+socket是一种"打开—读/写—关闭"模式的实现，服务器和客户端各自维护一个"文件"，在建立连接打开后，可以向自己文件写入内容供对方读取或者读取对方内容，通讯结束时关闭文件。
+
+socket在客户端和服务端之间通信，大致的过程如下：
+
+ ![socket](socket.png)
+
+* 服务器根据地址类型（ipv4,ipv6）、socket类型、协议创建socket
+
+* 服务器为socket绑定ip地址和端口号
+
+* 服务器socket监听端口号请求，随时准备接收客户端发来的连接，这时候服务器的socket并没有被打开
+
+* 客户端创建socket
+
+* 客户端打开socket，根据服务器ip地址和端口号试图连接服务器socket
+
+* 服务器socket接收到客户端socket请求，被动打开，开始接收客户端请求，直到客户端返回连接信息。这时候socket进入**阻塞**状态，所谓阻塞即accept()方法一直到客户端返回连接信息后才返回，开始接收下一个客户端谅解请求
+
+* 客户端连接成功，向服务器发送连接状态信息
+
+* 服务器accept方法返回，连接成功
+
+* 客户端向socket写入信息
+
+* 服务器读取信息
+
+* 客户端关闭
+
+* 服务器端关闭
+
+  参考博客：http://www.cnblogs.com/dolphinX/p/3460545.html
+
+
+
+### 35.本地回环地址###
+
+​	本地回环地址，不属于任何一个有类别地址类。**它代表设备的本地虚拟接口** ，所以默认被看作是永远不会宕掉的接口。在windows操作系统中也有相似的定义，所以通常在不安装网卡前就可以ping通这个本地回环地址。一般都会用来检查本地[网络协议](http://baike.baidu.com/view/16603.htm)、基本数据接口等是否正常的。
+
+​	本地回环地址的作用：
+
+​	1.一是测试本机的网络配置，能PING通[127.0.0.1](http://baike.baidu.com/view/971216.htm)说明本机的网卡和IP协议安装都没有问题
+
+​	2.另一个作用是某些SERVER/CLIENT的应用程序在运行时需调用服务器上的资源，一般要指定SERVER的IP地址，但当该程序要在同一台机器上运行而没有别的SERVER时就可以把SERVER的资源装在本机，SERVER的IP地址设为127.0.0.1同样也可以运行。
+
+### 36.net模块	###
+
+​	Net 模块提供了一些用于底层的网络通信的小工具，包含了创建服务器/客户端的方法，我们可以通过以下方式引入该模块
+
+```
+var net = require("net");
+```
+
+	#### 1.net模块的一些方法：####
+
+​	1).**net.createServer([options][, connectionListener])**
+
+​	创建一个 TCP 服务器。参数 connectionListener 自动给 'connection' 事件创建监听器。
+
+​	2).**net.connect(options[, connectionListener])**
+
+​	返回一个新的 'net.Socket'，并连接到指定的地址和端口。当 socket 建立的时候，将会触发 'connect' 事件。
+
+​	3).**net.createConnection(options[, connectionListener])**
+
+​	创建一个到端口 port 和 主机 host的 TCP 连接。 host 默认为 'localhost'。
+
+​	4).**net.connect(port[, host][, connectListener])**
+
+​	创建一个端口为 port 和主机为 host的 TCP 连接 。host 默认为 'localhost'。参数 connectListener 将会作为		 监听器添加到 'connect' 事件。返回 'net.Socket'。
+
+​	5).**net.createConnection(port[, host][, connectListener])**
+
+​	创)建一个端口为 port 和主机为 host的 TCP 连接 。host 默认为 'localhost'。参数 connectListener 将会作为监听器添加到 'connect' 事件。返回 'net.Socket'。
+
+​	6).**net.connect(path[, connectListener])**
+
+​	创建连接到 path 的 unix socket 。参数 connectListener 将会作为监听器添加到 'connect' 事件上。返回 'net.Socket'。
+
+​	7).**net.createConnection(path[, connectListener])**
+
+​	创建连接到 path 的 unix socket 。参数 connectListener 将会作为监听器添加到 'connect' 事件。返回 'net.Socket'。
+
+​	8).**net.isIP(input)**
+
+​	检测输入的是否为 IP 地址。 IPV4 返回 4， IPV6 返回 6，其他情况返回 0。
+
+​	9).**net.isIPv4(input)**
+
+​	如果输入的地址为 IPV4， 返回 true，否则返回 false。
+
+​	10).**net.isIPv6(input)**
+
+​	如果输入的地址为 IPV6， 返回 true，否则返回 false。
+
+#### 2.net.Server：	####
+
+​	**net.Server通常用于创建一个 TCP 或本地服务器。常用的方法如下：**
+
+​	1).**server.address()**
+
+​	操作系统返回绑定的地址，协议族名和服务器端口。
+
+​	2).**server.listen(port[, host][, backlog][, callback])**
+
+​	监听指定端口 port 和 主机 host ac连接。 默认情况下 host 接受任何 IPv4 地址(INADDR_ANY)的直接连接。	端口 port 为 0 时，则会分配一个随机端口。
+
+​	3).**server.close([callback])**
+
+​	服务器停止接收新的连接，保持现有连接。这是异步函数，当所有连接结束的时候服务器会关闭，并会触发 'close' 事件。
+
+​	4).**server.listen(options[, callback])**
+
+​	options 的属性：端口 port, 主机 host, 和 backlog, 以及可选参数 callback 函数, 他们在一起调用	server.listen(port, [host], [backlog], [callback])。还有，参数 path 可以用来指定 UNIX socket。
+
+#### 3.net.Socket常用方法####
+
+​	net.Socket 对象是 TCP 或 UNIX Socket 的抽象。net.Socket 实例实现了一个双工流接口。 他们可以在用户创建客户端(使用 connect())时使用, 或者由 Node 创建它们，并通过 connection 服务器事件传递给用户。
+
+​	1）.**new net.Socket([options])：**构造一个新的 socket 对象。
+
+​	2）**socket.connect(port[, host][, connectListener])**
+​	指定端口 port 和 主机 host，创建 socket 连接 。参数 host 默认为 localhost。通常情况不需要使用 net.createConnection 打开 socket。只有你实现了自己的 socket 时才会用到。
+
+​	3）**socket.setEncoding([encoding])：**设置编码
+
+​	4）**socket.write(data[, encoding][, callback])**
+​	在 socket 上发送数据。第二个参数指定了字符串的编码，默认是 UTF8 编码。
+
+​	5）**socket.address()**
+​	操作系统返回绑定的地址，协议族名和服务器端口。返回的对象有 3 个属性，比如{ port: 12346, family: 'IPv4', address: '127.0.0.1' }。
+
+
+
+
+
+telnet客户端？？http基础？？
 模仿老师的代码写一个命令行的窗口？？
 readline
-
-​	
-
-
-
-
-
-1.  commonjs规范？
-
 
 文件监听感觉自己完全听不懂，今天要弄懂？？？
 
 browersync?/??创建文件服务器？？自动刷新？？
+
+node.js.orgnode官网
+
+www.npmjs.org npm官网
+
+github官网
+
+stackoverflow.com
 
