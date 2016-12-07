@@ -1025,13 +1025,34 @@ var net = require("net");
 ​	5）**socket.address()**
 ​	操作系统返回绑定的地址，协议族名和服务器端口。返回的对象有 3 个属性，比如{ port: 12346, family: 'IPv4', address: '127.0.0.1' }。
 
+### 37.util核心模块###
 
+**util 是一个Node.js 核心模块，提供常用函数的集合，用于弥补核心JavaScript 的功能 过于精简的不足。** 
+
+​	1.**util.inherits**  
+
+​	util.inherits(constructor, superConstructor)是一个实现对象间原型继承 的函数。JavaScript 的面向对象特性是基于原型的，与常见的基于类的不同。JavaScript 没有 提供对象继承的语言级别特性，而是通过原型复制来实现的。
+
+​	2.**util.inspect** 	
+
+​	util.inspect(object,[showHidden],[depth],[colors])是一个将任意对象转换 为字符串的方法，通常用于调试和错误输出。它至少接受一个参数 object，即要转换的对象。
+
+​	3.**util.isArray(object)**:如果给定的参数 "object" 是一个数组返回true，否则返回false。
+
+​	4**.util.isRegExp(object):**如果给定的参数 "object" 是一个正则表达式返回true，否则返回false。
+
+​	5.**util.isDate(object)**:如果给定的参数 "object" 是一个日期返回true，否则返回false。
+
+​	6.**util.isError(object)**:如果给定的参数 "object" 是一个错误对象返回true，否则返回false。
 
 
 
 telnet客户端？？http基础？？
 模仿老师的代码写一个命令行的窗口？？
 socket通信没学会？？
+=======
+
+今天将菜鸟教程的node.js课程结束？？
 
 node.js.orgnode官网
 
