@@ -1031,11 +1031,7 @@ var net = require("net");
 
 telnet客户端？？http基础？？
 模仿老师的代码写一个命令行的窗口？？
-readline
-
-文件监听感觉自己完全听不懂，今天要弄懂？？？
-
-browersync?/??创建文件服务器？？自动刷新？？
+socket通信没学会？？
 
 node.js.orgnode官网
 
