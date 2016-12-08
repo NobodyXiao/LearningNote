@@ -1045,20 +1045,23 @@ var net = require("net");
 
 ​	6.**util.isError(object)**:如果给定的参数 "object" 是一个错误对象返回true，否则返回false。
 
+### 38.http模块### 
+
+​	**Node.js 提供了 http 模块，http 模块主要用于搭建 HTTP 服务端和客户端，使用 HTTP 服务器或客户端功能必须调用 http 模块** 
+
+​	1.利用Node创建 Web 服务器
+
+​	
 
 
-telnet客户端？？http基础？？
+telnet客户端？
 模仿老师的代码写一个命令行的窗口？？
+
 socket通信没学会？？
-=======
 
-今天将菜鸟教程的node.js课程结束？？
+歌词的滚动还没实现？？明天早上实现一下
 
-node.js.orgnode官网
+之后要总结一些express框架，开始学面向对象和写博客首页
 
-www.npmjs.org npm官网
 
-github官网
-
-stackoverflow.com
 
