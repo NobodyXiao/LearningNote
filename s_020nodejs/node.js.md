@@ -1049,7 +1049,9 @@ var net = require("net");
 
 ​	**Node.js 提供了 http 模块，http 模块主要用于搭建 HTTP 服务端和客户端，使用 HTTP 服务器或客户端功能必须调用 http 模块** 
 
-​	1.利用Node创建 Web 服务器
+​	1.http协议主要包含：通用头域、请求消息、响应消息和主体信息。
+
+
 
 ​	
 
