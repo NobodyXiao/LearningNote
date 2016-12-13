@@ -1,6 +1,7 @@
 Linux系统上的一些操作记录
 1.查看ubuntu操作系统位数：sudo uname --m
 2.查看ubuntu操作系统版本：sudo lsb_release -a
+3.使用nvm安装node指令：nvm install version(此处的version代表node的版本号)
 mongoDB相关操作
 1.创建数据库的相关操作：
     use DATABASE_NAME:如果数据库不存在，则创建数据库，否则切换到指定数据库。
@@ -125,8 +126,27 @@ mongoDB相关操作
     恢复的时候，先删除当前数据，然后恢复备份的数据。就是说，恢复后，备份后添加修改的数据都会被删除，慎用哦！
 16.理解shell
     文字操作系统与外部最主要的接口就叫做shell。shell是操作系统最外面的一层。shell管理你与操作系统之间的交互:等待你输入，向操作系统解释你的输入，并且处  理各种各样的操作系统的输出结果
-17.
-    
+17.ejs模板引擎（JavaScript的模板库）
+    Ubuntu系统上安装ejs的指令是：npm i ejs --save
+    EJS结合数据和模板来生成HTML，用来从数据中生成HTML字符串
+    一些常用的语法如下所示：
+     1）用<%...%>包含单纯的js代码，不输出
+     2）用<%=...%>输出变量 变量若包含 '<' '>' '&'等字符 会被转义
+     3）用<%-...%>输出变量 不转义，按照HTML原有的格式输出
+     4）用<%- include('user/show') %>引入其他模板 包含 ./user/show.ejs
+     5）用<%# some comments %>来注释，不执行不输出
+     6）<%% 转义为 '<%'
+     7）<% ... -%> 删除新的空白行模式
+     8）<%_ ... _%> 删除空白符模式
+express下边使用ejs：
+     需要设置app.set("views",path.join(__dirname,"views"))//设置存放模板文件的目录
+     app.set("view engine",ejs);//设置模板引擎为ejs
+18.express中间件的设计
+    express 中的中间件（middleware）就是用来处理请求的，当一个中间件处理完，可以通过调用 next() 传递给下一个中间件，如果没有调用 next()，则请求不会往下传递，如内置的 res.render 其实就是渲染完 html 直接返回给客户端，没有调用 next()，从而没有传递给下一个中间件。
+    通过 app.use 加载中间件，在中间件中通过 next 将请求传递到下一个中间件，next 可接受一个参数接收错误信息，如果使用了 next(error)，则会返回错误而不会传递到下一个中间件。
+
+19.config-lite
+    config-lite 是一个轻量的读取配置文件的模块。config-lite 会根据环境变量（NODE_ENV）的不同从当前执行进程目录下的 config 目录加载不同的配置文件。如果不设置 NODE_ENV，则读取默认的 default 配置文件，如果设置了 NODE_ENV，则会合并指定的配置文件和 default 配置文件作为配置，config-lite 支持 .js、.json、.node、.yml、.yaml 后缀的文件。    
 mongoDB  11287默认的监视端口
 Setting up mongodb-org (3.2.11) ...
 supervisor ??总结这个？？
@@ -134,3 +154,4 @@ express??
 promise.js??
 mongoDB??复制，分片，备份和恢复，搞清楚mongo和mongod操作有什么区别？？
 express 使用了 path-to-regexp 模块实现的路由匹配。
+挂载服务器是什么意思？理解？？？
