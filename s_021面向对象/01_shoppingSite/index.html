@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>面向对象编程</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" href="css/index.css" >
+	<!-- 条件注释 ，识别HTML5新标签和CSS3的媒体查询-->
+        <!--[if lt IE 9]>
+          <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>                              
+<body>
+	<!--网站主题-->
+	<!--轮播图部分,使用bootstrap框架来快速实现轮播图-->
+	<div id="carousel-01" class="carousel slide" data-ride="carousel">
+		<!-- Indicators底部的3个控制的圆点-->
+		<ol class="carousel-indicators">
+			<li data-target="#carousel-01" data-slide-to="0" class="active"></li>
+			<li data-target="#carousel-01" data-slide-to="1"></li>
+			<li data-target="#carousel-01" data-slide-to="2"></li>
+		</ol>
+		<!-- Wrapper for slides -->
+		<div class="carousel-inner" role="listbox">
+			<div class="item active">
+				<img src="imgs/pic01.jpg" alt="轻松做女人">
+			</div>
+			<div class="item">
+				<img src="imgs/pic02.jpg" alt="潇洒男士生活">
+			</div>
+			<div class="item">
+				<img src="imgs/pic03.jpg" alt="3C我全包啦">
+			</div>
+		</div>
+		<!-- Controls 左右的循环控制按钮-->
+		<a class="left carousel-control" href="#carousel-01" role="button" data-slide="prev">
+			<span class="glyphicon glyphicon-chevron-left"></span>
+		</a>
+		<a class="right carousel-control" href="#carousel-01" role="button" data-slide="next">
+			<span class="glyphicon glyphicon-chevron-right"></span>
+		</a>
+	</div>
+	 <div id="content">
+		 <div id=content-left>
+			 
+		 </div>
+		 <div id=content-middle></div>
+		 <div id=content-right></div>
+	 </div>
+	<!--bootstrap是基于jquery的，所以jquery加载要出现在bootstrap上边-->
+	<script src="lib/jquery/jquery-1.11.1.min.js"></script>
+	<script src="lib/bootstrap/js/bootstrap.js"></script>
+	<script src="js/index.js"></script>	
+</body>
+</html>
