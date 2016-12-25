@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>面向对象编程</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" href="css/index.css" >
+	<!-- 条件注释 ，识别HTML5新标签和CSS3的媒体查询-->
+        <!--[if lt IE 9]>
+          <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>                              
+<body>
+	<!--网站主题-->
+	<header>
+		<span>
+			<a href="#">您好，请登录</a>
+			<a href="#">免费注册</a>
+		</span>
+		<span><a href="#">我的订单</a></span>
+		<span><a href="#">我的京东</a></span>
+		<span><a href="#">京东会员</a></span>
+		<span><a href="#">企业采购</a></span>
+		<span><a href="#">客户服务</a></span>
+		<span><a href="#">网站导航</a></span>
+	</header>
+	<section id="search">
+		<div id="logo"></div>
+		<div id="search-part">
+			<input id="textarea" type="text">
+			<input id="btn" type="submit">
+		</div>
+		<div id="cart">
+			<span id="cartLogo"></span>
+			<span id="cartText"><a href="#">我的购物车</a></span>
+			<span id="cartNum">1</span>
+		</div>
+	</section>
+	<section id="middle-part">
+		<div id=content-left>
+				<ul id="proList">
+					<li><a href="#">家用电器</a></li>
+					<li><a href="#">电脑办公</a></li>
+					<li><a href="#">男装女装</a></li>
+					<li><a href="#">男装女装</a></li>
+					<li><a href="#">男装女装</a></li>
+					<li><a href="#">男装女装</a></li>
+					<li><a href="#">男装女装</a></li>
+					<li><a href="#">男装女装</a></li>
+					<li><a href="#">男装女装</a></li>
+					<li><a href="#">男装女装</a></li>
+				</ul> 
+			 </div>
+	<!--轮播图部分,使用bootstrap框架来快速实现轮播图-->
+		<div id="carousel-01" class="carousel slide" data-ride="carousel">
+			<!-- Indicators底部的3个控制的圆点-->
+			<ol class="carousel-indicators">
+				<li data-target="#carousel-01" data-slide-to="0" class="active"></li>
+				<li data-target="#carousel-01" data-slide-to="1"></li>
+				<li data-target="#carousel-01" data-slide-to="2"></li>
+			</ol>
+			<!-- Wrapper for slides -->
+			<div class="carousel-inner" role="listbox">
+				<div class="item active">
+					<img src="imgs/pic01.jpg" alt="轻松做女人">
+				</div>
+				<div class="item">
+					<img src="imgs/pic02.jpg" alt="潇洒男士生活">
+				</div>
+				<div class="item">
+					<img src="imgs/pic03.jpg" alt="3C我全包啦">
+				</div>
+			</div>
+			<!-- Controls 左右的循环控制按钮-->
+			<a class="left carousel-control" href="#carousel-01" role="button" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left"></span>
+			</a>
+			<a class="right carousel-control" href="#carousel-01" role="button" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right"></span>
+			</a>
+		</div>
+			<div id=content-right>
+			 	<div id="sales-title">一大波促销信息来袭！！！</div>
+			 	<div id="sales-detials">
+			 		<ul>
+			 			<li><a href="#">惠挑车省千元，再拿大礼</a></li>
+			 			<li><a href="#">年终狂欢夜，汰渍碧浪3件6折</a></li>
+			 			<li><a href="#">京东超市圣诞季5折疯抢</a></li>
+			 			<li><a href="#">京东网厅红米3S低至￥199</a></li>
+			 			<li><a href="#">车载净化器低至99！</a></li>
+			 			<li><a href="#">圣诞书礼，每满200减60</a></li>
+			 			<li><a href="#">60英寸旗舰4K电视大放价</a></li>
+			 			<li><a href="#">羽绒TOP款推荐 低至99元</a></li>
+			 			<li><a href="#">60英寸旗舰4K电视大放价</a></li>
+			 		</ul>
+			 	</div>	
+			</div>
+	 </section>
+	<!--bootstrap是基于jquery的，所以jquery加载要出现在bootstrap上边-->
+	<script src="lib/jquery/jquery-1.11.1.min.js"></script>
+	<script src="lib/bootstrap/js/bootstrap.js"></script>
+	<script src="js/index.js"></script>	
+</body>
+</html>

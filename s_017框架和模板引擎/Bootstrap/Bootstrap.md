@@ -115,25 +115,4 @@
 
 6. http://blog.koalite.com/bbg/生成按钮的网站
 
-7. 优化完成之后的CSS代码
-
-   ​
-
-   ​
-
-   ​
-
-
-
-1. container的类，Normalize.css 为了增强浏览器表现的一致性，我们使用了Normalize.css，这是一个CSS重置的样式库。
-
-2. 垂直居中和水平居中回去都自己试一下
-
-3. target伪类写一个table选项卡    CSS3实现
-
-4. rem，viewport，设备模拟器？？屏幕像素比?物理像素？设计图切图
-
-5. 今天更新一下github上边的最外边的描述部分，base.css ,index.css,两个CSS文件
-
-   ​
 

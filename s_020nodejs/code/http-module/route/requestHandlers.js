@@ -6,10 +6,13 @@ var fs = require('fs');
 function home(res) {
     console.log('Request handler "home" was called.');
 
-    // 读取home.html文件
+    // 读取home.html文件，读取出来的内容放在content里边
     var content = fs.readFileSync('./views/home.html');
+    // 写数据进去通用头
     res.writeHead(200, { 'Content-Type': 'text/html' });
+    // 把内容写入到响应体里边去
     res.write(content);
+    // 发送响应数据
     res.end();
 }
 
