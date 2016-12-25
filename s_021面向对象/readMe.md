@@ -121,15 +121,41 @@ var person2 = new Person("Greg" , 21);
 
 ​		d）返回新对象。
 
-1.  封装对象的方法
-     1）对象字面量的方式：
+检测对象的类型：使用**instanceof操作符**，使用方法：
 
-         var Cat = {
-    　　　　name : '',
-    　　　　color : ''
-    　　} 
+```
+person1 instanceof Object    //true
+person1 instanceof People   //true
+```
 
-2.  反对反对反对
+​	如果构造函数不使用new关键字进行调用，那么它就是一个普通函数，它将被添加到window全局环境中去，那么就可以通过window对象进行调用
 
-3.  
+```
+Person("Grey",27,"Doctor")；
+window.sayName(); // Grey
+```
+
+​	使用构造函数创建对象的缺点是**每个方法都会在每个实例上重新创建一遍**，且这些方法不是同一个函数
+
+​	**3）原型模式**
+
+​	我们创建的每个函数都有一个原型属性（prototype），这个属性是一个指针，指向一个对象，而这个对象的用途是包含可以由特定类型的所有实例共享的方法和属性。
+
+​	也就是说我们可能通过构造函数的prototype属性来创建所有实例共享的属性和方法。所以我们就可以将一些共享的属性和方法添加到原型对象中。
+
+```
+function Person(){
+  this.name="Nicholas";
+  this.age=29;
+}  
+ Person.prototype.sayName = function(){alert(this.name);};  
+ var person1 = new Person();  
+ person1.sayName();//"Nicholas"  
+ var person2 = new Person();  
+ person2.sayName();//"Nicholas"  
+ alert(person1.sayName == person2.sayName);//true  
+```
+
+
+
 

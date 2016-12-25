@@ -12,15 +12,124 @@ html,body{
 body{ 
     font-size:14px;
     font-family:PingFangSC-Regular,Helvetica,"Droid Sans",Arial,sans-serif;/* 第二个是手机上默认的字体 */
+}
+/* header部分 */
+header{
+    height: 30px;
+    width: 100%;
+    text-align: right;
+    background:#e0e0e0;
+    border-bottom: 1px solid #f0f0f0;
+    padding-right: 100px;
+}
+header span{
+    display: inline-block;
+    height: 12px;
+    margin-top: 10px;
+    padding-right: 15px;
+    margin-right: 15px;
+    border-right: 1px solid gray;
+}
+header span>a{
+    position: relative;
+    top: -4px;
+    text-decoration: none;
+    font-size: 12px;
+    font-family:"Microsoft YaHei";
+    color: gray; 
+}
+
+
+
+#search{
+    height:80px;
+    width: 100%;
+    background: #f0f0f0;
+    border-bottom: 1px solid #c0c0c0;
+}
+#search>div{
+    float: left;
+    vertical-align: middle;
+    margin: 0 8%;
+}
+#search>#logo{
+    height: 100%;
+    width: 160px;
+    background-image: url('../imgs/logo.jpg');
+    background-size: 160px 80px;
+}
+#search>#search-part{
+    width:auto;
+    height: auto;
+    margin: 22px 0;
+}
+#search>#search-part>#textarea{
+    width: 350px;
+    height: 36px;
+    border: 1px solid red;
+}
+#search>#search-part>#btn{
+    width: 40px;
+    height: 36px;
+    background: #f10215;
+    color: #fff;
+    font-weight: bold;
+}
+
+#search>#cart{
+    width: 150px;
+    height: 40px;
+    position: relative;
+    top:20px;
+    left: 50px;
+}
+#search>#cart>span{
+    display: inline-block;
+    position: absolute;
+}
+#search>#cart>#cartLogo{
+    height: 30px;
+    width: 45px;
+    background: url("../imgs/cartLogo.jpg") no-repeat;
+    background-size: 45px 30px;
+    top: 5px;
+    left: 0;
+}
+#search>#cart>#cartText{
+    top: 9px;
+    left: 55px;  
+}
+#search>#cart>#cartText>a{
+    font-size: 12px;
+    font-family:"Microsoft YaHei";;  
+    color: black;
+    text-decoration: none;
+}
+#search>#cart>#cartNum{
+    top: 6px;
+    left: 118px;
+    height: 15px;
+    width: 15px;
+    border-radius: 15px;
+    background: red;
+    text-align: center;
+    line-height: 16px;
+    color: #fff;
+}
+
+
+
+#middle-part{
+    height: 280px;
+    width: 100%;
     position: relative;
     overflow: hidden;
 }
-
 /* 轮播图部分 */
 #carousel-01{
     height:280px;
-    width:60%;
-    margin:0px auto;
+    width:70%;
+    float: left;
 }
 #carousel-01>div img{
     height:280px;
@@ -28,23 +137,57 @@ body{
     text-align:center;
 }
 /*主体内容部分*/
-#content{
-    height:100%;
-    width:120px;
-}
 #content-left{
-    width:20%;
+    width:15%;
     height:100%;
-    position:absolute;
-    top:0;
-    left:0;
-    background:pink;    
+    background:pink;
+    float: left;    
+}
+#content-left>ul{
+    padding: 10% 0;
+    margin-left: 35%;
+    list-style: none;
+}
+#content-left>ul>li>a{
+    font-size: 14px;
+    font-family: "Microsoft YaHei";
+    color: #5C3317;
+    text-decoration: none;
+}
+#content-left>ul>li{
+    padding: 0 0 4px 0;   
 }
 #content-right{
-    width:20%;
+    width:15%;
     height:100%;
-    position:absolute;
-    top:0;
-    right:0;
     background:pink;
+    float: left; 
+    font-family:"Microsoft YaHei"; 
 }
+#content-right>#sales-title{
+    margin-top: 10px;
+    margin-left: 10%;
+    height: 30px;
+    width: 100%;
+    line-height: 30px;
+    font-size: 15px;
+}
+#content-right>#sales-detials{
+    height: auto;
+    width: 100%;
+    margin-left: 10%;
+    font-size: 13px;
+}
+#content-right>#sales-detials>ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+#content-right>#sales-detials>ul>li{
+    margin-top: 6px;
+}
+#content-right>#sales-detials>ul>li>a{
+    text-decoration: none;
+}
+
+
