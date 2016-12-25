@@ -17,29 +17,20 @@
 ## 1.2 canvas主要应用的领域（了解）  
 
 1. 游戏：canvas在基于Web的图像显示方面比Flash更加立体、更加精巧，canvas游戏在流畅度和跨平台方面更牛。      
-     [25 超棒的 HTML5 Canvas 游戏](http://www.oschina.net/news/20143/top-25-best-html5-canvas-games-you-love-to-play)
-
-2. **可视化数据**.数据图表话，比如:[百度的echart](http://echarts.baidu.com/)    
+       [25 超棒的 HTML5 Canvas 游戏](http://www.oschina.net/news/20143/top-25-best-html5-canvas-games-you-love-to-play)
+2. **可视化数据**.数据图表，比如:[百度的echart](http://echarts.baidu.com/)    
 
 3. **banner广告**：Flash曾经辉煌的时代，智能手机还未曾出现。现在以及未来的智能机时代，HTML5技术能够在banner广告上发挥巨大作用，用Canvas实现动态的广告效果再合适不过。
-
 4. 未来=> 模拟器：无论从视觉效果还是核心功能方面来说，模拟器产品可以完全由JavaScript来实现。
-
 5. 未来=> 远程计算机控制：Canvas可以让开发者更好地实现基于Web的数据传输，构建一个完美的可视化控制界面。
-
 6. 未来=> 图形编辑器：Photoshop图形编辑器将能够100%基于Web实现。
-
 7. 其他可嵌入网站的内容(多用于活动页面、特效)：类似图表、音频、视频，还有许多元素能够更好地与Web融合，并且不需要任何插件。
-
 8. **完整的canvas移动化应用**
-
 9. 我们课程的目标
     + 我们不是主要做游戏开发的
     + 要求必须会做基本的用canvas绘制的特效页面：比如，传智前端官网。
     + 会用canvas做一些简单的广告、活动页面
-
 10. 我们课程的案例和项目演示
-
 11. canvas的标准： 
     + 最新标准：http://www.w3.org/TR/2dcontext/
     + 稳定版本的标准：http://www.w3.org/TR/2013/CR-2dcontext-20130806/
@@ -83,7 +74,7 @@
 ## 2.2 canvas绘图上下文context
 
 ### 2.2.1 Context：Canvas的上下文、绘制环境。（重点掌握）
-+ 上下文：上知天文，下知地理。是所有的绘制操作api的入口或者集合。
++ 上下文：所有的绘制操作api的入口或者集合。
 + Canvas自身无法绘制任何内容。Canvas的绘图是使用JavaScript操作的。
 + Context对象就是JavaScript操作Canvas的接口。
   *使用[CanvasElement].getContext(‘2d’)来获取2D绘图上下文。        
@@ -107,7 +98,7 @@ var ctx = canvas.getContext( '2d' );//注意：2d小写， 3d：webgl
 ### 2.3.3 绘制直线(lineTo)
     * 语法：ctx.lineTo(x, y);
     * 解释：从x,y的位置绘制一条直线到起点或者上一个线头点。
-    * 参数：x,y 线头点坐标。
+    * 参数：x,y 终点坐标。
 
 ### 2.3.4 路径开始和闭合
     * 开始路径：ctx.beginPath();
@@ -153,9 +144,6 @@ var ctx = canvas.getContext( '2d' );//注意：2d小写， 3d：webgl
     ctx.closePath();        //结束路径
     ctx.stroke();           //描边路径
 ```
-+ 综合案例：02绘制定位表格.html
-+ 综合案例：03画画板.html
-
 ### 2.3.7 填充(fill)
     * 语法：ctx.fill(); 
     * 解释：填充，是将闭合的路径的内容填充具体的颜色。默认黑色。
@@ -173,15 +161,11 @@ var ctx = canvas.getContext( '2d' );//注意：2d小写， 3d：webgl
         如果是与路径的逆时针部分相交，则减1。若计数器的最终值不是0，那么此区域就在路径里面，在调用fill()方法时，
         浏览器就会对其进行填充。
         如果最终值是0，那么此区域就不在路径内部，浏览器也就不会对其进行填充了
-    * 案例： 04填充矩形.html
-
-<img src="imgs/fill-0-prin.jpg" height="206" width="289">
 
 ### 2.3.8 快速创建矩形rect()方法
     * 语法：ctx.rect(x, y, width, height);
     * 解释：x, y是矩形左上角坐标， width和height都是以像素计
     * rect方法只是规划了矩形的路径，并没有填充和描边。
-    * 改造案例：04填充矩形.html
     *rect: abbr. 矩形（rectangular）；收据（receipt）
 
 ### 2.3.9 快速创建描边矩形和填充矩形
@@ -197,7 +181,6 @@ var ctx = canvas.getContext( '2d' );//注意：2d小写， 3d：webgl
 ## 2.4 绘制圆形（arc)  
 + 概述：arc() 方法创建弧/曲线（用于创建圆或部分圆）。
     * 语法：ctx.arc(x,y,r,sAngle,eAngle,counterclockwise);
-    * arc:  弧（度）弧形物；天穹 英 [ɑːk]   美 [ɑrk]
     * counter 反击，还击；反向移动，对着干；反驳，回答  ['kaʊntə]   美 ['kaʊntɚ]
     * 解释：
         - x,y：圆心坐标。 
@@ -207,14 +190,11 @@ var ctx = canvas.getContext( '2d' );//注意：2d小写， 3d：webgl
         - counterclockwise：是否是逆时针。true是逆时针，false：顺时针
         - 弧度和角度的转换公式： rad = deg*Math.PI/180;  
         - 在Math提供的方法中**sin、cos等都使用的弧度**    
-          ![图片](imgs/arc.gif "title3")   
 
-+ 案例：05绘制圆形.html
-+ 案例：06绘制饼状图.html
 
 ## 2.5 绘制文字（会使用就可以了）
 ### 2.5.1 绘制上下文的文字属性 （有印象就行了） 
-+ font            设置或返回文本内容的当前字体属性
++ font 设置或返回文本内容的当前字体属性
     * font 属性使用的语法与 CSS font 属性相同。
 ```
 例如：ctx.font = "18px '微软雅黑'";
@@ -228,7 +208,7 @@ var ctx = canvas.getContext( '2d' );//注意：2d小写， 3d：webgl
 ```
     * 例如：ctx.textAlign = 'left';         
 ```
-![对齐图片](imgs/textAsign.png)
+ ![1482460936(1](1482460936(1.png)
 
 + textBaseline      设置或返回在绘制文本时使用的当前文本基线   
     * alphabetic ：   默认。文本基线是普通的字母基线。
@@ -523,22 +503,22 @@ ctx.fillRect(100, 100, 500, 500);
 
 
 ## 3.8 了解：线条样式（了解）
-+ lineCap     设置或返回线条的结束端点(线头、线冒)样式
-    * butt  ：  默认。向线条的每个末端添加平直的边缘。
++   lineCap     设置或返回线条的结束端点(线头、线冒)样式
+    *   butt  ：  默认。向线条的每个末端添加平直的边缘。
         -  翻译.：屁股；烟头；笑柄；靶垛；粗大的一端  英 [bʌt]   美 [bʌt]
-    * round ：  向线条的每个末端添加圆形线帽。
-    * square：  向线条的每个末端添加正方形线帽。      
-        <img src="imgs/linecap.png" height="303" width="480" >  
-        参考：23线的样式.html
-+ lineJoin    设置或返回两条线相交时，所创建的拐角类型
-    * bevel:   创建斜角。
+    *   round ：  向线条的每个末端添加圆形线帽。
+    *   square：  向线条的每个末端添加正方形线帽。      
+            <img src="imgs/linecap.png" height="303" width="480" >  
+            参考：23线的样式.html
++   lineJoin    设置或返回两条线相交时，所创建的拐角类型
+    *   bevel:   创建斜角。
         - 翻译. 斜角；斜面；[测] 斜角规  英 ['bev(ə)l]   美 ['bɛvl]
-    * round:   创建圆角。
-    * miter:   默认。创建尖角         
-        <img src="imgs/linejoin.png" height="387" width="453" alt="">
+    *   round:   创建圆角。
+    *   miter:   默认。创建尖角         
+            <img src="imgs/linejoin.png" height="387" width="453" alt="">
 
-+ lineWidth   设置或返回当前的线条宽度
-+ miterLimit  设置或返回最大斜接长度
++   lineWidth   设置或返回当前的线条宽度
++   miterLimit  设置或返回最大斜接长度
     * 意思:  斜接 英 ['maɪtə]  
     * 斜接长度指的是在两条线交汇处内角和外角之间的距离。
     * 一般用默认值：10就可以了。除非需要特别长的尖角时，使用此属性。

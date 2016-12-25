@@ -34,10 +34,10 @@ mongoDB相关操作
 8.条件操作符
     MangoDB中的条件操作符：(>) 大于 - $gt,(<) 小于 - $lt,(>=) 大于等于 - $gte,(<= ) 小于等于 - $lte
     假设数据库是这样的，里边有3个文档，那么需要进行相应的查询，示例如下：
-	{ "_id" : ObjectId("584d5ada795c78e18374c6e7"), "name" : "lili", "age" : "19", "sex" : "woman" }
-	{ "_id" : ObjectId("584d5aff795c78e18374c6e8"), "name" : "lynn", "age" : "18", "sex" : "woman" }
-	{ "_id" : ObjectId("584d5b16795c78e18374c6e9"), "name" : "jack", "age" : "22", "sex" : "man" }
-	1) db.col.find({"age" : {$gt : "20"}}),需要特别注意一下此处是否由双引号，会影响查询的结果
+    { "_id" : ObjectId("584d5ada795c78e18374c6e7"), "name" : "lili", "age" : "19", "sex" : "woman" }
+    { "_id" : ObjectId("584d5aff795c78e18374c6e8"), "name" : "lynn", "age" : "18", "sex" : "woman" }
+    { "_id" : ObjectId("584d5b16795c78e18374c6e9"), "name" : "jack", "age" : "22", "sex" : "man" }
+    1) db.col.find({"age" : {$gt : "20"}}),需要特别注意一下此处是否由双引号，会影响查询的结果
 之后的命令以此类推
 	2)MongoDB 使用 (<) 和 (>) 查询 - $lt 和 $gt
 	db.col.find({"age" : {$lt :"22", $gt : "19"}})
@@ -49,14 +49,14 @@ mongoDB相关操作
      db.col.find({"age" : {$type : 2}}):那么就是获取 "col" 集合中 age 为 String 的数据；
 10.MongoDB Limit与Skip方法
      Limit方法：如果你想从数据库中读取指定数量的数据，那么可以使用Limit()方法：
-	基本语法是这样的：db.COLLECTION_NAME.find().limit(NUMBER):NUMBER指定读取的数量,如果没有指定limit的参数，那么默认是输出所有的数据
+    基本语法是这样的：db.COLLECTION_NAME.find().limit(NUMBER):NUMBER指定读取的数量,如果没有指定limit的参数，那么默认是输出所有的数据
      假设数据库中的文档是这样的：
      { "_id" : ObjectId("584d5ada795c78e18374c6e7"), "name" : "lili", "age" : 19, "sex" : "woman" }
      { "_id" : ObjectId("584d5aff795c78e18374c6e8"), "name" : "lynn", "age" : "18", "sex" : "woman" }
      { "_id" : ObjectId("584d5b16795c78e18374c6e9"), "name" : "jack", "age" : 22, "sex" : "man" }
      db.col.find({},{"name":1,_id:0}).limit(2),那么只会输出前两行数据中的name键值对???
      Skip() 方法:使用skip()方法来跳过指定数量的数据，skip方法同样接受一个数字参数作为跳过的记录条数。
-	基本语法是这样的：db.COLLECTION_NAME.find().limit(NUMBER).skip(NUMBER)
+    基本语法是这样的：db.COLLECTION_NAME.find().limit(NUMBER).skip(NUMBER)
         如果依然是上边的数据库不变，那么 db.col.find({},{"name":1,_id:0}).limit(2).skip(1),那么就会先跳过是一条数据，之后输出后边的两条数据
 11.MongoDB 排序
     在MongoDB中使用使用sort()方法对数据进行排序，sort()方法可以通过参数指定排序的字段，
@@ -69,10 +69,10 @@ mongoDB相关操作
     db.col.find({},{"name":1,_id:0}).sort({"age":-1}),那么就会按照age降序的顺序输出name筛选出来的3条信息
 12.MongoDB 索引
     MongoDB使用 ensureIndex() 方法来创建索引。
-	ensureIndex()方法基本语法格式如下所示：db.COLLECTION_NAME.ensureIndex({KEY:1})
-	索引实际就是为了快速找到数据库当中的数据而增加的一个编号而已，类似于数组的下标，语法中 
-	Key 值为你要创建的索引字段，1为指定按升序创建索引，如果你想按降序来创建索引指定为-1即可。
-	当然你也可以通过多个字段来创建索引:db.col.ensureIndex({"title":1,"description":-1})
+    ensureIndex()方法基本语法格式如下所示：db.COLLECTION_NAME.ensureIndex({KEY:1})
+    索引实际就是为了快速找到数据库当中的数据而增加的一个编号而已，类似于数组的下标，语法中 
+    Key 值为你要创建的索引字段，1为指定按升序创建索引，如果你想按降序来创建索引指定为-1即可。
+    当然你也可以通过多个字段来创建索引:db.col.ensureIndex({"title":1,"description":-1})
     在后台创建索引：
         db.values.ensureIndex({open: 1, close: 1}, {background: true})
     通过在创建索引时加background:true 的选项，让创建工作在后台执行,建索引过程会阻塞其它数据库操作，background可指定以后台方式创建索引，即增加      	"background" 可选参数。 "background" 默认值为false。
@@ -81,19 +81,19 @@ mongoDB相关操作
     db.COLLECTION_NAME.aggregate(AGGREGATE_OPERATION)
     例如，集合中的数据如下所示：
     {
-	"_id" : ObjectId("584de00334ffeeca89ed5ff7"),
-	"name" : "jack",
-	"school" : "middle-school1"
+    "_id" : ObjectId("584de00334ffeeca89ed5ff7"),
+    "name" : "jack",
+    "school" : "middle-school1"
     }
     {
-	"_id" : ObjectId("584de01834ffeeca89ed5ff8"),
-	"name" : "lili",
-	"school" : "middle-school2"
+    "_id" : ObjectId("584de01834ffeeca89ed5ff8"),
+    "name" : "lili",
+    "school" : "middle-school2"
     }
     {
-	"_id" : ObjectId("584de02434ffeeca89ed5ff9"),
-	"name" : "mary",
-	"school" : "middle-school2"
+    "_id" : ObjectId("584de02434ffeeca89ed5ff9"),
+    "name" : "mary",
+    "school" : "middle-school2"
     }
     输入db.database2.aggregate([{$group:{_id:"$school",num_tutorial:{$sum:1}}}])之后，输出结果如下所示：
     { "_id" : "middle-school2", "num_tutorial" : 2 }
