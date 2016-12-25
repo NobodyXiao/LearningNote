@@ -9,9 +9,11 @@ html,body{
     -webkit-tap-highlight-color:transparent;/* 清除点击之后出现的默认的高亮效果 */
     -webkit-box-sizing:border-box;
 }
-body{ 
+body{
     font-size:14px;
-    font-family:PingFangSC-Regular,Helvetica,"Droid Sans",Arial,sans-serif;/* 第二个是手机上默认的字体 */
+    font-family:PingFangSC-Regular,Helvetica,"Droid Sans",Arial,sans-serif;
+     /* 第二个是手机上默认的字体  */
+    background:#e0e0e0;
 }
 /* header部分 */
 header{
@@ -36,7 +38,7 @@ header span>a{
     text-decoration: none;
     font-size: 12px;
     font-family:"Microsoft YaHei";
-    color: gray; 
+    color: gray;
 }
 
 
@@ -97,11 +99,11 @@ header span>a{
 }
 #search>#cart>#cartText{
     top: 9px;
-    left: 55px;  
+    left: 55px;
 }
 #search>#cart>#cartText>a{
     font-size: 12px;
-    font-family:"Microsoft YaHei";;  
+    font-family:"Microsoft YaHei";;
     color: black;
     text-decoration: none;
 }
@@ -120,28 +122,30 @@ header span>a{
 
 
 #middle-part{
-    height: 280px;
+    height: auto;
     width: 100%;
     position: relative;
     overflow: hidden;
+    margin-left:8%;
 }
 /* 轮播图部分 */
 #carousel-01{
-    height:280px;
-    width:70%;
+    height:250px;
+    width:50%;
     float: left;
 }
 #carousel-01>div img{
-    height:280px;
+    height:250px;
     width:100%;
     text-align:center;
 }
 /*主体内容部分*/
 #content-left{
     width:15%;
-    height:100%;
+    height:auto;
     background:pink;
-    float: left;    
+    float: left;
+    padding-top:8px;
 }
 #content-left>ul{
     padding: 10% 0;
@@ -155,28 +159,29 @@ header span>a{
     text-decoration: none;
 }
 #content-left>ul>li{
-    padding: 0 0 4px 0;   
+    padding: 12px 0 0 0;
 }
 #content-right{
-    width:15%;
-    height:100%;
+    width:17%;
+    height:250px;
     background:pink;
-    float: left; 
-    font-family:"Microsoft YaHei"; 
+    float: left;
+    font-family:"Microsoft YaHei";
 }
 #content-right>#sales-title{
     margin-top: 10px;
-    margin-left: 10%;
+    margin-left: 13%;
     height: 30px;
     width: 100%;
     line-height: 30px;
     font-size: 15px;
 }
 #content-right>#sales-detials{
-    height: auto;
+    height: 200px;
     width: 100%;
-    margin-left: 10%;
+    margin-left: 13%;
     font-size: 13px;
+    overflow:hidden;
 }
 #content-right>#sales-detials>ul{
     list-style: none;
@@ -189,5 +194,6 @@ header span>a{
 #content-right>#sales-detials>ul>li>a{
     text-decoration: none;
 }
+
 
 
