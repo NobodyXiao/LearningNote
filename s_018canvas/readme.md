@@ -7,5 +7,6 @@
 5. ctx.stroke();是对路径进行描边的意思，如果没有的话，就基本上在画布里边看不到路径；通过ctx.strokeStyle进行设置，一定是在描边之前设置描边的样式也就是ctx.stroke();之前
 6. 设置线宽，ctx.lineWidth实行进行设置；填充，默认填充是黑色ctx.fill()，如果填充别的颜色是ctx.fillStyle="";
 7. 今天把canvas表格绘制出来？查询canvas知识点，另外复习一下js的原型和继承，MVC，mvvc等？？
+8. 把二进制的图片转换成base64的编码，了解base64编码？
 
 
