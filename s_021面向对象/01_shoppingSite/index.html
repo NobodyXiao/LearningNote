@@ -86,27 +86,96 @@
 				<span class="glyphicon glyphicon-chevron-right"></span>
 			</a>
 		</div>
-			<div id=content-right>
-			 	<div id="sales-title">一大波促销信息来袭！！！</div>
-			 	<div id="sales-detials">
-			 		<ul id="text1">
-			 			<li><a href="#">惠挑车省千元，再拿大礼</a></li>
-			 			<li><a href="#">年终狂欢夜，汰渍碧浪3件6折</a></li>
-			 			<li><a href="#">京东超市圣诞季5折疯抢</a></li>
-			 			<li><a href="#">京东网厅红米3S低至￥199</a></li>
-			 			<li><a href="#">车载净化器低至99！</a></li>
-			 			<li><a href="#">圣诞书礼，每满200减60</a></li>
-			 			<li><a href="#">60英寸旗舰4K电视大放价</a></li>
-			 			<li><a href="#">羽绒TOP款推荐 低至99元</a></li>
-			 			<li><a href="#">60英寸旗舰4K电视大放价</a></li>
-			 		</ul>
-			 		<ul id="text2">
-			 		</ul>
-			 	</div>
+		<div id=content-right>
+		 	<div id="sales-title">一大波促销信息来袭！！！</div>
+		 	<div id="sales-detials">
+		 		<ul id="text1">
+		 			<li><a href="#">惠挑车省千元，再拿大礼</a></li>
+		 			<li><a href="#">年终狂欢夜，汰渍碧浪3件6折</a></li>
+		 			<li><a href="#">京东超市圣诞季5折疯抢</a></li>
+		 			<li><a href="#">京东网厅红米3S低至￥199</a></li>
+		 			<li><a href="#">车载净化器低至99！</a></li>
+		 			<li><a href="#">圣诞书礼，每满200减60</a></li>
+		 			<li><a href="#">60英寸旗舰4K电视大放价</a></li>
+		 			<li><a href="#">羽绒TOP款推荐 低至99元</a></li>
+		 			<li><a href="#">60英寸旗舰4K电视大放价</a></li>
+		 		</ul>
+		 		<ul id="text2">
+		 		</ul>
+		 	</div>
+		</div>
+	</section>
+	<section id="productDetials">
+		<div id="picBox">
+			<!-- 小图显示的位置 <-->
+			<div id="smallPic">
+				<img id="zoom_01" src='imgs/small/image4.png' data-zoom-image="imgs/large/image4.jpg"/>
 			</div>
-	 </section>
+			<!-- 小图下边的图片切换按钮，以及图片列表 -->
+			<div id="imagesControll">
+				<div class="scrollButton smallImageUp"></div>
+				<div id="imageContainer">
+					<ul id="imageMenu">
+						<li><img src="imgs/thumb/image1.jpg" data-image="imgs/small/image1.png" data-big-image="imgs/large/image1.jpg" /></li>
+						<li><img src="imgs/thumb/image2.jpg" data-image="imgs/small/image2.png" data-big-image="imgs/large/image2.jpg" ></li>
+						<li><img src="imgs/thumb/image3.jpg" data-image="imgs/small/image3.png" data-big-image="imgs/large/image3.jpg" ></li>
+						<li><img class="active" src="imgs/thumb/image4.jpg" data-image="imgs/small/image4.png" data-big-image="imgs/large/image4.jpg" ></li>
+					</ul>
+				</div>
+				<div class="scrollButton smallImageDown"></div>
+			</div>
+		</div>
+		<div id="proDes">
+			<div id="proDuctName">【惠买车】梅赛德斯——奔驰&nbsp;全新SUV轿车</div>
+			<div id="money">
+				<div>预付定金：
+					<strong>&yen;499.00</strong>
+					<span>厂家指导价
+						<del>53.05万</del>
+					</span>
+				</div>
+			</div>
+
+			<div id="city">售卖城市:
+				<select name="cityList" id="cityList">
+					<option value="BJ">北京</option>
+					<option value="SH">上海</option>
+					<option value="GZ">广州</option>
+					<option value="SZ">深圳</option>
+				</select>
+				<span>有商家提供服务</span>
+			</div>
+			<div id="year">
+				年款：
+				<strong>2017款</strong>
+			</div>
+			<div id="carStyle">车款：
+				<span class="choosed"><a href="#">TFSI&nbsp;技术型</a></span>
+				<span><a href="#">30&nbsp;FS&nbsp;舒适型</a></span>
+				<span><a href="#">45&nbsp;TFSI&nbsp;quattro&nbsp;运动型</a></span>
+			</div>
+			<div id="carColor">颜色：
+				<a href="#" class="choosed">
+					<i style="background-color: #90947e;"></i>白金色
+				</a>
+				<a href="#">
+					<i style="background-color: #bbbfc0;"></i>水银色
+				</a>
+				<a href="#">
+					<i style="background-color: #a2967c;"></i>斑羚米
+				</a>
+				<a href="#">
+					<i style="background-color: #1e1e1e;"></i>幻影黑
+				</a>
+			</div>
+			<div id="submit"><a href="#">我要低价买车</a></div>
+		</div>
+	</section>
 	<!--bootstrap是基于jquery的，所以jquery加载要出现在bootstrap上边-->
 	<script src="lib/jquery/jquery-1.11.1.min.js"></script>
+	<!-- 用来实现大图小图的效果 -->
+	<script src="lib/elevatezoom-master/jquery.elevatezoom.js"></script>
+	<!-- 用来实现大图小图的效果 -->
 	<script src="lib/bootstrap/js/bootstrap.js"></script>
 	<script src="js/index.js"></script>
 </body>
