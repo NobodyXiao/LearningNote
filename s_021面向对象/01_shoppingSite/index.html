@@ -13,7 +13,7 @@
 </head>
 <body>
 	<!--网站主题-->
-	<header>
+	<header id="head">
 		<span>
 			<a href="#">您好，请登录</a>
 			<a href="#">免费注册</a>
@@ -34,7 +34,17 @@
 		<div id="cart">
 			<span id="cartLogo"></span>
 			<span id="cartText"><a href="#">我的购物车</a></span>
-			<span id="cartNum">1</span>
+			<span id="cartNum">0</span>
+		</div>
+		<div id="cartList" style="display:none;">
+			<div id="listTitle">最近添加的商品(<span>0</span>)</div>
+<!-- 			<div id="cartPro">
+				<a href="#">
+					<img src="imgs/thumb/image1.jpg" alt="" />
+					<span class="cartProName">【惠买车】梅赛德斯—奔驰&nbsp;全新SUV轿车</span>
+					<span>x1</span>
+				</a>
+			</div> -->
 		</div>
 	</section>
 	<section id="middle-part">
@@ -126,7 +136,7 @@
 			</div>
 		</div>
 		<div id="proDes">
-			<div id="proDuctName">【惠买车】梅赛德斯——奔驰&nbsp;全新SUV轿车</div>
+			<div id="proDuctName">【惠买车】梅赛德斯—奔驰&nbsp;全新SUV轿车</div>
 			<div id="money">
 				<div>预付定金：
 					<strong>&yen;499.00</strong>
@@ -135,7 +145,7 @@
 					</span>
 				</div>
 			</div>
-
+			<div id="imgUrl" style="display:none;">imgs/thumb/image1.jpg</div>
 			<div id="city">售卖城市:
 				<select name="cityList" id="cityList">
 					<option value="BJ">北京</option>

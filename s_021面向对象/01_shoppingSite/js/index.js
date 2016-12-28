@@ -2,7 +2,7 @@
 * @Author: anchen
 * @Date:   2016-12-25 20:42:43
 * @Last Modified by:   anchen
-* @Last Modified time: 2016-12-27 08:43:41
+* @Last Modified time: 2016-12-28 08:07:47
 */
 'use strict';
 window.onload = function(){
@@ -10,6 +10,7 @@ window.onload = function(){
     thumbImgBtn();
     proDetialSec();
     buyCar();
+    cartToogle();
 }
 // 新闻信息部分文字滚动效果
     var Con = document.getElementById("sales-detials");
@@ -138,11 +139,46 @@ function buyCar(){
     $("#submit").click(function(){
         // 获取当前字符并转换成字符
         var currentNum = parseInt($("#search>#cart>#cartNum").text());
+        var listNum = parseInt($("#listTitle>span").text());
         // 数字进行自加操作并转换成字符
         currentNum++;
-        currentNum.toString();
+        listNum++;
         // 重新对内容进行赋值
         $("#search>#cart>#cartNum").text(currentNum.toString());
+        $("#listTitle>span").text(listNum.toString());
+        // 点击购买按钮之后，相应的在隐藏的购物车列表中添加一项商品信息
+        // 获取商品的标题
+        var cartTitle = $(this).parent().find("#proDuctName").text();
+        // 获取商品的图片地址
+        var imgUrl = $(this).parent().find("#imgUrl").text();
+
+        $("#cartList").append("<div id='cartPro'></div>");
+        // 选中最后添加的元素，向其中继续添加html结构
+        $("#cartList>div:last").append('<a href="#"><img src="'+imgUrl+
+                    '"/><span class="cartProName">'+cartTitle+'</span><span>x1</span></a>');
+
     })
 }
+function cartToogle(){
+    $("#cart").mouseenter(function(){
+        $("#cartList").show();
+        $(this).css("background","#fff");
+        $("#cartList").mouseenter(function(){
+            $("#cartList").show();
+            $("#cart").css("background","#fff");
+        });
+        $("#cartList").mouseleave(function(){
+            $("#cartList").hide();
+            $("#cart").css("background","#f0f0f0");
+        });
+    });
+    $("#cart").mouseleave(function(){
+        $("#cartList").hide();
+        $(this).css("background","#f0f0f0");
+    })
+}
+// 面向对象版本
+// function objectOrientated(){
+
+// }
 
