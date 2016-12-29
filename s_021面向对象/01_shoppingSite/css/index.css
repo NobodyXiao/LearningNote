@@ -15,7 +15,7 @@ body{
     background:#e0e0e0;
     overflow:hidden;
     font-family:"微软雅黑";
-    overflow:scroll;
+    overflow:hidden;
 }
 /* header部分 */
 #head{
@@ -136,22 +136,31 @@ body{
 }
 /* 轮播图部分 */
 #carousel-01{
-    height:250px;
+    height:46%;
     width:50%;
     float: left;
 }
+#carousel-01 div{
+    height:100%;
+    width:100%;
+}
+
 #carousel-01>div img{
-    height:250px;
+    height:100%;
     width:100%;
     text-align:center;
 }
 /*主体内容部分*/
+#middle-part{
+    width:100%;
+    height:82%;
+}
 #content-left{
     width:15%;
     height:auto;
     background:pink;
     float: left;
-    padding-top:8px;
+    padding-top:2%;
 }
 #content-left>ul{
     padding: 10% 0;
@@ -169,22 +178,25 @@ body{
 }
 #content-right{
     width:17%;
-    height:250px;
+    height:46%;
     background:pink;
     float: left;
 
 }
 #content-right>#sales-title{
-    margin-top: 10px;
+    margin: 10px 0;
     margin-left: 13%;
-    height: 30px;
-    width: 100%;
-    line-height: 30px;
+    height: auto;
+    width: 87%;
+    line-height: 200%;
     font-size: 15px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 #content-right>#sales-detials{
-    height: 200px;
-    width: 100%;
+    height: 72%;
+    width: 88%;
     margin-left: 13%;
     font-size: 13px;
     overflow:hidden;
@@ -193,6 +205,8 @@ body{
     list-style: none;
     margin: 0;
     padding: 0;
+    height: auto;
+    width: 100%;
 }
 #content-right>#sales-detials>ul>li{
     margin-top: 6px;
@@ -202,43 +216,82 @@ body{
 }
 
 /* 商品的详细信息样式 */
+#productDetials{
+    position:absolute;
+    height:42%;
+    width:67%;
+    top:57%;
+    left:23%;
+    /* background:#fff; */
+}
 #productDetials>#picBox{
     position:absolute;
-    left:23%;
-    top:60%;
-    height:40%;
-    width:27%;
+    left:0;
+    top:7%;
+    height:94%;
+    width:42%;
+    background:rgba(0,0,0,0.5);
+    z-index:100;
 }
+#productDetials>#picBox>#smallPic{
+    height:100%;
+    width:100%;
+    position:absolute;
+    left:0;
+    top:0;
+}
+#productDetials>#picBox>#smallPic>img{
+    height:70%;
+    width:100%;
+    position:absolute;
+    left:0;
+    top:0;
+    border:3px solid #c0c0c0;
+    margin-left:5%;
+}
+
 #imagesControll{
-    height:67px;
-    width:346px;
-    margin-left:19px;
+    height:30%;
+    width:100%;
+    position:absolute;
+    left:0;
+    top:70%;
+    margin-left:5%;
 }
 #imagesControll>div{
     float:left;
 }
 #imagesControll>.smallImageUp{
-    height:67px;
-    width:14px;
+    height:100%;
+    width:4%;
     background:url('../imgs/button1.png') no-repeat;
+    background-size:100% 100%;
+    position:absolute;
+    left:0;
+    top:0;
 }
 #imagesControll>.smallImageDown{
-    height:67px;
-    width:14px;
+    height:100%;
+    width:4%;
     background:url('../imgs/button2.png') no-repeat;
+    background-size:100% 100%;
+    position:absolute;
+    right:0;
+    top:0;
 }
-#proDuctName{
-    font-size:16px;
-    font-weight:bold;
-    margin-left:-8px;
-    margin-bottom:10px;
-}
-#zoom_01{
-    /* 设置图片的边框 */
-    border:3px solid #c0c0c0;
-    margin-left:20px;
+#imageContainer{
+    height:100%;
+    width:92%;
+    position:absolute;
+    left:4%;
+    top:0;
 }
 #imageMenu{
+    height:100%;
+    width:100%;
+    position:absolute;
+    left:0;
+    top:0;
     padding:0px;
     margin-bottom:0;
 }
@@ -246,6 +299,13 @@ body{
     list-style:none;
     float:left;
     border:1px solid #ccc;
+    height:100%;
+    width:25%;
+
+}
+#imageMenu>li>img{
+    height:100%;
+    width:100%;
 }
 #imageMenu>li>.active{
     border:1px solid red;
@@ -253,70 +313,134 @@ body{
 
 
 /* 买车详细信息描述 */
-#proDes{
-    width:30%;
-    height:auto;
+#proDuctName{
+    font-size:16px;
+    font-weight:bold;
+    height:10%;
+    width:100%;
     position:absolute;
-    top:60%;
-    left:52%;
+    top:7%;
+    left:0;
+    overflow:hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+#proDes{
+    width:46%;
+    height:100%;
+    position:absolute;
+    top:0;
+    left:46%;
 }
 #proDes>#money{
     background-color: #fff;
-    height:40px;
-    width:300px;
-    line-height:40px;
-    padding-left:5px;
+    height:15%;
+    width:100%;
+    line-height:300%;
+    padding-left:5%;
+    position:absolute;
+    top:17%;
+    left:0;
 }
-#proDes>div{
-    margin-bottom:10px;
+#proDes>#money>div{
+    height:100%;
+    width:100%;
+    line-height:300%;
+}
+
+#proDes>#money>div>span{
+    font-size:12px;
+    position:absolute;
+    left:55%;
+    width:45%;
+    height:100%;
 }
 #proDes>#money>div strong{
     color:red;
     font-size:18px;
+    position:absolute;
+    left:27%;
+    width:28%;
+    height:100%;
 }
-#proDes>#money>div>span{
-    position:relative;
-    font-size:12px;
-    bottom:2px;
-    left:2px;
+#proDes>#city{
+    height:10%;
+    width:100%;
+    line-height:200%;
+    position:absolute;
+    top:34%;
+    left:0;
+}
+#proDes>#year{
+    height:10%;
+    width:100%;
+    line-height:200%;
+    position:absolute;
+    top:45%;
+    left:0;
+}
+#proDes>#carStyle{
+    height:auto;
+    width:118%;
+    line-height:200%;
+    position:absolute;
+    top:58%;
+    left:0;
+
 }
 #proDes>#carStyle>span{
     display:inline-block;
-    height:30px;
+    height:100%;
     background:#fff;
-    line-height:30px;
-    padding:0 5px;
+    line-height:200%;
+    padding:0 3%;
+    margin-right:2%;
     border:1px solid #c0c0c0;
 }
+
+/* 此处还需要改写？？ */
 #proDes>#carStyle>span>a{
     color:#000;
     text-decoration:none;
 }
+#proDes>#carColor{
+    height:10%;
+    width:120%;
+    line-height:200%;
+    position:absolute;
+    top:81%;
+    left:0;
+
+}
 #proDes>#carColor>a{
     display:inline-block;
-    height:30px;
+    height:100%;
+    width:20%;
     background:#fff;
-    line-height:30px;
-    padding:0 5px;
+    line-height:200%;
+    padding:0 2%;
     border:1px solid #c0c0c0;
     color:#000;
     text-decoration:none;
 }
 #proDes>#carColor>a>i{
     display:inline-block;
-    height:12px;
-    width:12px;
-    margin-right:2px;
+    height:50%;
+    width:20%;
+    margin-right:2%;
 }
 #proDes>#submit{
-    height:35px;
-    width:130px;
-    line-height:35px;
+    height:8%;
+    width:150px;
+    line-height:125%;
     text-align:center;
     background:red;
     font-size:16px;
     font-weight:bold;
     border-radius:5px;
+    position:absolute;
+    bottom:0;
+    left:0;
 }
 #proDes>#submit>a{
     color:#fff;
@@ -326,6 +450,7 @@ body{
 #proDes>#carColor>.choosed{
     border:1px solid red;
 }
+
 #cartList{
     position:absolute;
     top:75%;
