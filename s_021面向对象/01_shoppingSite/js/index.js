@@ -2,16 +2,26 @@
 * @Author: anchen
 * @Date:   2016-12-25 20:42:43
 * @Last Modified by:   anchen
-* @Last Modified time: 2016-12-28 08:07:47
+* @Last Modified time: 2017-01-04 22:10:52
 */
 'use strict';
 window.onload = function(){
-    imageEnlarge();
-    thumbImgBtn();
-    proDetialSec();
-    buyCar();
-    cartToogle();
+    var product = new Product();
+    product.name = "梅赛德斯—奔驰 全新SUV轿车";
+    product.salePrice = "&yen;499.00";
+    product.originalPrice = "53.05万";
+    product.carYear = "2017款";
+    product.carStyle =['TFSI 技术型','30 FS 舒适型','45 TFSI quattro 运动型'];
+    product.color = ['白金色','水银色','斑羚米','幻影黑'];
+    product.button = "我要低价买车";
+    product.bindDOMDetail();
+    product.effect();
+    product.buy();
+    product.thumbImgBtn();
+    product.imageEnlarge();
+
 }
+
 // 新闻信息部分文字滚动效果
     var Con = document.getElementById("sales-detials");
     Con.innerHTML+=Con.innerHTML;
@@ -43,142 +53,4 @@ window.onload = function(){
     }
     // 2秒之后启动定时器，相当于一个trigger的作用
     setTimeout("startMove()",speed);
-// 新闻信息部分文字滚动效果
-// 图标的放大展示效果
-function imageEnlarge(){
-    // 获取装小图片的盒子
-    var smallPic = document.getElementById('zoom_01');
-    // 当我点击下边图片的时候，上边的图片进行相应的变化
-    var images =$('#imageMenu>li>img');
-    images.click(function(){
-        var src = $(this).data("image");
-        var bigImage = $(this).data("bigImage");
-        $(this).parent().parent().find("img").attr("class","");
-        $(this).attr("class","active");
-        // 改变小图图片
-        $(smallPic).attr("src",src);
-        // 更换大图的图片
-        $(".zoomContainer>.zoomWindowContainer>div")
-        .css("backgroundImage",'url("'+bigImage+'")');
-
-    });
-    $("#zoom_01").elevateZoom();
-}
-function thumbImgBtn(){
-    var i=4;
-    $(".smallImageUp").click(function(){
-
-        $("#imageMenu").find("img").each(function(index,ele){
-                $(ele).removeClass("active");
-            });
-
-        var currentSrc = $("#zoom_01").attr("src");
-        if(i<=1){
-            i=4;
-            $("#zoom_01").attr("src","imgs/small/image4.png");
-            $(".zoomContainer>.zoomWindowContainer>div")
-            .css("backgroundImage",'url("imgs/large/image4.jpg")');
-            // 设置最后一个图片的边框为红色
-            $("#imageMenu").find("img").each(function(index,ele){
-                $(ele).removeClass("active");
-            });
-
-        }else{
-            --i;
-            $("#zoom_01").attr("src","imgs/small/image"+i+".png");
-
-             $(".zoomContainer>.zoomWindowContainer>div")
-            .css("backgroundImage",'url("imgs/large/image'+i+'.jpg")');
-        }
-
-        var activeImage = $("#imageMenu").find("img")[i-1];
-            $(activeImage).attr("class","active");
-    });
-
-    $(".smallImageDown").click(function(){
-
-        $("#imageMenu").find("img").each(function(index,ele){
-                $(ele).removeClass("active");
-            });
-        var currentSrc = $("#zoom_01").attr("src");
-        if(i>=4){
-            i=1;
-            $("#zoom_01").attr("src","imgs/small/image1.png");
-            $(".zoomContainer>.zoomWindowContainer>div")
-            .css("backgroundImage",'url("imgs/large/image1.jpg")');
-            // 设置第一个图片边框为红色
-
-            var activeImage = $("#imageMenu").find("img")[i-1];
-            $(activeImage).attr("class","active");
-
-        }else{
-            ++i;
-            $("#zoom_01").attr("src","imgs/small/image"+i+".png");
-
-            $(".zoomContainer>.zoomWindowContainer>div")
-            .css("backgroundImage",'url("imgs/large/image'+i+'.jpg")');
-        }
-
-        var activeImage = $("#imageMenu").find("img")[i-1];
-            $(activeImage).attr("class","active");
-    });
-}
-function proDetialSec(){
-    $("#carStyle>span").click(function(){
-        // 清空当前所有兄弟元素的红色表框，之后给选中的元素加上红色边框、
-        $(this).parent().find("span").removeClass('choosed');
-        $(this).attr("class","choosed");
-    })
-    $("#carColor>a").click(function(){
-        // 清空当前所有兄弟元素的红色表框，之后给选中的元素加上红色边框、
-        $(this).parent().find("a").removeClass('choosed');
-        $(this).attr("class","choosed");
-    })
-}
-function buyCar(){
-    $("#submit").click(function(){
-        // 获取当前字符并转换成字符
-        var currentNum = parseInt($("#search>#cart>#cartNum").text());
-        var listNum = parseInt($("#listTitle>span").text());
-        // 数字进行自加操作并转换成字符
-        currentNum++;
-        listNum++;
-        // 重新对内容进行赋值
-        $("#search>#cart>#cartNum").text(currentNum.toString());
-        $("#listTitle>span").text(listNum.toString());
-        // 点击购买按钮之后，相应的在隐藏的购物车列表中添加一项商品信息
-        // 获取商品的标题
-        var cartTitle = $(this).parent().find("#proDuctName").text();
-        // 获取商品的图片地址
-        var imgUrl = $(this).parent().find("#imgUrl").text();
-
-        $("#cartList").append("<div id='cartPro'></div>");
-        // 选中最后添加的元素，向其中继续添加html结构
-        $("#cartList>div:last").append('<a href="#"><img src="'+imgUrl+
-                    '"/><span class="cartProName">'+cartTitle+'</span><span>x1</span></a>');
-
-    })
-}
-function cartToogle(){
-    $("#cart").mouseenter(function(){
-        $("#cartList").show();
-        $(this).css("background","#fff");
-        $("#cartList").mouseenter(function(){
-            $("#cartList").show();
-            $("#cart").css("background","#fff");
-        });
-        $("#cartList").mouseleave(function(){
-            $("#cartList").hide();
-            $("#cart").css("background","#f0f0f0");
-        });
-    });
-    $("#cart").mouseleave(function(){
-        $("#cartList").hide();
-        $(this).css("background","#f0f0f0");
-    })
-}
-// 面向对象版本
-// function objectOrientated(){
-
-// }
 
