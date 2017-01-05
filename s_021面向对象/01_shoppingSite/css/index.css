@@ -2,34 +2,35 @@
 
 /*设置页面整体的样式*/
 html,body{
-    width:100%;
-    height:100%;
-    min-height:760px;
-    min-width:990px;
-    /* overflow:scroll; */
     padding:0;
     margin:0;
-    -webkit-tap-highlight-color:transparent;/* 清除点击之后出现的默认的高亮效果 */
-    -webkit-box-sizing:border-box;
+
 }
 body{
     font-size:14px;
      /* 第二个是手机上默认的字体  */
     background:#e0e0e0;
     font-family:"微软雅黑";
-    overflow:hidden;
+    min-height:650px;
+    min-width:980px;
+}
+@media (max-width:980px){
+    #content{
+        min-width:980px;
+    }
 }
 /* header部分 */
 #head{
     height:5%;
-    width: 100%;
+    width: auto;
     min-height: 30px;
-    min-width:600px;
+    /* min-width:600px; */
     line-height:200%;
     text-align: right;
+    margin-right:5%;
     background:#e0e0e0;
     border-bottom: 1px solid #f0f0f0;
-    padding-right: 7%;
+
 }
 #head>span{
     display: inline-block;
@@ -51,11 +52,11 @@ body{
 #search{
     height:10%;
     min-height:80px;
-    width:100%;
+    /* width:100%; */
     background: #f0f0f0;
-    border-bottom: 1px solid #c0c0c0;
+    /* border-bottom: 1px solid #c0c0c0; */
     position:relative;
-    overflow:hidden;
+    /* overflow:hidden; */
 }
 #search>div{
     float: left;
@@ -63,9 +64,9 @@ body{
     margin: 0 5% 0 8%;
 }
 #search>#logo{
-    height: 100%;
+    height: 80px;
     width: 20%;
-    min-width:157px;
+    /* min-width:157px; */
     background: url('../imgs/logo.jpg') no-repeat;
     background-size: 160px 80px;
 }
@@ -93,10 +94,10 @@ body{
 
 #search>#cart{
     width: 12%;
-    height: 60%;
-    min-width:160px;
+    height: 100%;
+    min-width:120px;
     position: absolute;
-    top:16%;
+    top:0;
     left: 65%;
 }
 #search>#cart>span{
@@ -106,13 +107,13 @@ body{
 #search>#cart>#cartLogo{
     height: 70%;
     width: 40%;
-    background: url("../imgs/cartLogo.jpg") no-repeat;
+    background: url("../imgs/cartLogo.png") no-repeat;
     background-size: 86% 90%;
-    top: 8%;
+    top: 20%;
     left: 0;
 }
 #search>#cart>#cartText{
-    top: 8%;
+    top: 35%;
     left: 40%;
     height:70%;
     width:50%;
@@ -123,8 +124,8 @@ body{
     text-decoration: none;
 }
 #search>#cart>#cartNum{
-    top: 5%;
-    left: 88%;
+    top: 35%;
+    left: 130px;
     height: 15px;
     width: 15px;
     border-radius: 15px;
@@ -142,6 +143,7 @@ body{
     padding: 0 8%;
     width:100%;
     height:85%;
+    min-height:699px;
 }
 
 /* 内容的左边区域样式 */
@@ -456,7 +458,7 @@ body{
     font-weight:bold;
     border-radius:5px;
     position:absolute;
-    bottom:6%;
+    bottom:0;
     left:0;
 }
 #proDes>#submit>a{
@@ -470,12 +472,12 @@ body{
 
 #cartList{
     position:absolute;
-    top:75%;
-    left:65%;
-    z-index:10;
-    background:#fff;
+    top:0;
+    right:0;
+    z-index:1000;
+    background:lightblue;
     height:auto;
-    width:300px;
+    min-width:300px;
 }
 #cartList>#listTitle{
     margin:10px 5px;
@@ -502,3 +504,16 @@ body{
     height:auto;
     width:180px;
 }
+#maskLayer{
+    height:100%;
+    width:100%;
+    position:absolute;
+    top:0;
+    left:0;
+    background:rgba(0,0,0,0.5);
+    z-index:500;
+}
+
+
+
+

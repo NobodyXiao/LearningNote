@@ -2,7 +2,7 @@
 * @Author: anchen
 * @Date:   2016-12-25 20:42:43
 * @Last Modified by:   anchen
-* @Last Modified time: 2017-01-04 22:05:25
+* @Last Modified time: 2017-01-05 22:44:49
 */
 
 'use strict';
@@ -82,18 +82,22 @@ function Product(){
         // 购物车页面的显示和隐藏
         $("#cart").mouseenter(function(){
             $("#cartList").show();
+            $("#maskLayer").show();
             $(this).css("background","#fff");
             $("#cartList").mouseenter(function(){
                 $("#cartList").show();
+                $("#maskLayer").show();
                 $("#cart").css("background","#fff");
             });
             $("#cartList").mouseleave(function(){
                 $("#cartList").hide();
+                $("#maskLayer").hide();
                 $("#cart").css("background","#f0f0f0");
             });
         });
         $("#cart").mouseleave(function(){
             $("#cartList").hide();
+            $("#maskLayer").hide();
             $(this).css("background","#f0f0f0");
         })
     };
