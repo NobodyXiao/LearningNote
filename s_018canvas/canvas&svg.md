@@ -1,5 +1,3 @@
-#神奇的canvas--传智播客前端学院
-
 # 一、canvas简介
 
 ## 1.1 什么是canvas？（了解）
@@ -16,22 +14,17 @@
   ​     
 ## 1.2 canvas主要应用的领域（了解）  
 
-1. 游戏：canvas在基于Web的图像显示方面比Flash更加立体、更加精巧，canvas游戏在流畅度和跨平台方面更牛。      
-       [25 超棒的 HTML5 Canvas 游戏](http://www.oschina.net/news/20143/top-25-best-html5-canvas-games-you-love-to-play)
-2. **可视化数据**.数据图表，比如:[百度的echart](http://echarts.baidu.com/)    
+1.  游戏：canvas在基于Web的图像显示方面比Flash更加立体、更加精巧，canvas游戏在流畅度和跨平台方面更牛。      
+        [25 超棒的 HTML5 Canvas 游戏](http://www.oschina.net/news/20143/top-25-best-html5-canvas-games-you-love-to-play)
+2.  **可视化数据**.数据图表，比如:[百度的echart](http://echarts.baidu.com/)    
 
-3. **banner广告**：Flash曾经辉煌的时代，智能手机还未曾出现。现在以及未来的智能机时代，HTML5技术能够在banner广告上发挥巨大作用，用Canvas实现动态的广告效果再合适不过。
-4. 未来=> 模拟器：无论从视觉效果还是核心功能方面来说，模拟器产品可以完全由JavaScript来实现。
-5. 未来=> 远程计算机控制：Canvas可以让开发者更好地实现基于Web的数据传输，构建一个完美的可视化控制界面。
-6. 未来=> 图形编辑器：Photoshop图形编辑器将能够100%基于Web实现。
-7. 其他可嵌入网站的内容(多用于活动页面、特效)：类似图表、音频、视频，还有许多元素能够更好地与Web融合，并且不需要任何插件。
-8. **完整的canvas移动化应用**
-9. 我们课程的目标
-    + 我们不是主要做游戏开发的
-    + 要求必须会做基本的用canvas绘制的特效页面：比如，传智前端官网。
-    + 会用canvas做一些简单的广告、活动页面
-10. 我们课程的案例和项目演示
-11. canvas的标准： 
+3.  **banner广告**：Flash曾经辉煌的时代，智能手机还未曾出现。现在以及未来的智能机时代，HTML5技术能够在banner广告上发挥巨大作用，用Canvas实现动态的广告效果再合适不过。
+4.  未来=> 模拟器：无论从视觉效果还是核心功能方面来说，模拟器产品可以完全由JavaScript来实现。
+5.  未来=> 远程计算机控制：Canvas可以让开发者更好地实现基于Web的数据传输，构建一个完美的可视化控制界面。
+6.  未来=> 图形编辑器：Photoshop图形编辑器将能够100%基于Web实现。
+7.  其他可嵌入网站的内容(多用于活动页面、特效)：类似图表、音频、视频，还有许多元素能够更好地与Web融合，并且不需要任何插件。
+8.  **完整的canvas移动化应用**
+9.  canvas的标准： 
     + 最新标准：http://www.w3.org/TR/2dcontext/
     + 稳定版本的标准：http://www.w3.org/TR/2013/CR-2dcontext-20130806/
     + 目前来说，标准还在完善中。先用早期的api足够完成所有的应用
@@ -46,12 +39,12 @@
 ## 2.1 Canvas标签
 
 ### 2.1.1 canvas标签语法和属性  （重点）     
-+ canvas：画布油布的意思 ==英 ['kænvəs]   美 ['kænvəs] ==
++ canvas：画布油布的意思
 + 标签名canvas，需要进行闭合。就是一普通的html标签。
 + 可以设置width和height属性，但是属性值**单位必须是px**，否则忽略。
 + width和hegiht：默认300*150像素
 + 注意：
-    * 不要用CSS控制它的宽和高,会使图片拉伸，
+    * 不要用CSS控制它的宽和高,会使图片拉伸，要写在HTML中，通过内联样式设置宽高，后期操作的时候通过js来设置宽高（canvas的属性进行设置宽高）。
     * **重新设置canvas标签的宽高属性会让画布擦除所有的内容。** 
     * 可以给canvas画布设置背景色
 
@@ -68,7 +61,7 @@
         你的浏览器不支持canvas，请升级浏览器.浏览器不支持，显示此行文本
     </canvas>
 ```
-+ 浏览器不兼容，可以使用*flash*等手段进行**优雅降级**
++ 一般在移动端支持比较好，PC端支持不太好，可以使用*flash*等手段进行**优雅降级**
 
 
 ## 2.2 canvas绘图上下文context
@@ -77,7 +70,8 @@
 + 上下文：所有的绘制操作api的入口或者集合。
 + Canvas自身无法绘制任何内容。Canvas的绘图是使用JavaScript操作的。
 + Context对象就是JavaScript操作Canvas的接口。
-  *使用[CanvasElement].getContext(‘2d’)来获取2D绘图上下文。        
+  Canvas支持基本绘图能力的2D上下文，以及基于WebGL的3D上下文
++ *使用[CanvasElement].getContext(‘2d’)来获取2D绘图上下文，
 ```
 var canvas  = document.getElementById( 'cavsElem' ); //获得画布
 var ctx = canvas.getContext( '2d' );//注意：2d小写， 3d：webgl
@@ -86,7 +80,7 @@ var ctx = canvas.getContext( '2d' );//注意：2d小写， 3d：webgl
 ## 2.3 基本的绘制路径（重点）
 ### 2.3.1 canvas坐标系
     canvas坐标系，从最左上角0,0开始。x向右增大， y向下增大
-<img src="imgs/canvas-x-y.png" height="532" width="730">
+![QQ图片20170106072753](C:\Users\wochu\Desktop\LearningNote\s_018canvas\QQ图片20170106072753.png)
 
 ### 2.3.2 设置绘制起点(moveTo)
     * 语法：ctx.moveTo(x, y); 
@@ -192,8 +186,8 @@ var ctx = canvas.getContext( '2d' );//注意：2d小写， 3d：webgl
         - 在Math提供的方法中**sin、cos等都使用的弧度**    
 
 
-## 2.5 绘制文字（会使用就可以了）
-### 2.5.1 绘制上下文的文字属性 （有印象就行了） 
+## 2.5 绘制文字
+### 2.5.1 绘制上下文的文字属性  
 + font 设置或返回文本内容的当前字体属性
     * font 属性使用的语法与 CSS font 属性相同。
 ```
@@ -256,8 +250,7 @@ var ctx = canvas.getContext( '2d' );//注意：2d小写， 3d：webgl
     context.drawImage(img,x,y,width,height);   
     参数说明：width 绘制图片的宽度，  height：绘制图片的高度
     如果指定宽高，最好成比例，不然图片会被拉伸</em>
-        等比公式：  toH = Height * toW   /  Width;  //等比 
-                 设置高 = 原高度 * 设置宽/ 原宽度;
+    设置高 = 原高度 * 设置宽/原宽度;
 
 ### 2.6.3 图片裁剪，并在画布上定位被剪切的部分
     context.drawImage(img,sx,sy,swidth,sheight,x,y,width,height);
@@ -296,13 +289,11 @@ var ctx = canvas.getContext( '2d' );//注意：2d小写， 3d：webgl
     构造函数的原型就是：构造对象的模板，构造函数原型里面的所有的属性和方法都会共享给所有的 构造函数构造出来的所有实例。
   <img src="imgs/prototype.png" height="763" width="872" alt="">
 
-+ 案例： 08绘制图片.html
-+ 案例： 09绘制图片裁剪.html
-+ 案例： 10序列帧动画.html
-+ 案例： 11面向对象版本的动画帧.html  **重点**
+  ​
 
 
-## 2.6.6 补充 sublime制作代码段（推荐--已结讲过了）
+
+## 2.6.6 补充 sublime制作代码段（推荐--已经讲过了）
 
 第一步：sublime菜单栏→ 工具 → 制作代码段 
 
@@ -359,11 +350,7 @@ var ctx = canvas.getContext( '2d' );//注意：2d小写， 3d：webgl
     ctx.shadowOffsetY = 10;
     ctx.fillRect(100, 100, 100, 100);
 ```
-例如：
 
-+ 案例： 12设置box盒子阴影.html
-
-+ 设置png图片的阴影，图片透明部分不会被投影。
 
 ## 3.2 复杂样式（了解）
 
@@ -380,12 +367,11 @@ var ctx = canvas.getContext( '2d' );//注意：2d小写， 3d：webgl
     grd.addColorStop(1,"white");  //添加一个渐变颜色
     ctx.fillStyle =grd;           //关键点，把渐变设置到 填充的样式
 ```
-案例13设置线性渐变.html
+
 
 ### 3.2.2 设置圆形渐变（径向渐变） 了解
 + 创建放射状/圆形渐变对象。可以填充文本、形状等
 + context.createRadialGradient(x0,y0,r0,x1,y1,r1);
-+ radial   半径的；放射状的；光线的；光线状的   英 ['reɪdɪəl]   美 ['redɪəl]
 + 参数详解：
     * x0:  渐变的开始圆的 x 坐标
     * y0:  渐变的开始圆的 y 坐标
@@ -508,14 +494,14 @@ ctx.fillRect(100, 100, 500, 500);
         -  翻译.：屁股；烟头；笑柄；靶垛；粗大的一端  英 [bʌt]   美 [bʌt]
     *   round ：  向线条的每个末端添加圆形线帽。
     *   square：  向线条的每个末端添加正方形线帽。      
-            <img src="imgs/linecap.png" height="303" width="480" >  
-            参考：23线的样式.html
+                                        <img src="imgs/linecap.png" height="303" width="480" >  
+                                        参考：23线的样式.html
 +   lineJoin    设置或返回两条线相交时，所创建的拐角类型
     *   bevel:   创建斜角。
         - 翻译. 斜角；斜面；[测] 斜角规  英 ['bev(ə)l]   美 ['bɛvl]
     *   round:   创建圆角。
     *   miter:   默认。创建尖角         
-            <img src="imgs/linejoin.png" height="387" width="453" alt="">
+                                        <img src="imgs/linejoin.png" height="387" width="453" alt="">
 
 +   lineWidth   设置或返回当前的线条宽度
 +   miterLimit  设置或返回最大斜接长度
@@ -569,9 +555,6 @@ ctx.moveTo(400,400);
 ctx.bezierCurveTo(500, 200, 600, 600, 700, 300);
 ctx.stroke();  
 ```
-+ 案例：25绘制贝塞尔曲线.html          
-  <img src="imgs/beziercurve.gif" height="166" width="290" alt="">
-
 ## 3.10了解创建两条切线的弧（知道有）
 + 在画布上创建介于当前起点和两个点形成的夹角的切线之间的弧
 + 语法： context.arcTo(x1,y1,x2,y2,r); //类比：css3中的圆角。
@@ -605,13 +588,13 @@ ctx.stroke();
 ##  3.13 如果以后做canvas游戏方向开发深入学习可以扩展内以下容：
 + setTransform()  将当前转换重置为单位矩阵。然后运行 transform()
 + transform() 替换绘图的当前转换矩阵
-+ globalCompositeOperation    设置或返回新图像如何绘制到已有的图像上
++ globalCompositeOperation设置或返回新图像如何绘制到已有的图像上
 + 像素操作
 
 # 四、 Canvas开发库封装
 ## 4.1封装常用的绘制函数
 ### 4.1.1封装一个矩形
-    //思考：我们用到的矩形需要哪些绘制的东西呢？
+    //思维方式
     1、矩形的 x、y坐标
     2、矩形的宽高
     3、矩形的边框的线条样式、线条宽度
@@ -651,7 +634,7 @@ ctx.stroke();
         constructor: ItcastRect
     };
 
-+ 4.1.2作业：尝试着封装一个圆形？
++ 4.1.2尝试着封装一个圆形
 ```
 //封装圆形的代码的答案：不要偷看
 function ItcastCircle( option ) {
@@ -721,8 +704,6 @@ http://threejs.org/
      * 社区更新比较活跃，github托管源码
      * 性能也不错
 ```
-
-+ 其他的还有很多，希望以后能用到你们的库。
 
 
 # 五、Konva的使用快速上手
@@ -847,8 +828,6 @@ tween.play();   //启动动画
     * Konva.Easings.StrongEaseOut 
     * Konva.Easings.StrongEaseInOut 
 
-+ 动画效果参考： 29Konva动画缓动效果案例.html
-
 ### 5.3.2 动画to的使用
 + to就是对tween的封装，比较简单好用。
 ```
@@ -921,29 +900,6 @@ tween.play();   //启动动画
     });
 ```
 
-### 5.3.6 进度条案例
-
-### 5.3.7 传智官网案例
-+ 三角函数的补充
-    * Math.sin(弧度); //夹角对面的边 和 斜边的比值
-    * Math.cos(弧度); //夹角侧边 与斜边的比值
-+ 圆形上面的点的坐标的计算公式
-    * x =x0 + Math.cos(rad) * R;//x0和y0是圆心点坐标
-    * y =y0 + Math.sin(rad) * R;//注意都是弧度
-      <img src="imgs/圆形点的坐标计算公式.png" height="581" width="830" alt="">
-
-+ group的灵活运用
-    * konva的group很灵活，每个group都有自己的坐标系
-    * group可以包含其他的group，可以对group做整个组的动画
-    * group可以通过getChidren();//可以拿到直接子级元素。
-```
-    var group = new Konva.Group({
-        x: 0,
-        y: 0
-    });
-    group.add(rect);
-```
-
 ## 5.4 Konva的事件（重要）
 ```
     var rect = new Konva.Rect({
@@ -996,61 +952,52 @@ tween.play();   //启动动画
 ### 5.7 柱状图案例
 +  histogram n. [统计] 直方图；柱状图  英 ['hɪstəgræm]   美 ['hɪstəɡræm]
 
-# 六、Canvas项目实战
 
-# 七、Canvas优化
-```
- <!-- requestAnim shim layer by Paul Irish -->
-    window.requestAnimFrame = (function(){
-      return  window.requestAnimationFrame       || 
-              window.webkitRequestAnimationFrame || 
-              window.mozRequestAnimationFrame    || 
-              window.oRequestAnimationFrame      || 
-              window.msRequestAnimationFrame     || 
-              function(/* function */ callback, /* DOMElement */ element){
-                window.setTimeout(callback, 1000 / 60);
-              };
-    })();
-  
+# 六、SVG （了解）#
 
-// example code from mr doob : http://mrdoob.com/lab/javascript/requestanimationframe/
+### 6.1.介绍###
 
-var canvas, context, toggle;
+SVG 指可伸缩矢量图形 (Scalable Vector Graphics)，使用 XML 格式定义图形，所以这意味着 SVG DOM 中的每个元素都是可用的，以为某个元素附加 JavaScript 事件处理器。
 
-init();
-animate();
+### 6.2.SVG 是万维网联盟的标准###
 
-function init() {
+### 6.3SVG 的优势	
 
-    canvas = document.createElement( 'canvas' );
-    canvas.width = 512;
-    canvas.height = 512;
+- SVG 图像可通过文本编辑器来创建和修改
+- SVG 图像可被搜索、索引、脚本化或压缩
+- SVG 是可伸缩的
+- SVG 图像可在任何的分辨率下被高质量地打印
+- SVG 可在图像质量不下降的情况下被放大
 
-    context = canvas.getContext( '2d' );
+### 6.4SVG案例###
 
-    document.body.appendChild( canvas );
+~~~html
+<!<!DOCTYPE h
 
-}
+<html>
 
-function animate() {
-    requestAnimFrame( animate );
-    draw();
+<head> 
 
-}
+<meta charset="utf-8"> 
 
-function draw() {
+<title>菜鸟教程(runoob.com)</title> 
 
-    var time = new Date().getTime() * 0.002;
-    var x = Math.sin( time ) * 192 + 256;
-    var y = Math.cos( time * 0.9 ) * 192 + 256;
-    toggle = !toggle;
+</head>
 
-    context.fillStyle = toggle ? 'rgb(200,200,20)' :  'rgb(20,20,200)';
-    context.beginPath();
-    context.arc( x, y, 10, 0, Math.PI * 2, true );
-    context.closePath();
-    context.fill();
+<body>
 
-}
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="190">
 
-```
+   <polygon points="100,10 40,180 190,60 10,60 160,180"
+
+   style="fill:lime;stroke:purple;stroke-width:5;fill-rule:evenodd;"/>
+
+</svg>
+
+</body>
+
+</html>
+~~~
+### 6.5 canvas和SVG的区别###
+
+![QQ图片20170106075431](C:\Users\wochu\Desktop\LearningNote\s_018canvas\imgs\QQ图片20170106075431.png)
