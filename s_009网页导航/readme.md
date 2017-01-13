@@ -36,7 +36,7 @@
    * 固定在任意位置：
 
          top{
-         
+
             		 position:fixed;
             		 _position:absolute;
             		 bottom:0;//这两个值根据位置改变
@@ -45,9 +45,9 @@
 
 * 老师实例中用到的是这样子的，可以试一下，可能有用
 
-	*html #menu ul li a.current{
-	    	position:absolute;
-			top:expression(((e=document.documentElement.scrollTop)?e:document.body.scrollTop)+100+"px")
+  *html #menu ul li a.current{
+      	position:absolute;
+      	top:expression(((e=document.documentElement.scrollTop)?e:document.body.scrollTop)+100+"px")
 
 }
 

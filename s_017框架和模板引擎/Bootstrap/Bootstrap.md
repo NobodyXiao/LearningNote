@@ -4,6 +4,8 @@
 
    Bootstrap 是最受欢迎的 HTML、CSS 和 JS 框架，用于开发响应式布局、移动设备优先的 WEB 项目。所有开发者都能快速上手、所有设备都可以适配、所有项目都适用。
 
+   Bootstrap主要被分为 Bootstrap 基本结构、Bootstrap CSS、Bootstrap 布局组件和 Bootstrap 插件几个部分。
+
    Bootstrap 是完全开源的。它的代码托管、开发、维护都依赖 GitHub 平台。
 
 2. **复习CSS3的媒体查询** 
