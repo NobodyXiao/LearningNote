@@ -2,6 +2,10 @@
 
 #### Sass是一门CSS预处理语言，它扩展了CSS语言，增加了变量、Mixin（混入）、函数等特性，使CSS更易维护和扩展。####
 
+**sass文件的后缀名有两种：**
+
+​	**一种是后缀名sass，语法中不使用大括号和分号；另外一种是scss，使用大括号和分号。**
+
 **1.安装Sass的步骤：**
 
 ​	**1.1因为sass依赖于ruby环境，所以装sass之前先确认装了ruby。**
@@ -18,225 +22,407 @@
 
 ​	**2.1命令行进行编译**
 
-​		
+​	进入sass文件的存放目录，之后使用**sass  test.scss  test.css**即可将scss文件编译成css文件
 
-**1.如何编译编写好的Sass文件：** 
-
-​	**1.1.使用node.js编译（服务器端的方法）** 
-
-​		a.确保电脑上已经安装node.js和包管理工具npm
-
-​		b.通过npm安装LESS包，命令如下所示：npm install -g less命令
-
-​		c.**进入到你的less文件目录** ，编译less文件，**输入lessc test.less > test.css命令** 
-
-​		例如我的less文件存放目录在 E:\Code\VS2013\BootstrapDemo\LessDemo\Less\test.less
-
-​		那么编译命令行代码就是 E:\Code\VS2013\BootstrapDemo\LessDemo\Less >lessc test.less > test.css
-
-​	**1.2浏览器编译（客户端的方法）** 
-
-​		**LESS可以在浏览器端不用编译直接使用** 。在浏览器端使用LESS的时候，需要引入一个JS文件，这个JS文件能够把LESS文件在浏览器端编译成CSS文件，然后在呈现到页面上。
-
-​		1.2.1首先在你的页面上引入编写好的less文件，使用link引入，其中style属性指定为stylesheet/less
-
-​		1.2.2从官网下载less.js文件，引入到页面中，地址：https://github.com/less/less.js/archive/v1.7.3.zip
-
-​		或者引入 CDN**<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js"></script>	** 
-
-​		注意：本地静态网页不能直接使用这种方法，
-
-​	**1.3第三方使用工具（Koala）**
-
-​		Koala 是一款桌面程序，支持 less 、 sass 、 coffeescript 即时编译，帮助 web 开发者更高效地使用 less 、 sass 、 coffeescript 开发。
-
-​		使用方法：只要将想要编译的整个less文件夹拖进图形化界面中，右键单击，选择保存位置即可。
-
-**2.使用less的好处**
-
-​	用编程的思想来编写样式，方便以后整体修改CSS样式，提高开发效率
-
-**3. 变量：** 将需要重复使用或经常修改的值定义为变量，需要使用的地方引用，变量通常以@符号进行定义
-
-​	less书写的例子：
+​	如果你想**监视Sass文件的变化**，一旦sass文件有改动，css文件自动编译成最新的，那么就使用下边命令：
 
 ```
-@变量名: 变量值;
-@bgColor: #f5f5f5;
-@bodyWidth: 100px;
+		// watch a file监视一个sass文件变化
+
+　　		sass --watch input.scss:output.css
+
+　　		// watch a directory监视一个sass文件夹，自动更新css文件夹，适用于编译多个sass文件的情况
+
+　　		sass --watch app/sass:public/stylesheets
+
+```
+
+​	**2.2第三方工具编译（GUI编译）**
+
+​	除了使用命令行编译，你还可以使用第三方工具进行编译，koala是一个优秀的编译器，界面清晰，操作简单，可以同时编译less和sass。
+
+​	**2.3Sass还可以进行在线编译**
+
+**3.Sass相关语法**
+
+​	**3.1变量**
+
+​		SASS允许使用变量，所有变量以$开头，如果变量需要镶嵌在字符串之中，就必须需要写在#{}之中。
+
+```	
+    $blue : #1875e7;　//定义变量需要以$开头
+　　div {
+　　　color : $blue;
+　　}
+　　$side : left;
+　　.rounded {
+　　　　border-#{$side}-radius: 5px;//如果变量镶嵌在字符串中间，那么就需要将变量写在#$中
+　　}
+```
+
+​	**当前sass没有变量作用域这个概念，后边重新定义的变量，会覆盖之前定义的变量，这是sass最大的诟病，不过在sass 3.4以后的版本中将正式使用！global，即在声明的变量后边加上这个，那么这个变量就会声明成全局变量**
+
+​	**如果本作用域内没有定义变量，那么将会一层层向上寻找，如果没有找到，将使用全局变量**
+
+​	**在选择器、函数、混合宏...的外面定义的变量为全局变量**
+
+```
+$fontSize:      12px;//全局变量
+$color:         #333;//全局变量
 body{
-  width: @bodyWidth;
-  background-color: @bgColor;
+    $fontSize: 14px;   //重新定义$fontSize变量    
+    $color：   #fff !global;//重新定义全局变量color
+    font-size:$fontSize;//在当前作用域找变量$fontSize，找到了，即使用值14px
+    color:$color;
 }
-```
+p{
+    font-size:$fontSize;//当前作用域没有，在全局环境中寻找，找到值12px
+    color:$color;//当前作用域没有，在全局环境中寻找
+}
 
-​	经过编译之后的CSS：
-
-```
+//css style
+//-------------------------------
 body{
-  width: 100px;
-  background-color: #f5f5f5;
+    font-size:14px;
+    color:#fff;
 }
-```
-
-#### LESS 中的变量和其他编程语言一样，可以实现值的复用，同样它也有生命周期，也就是 Scope（变量范围，开发人员惯称之为作用域），简单的讲就是局部变量还是全局变量的概念，查找变量的顺序是先在局部定义中找，如果找不到，则查找上级定义，直至全局。####
-
-**4.嵌套： **在less中可以嵌套的写css样式，遵循一定的规则，先写父级元素的样式，然后写子代选择器，在子代选择器中再写它的样式，这样一级一级嵌套，可以有效的节省代码量，使结构清晰。
-
-**less书写的例子：** 
+p{
+    font-size:12px;
+    color:#fff;
+}
 
 ```
-.container {
-  width: @containerWidth;
-> .row {
-  height: 100%;
+
+​	**3.2嵌套**
+
+​	sass的嵌套包括两种：一种是选择器的嵌套；另一种是属性的嵌套。我们一般说起或用到的都是选择器的嵌套。
+
+​	所谓选择器嵌套指的是在一个选择器中嵌套另一个选择器来实现继承，从而增强了sass文件的结构性和可读性。在选择器嵌套中，可以使用`&`表示父元素选择器。
+
+```
+#top_nav{
+  line-height: 40px;
+  text-transform: capitalize;
+  background-color:#333;
+  li{
+    float:left;
+  }
   a{
-    color: #f40;
-    &:hover{
-      color: #f50;
+    display: block;
+    padding: 0 10px;
+    color: #fff;
+
+    &:hover{   //代表#top_nav a:hover{}
+      color:#ddd;
     }
   }
 }
-div {
-  width: 100px;
-  .hello {
-    background-color: #00f;
+```
+
+​	**3.3混合mixin**
+
+​	sass中使用`@mixin`声明混合，可以传递参数，参数名以$符号开始，多个参数以逗号分开，也可以给参数设置默认值。声明的`@mixin`通过`@include`来调用。
+
+​	带参数的sass：
+
+```
+@mixin opacity($opacity:50) {    //使用$声明变量，顺便把值也写上
+  opacity: $opacity / 100;
+  filter: alpha(opacity=$opacity);
+}
+
+//css style
+//-------------------------------
+.opacity{
+  @include opacity; //参数使用默认值
+}
+.opacity-80{
+  @include opacity(80); //传递参数
+}
+```
+
+​	less的混入是以**类名和#ID**作为名称，之后被调用的，可以带参数也可以不用带参数，调用时不需要使用@incllude。
+
+​	**3.4继承（子元素继承父级元素）**
+
+​	sass中，选择器继承可以让选择器继承另一个选择器的所有样式，并联合声明。**使用选择器的继承，要使用关键词`@extend`，后面紧跟需要继承的选择器。**
+
+```
+h1{
+  border: 4px solid #ff9aa9;
+}
+.speaker{
+  @extend h1;
+  border-width: 2px;
+}
+
+//css style
+//-------------------------------
+h1,.speaker{
+  border: 4px solid #ff9aa9;
+}
+.speaker{
+  border-width: 2px;
+}
+```
+
+​	**3.5%占位符**
+
+​	从sass 3.2.0以后就可以定义占位选择器`%`。这种选择器的优势在于：如果不调用则不会有任何多余的css文件，避免了以前在一些基础的文件中预定义了很多基础的样式，然后实际应用中不管是否使用了`@extend`去继承相应的样式，都会解析出来所有的样式。占位选择器以`%`标识定义，通过`@extend`调用。
+
+```
+//sass style
+//-------------------------------
+%ir{
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
+}
+%clearfix{
+  @if $lte7 {
+    *zoom: 1;
+  }
+  &:before,
+  &:after {
+    content: "";
+    display: table;
+    font: 0/0 a;
+  }
+  &:after {
+    clear: both;
   }
 }
-}
-```
-
-**经过编译之后的CSS：** 
-
-```
-  .container {
-    width: 1024px;
-  }
-  .container > .row {
-    height: 100%;
-  }
-  .container > .row a {
-    color: #f40;
-  }
-  .container > .row a:hover {
-    color: #f50;
-  }
-  .container div {
-    width: 100px;
-  }
-  .container div .hello {
-    background-color: #00f;
-  }
-```
-
-**5.Mixin：**混合，相当于写了一个样式集，以备重复应用的时候，被简单调用，调用一个类名和#id就能解决
-
-```
-.a, #b {
-  color: red;
-}
-.mixin-class {
-  .a();
-}
-.mixin-id {
-  #b();
-}
-```
-
-**通过调用mixin（类名和ID名）来渲染css样式，其中调用时的括号，可有可无。** 
-
-```
-.a, #b {
-  color: red;
-}
-.mixin-class {
-  color: red;
-}
-.mixin-id {
-  color: red;
-}
-```
-
-**不输出Mixin，在定义时候，加上括号即可,另外Mixin还可以带参数** 
-
-```
-.my-mixin {
-  color: black;
-}
-.my-other-mixin(@color:red){
-  background: @color;
-}
-.class {
-  .my-mixin;
-  .my-other-mixin(white);
-}
-```
-
-通过调用mixin之后的CSS样式
-
-```
-.my-mixin {
-  color: black;
-}
-.class {
-  color: black;
-  background: white;
-}
-```
-
-**包含选择器的Mixin例子：** 
-
-```
-.my-hover-mixin() {
-  &:hover {
-    border: 1px solid red;
+#header{
+  h1{
+    @extend %ir;
+    width:300px;
   }
 }
-button {
-  .my-hover-mixin();
+.ir{
+  @extend %ir;
 }
-```
 
-输出的CSS：
-
-```
-button:hover {
-  border: 1px solid red;
+//css style
+//-------------------------------
+#header h1,
+.ir{
+  color: transparent;
+  text-shadow: none;
+  background-color: transparent;
+  border: 0;
 }
+#header h1{
+  width:300px;
+}
+
 ```
 
-**6.Import:** 我们可以在开发阶段将样式放到多个文件中，最后通过@import 的方式合并
+如上代码，定义了两个占位选择器`%ir`和`%clearfix`，其中`%clearfix`这个没有调用，所以解析出来的css样式也就没有clearfix部分。占位选择器的出现，使css文件更加简练可控，没有多余。所以可以用其定义一些基础的样式文件，然后根据需要调用产生相应的css。
+
+**ps**：在`@media`中暂时不能`@extend` `@media`外的代码片段，以后将会可以。
+
+​	**3.6注释**
+
+​	sass有两种注释方式，一种是标准的css注释方式`/* */`，另一种则是`//`双斜杆形式的单行注释，不过这种单行注释不会被转译出来。（同less的注释方式一样）
+
+​	**3.7函数**
+
+​	sass定义了很多函数可供使用，当然你也可以自己定义函数，以@fuction开始。sass的官方函数链接为：[sass fuction](http://sass-lang.com/documentation/Sass/Script/Functions.html)，实际项目中我们使用最多的应该是颜色函数，而颜色函数中又以lighten减淡和darken加深为最，其调用方法为`lighten($color,$amount)`和`darken($color,$amount)`，它们的第一个参数都是颜色值，第二个参数都是百分比。
 
 ```
-// main.less
-@btnColor: red;
-@import url('_buttom.less');
+//sass style
+//-------------------------------                     
+$baseFontSize:      10px !default;//默认变量
+$gray:              #ccc !defualt;//默认变量        
+
+// pixels to rems //把px转换成rem的函数
+@function pxToRem($px) {
+  @return $px / $baseFontSize * 1rem;
+}
 
 body{
-  width: 1024px;
+  font-size:$baseFontSize;
+  color:lighten($gray,10%);//颜色减淡函数
 }
-// _buttom.less
-.btn{
-  color: @btnColor;
+.test{
+  font-size:pxToRem(16px);
+  color:darken($gray,10%);//颜色加深函数
 }
-```
 
-css输出：
-
-```
-.btn{
-  color: red;
-}
+//css style
+//-------------------------------
 body{
-  width: 1024px;
+  font-size:10px;
+  color:#E6E6E6;
+}
+.test{
+  font-size:1.6rem;
+  color:#B3B3B3;
+}
+
+```
+
+​	**3.8运算**
+
+​	sass具有运算的特性，可以对数值型的Value(如：数字、颜色、变量等)进行加减乘除四则运算。**请注意运算符前后请留一个空格，不然会出错。**
+
+```
+$baseFontSize:          14px !default;
+$baseLineHeight:        1.5 !default;
+$baseGap:               $baseFontSize * $baseLineHeight !default;
+$halfBaseGap:           $baseGap / 2  !default;
+$samllFontSize:         $baseFontSize - 2px  !default;
+
+//grid 
+$_columns:                     12 !default;      // Total number of columns
+$_column-width:                60px !default;   // Width of a single column
+$_gutter:                      20px !default;     // Width of the gutter
+$_gridsystem-width:            $_columns * ($_column-width + $_gutter); //grid system width
+```
+
+​	**3.9条件判断和循环**
+
+​	**3.9.1@if判断**
+
+​	`@if`可一个条件单独使用，也可以和`@else`结合多条件使用
+
+```
+//sass style
+//-------------------------------
+$lte7: true;//作为判断条件true或者false
+$type: monster;//作为以后括号中进行比较的变量
+.ib{
+    display:inline-block;
+    @if $lte7 {
+        *display:inline;
+        *zoom:1;//设置或检索对象的缩放比例
+    }
+}
+p {
+  @if $type == ocean {
+    color: blue;
+  } @else if $type == matador {
+    color: red;
+  } @else if $type == monster {
+    color: green;
+  } @else {
+    color: black;
+  }
+}
+
+//css style
+//-------------------------------
+.ib{
+    display:inline-block;
+    *display:inline;
+    *zoom:1;
+}
+p {
+  color: green; 
+}
+
+```
+
+​	**3.9.2三目判断**
+
+​	语法为：`if($condition, $if_true, $if_false)` 。三个参数分别表示：条件，条件为真的值，条件为假的值。
+
+```
+if(true, 1px, 2px) => 1px
+```
+
+​	**3.9.3for循环**
+
+​	for循环有两种形式，分别为：`@for $var from  through `和`@for $var from  to `。$i表示变量，start表示起始值，end表示结束值，这两个的区别是关键字through表示包括end这个数，而to则不包括end这个数（其实相当于有等号和没等号的分别）。
+
+```
+//sass style
+//-------------------------------
+@for $i from 1 through 3 {
+  .item-#{$i} { width: 2em * $i; }
+}
+
+//css style
+//-------------------------------
+.item-1 {
+  width: 2em; 
+}
+.item-2 {
+  width: 4em; 
+}
+.item-3 {
+  width: 6em; 
 }
 ```
 
-**7.运算和函数：**在less中可以对数值型的 value（数字、颜色、变量等）进行加减乘除四则运算，同时Less也提供了一些函数，字符串函数，列表函数，数学函数，类型函数以及函数方面的函数等等，方便用户使用
+本身正常的for循环，if(var i=0; i<5; i++)，像sass这样限定了变量的变化趋势（从1到3），就直接说明是i是自加的，如果变量是从10变化到5，那么变量就是自减的。
 
-**8.Comments:** 
+​	**3.10.导入**
 
-适当的注释是保证代码可读性的必要手段，LESS 对注释也提供了支持，主要有两种方式：单行注释和多行注释，这与 JavaScript 中的注释方法一样，我们这里不做详细的说明，只强调一点：LESS 中单行注释 (// 单行注释 ) 是不能显示在编译后的 CSS 中，所以如果你的注释是针对样式说明的请使用多行注释。
+​	sass的导入(`@import`)规则和CSS的有所不同，编译时会将`@import`的scss文件合并进来只生成一个CSS文件。但是如果你在sass文件中导入css文件如`@import 'reset.css'`，那效果跟普通CSS导入样式文件一样，导入的css文件不会合并到编译后的文件中，而是以`@import`方式存在。
+
+​	所有的sass导入文件都可以忽略后缀名`.scss`。一般来说基础的文件命名方法以_开头，如`_mixin.scss`。这种文件在导入的时候可以不写下划线，可写成`@import "mixin"`。
+
+​	被导入的sass文件a.scss
+
+```
+//a.scss
+//-------------------------------
+body {
+  background: #eee;
+}
+```
+
+​	需要导入样式的sass文件b.scss：
+
+```
+@import "reset.css";
+@import "a";
+p{
+  background: #0982c1;
+} 
+```
+
+​	转译出来的b.css样式：
+
+```
+@import "reset.css";
+body {
+  background: #eee;
+}
+p{
+  background: #0982c1;
+}
+```
+
+根据上面的代码可以看出，b.scss编译后，reset.css继续保持import的方式，而a.scss则被整合进来了。
+
+**4.使用过程中遇到的问题**
+
+​	**4.1.编码问题**
+
+​	我的是win10系统，如果你在编译的过程，存放sass文件的目录包含中文名称，那么你可能会遇到以下问题，
+
+**Syntax error: Invalid GBK character**
+
+​	**解决办法：**
+
+​		1.如果你使用命令行编译，那么你需要找到ruby安装目录下边的一个文件engine.rb，我的是以下路径
+
+C:\Ruby\lib\ruby\gems\1.9.1\gems\sass-3.3.14\lib\sass，之后在所有的require之后，添加一行代码
+
+```
+Encoding.default_external = Encoding.find('utf-8')
+```
+
+​		2.如果你使用GUI软件进行编译（koala），那么你也需要找到这个文件，进行相应的操作，可能存放在类似下边地址的路径中
+
+C:\Program Files (x86)\Koala\rubygems\gems\sass-3.3.7\lib\sass
+
+​	
+
+
 
 
 
