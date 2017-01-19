@@ -105,9 +105,9 @@
 
      **4-5** 条件注释：当满足一定条件的时候才会载入script标签，如果不满足条件，则当做注释，没什么作用
 
-5. **字体图标** 
+     <script src="//cdn.bootcss.com/html5shiv/3.7/html5shiv.min.js"></script>，html5shiv的引入cdn地址
 
-   <script src="//cdn.bootcss.com/html5shiv/3.7/html5shiv.min.js"></script>，html5shiv的引入cdn地址
+5. **字体图标** 
 
    做字体图标的网站：icomoon.io
 

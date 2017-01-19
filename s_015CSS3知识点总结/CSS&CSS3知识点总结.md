@@ -250,19 +250,19 @@ background 简写属性在一个声明中设置所有的背景属性。
 
 - background-color：规定要使用的背景颜色。
 
-- background-position：规定背景图像的位置。
+- background-position：规定背景图像的位置。可能的值有百分比，以及方位词（top left，center center）
 
-- background-size：规定背景图片的尺寸。
+- background-size：规定背景图片的尺寸。可能的值有cover,contain,percentage,length
 
-- background-repeat：规定如何重复背景图像。
+- background-repeat：规定如何重复背景图像。可能的值有repeat,no-repeat,repeat-x,repeat-y,inherit
 
-- background-origin：规定背景图片的定位区域。
+- background-origin：规定背景图片的定位区域。可能的值有border-box，padding-box，content-box
 
-- background-clip：规定背景的绘制区域。
+- background-clip：规定背景的绘制区域。可能的值有border-box，padding-box，content-box
 
 - background-attachment：规定背景图像是否固定或者随着页面的其余部分滚动。
 
-- background-image：规定要使用的背景图像。
+- background-image：规定要使用的背景图像。可以是多个图像一起使用
 
   案例：
 
@@ -322,17 +322,17 @@ background 简写属性在一个声明中设置所有的背景属性。
 
   ​
 
- #### 2.边框圆角 	 ####  
+   #### 2.边框圆角  ####  
 
- 	border-radius：让边框产生圆角,如果只有一个数值的时候，那么会在四个角产生圆角，如果是想要在某个角不产生圆角，那么可以不在那个角设置数值
+   border-radius：让边框产生圆角,如果只有一个数值的时候，那么会在四个角产生圆角，如果是想要在某个角不产生圆角，那么可以不在那个角设置数值
 
- 	方位写法:border-top-left-radius,左上
+   方位写法:border-top-left-radius,左上
 
- ​			border-top-right-radius,右上
+   ​		border-top-right-radius,右上
 
- ​			border-bottom-right-radius,右下
+   ​		border-bottom-right-radius,右下
 
- ​			border-bottom-left-radius，左下
+   ​		border-bottom-left-radius，左下
 
 #### 3.边框图片#### 
 
@@ -380,15 +380,15 @@ background 简写属性在一个声明中设置所有的背景属性。
 
 -  **径向渐变（Radial Gradients）- 由它们的中心定义**
 
-   background: radial-gradient(*center, shape size, start-color, ..., last-color*);
+    background: radial-gradient(*center, shape size, start-color, ..., last-color*);
 
-   径向渐变的定位原点可以自己设置，另外形状可以自己设置，一般是圆形和椭圆
+    径向渐变的定位原点可以自己设置，另外形状可以自己设置，一般是圆形和椭圆
 
-   ​
+    ​
 
-     **6.2线性渐变和径向渐变都可以进行重复：** 
+      **6.2线性渐变和径向渐变都可以进行重复：** 
 
-   background: repeating-radial-gradient(red, yellow 10%, green 15%);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 background: repeating-linear-gradient(red, yellow 10%, green 20%);  
+    background: repeating-radial-gradient(red, yellow 10%, green 15%);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 background: repeating-linear-gradient(red, yellow 10%, green 20%);  
 
  #### 7.文本效果：####
 
@@ -429,7 +429,7 @@ background 简写属性在一个声明中设置所有的背景属性。
 
 -  matrix()：有六个参数，包含旋转，缩放，移动（平移）和倾斜功能。
 
-   **3D转化，translateX(*x*)，scaleY(*y*)，rotateZ(*angle*)等等，分为3个方向进行变化，X,Y,Z** 
+    **3D转化，translateX(*x*)，scaleY(*y*)，rotateZ(*angle*)等等，分为3个方向进行变化，X,Y,Z** 
 
  #### 10.过渡（transition）####
 
@@ -439,9 +439,9 @@ background 简写属性在一个声明中设置所有的背景属性。
 
 -  指定效果的持续时间。
 
-   **10.2**过渡有4个属性值：transition-delay，transition-duration，
+    **10.2**过渡有4个属性值：transition-delay，transition-duration，
 
-   ​				       transition-property，transition-timing-function
+    ​				       transition-property，transition-timing-function
 
  #### 11.动画 ：####
 

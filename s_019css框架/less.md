@@ -26,7 +26,7 @@
 
 ​		或者引入 CDN**<script src="//cdnjs.cloudflare.com/ajax/libs/less.js/1.7.3/less.min.js"></script>	** 
 
-​		注意：本地静态网页不能直接使用这种方法，
+​		**注意：本地静态网页不能直接使用这种方法，需要用到本地服务器，将代码上传至本地服务器即可。**
 
 ​	**1.3第三方使用工具（Koala）**
 
