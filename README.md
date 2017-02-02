@@ -1,7 +1,9 @@
 # LearningNote
 
+
 前端学习小记
 ---
+
 
 Practice List
 ---
@@ -13,11 +15,13 @@ Practice List
 - [仿照分享按钮那种侧边栏动画](./s_004侧边栏滑动动画/分享侧边栏.html)
 
 
-- <img src="xxxxxxxx" alt="gonghuan post image">
-- var imgsrc = xxxxxxxxx;
-- var imgdesc = "gonghuan post image"
+- git在上传代码的时候，出现Please tell me who you are这个问题，输入以下两行代码即可
 
-var img_tag = 
+  git config user.name “username”
+
+  换行输入git config user.email “email” 
+
+  ​
 
 
 
