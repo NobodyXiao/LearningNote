@@ -338,7 +338,7 @@ background 简写属性在一个声明中设置所有的背景属性。
 
  	**border-image：** 允许你指定一个图片作为边框
 
- ​	语法：border-image: *source slice width outset repeat*;
+ 	语法：border-image: *source slice width outset repeat*;
 
  	source:指的是边框图片的资源，也就是用来作为边框的图片
 
@@ -380,15 +380,15 @@ background 简写属性在一个声明中设置所有的背景属性。
 
 -  **径向渐变（Radial Gradients）- 由它们的中心定义**
 
-    background: radial-gradient(*center, shape size, start-color, ..., last-color*);
+     background: radial-gradient(*center, shape size, start-color, ..., last-color*);
 
-    径向渐变的定位原点可以自己设置，另外形状可以自己设置，一般是圆形和椭圆
+     径向渐变的定位原点可以自己设置，另外形状可以自己设置，一般是圆形和椭圆
 
-    ​
+     ​
 
-      **6.2线性渐变和径向渐变都可以进行重复：** 
+       **6.2线性渐变和径向渐变都可以进行重复：** 
 
-    background: repeating-radial-gradient(red, yellow 10%, green 15%);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 background: repeating-linear-gradient(red, yellow 10%, green 20%);  
+     background: repeating-radial-gradient(red, yellow 10%, green 15%);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 background: repeating-linear-gradient(red, yellow 10%, green 20%);  
 
  #### 7.文本效果：####
 
@@ -429,7 +429,7 @@ background 简写属性在一个声明中设置所有的背景属性。
 
 -  matrix()：有六个参数，包含旋转，缩放，移动（平移）和倾斜功能。
 
-    **3D转化，translateX(*x*)，scaleY(*y*)，rotateZ(*angle*)等等，分为3个方向进行变化，X,Y,Z** 
+     **3D转化，translateX(*x*)，scaleY(*y*)，rotateZ(*angle*)等等，分为3个方向进行变化，X,Y,Z** 
 
  #### 10.过渡（transition）####
 
@@ -439,9 +439,9 @@ background 简写属性在一个声明中设置所有的背景属性。
 
 -  指定效果的持续时间。
 
-    **10.2**过渡有4个属性值：transition-delay，transition-duration，
+     **10.2**过渡有4个属性值：transition-delay，transition-duration，
 
-    ​				       transition-property，transition-timing-function
+     ​				       transition-property，transition-timing-function
 
  #### 11.动画 ：####
 
@@ -482,7 +482,30 @@ background 简写属性在一个声明中设置所有的背景属性。
 
 ​	除非你使用not 或 only 操作符，否则所有的样式会适应在所有设备上显示效果，此处all是经常用到的。
 
+#### 17.position定位的新属性值：sticky####
 
+​	**17.1** sticky属性值不是W3C标准推荐的用法，主要应用在移动端，另外PC和ios的safari中也兼容此属性。用于解决因scroll监听引起的问题。
+
+​	**17.2** scroll监听问题：
+
++ 在浏览器端和安卓设备上，scroll事件连续触发，如果在监听函数中做过于复杂的判断，肯定会暂时阻塞ui（主）线程的渲染，造成卡顿
+
++ 在ios设备中，scroll事件在上下滑动的过程中js不会连续执行，只在滑动结束的时刻执行一次，并且不支持左右滑动事件的触发
+
+  **17.3** scroll监听问题解决办法：
+
+  + 针对scroll做throttle节流（窗口变化resize，滚动scroll等等），避免每次滑动都执行，可以设置时间间隔，如50ms
+  + 在监听函数中计算元素的layout属性，可用setTimeout在定时器队列尾插入任务，异步渲染
+  + ios设备实现了一个属性－position：sticky，可以不用js来完成粘性布局
+
+
+  **17.4** sticky属性使用条件：	
+
++ 元素并不会脱离文档流，当元素被粘在视口的顶部时，原来在文档流中的位置仍然占据着（在屏幕范围（viewport）内时该元素的位置并不受到定位影响（设置top、left等属性无效），当该元素的位置将要移出偏移范围时，定位又会变成fixed，根据设置的left、top等属性成固定位置的效果。）
+
++ 元素相对于其最近可滚动的祖先元素“粘性定位”，如果其祖先元素都不能滚动，则相对于适口定位
+
++ 元素最近的祖先元素overflow设置为非默认值visible时，则元素相对于该祖先元素进行sticky定位。若最近的祖先元素设置为overflow:hidden，则元素不会sticky定位。
 
 
 
