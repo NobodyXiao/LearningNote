@@ -216,7 +216,7 @@
 
          ​	**d.withCredentials 属性**
 
-         ​	CORS请求默认不发送Cookie和HTTP认证信息。如果要把Cookie发到服务器，**一方面要服务器同意，指定Access-Control-Allow-Credential:ture,另一方面开发者必须在AJAX请求中打开withCredentials属性，即设置xhr.withCredentials = true;**
+         	CORS请求默认不发送Cookie和HTTP认证信息。如果要把Cookie发到服务器，**一方面要服务器同意，指定Access-Control-Allow-Credential:ture,另一方面开发者必须在AJAX请求中打开withCredentials属性，即设置xhr.withCredentials = true;**
 
           	如果**省略withCredentials设置**，有的浏览器还是会一起发送Cookie。这时，可以显式关闭withCredentials，设置xhr.withCredentials = false即可。
 
@@ -293,7 +293,7 @@
           Access-Control-Max-Age: 1728000
           ```
 
-          ​	**c.回归正常浏览器请求和回应**
+          	**c.回归正常浏览器请求和回应**
 
           ​	一旦服务器通过了"预检"请求，**以后每次浏览器正常的CORS请求**，就都跟简单请求一样，会有一个Origin头信息字段。服务器的回应，也都会有一个Access-Control-Allow-Origin头信息字段。
 
@@ -301,7 +301,7 @@
 
           ​	a.JSONP只支持GET请求，CORS支持所有类型的HTTP请求
 
-          ​	b.JSONP的优势在于支持老式浏览器，以及可以向不支持CORS的网站请求数据。
+          	b.JSONP的优势在于支持老式浏览器，以及可以向不支持CORS的网站请求数据。
 
           	c.使用CORS，开发者可以使用普通的XMLHttpRequest发起请求和获得数据，比起JSONP有更好的错误处理。
 
