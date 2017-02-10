@@ -380,15 +380,15 @@ background 简写属性在一个声明中设置所有的背景属性。
 
 -  **径向渐变（Radial Gradients）- 由它们的中心定义**
 
-     background: radial-gradient(*center, shape size, start-color, ..., last-color*);
+      background: radial-gradient(*center, shape size, start-color, ..., last-color*);
 
-     径向渐变的定位原点可以自己设置，另外形状可以自己设置，一般是圆形和椭圆
+      径向渐变的定位原点可以自己设置，另外形状可以自己设置，一般是圆形和椭圆
 
-     ​
+      ​
 
-       **6.2线性渐变和径向渐变都可以进行重复：** 
+        **6.2线性渐变和径向渐变都可以进行重复：** 
 
-     background: repeating-radial-gradient(red, yellow 10%, green 15%);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 background: repeating-linear-gradient(red, yellow 10%, green 20%);  
+      background: repeating-radial-gradient(red, yellow 10%, green 15%);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 background: repeating-linear-gradient(red, yellow 10%, green 20%);  
 
  #### 7.文本效果：####
 
@@ -429,7 +429,7 @@ background 简写属性在一个声明中设置所有的背景属性。
 
 -  matrix()：有六个参数，包含旋转，缩放，移动（平移）和倾斜功能。
 
-     **3D转化，translateX(*x*)，scaleY(*y*)，rotateZ(*angle*)等等，分为3个方向进行变化，X,Y,Z** 
+      **3D转化，translateX(*x*)，scaleY(*y*)，rotateZ(*angle*)等等，分为3个方向进行变化，X,Y,Z** 
 
  #### 10.过渡（transition）####
 
@@ -439,9 +439,9 @@ background 简写属性在一个声明中设置所有的背景属性。
 
 -  指定效果的持续时间。
 
-     **10.2**过渡有4个属性值：transition-delay，transition-duration，
+      **10.2**过渡有4个属性值：transition-delay，transition-duration，
 
-     ​				       transition-property，transition-timing-function
+      ​				       transition-property，transition-timing-function
 
  #### 11.动画 ：####
 
@@ -506,6 +506,14 @@ background 简写属性在一个声明中设置所有的背景属性。
 + 元素相对于其最近可滚动的祖先元素“粘性定位”，如果其祖先元素都不能滚动，则相对于适口定位
 
 + 元素最近的祖先元素overflow设置为非默认值visible时，则元素相对于该祖先元素进行sticky定位。若最近的祖先元素设置为overflow:hidden，则元素不会sticky定位。
+
+
+#### 18.渐进增强和优雅降级####
+
+渐进增强：一开始就针对低版本浏览器进行构建页面，完成基本的功能，然后再针对高级浏览器进行效果、交互、追加功能达到更好的体验。（向上兼容）
+
+优雅降级：一开始就构建站点的完整功能，然后针对浏览器测试和修复。比如一开始使用 CSS3 的特性构建了一个应用，然后逐步针对各大浏览器进行 hack 使其可以在低版本浏览器上正常浏览。（向下兼容）
+
 
 
 
