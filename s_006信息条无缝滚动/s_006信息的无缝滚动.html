@@ -61,14 +61,15 @@
             var Li2 = document.getElementById("text2");
             var Con = document.getElementById("content");
             Con.scrollTop = 0;
-            Li2.innerHTML=Li1.innerHTML;
-           
+            Li2.innerHTML=Li1.innerHTML;//之所以设置Li2是方便能够完整的向上滚动一个内容列表，否则滚动到一半就停止了
             var time = 50;
             
             function scroll(){
 
                 if(Con.scrollTop >= Li1.scrollHeight){
+                //当整个Con滚动过一个新闻列表Li1的高度的时候，就Con.scrollTop重新归零，类似无缝滚动，实则重新开始了一次滚动。
                     Con.scrollTop = 0;
+                    console.log(Con.scrollTop);
                 }else{
                     Con.scrollTop ++;
                 }

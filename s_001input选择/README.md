@@ -5,4 +5,4 @@
 3. 选择其中的一个：获取到相应的输入数字n，通过将parseInt(n)-1对应的hobby标签的checked属性设置成true，实现数字勾选。
 4. 其中需要注意的是，每次选择之前需要清除所有hobby前边的勾选，之后再进行数字范围的判断，对于超出范围的数字进行相应的提示处理。
 
-![input](C:\Users\wochu\Desktop\LearningNote\s_001input选择\input.gif)
+![input](C:\Users\acer\Desktop\LearningNote\s_001input选择\input.gif)

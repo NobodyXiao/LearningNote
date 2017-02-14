@@ -104,9 +104,7 @@ c.编辑解压目录下的`settings.txt`文件（不存在则新建）
 
 在REPL运行环境中，也可以在父函数中嵌套运行子函数，当父函数分为多行进行书写时，REPL运行环境将在子函数体内的每行代码之前继续添加英文省略符（三个小圆点）。
 
-### 6.bom和dom对象？###
-
-### 7.进程和线程### 
+### 6.进程和线程### 
 
 进程：电脑上运行的每一个程序都是一个进程，它代表CPU所能处理的单个任务，CPU总是运行一个进程，其他进程处于非运行状态。（针对于单核CPU来说）
 
@@ -122,7 +120,7 @@ c.编辑解压目录下的`settings.txt`文件（不存在则新建）
 
 5) 从逻辑角度来看，多线程的意义在于一个应用程序中，有多个执行部分可以同时执行。但操作系统并没有将多个线程看做多个独立的应用，来实现进程的调度和管理以及资源分配。**这就是进程和线程的重要区别。**
 
-### 8.Linux系统终端常用命令### 
+### 7.Linux系统终端常用命令### 
 
 ctrl+l--清屏  
 
@@ -168,7 +166,7 @@ ctrl+q重新启动
 
 !-n:p  打印上一条命令（不执行）
 
-### 9.Node.JS的全局对象### 
+### 8.Node.JS的全局对象### 
 
 global:类似于客户端JavaScript运行环境中的windows
 
@@ -176,9 +174,7 @@ process:用于获取当前的Node进程信息，一般用于获取环境变量�
 
 console：Node中内置的console模块，提供操作控制台的输入输出功能
 
-
-
-### 10.模板字符串（反撇号）### 
+### 9.模板字符串（反撇号）### 
 
   ES6引入了一种新型的字符串字面量语法，我们称之为模板字符串（template strings）。除了使用反撇号字符 ` 代替普通字符串的引号 ' 或 " 外，它们看起来与普通字符串并无二致。在最简单的情况下，它们与普通字符串的表现一致，但是模板字符串为JavaScript提供了简单的**字符串插值** 功能，从此以后，你可以通过一种更加美观、更加方便的方式向字符串中插值了。
 
@@ -207,7 +203,7 @@ console：Node中内置的console模块，提供操作控制台的输入输出�
 
        **标签字符串** 
 
-###  11. 代码中清空控制台的方法### 
+###  10. 代码中清空控制台的方法### 
 
   – process.stdout.getWindowSize();
 
@@ -216,13 +212,13 @@ console：Node中内置的console模块，提供操作控制台的输入输出�
   – process.stdout.write('\033[2J');
   – process.stdout.write('\033[0f');
 
-###  12.Node.JS异步操作### 
+###  11.Node.JS异步操作### 
 
 • Node 采用 Chrome V8 引擎处理 JavaScript 脚本，V8 最大特点就是单线程运行，一次只能运行一个任务。
 • Node 大量采用异步操作（asynchronousoperation），即任务不是马上执行，而是插在任务队列的尾部，等到前面的任务运行完后再执行。
 • 优点：提高代码的响应能力。
 
-###  13.Node.js中回调函数的设计### 
+###  12.Node.js中回调函数的设计### 
 
   对于一个函数如果需要定义回调函数，**那么一般回调函数都作为最后一个参数出现** 
 
@@ -234,20 +230,20 @@ console：Node中内置的console模块，提供操作控制台的输入输出�
   ​	 foo1('赵小黑', 19, function(error, data) {
   ​	       if(error) throw error;
   ​	            console.log(data);
-  ​         });
+​           });
 
   **一般回调函数遵循错误优先原则：**
 
   ​	因为之后的操作大多数都是异步的方式，无法通过 trycatch 捕获异常，所以错误优先的回调函数
   ​	的 第一个参数为上一步的错误信息
 
-###  14.console.time### 
+###  13.console.time### 
 
    在Node.js中，当需要统计一段代码的执行时间时，可以使用console.time方法与console.timeEnd方法，其中console.time方法用于标记开始时间，console.timeEnd方法用于标记结束时间，并且将结束时间与开始时间之间经过的毫秒数在控制台中输出。
 
    这两个方法均使用一个参数，参数值可以为任何字符串，但是这两个方法所使用的参数字符串必须相同，才能正确地统计出开始时间与结束时间之间所经过的毫秒数。
 
-### 15.Node.js的事件驱动###
+### 14.Node.js的事件驱动###
 
 ​	Node的事件驱动模型，事件驱动的实质就是**主循环线程+事件触发***的方式来运行程序,事件驱动搞懂这张图
 
@@ -259,17 +255,17 @@ console：Node中内置的console模块，提供操作控制台的输入输出�
 
 ​	前面也说过Node Async IO = CPS + Callback，这一套实现开始于Node开始启动的进程，在这个进程中Node会创建一个循环，每次循环运行就是一个Tick周期，每个Tick周期中会从事件队列查看是否有事件需要处理，如果有就取出事件并执行相关的回调函数。事件队列事件全部执行完毕，node应用就会终止。Node对于堵塞IO的处理在幕后使用线程池来确保工作的执行。Node从池中取得一个线程来执行复杂任务，而不占用主循环线程。这样就防止堵塞IO占用空闲资源。当堵塞任务执行完毕通过添加到事件队列中的回调函数来处理接下来的工作。
 
-### 16.文件的相关操作### 
+### 15.文件的相关操作### 
 
 详情了解简书文章：http://www.jianshu.com/p/5683c8a93511
 
 **return一般都是在函数内部** 
 
-### 17.Javascript模块的规范### 
+### 16.Javascript模块的规范### 
 
 通行的Javascript模块规范共有两种：CMD，[CommonJS](http://wiki.commonjs.org/wiki/Modules/1.1)和[AMD](https://github.com/amdjs/amdjs-api/wiki/AMD)
 
-### 18.eval()函数：###
+### 17.eval()函数：###
 
 ​	eval() 函数可计算某个字符串，并执行其中的的 JavaScript 代码。
 
@@ -277,7 +273,7 @@ console：Node中内置的console模块，提供操作控制台的输入输出�
 
 ​	eg:    eval("2+2")，eval(x+17)，eval("alert('Hello world')")
 
-### 19.process.argv的三个参数###
+### 18.process.argv的三个参数###
 
 ​	argv[0]:当前node进程执行的绝对路径
 
@@ -289,7 +285,7 @@ console：Node中内置的console模块，提供操作控制台的输入输出�
 process.argv.slice(2);//获取process.argv参数中下标为2的参数，并且将这个参数分割为数组
 ```
 
-### 20.CommonJS 模块###
+### 19.CommonJS 模块###
 
 ​	**1.模块的定义** 
 
@@ -368,7 +364,7 @@ process.argv.slice(2);//获取process.argv参数中下标为2的参数，并且�
 ​			– require.main
 ​			– require.resolve()
 
-### 21.require模块###  
+### 20.require模块###  
 
 ​	 1.Node 使用 CommonJS 模块规范，内置的 require 函数用于加载模块文件。
 
@@ -425,7 +421,7 @@ process.argv.slice(2);//获取process.argv参数中下标为2的参数，并且�
 
 ​		5）拿到 module.exports 返回
 
-### 22.Node.Js的核心模块###
+### 21.Node.Js的核心模块###
 
 1. Node内置了一些功能模块，用于与操作系统互动 。 
 
@@ -449,7 +445,7 @@ process.argv.slice(2);//获取process.argv参数中下标为2的参数，并且�
 
    Node.Js网址：[https://nodejs.org/api](https://nodejs.org/api/)[/](https://nodejs.org/api/) 
 
-### 23.包的概念和包管理工具###
+### 22.包的概念和包管理工具###
 
 1. 什么是包？ 
 
@@ -511,7 +507,7 @@ process.argv.slice(2);//获取process.argv参数中下标为2的参数，并且�
 
    •npm cache [clean|ls]
 
-### 24.Buffer缓冲区###
+### 23.Buffer缓冲区###
 
 	#### 1.对于Buffer的介绍####
 
@@ -629,7 +625,7 @@ process.argv.slice(2);//获取process.argv参数中下标为2的参数，并且�
 
 http://www.runoob.com/nodejs/nodejs-buffer.html  Buffer的详尽的API介绍
 
-### 25.base64编码和dataURI协议###
+### 24.base64编码和dataURI协议###
 
 	####     1.base64编码：####
 
@@ -691,11 +687,11 @@ data:[<MIME type>][;charset=<charset>][;base64],<encoded data>
 
 **数据：**这个encoded data部分为实际的数据，可能包含空格，但是无关紧要。
 
-### 26.iconv-lite库###
+### 25.iconv-lite库###
 
 ​	linux环境下，我们可以通过 [iconv](https://github.com/bnoordhuis/node-iconv) 这个C++模块来处理Node.JS不支持的字符编码，如GBK，BIG5。
 
-### 27.文件读取###
+### 26.文件读取###
 
 ​	1）异步文件读取
 
@@ -709,7 +705,7 @@ data:[<MIME type>][;charset=<charset>][;base64],<encoded data>
 
 ​		–fs.createReadStream(path[, options])
 
-### 28.逐行读取文本
+### 27.逐行读取文本
 
 ```
 const readline = require('readline');
@@ -726,7 +722,7 @@ rl.on('line', (line) => {
 
 案例：歌词的滚动操作？？
 
-### 29.文件写入
+### 28.文件写入
 
 ​	1）异步文件写入（覆盖文件原来的内容，不会创建文件，没有找到目录会报错）
 
@@ -750,7 +746,7 @@ rl.on('line', (line) => {
 
 #### 默认写入操作是覆盖源文件，确保操作没有额外的问题，一定使用绝对路径的方式####
 
-### 30.监视文件变化###
+### 29.监视文件变化###
 
 	#### 1.相关操作####
 
@@ -770,7 +766,7 @@ rl.on('line', (line) => {
 
 实现案例？？？
 
-### 31.文件的其他相关操作###
+### 30.文件的其他相关操作###
 
 #### 1）验证路径是否存在####
 
@@ -801,11 +797,11 @@ rl.on('line', (line) => {
 
 ​	–fs.unlinkSync(path)
 
-### 32.objReg.exec(string) 正则表达式的exec(string)方法：###
+### 31.objReg.exec(string) 正则表达式的exec(string)方法：###
 
 该函数通过对指定你的字符串进行一次匹配检测，获取字符串中的第一个与正则表达式的内容，并且将匹配的内容和子匹配的结果存放在返回数组中 
 
-### 33.流的概念###
+### 32.流的概念###
 
 #### 1.Stream是一个抽象接口，Node中很多对象都实现了这个接口。在node中有4种流类型####
 
@@ -888,7 +884,7 @@ readerStream.pipe(writerStream);
 console.log("程序执行完毕");
 ```
 
-### 34.Socket（双向通信）###
+### 33.Socket（双向通信）###
 
 网络上的两个程序通过一个双向的通信连接实现数据的交换，这个连接的一端称为一个socket。
 
@@ -928,7 +924,7 @@ socket在客户端和服务端之间通信，大致的过程如下：
 
 
 
-### 35.本地回环地址###
+### 34.本地回环地址###
 
 ​	本地回环地址，不属于任何一个有类别地址类。**它代表设备的本地虚拟接口** ，所以默认被看作是永远不会宕掉的接口。在windows操作系统中也有相似的定义，所以通常在不安装网卡前就可以ping通这个本地回环地址。一般都会用来检查本地[网络协议](http://baike.baidu.com/view/16603.htm)、基本数据接口等是否正常的。
 
@@ -938,7 +934,7 @@ socket在客户端和服务端之间通信，大致的过程如下：
 
 ​	2.另一个作用是某些SERVER/CLIENT的应用程序在运行时需调用服务器上的资源，一般要指定SERVER的IP地址，但当该程序要在同一台机器上运行而没有别的SERVER时就可以把SERVER的资源装在本机，SERVER的IP地址设为127.0.0.1同样也可以运行。
 
-### 36.net模块	###
+### 35.net模块	###
 
 ​	Net 模块提供了一些用于底层的网络通信的小工具，包含了创建服务器/客户端的方法，我们可以通过以下方式引入该模块
 
@@ -1025,7 +1021,7 @@ var net = require("net");
 ​	5）**socket.address()**
 ​	操作系统返回绑定的地址，协议族名和服务器端口。返回的对象有 3 个属性，比如{ port: 12346, family: 'IPv4', address: '127.0.0.1' }。
 
-### 37.util核心模块###
+### 36.util核心模块###
 
 **util 是一个Node.js 核心模块，提供常用函数的集合，用于弥补核心JavaScript 的功能 过于精简的不足。** 
 
@@ -1045,7 +1041,7 @@ var net = require("net");
 
 ​	6.**util.isError(object)**:如果给定的参数 "object" 是一个错误对象返回true，否则返回false。
 
-### 38.http模块### 
+### 37.http模块### 
 
 ​	**Node.js 提供了 http 模块，http 模块主要用于搭建 HTTP 服务端和客户端，使用 HTTP 服务器或客户端功能必须调用 http 模块** 
 
