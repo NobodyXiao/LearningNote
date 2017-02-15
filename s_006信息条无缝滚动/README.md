@@ -6,4 +6,5 @@
 
 3. 鼠标hover上去的时候，停止定时器，即停止滚动，鼠标移开则继续滚动。
 
-   ![scrollTop](C:\Users\acer\Desktop\LearningNote\s_006信息条无缝滚动\scrollTop.gif)
+   ![scrollTop](scrollTop.gif)
+

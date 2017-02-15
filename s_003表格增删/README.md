@@ -9,5 +9,5 @@
 
 3. 删除函数，通过this选取到当前编辑的单元格，之后通过parentNode一级级向上查找到tr行元素，之后通过获取该行元素的index，通过.deleteRow(index)删除该行。
 
-   ![table](C:\Users\acer\Desktop\LearningNote\s_003表格增删\table.gif)
+   ![table](table.gif)
 

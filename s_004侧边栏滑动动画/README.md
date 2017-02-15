@@ -8,4 +8,8 @@
 
 匀速滑动（透明度变化）
 
-![slider](C:\Users\acer\Desktop\LearningNote\s_004侧边栏滑动动画\slider.gif)变变速滑动![slider1](C:\Users\acer\Desktop\LearningNote\s_004侧边栏滑动动画\slider1.gif)
+![slider](slider-linner.gif)
+
+变速滑动(无透明度变化)
+
+![slider1](slider-ease.gif)
