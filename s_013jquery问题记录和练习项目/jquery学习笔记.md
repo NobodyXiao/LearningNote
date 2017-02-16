@@ -6,9 +6,7 @@
 
 4. JS的入口函数window.onload()事件时等到所有的内容都加载完毕之后才去执行，包括外部引入的图片资源等等；但是jQuery的入口函数是在所有的HTML标签加载完毕之后，就去执行。所以一般jQuery要比JS早执行。
 
-5. ​
-
-   **jQuery对象转成DOM对象： **两种转换方式将一个jQuery对象转换成DOM对象：[index]和.get(index); 
+5. **jQuery对象转成DOM对象： **两种转换方式将一个jQuery对象转换成DOM对象：[index]和.get(index); 
    (1)jQuery对象是一个数据对象，可以通过[index]的方法，来得到相应的DOM对象。 
    如：var $v =$("#v") ; //jQuery对象 
    var v=$v[0]; //DOM对象 
@@ -201,6 +199,6 @@
     ctrl+shift+g,在sublime中给子元素设置包裹父元素
     ctrl+/,注释代码；ctrl+shift+/,取消注释
 
-   
+
 
    ​

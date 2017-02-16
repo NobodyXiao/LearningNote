@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<script src="jquery-1.11.1.min.js"></script>
+	<script src="js/jquery-1.11.1.min.js"></script>
 	<style>
 		html,body{
 			height: 100%;
@@ -21,6 +21,7 @@
 			text-align: center;
 			font-family: "微软雅黑";
 			border: 5px red dashed;
+			word-wrap: break-word;
 		}
 		.action{
 			 box-shadow: 0 0 80px red inset;
@@ -86,11 +87,11 @@
 			而那过去了的，就会成为亲切的怀恋
 			</p>
 			<div>
-				<img src="toy.png" alt="">
-				<img src="toy1.png" alt="">
-				<img src="toy2.png" alt="">
-				<img src="toy3.png" alt="">
-				<img src="toy4.png" alt="">
+				<img src="image/toy.png" alt="">
+				<img src="image/toy1.png" alt="">
+				<img src="image/toy2.png" alt="">
+				<img src="image/toy3.png" alt="">
+				<img src="image/toy4.png" alt="">
 			</div>
 	</div>
 	<script>
@@ -115,7 +116,7 @@
 					var li = document.createElement('li');
 					li.setAttribute('class','file-item');
 					li.innerHTML = '<h5 class = "file-item-name">'+files[i].name+'</h5><p file-item-info>'+files[i].lastModifiedDate.toLocaleDateString()+ ' '+files[i].lastModifiedDate.toLocaleTimeString()+' '+(files[i].size/1024).toFixed(2)+'KB</p>';
-				fileWrap.appendChild(li);
+				fileList.appendChild(li);
 			}
 				}else{
 					var data = e.dataTransfer.getData('text/plain');

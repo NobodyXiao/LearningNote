@@ -6,5 +6,5 @@
 
 3. 鼠标hover上去的时候，停止定时器，即停止滚动，鼠标移开则继续滚动。
 
-   ![scrollTop](scrollTop.gif)
+   ![scrollTop](/scrollTop.gif)
 

@@ -236,7 +236,34 @@
 
  	}
 
-#### 17.属性选择器：（根据元素的属性和属性值来定义元素的样式）:####
+#### 17.选择器的优先级####
+
+   **一. 通常我们可以将CSS的优先级由高到低分为六组：**
+
+1. 无条件优先的属性只需要在属性后面使用 !important 。它会覆盖页面内任何位置定义的元素样式。当然，IE 6不支持这个属性，于是它也成为一种hack被很多人所熟知，真正使命被人淡忘。
+
+2. 第二高位的优先属性是在html中给元素标签加style（行内样式）。由于该方法会造成CSS的难以管理，所以不推荐使用。
+
+3. 第三级优先的属性是由一个或多个id选择器来定义的。 #id{margin:0;} 会覆盖 .classname{margin:3px;}。
+
+4. 第四级的属性由一个或多个 类选择器、属性选择器、伪类选择器定义。如 .classname{margin:3px;} 会覆盖 div{margin:6px;}
+
+5. 第五级由一个或多个 类型选择器定义。如 div{margin:6px;}  覆盖  *{margin:10px;} 。
+
+6. 最低一级的选择器是为一个通配选择器，用*{margin:10px;}这样的类型来定义。
+
+   **二、css优先级规则简单方法**
+
+   比较简单易记的一种方法就是给不同选择器分配不同的值： 
+   1.id选择器默认优先级最高，其权值为100 
+   2.class选择器、属性选择器和伪类选择器的权值为10 
+   3.标签选择器的优先级较低，其权值为1 
+   所以在比较样式的优先级时，只需统计选择符中的id、class、标签名个数，然后把对应的权值相加即可。根据结果便可得出优先级高低。 
+   1.结果较大的优先级较高 
+   2.结果相同，则后定义的样式优先级较高 
+   3.如果样式值中含有!important，则该值优先级最高 
+
+#### 18.属性选择器：（根据元素的属性和属性值来定义元素的样式）:####
 
  ![NHB()S3Z(W3D43})X`60YN](C:\Users\wochu\Desktop\LearningNote\s_015CSS3知识点总结\NHB()S3Z](W3D43})X`60YN.png)
 
@@ -380,15 +407,15 @@ background 简写属性在一个声明中设置所有的背景属性。
 
 -  **径向渐变（Radial Gradients）- 由它们的中心定义**
 
-      background: radial-gradient(*center, shape size, start-color, ..., last-color*);
+       background: radial-gradient(*center, shape size, start-color, ..., last-color*);
 
-      径向渐变的定位原点可以自己设置，另外形状可以自己设置，一般是圆形和椭圆
+       径向渐变的定位原点可以自己设置，另外形状可以自己设置，一般是圆形和椭圆
 
-      ​
+       ​
 
-        **6.2线性渐变和径向渐变都可以进行重复：** 
+         **6.2线性渐变和径向渐变都可以进行重复：** 
 
-      background: repeating-radial-gradient(red, yellow 10%, green 15%);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 background: repeating-linear-gradient(red, yellow 10%, green 20%);  
+       background: repeating-radial-gradient(red, yellow 10%, green 15%);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 background: repeating-linear-gradient(red, yellow 10%, green 20%);  
 
  #### 7.文本效果：####
 
@@ -429,7 +456,7 @@ background 简写属性在一个声明中设置所有的背景属性。
 
 -  matrix()：有六个参数，包含旋转，缩放，移动（平移）和倾斜功能。
 
-      **3D转化，translateX(*x*)，scaleY(*y*)，rotateZ(*angle*)等等，分为3个方向进行变化，X,Y,Z** 
+       **3D转化，translateX(*x*)，scaleY(*y*)，rotateZ(*angle*)等等，分为3个方向进行变化，X,Y,Z** 
 
  #### 10.过渡（transition）####
 
@@ -439,9 +466,9 @@ background 简写属性在一个声明中设置所有的背景属性。
 
 -  指定效果的持续时间。
 
-      **10.2**过渡有4个属性值：transition-delay，transition-duration，
+       **10.2**过渡有4个属性值：transition-delay，transition-duration，
 
-      ​				       transition-property，transition-timing-function
+       ​				       transition-property，transition-timing-function
 
  #### 11.动画 ：####
 
