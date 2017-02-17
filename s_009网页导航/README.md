@@ -17,9 +17,9 @@
 
     *offset()*: 获取匹配元素在当前视口的相对偏移。 返回的对象包含两个整形属性:*top* 和 left。m.offset().top获取的就是高度。
 
-3. 通过item.each遍历左边的网页，循环判断滚动条的位移，以及当前遍历的元素相对于当前视口位移，比较(document).scrollTop()和m.offset().top进行实现，详细情况看代码
+3. 通过item.each遍历左边的网页，循环判断滚动条的位移，以及当前遍历的元素相对于当前视口位移，比较(document).scrollTop()和m.offset().top进行实现；当满足条件的时候，页面提前进入视线，即可获取当前这个遍历项的id，比较nav中正处于选中状态的这一项（即类名是current）的herf值  和获取的id是否相等，如果不相等就去掉nav中选中状态的这项的样式（current类名），给真正herf为id的选项添加样式（添加类名current）。
 
-4. 解决IE6中position：fixed不支持的方法：
+4. 解决IE6不支持position：fixed的方法：
 
    * 固定在底部：
 
@@ -57,3 +57,5 @@
       			background-image:url(about:blank);
       			background-attachment:fixed;
       	}
+
+![website-navigation](website-navigation.gif)
