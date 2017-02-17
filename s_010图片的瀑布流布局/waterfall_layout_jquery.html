@@ -35,6 +35,7 @@
 	<script>
 		$(window).on("load",function() {
 			waterfall();
+			$(window).on("resize",waterfall);
 			var dataimage={"images":[{'src':'image/data/26.jpg'},
 								{'src':'image/data/27.jpeg'},
 								{'src':'image/data/28.jpg'},
@@ -64,7 +65,7 @@
 								]};
 			$(window).on("scroll",function(){
 				//判断是否具备了加载的条件
-				if(check){
+				if(check()){
 					$.each(dataimage.images,function(key,value){
 						var appendbox = $("<div>").addClass("box").appendTo($("#main"));
 						var appendpic = $("<div>").addClass("pic").appendTo($(appendbox));
@@ -74,7 +75,9 @@
 					})
 					waterfall();
 				}
-			})
+			});
+			
+
 		})
 	function waterfall(){
 		var windowWidth = $(window).width();
@@ -108,8 +111,8 @@
 		var $lastbox = $("#main > div").last();
 		var lastBoxDis = $lastbox.offset().top + Math.floor($lastbox.outerHeight()/2);
 		var windowScroll = $(window).scrollTop();
-		var documentH = $(document).Height();
-		return (lastBoxDis < windowScroll+documentH)?ture:false;
+		var documentH = $(document).height();
+		return (lastBoxDis < windowScroll+documentH)?true:false;
 	}
 </script>
 	

@@ -1,5 +1,4 @@
 ### bingSearch###
-
 1. ##### 鼠标在hover导航栏上边的office Online的时候，出现下拉列表，其中鼠标直接移动到下拉列表的时候，下拉列表不消失，当鼠标移出下拉列表的时候，下拉列表消失，并且直接移出office Online也会消失。
 
    实现原理：其实跟布局有一定关系，这里的布局不太好，所以做起来有点麻烦，使用到了一个定时器timeout_id，作用是当鼠标离开#office-menu的时候，延迟100ms执行定时器，如果#office-list显示就隐藏它，但是正常情况下如果你真想操作#office-list的时候，耗费时间应该小于100ms,也就是说在100ms之前，timeout_id还没有触发之前，鼠标已经进去到#office-list元素里，这时候就清除timeout_id，则#office-list就不会隐藏了。
@@ -40,7 +39,5 @@
 
 
 
-##### 
-
-​
+![search](search.gif)
 
