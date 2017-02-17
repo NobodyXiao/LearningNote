@@ -86,11 +86,13 @@
 			var items=$("#menu").find(".item");
         	var nav=$("#nav");
 			var top=$(document).scrollTop();
-			
+			console.log(top);
 
         	var currentId="";
         	items.each(function(){
 			var m=$(this);
+			
+			console.log(m.offset().top);
 				if(top > m.offset().top-150)
 					{
 						
