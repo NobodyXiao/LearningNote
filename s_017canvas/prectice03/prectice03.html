@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>精灵图面向对象</title>
+    </head>
+    <style>
+        #btnGroup button{
+            margin:8px;
+        }
+    </style>
+    <body>
+        <canvas id="canvasElem">
+            您的浏览器不支持，请更新版本
+        </canvas>
+        <div id="btnGroup">
+            <button id="btn-dir-left">←</button>
+            <button id="btn-dir-right">→</button>
+            <button id="btn-dir-up">↑</button>
+            <button id="btn-dir-down">↓</button>
+    <!--     <script src="prectice03.js"></script> -->
+        </div>
+    <script src="faceToObject.js"></script>
+    <script>
+        (function(){
+            var canvas = document.querySelector( '#canvasElem' );
+            var ctx = canvas.getContext( '2d' );
+
+            canvas.width = 200;
+            canvas.height = 200;
+            canvas.style.border = "1px solid #000";
+
+            // 封装一个对象出来：
+            // 属性： width . height  imgSr  speed  dir
+            // 行为： render  changeDir
+
+            //创建一个精灵对象
+            var s = new Sprits({
+                x: 60,
+                y: 30,
+                w: 80,
+                h: 65*2,
+                fps: 4,
+                originW: 40,
+                originH: 65,
+                imgSrc: 'NPC4.png'
+            });
+
+            //渲染 动画
+            s.render(ctx);
+
+
+            //绑定按钮的点击事件
+            var btnLeft = document.getElementById('btn-dir-left');
+            btnLeft.onclick = function() {
+                //小哥哥朝着左方向
+                // dirIndex = 1;
+                s.changeDir('left');
+            };
+
+            var btnRight = document.getElementById('btn-dir-right');
+            btnRight.onclick = function() {
+                //小哥哥朝着方向
+                // dirIndex = 2;
+                s.changeDir('right');
+
+            };
+
+            var btnUp = document.getElementById("btn-dir-up");
+            btnUp.onclick = function() {
+                //小哥哥朝着左方向
+                // dirIndex = 3;
+                s.changeDir('up');
+
+            };
+
+            var btnDown = document.getElementById('btn-dir-down');
+            btnDown.onclick = function() {
+                //小哥哥朝着左方向
+                // dirIndex = 0;
+                s.changeDir('down');
+
+            };
+
+
+
+
+        }());
+    </script>
+    </body>
+</html>

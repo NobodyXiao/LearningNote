@@ -18,7 +18,7 @@
 
 3. 其中waterfall()函数，根据 windowWidth/boxw，获取页面一共能够完整存放几列，之后要纪录每一列的高度，存放在数组picH中，就是遍历所有的图片盒子，获取每个盒子的高度，如果index小于列数cols，那么就直接存放在picH中，如果不是则要说明需要放置第二排了，这时候就需要获取picH中的最小值minH（即页面最短的那一列），通过最小数值minH找到其索引，之后可以对第二行的图片进行绝对定位，top:minH，left:minHIndex*boxw，最后记得更新一下minH,即picH[minHIndex]+=$boxs.eq(index).outerHeight();这样接下来的排列就会有新的高度数组picH作为依据，也许此时的minH已经不是最短的列。
 
-4. check()函数用于检测是否到达加载的条件，即判断lastBoxDis < windowScroll+documentH)?true:false;是否为真，如果为真则加载。原理是检测最后一个图片盒子距离页面顶部的距离+自身高度的一半`$lastbox.offset().top + Math.floor($lastbox.outerHeight()/2)`，与页面此时离window窗口底部的距离`$(window).scrollTop()+$(document).height()`，两者作比较再做出判断，方法不唯一，这只是实现方法之一。![加载条件演示图](加载条件演示图.PNG)
+4. check()函数用于检测是否到达加载的条件，即判断lastBoxDis < windowScroll+documentH)?true:false;是否为真，如果为真则加载。原理是检测最后一个图片盒子距离页面顶部的距离+自身高度的一半`$lastbox.offset().top + Math.floor($lastbox.outerHeight()/2)`，与页面此时离window窗口底部的距离`$(window).scrollTop()+$(document).height()`，两者作比较再做出判断，方法不唯一，这只是实现方法之一。![加载条件演示图](加载条件演示图.jpg)
 
    ​
 

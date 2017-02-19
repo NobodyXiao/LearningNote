@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style>
+            html,body{
+                margin:0;
+                padding:0;
+            }
+            #wrap{
+                position:relative;
+                margin:50px auto;
+                min-height:300px;
+                width:300px;
+                background:pink;
+                font-family: "微软雅黑";
+                font-size: 13px;
+                font-weight: bold;
+                color:#000;
+            }
+            #title{
+                text-align:center;
+                padding:20px 0;
+                color:blue;
+                font-size:20px;
+            }
+             #selectBox{
+                margin-left:20px;
+            }
+            #selectBox #company{
+                width:173px;
+            }
+            #inputBox{
+                margin-left:20px;
+            }
+            #content{
+                padding-top:10px;
+                padding-left:20px;
+            }
+            #content li{
+                list-style:none;
+                padding-top:10px;
+                margin-left:-35px;
+            }
+
+
+        </style>
+    </head>
+    <body>
+    <div id ="wrap">
+            <div id = "title">快递查询案例</div>
+            <div id ="selectBox">
+                <span id = "text1">公司名称</span>
+                <select id="company">
+                    <option value="ems">EMS</option>
+                    <option value="yuantong">圆通</option>
+                    <option value="shunfeng">顺丰</option>
+                    <option value="zhongtong">中通</option>
+                    <option value="shentong">申通</option>
+                    <option value="yunda">韵达</option>
+                    <option value="youshuwuliu">优速物流</option>
+                </select>
+            </div>
+            <div id ="inputBox">
+                <span>快递单号</span>
+                <input type="text" value placeholder = "请输入您的快递单号" id = 'input' autocomplete="on"/>
+                <input type="button" value = "查询" id = 'btn'/>
+            </div>
+            <div id = "content"></div>
+    </div>
+    <script>
+            function check(data){
+                if(data.msg ==''){
+                    var info = data.data.info;//快递信息外边的对象
+                    var context = info.context;//快递信息
+                    var tag ="";
+                    for(var i=0;i<context.length;i++){
+                        var d = new Date();//新建一个日期变量
+                        d.setTime(context[i].time+'000');//将秒转化成毫秒
+                        var str = d.getFullYear()+'年'+(d.getMonth()+1)+'月'+d.getDay()+'日'+(d.getHours()>12?'上午':'下午')+d.getHours()%12+':'+d.getMinutes()+':'+d.getSeconds();//编写日期的格式
+                        tag += '<li><div>'+str+'</div><div>'+context[i].desc+'</div></li>';//拼接li
+
+                }
+                    var ul = document.createElement('ul');
+                    ul.innerHTML = tag;
+                    document.getElementById('content').appendChild(ul);
+                }else{
+                    var tip =data.msg;
+                    document.getElementById('content').innerHTML = tip;
+                }
+
+
+                }
+            window.onload = function(){
+                var company = document.getElementById('company');
+                var input = document.getElementById('input');
+
+                var btn = document.getElementById('btn');
+                company.onchange = function(){
+                    var content = document.getElementById('content');
+                    content.innerHTML = '';
+                }
+                btn.onclick = function(){
+
+                    document.getElementById('content').innerHTML = '';
+                    var companyID = company.value;
+                    var number = input.value;
+                    if(number){
+                        var url ='https://sp0.baidu.com/9_Q4sjW91Qh3otqbppnN2DJv/pae/channel/data/asyncqury?cb=check&appid=4001&com='+companyID+'&nu='+number;
+                        var script = document.createElement('script');
+                        script.src = url;
+                        document.body.appendChild(script);
+                    }else{
+                        document.getElementById('content').innerHTML = '您还没有填写运单号，请填写正确的运单号';
+
+                    }
+
+                }
+
+            }
+
+    </script>
+    </body>
+</html>
