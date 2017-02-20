@@ -169,6 +169,14 @@
     font-size:15px;
 }
 }
+@media (max-width: 320px){
+#jd-wrap>#jd-content>#nav a>span {
+    font-size: 13px;
+}
+.pro-detial-middle>.pro-info>.pro-info-right{
+    font-size: 12px;
+}
+}
 
 /* 新闻轮播部分 */
 #jd-wrap>#jd-content>#news{

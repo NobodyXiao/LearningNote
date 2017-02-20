@@ -311,8 +311,14 @@ body>#mainBox #content>.product-item{
     padding-left:105px;
     padding-right: 10px;
     box-sizing: border-box;
-    font-size: 13px;
+    font-size: 14px;
 }
+@media (max-width: 320px){
+.pro-detial-middle>.pro-info>.pro-info-right{
+    font-size: 12px;
+}
+}
+
 .pro-detial-middle>.pro-info>.pro-info-right>.pro-message{
     margin:0 20px 3px 0;
 }
