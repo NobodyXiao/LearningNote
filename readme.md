@@ -21,7 +21,7 @@ Practice List
 - [bing搜索](./s_011智能搜索框/readme.md)
 - [JQuery学习纪录](./s_012jquery练习项目&js纪录)
 - [HTML总结](./s_013HTML知识点总结)
-- [CSS3总结及练习实例](./s_014CSS3知识点总结/readme.md)
+- [CSS3总结及练习实例](./s_014CSS3知识点总结/CSS&CSS3知识点总结.md)
 - [ajax总结](./s_015ajax/ajax.md)
 - [微金所网站实例](./s_016框架和模板引擎/Bootstrap/weijinsuo/index.html)
 - [canvas总结](./s_017canvas/canvas&svg.md)

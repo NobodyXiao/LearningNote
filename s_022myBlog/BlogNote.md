@@ -3,7 +3,7 @@
 **1.查看ubuntu操作系统位数：** sudo uname --m
 **2.查看ubuntu操作系统版本：** sudo lsb_release -a
 
-## mongoDB相关操作## 
+## mongoDB相关操作##
 
 **1.创建数据库的相关操作：** 
 
@@ -118,8 +118,11 @@ Key 值为你要创建的索引字段，1为指定按升序创建索引，如果
 通过在创建索引时加background:true 的选项，让创建工作在后台执行,建索引过程会阻塞其它数据库操作，background可指定以后台方式创建索引，即增加"background" 可选参数。 "background" 默认值为false。
 
 **14.MongoDB 聚合：** 
-    MongoDB中聚合(aggregate)主要用于处理数据(诸如统计平均值,求和等)，并返回计算后的数据结果。基本语法如下所示：
-    db.COLLECTION_NAME.aggregate(AGGREGATE_OPERATION)
+
+MongoDB中聚合(aggregate)主要用于处理数据(诸如统计平均值,求和等)，并返回计算后的数据结果。基本语法如下所示：
+
+语法：db.COLLECTION_NAME.aggregate(AGGREGATE_OPERATION)
+
     例如，集合中的数据如下所示：
     {
     "_id" : ObjectId("584de00334ffeeca89ed5ff7"),
@@ -136,48 +139,52 @@ Key 值为你要创建的索引字段，1为指定按升序创建索引，如果
     "name" : "mary",
     "school" : "middle-school2"
     }
-    输入db.database2.aggregate([{$group:{_id:"$school",num_tutorial:{$sum:1}}}])之后，输出结果如下所示：
-    { "_id" : "middle-school2", "num_tutorial" : 2 }
-    { "_id" : "middle-school1", "num_tutorial" : 1 }
-    我们通过字段school字段对数据进行分组，并计算school字段相同值的总和。
+输入db.database2.aggregate([{$group:{_id:"$school",num_tutorial:{$sum:1}}}])之后，输出结果如下所示：
+{ "_id" : "middle-school2", "num_tutorial" : 2 }
+{ "_id" : "middle-school1", "num_tutorial" : 1 }
+我们通过字段school字段对数据进行分组，并计算school字段相同值的总和。
+
 **15.MongoDB 监控：** 
-    MongoDB中提供了mongostat 和 mongotop 两个命令来监控MongoDB的运行情况。
-    mongostat 命令:mongostat是mongodb自带的状态检测工具，在命令行下使用。它会间隔固定时间获取mongodb的当前运行状态，并输出。
-    如果你发现数据库突然变慢或者有其他问题的话，你第一手的操作就考虑采用mongostat来查看mongo的状态。 
-    在ubuntu系统下直接输入mongostat即可运行此命令
-    mongotop 命令:mongotop也是mongodb下的一个内置工具，mongotop提供了一个方法，用来跟踪一个MongoDB的实例
-    查看哪些大量的时间花费在读取和写入数据。 mongotop提供每个集合的水平的统计数据。默认情况下，mongotop返回值的每一秒。 
-    在ubuntu系统下输入mongotop即可运行此命令
+
+MongoDB中提供了mongostat 和 mongotop 两个命令来监控MongoDB的运行情况。
+**mongostat 命令:**
+
+mongostat是mongodb自带的状态检测工具，在命令行下使用。它会间隔固定时间获取mongodb的当前运行状态，并输出。
+如果你发现数据库突然变慢或者有其他问题的话，你第一手的操作就考虑采用mongostat来查看mongo的状态。 
+在ubuntu系统下直接输入mongostat即可运行此命令
+**mongotop 命令:**
+
+mongotop也是mongodb下的一个内置工具，mongotop提供了一个方法，用来跟踪一个MongoDB的实例
+查看哪些大量的时间花费在读取和写入数据。 mongotop提供每个集合的水平的统计数据。默认情况下，mongotop返回值的每一秒。 在ubuntu系统下输入mongotop即可运行此命令
 
 **16.MongoDB 备份(mongodump)与恢复(mongorestore)：** 
-    MongoDB数据备份:在Mongodb中我们使用mongodump命令来备份MongoDB数据。该命令可以导出所有数据到指定目录中。
-    mongodump命令可以通过参数指定导出的数据量级转存的服务器。
-    mongodump命令脚本语法如下： mongodump -h dbhost -d dbname -o dbdirectory
-    -h:MongDB所在服务器地址，例如：127.0.0.1，当然也可以指定端口号：127.0.0.1:27017 
-    -d:需要备份的数据库实例，例如：test 
-    -o:备份的数据存放位置，例如：c:\data\dump，当然该目录需要提前建立，在备份完成后，系统自动在dump目录下建立一个test目录，
-    这个目录里面存放该数据库实例的备份数据。 
-    MongoDB数据恢复:
-    恢复的语法是这样的：mongorestore -h dbhost -d dbname --directoryperdb dbdirectory
-    -h:MongoDB所在服务器地址 
-    -d:需要恢复的数据库实例，例如：test，当然这个名称也可以和备份时候的不一样，比如test2 
-    -directoryperdb：
-    备份数据所在位置，例如：c:\data\dump\test，这里为什么要多加一个test，而不是备份时候的dump，读者自己查看提示吧！ 
-     -drop：
-    恢复的时候，先删除当前数据，然后恢复备份的数据。就是说，恢复后，备份后添加修改的数据都会被删除，慎用哦！
+
+**MongoDB数据备份**:
+
+在Mongodb中我们使用mongodump命令来备份MongoDB数据。该命令可以导出所有数据到指定目录中。
+mongodump命令可以通过参数指定导出的数据量级转存的服务器。
+mongodump命令脚本语法如下： mongodump -h  -d  -o 
+
+```
+-h:dbhost简写，MongDB所在服务器地址，例如：127.0.0.1，当然也可以指定端口号：127.0.0.1:27017 
+-d:dbname简写，需要备份的数据库实例，例如：test 
+-o:dbdirectory的意思，备份的数据存放位置，例如：c:\data\dump，当然该目录需要提前建立，在备份完成后，系统自动在dump目录下建立一个test目录，这个目录里面存放该数据库实例的备份数据。
+```
+
+**MongoDB数据恢复:**
+恢复的语法是这样的：mongorestore -h  -d  --directoryperdb 
+
+```
+-h:dbhost简写，MongoDB所在服务器地址 
+-d:dbname简写，需要恢复的数据库实例，例如：test，当然这个名称也可以和备份时候的不一样，比如test2 
+-directoryperdb：dbdirectory意思，备份数据所在位置，例如：c:\data\dump\test，这里为什么要多加一个test，而不是备份时候的dump，读者自己查看提示吧！ 
+```
+
+恢复的时候，先删除当前数据，然后恢复备份的数据。就是说，恢复后，备份后添加修改的数据都会被删除，慎用哦！
+
 **17.理解shell：** 
 
-​	文字操作系统与外部最主要的接口就叫做shell。shell是操作系统最外面的一层。shell管理你与操作系统之间的交互:等待你输入，向操作系统解释你的输入，并且处理各种各样的操作系统的输出结果。
+文字操作系统与外部最主要的接口就叫做shell。shell是操作系统最外面的一层。shell管理你与操作系统之间的交互:等待你输入，向操作系统解释你的输入，并且处理各种各样的操作系统的输出结果。
 
-18.
-​    
-mongoDB  11287默认的监视端口
-Setting up mongodb-org (3.2.11) ...
-supervisor ??总结这个？？
-express??
-promise.js??
-mongoDB??复制，分片，备份和恢复，搞清楚mongo和mongod操作有什么区别？？
-express 使用了 path-to-regexp 模块实现的路由匹配。
-
-集合和数据库的概念，文档？
+**18.express框架**
 
