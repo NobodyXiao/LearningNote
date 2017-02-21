@@ -158,6 +158,7 @@ MongoDB中聚合(aggregate)主要用于处理数据(诸如统计平均值,求和
 **15.MongoDB 监控：** 
 
 MongoDB中提供了mongostat 和 mongotop 两个命令来监控MongoDB的运行情况。
+
 **mongostat 命令:**
 
 mongostat是mongodb自带的状态检测工具，在命令行下使用。它会间隔固定时间获取mongodb的当前运行状态，并输出。
