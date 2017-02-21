@@ -45,16 +45,17 @@
 
 **8.查询文档：**
 
-​	**db.COLLECTION_NAME.find()/db.col.find().pretty()** 
+**db.COLLECTION_NAME.find()/db.col.find().pretty()** 
 
-​	find() 方法以非结构化的方式来显示所有文档。/pretty() 方法以格式化的方式来显示所有文档。
-​        **MongoDB AND 条件:**
+​find() 方法以非结构化的方式来显示所有文档。/pretty() 方法以格式化的方式来显示所有文档。      
 
-​		db.col.find({key1:value1, key2:value2}).pretty();
+ **MongoDB AND 条件:**
 
-​	**MongoDB OR 条件:** 
+db.col.find({key1:value1, key2:value2}).pretty();	
 
-​		db.col.find({$or: [{key1: value1}, {key2:value2}]}).pretty(); 
+**MongoDB OR 条件:** 
+
+db.col.find({$or: [{key1: value1}, {key2:value2}]}).pretty(); 
 
 **9.条件操作符：** 
 
@@ -70,6 +71,9 @@
 ​		db.col.find({"age" : {$lt :"22", $gt : "19"}})
 
 **10.$type条件操作符：** 
+
+
+
      假设数据库中的文档是这样的：
      { "_id" : ObjectId("584d5ada795c78e18374c6e7"), "name" : "lili", "age" : 19, "sex" : "woman" }
      { "_id" : ObjectId("584d5aff795c78e18374c6e8"), "name" : "lynn", "age" : "18", "sex" : "woman" }
@@ -87,7 +91,8 @@
      { "_id" : ObjectId("584d5aff795c78e18374c6e8"), "name" : "lynn", "age" : "18", "sex" : "woman" }
      { "_id" : ObjectId("584d5b16795c78e18374c6e9"), "name" : "jack", "age" : 22, "sex" : "man" }
 ​	 db.col.find({},{"name":1,_id:0}).limit(2),那么只会输出前两行数据中的name键值对
-​	 **Skip() 方法** :使用skip()方法来跳过指定数量的数据，skip方法同样接受一个数字参数作为跳过的记录条数。
+
+​	**2) Skip() 方法** :使用skip()方法来跳过指定数量的数据，skip方法同样接受一个数字参数作为跳过的记录条数。
 ​	基本语法是这样的：db.COLLECTION_NAME.find().limit(NUMBER).skip(NUMBER)
 
 如果依然是上边的数据库不变，那么 db.col.find({},{"name":1,_id:0}).limit(2).skip(1),那么就会先跳过是一条数据，之后输出后边的两条数据。
@@ -106,16 +111,18 @@
 
 **13.MongoDB 索引：** 
 
-​	MongoDB使用 **ensureIndex() 方法** 来创建索引。
-​	ensureIndex()方法基本语法格式如下所示：db.COLLECTION_NAME.ensureIndex({KEY:1})
+MongoDB使用 **ensureIndex() 方法** 来创建索引。
+
+**ensureIndex()方法基本语法格式如下所示**：db.COLLECTION_NAME.ensureIndex({KEY:1})
+
 索引实际就是为了快速找到数据库当中的数据而增加的一个编号而已，类似于数组的下标，语法中 
 Key 值为你要创建的索引字段，1为指定按升序创建索引，如果你想按降序来创建索引指定为-1即可。
+
+```
 当然你也可以通过多个字段来创建索引:db.col.ensureIndex({"title":1,"description":-1})
-在后台创建索引：
-
-​	db.values.ensureIndex({open: 1, close: 1}, {background: true})
-
+在后台创建索引：db.values.ensureIndex({open: 1, close: 1}, {background: true})
 通过在创建索引时加background:true 的选项，让创建工作在后台执行,建索引过程会阻塞其它数据库操作，background可指定以后台方式创建索引，即增加"background" 可选参数。 "background" 默认值为false。
+```
 
 **14.MongoDB 聚合：** 
 
@@ -140,8 +147,12 @@ MongoDB中聚合(aggregate)主要用于处理数据(诸如统计平均值,求和
     "school" : "middle-school2"
     }
 输入db.database2.aggregate([{$group:{_id:"$school",num_tutorial:{$sum:1}}}])之后，输出结果如下所示：
+
+```
 { "_id" : "middle-school2", "num_tutorial" : 2 }
 { "_id" : "middle-school1", "num_tutorial" : 1 }
+```
+
 我们通过字段school字段对数据进行分组，并计算school字段相同值的总和。
 
 **15.MongoDB 监控：** 
@@ -150,8 +161,11 @@ MongoDB中提供了mongostat 和 mongotop 两个命令来监控MongoDB的运行�
 **mongostat 命令:**
 
 mongostat是mongodb自带的状态检测工具，在命令行下使用。它会间隔固定时间获取mongodb的当前运行状态，并输出。
+
 如果你发现数据库突然变慢或者有其他问题的话，你第一手的操作就考虑采用mongostat来查看mongo的状态。 
 在ubuntu系统下直接输入mongostat即可运行此命令
+
+
 **mongotop 命令:**
 
 mongotop也是mongodb下的一个内置工具，mongotop提供了一个方法，用来跟踪一个MongoDB的实例
