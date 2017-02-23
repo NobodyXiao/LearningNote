@@ -56,11 +56,11 @@
     </div>
   <script>
         var Li1 = document.getElementById("text1");
-           
+
         var Con = document.getElementById("content");
         Con.innerHTML+=Con.innerHTML;
         Con.scrollTop = 0;
-        var iLiheight = 26;//每次向上卷曲的高度
+        var iLiheight = 26;//每次向上连续卷曲的高度
         var time = 50;//每次用来执行判断的频率
         var timer;
         var speed = 2000;//每次停顿的频率
@@ -72,7 +72,7 @@
           console.log(Con.scrollTop);
 
         }
-        
+
         function scroll() {
             //这一块用来实现间接滚动，当每滚动一行的时候，清楚定时器，之后2秒之后重新打开一个定时器，继续执行滚动
              if(Con.scrollTop%iLiheight == 0){
@@ -81,7 +81,7 @@
                 return;
             }
 
-              
+
             if(Con.scrollTop >= Con.scrollHeight/2) {
                 Con.scrollTop = 0;
             } else {
@@ -89,8 +89,8 @@
                 console.log(Con.scrollTop);
             }
         }
- 
-        setTimeout("startMove()",speed);           
+
+        setTimeout("startMove()",speed);
  </script>
 
 </body>

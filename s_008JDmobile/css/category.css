@@ -2,7 +2,7 @@
 * @Author: anchen
 * @Date:   2016-10-30 20:44:06
 * @Last Modified by:   anchen
-* @Last Modified time: 2016-11-10 21:31:24
+* @Last Modified time: 2017-02-23 11:57:39
 */
 body{
     position:absolute;
@@ -129,7 +129,7 @@ body>#jd-topBar>.jd-hiddenMenu>li .pic4{
     z-index:99;/* 设置层，是为了下边的层不遮挡topbar上边的a链接 */
 }
 #jd-content>.jd-category-left{
-    width:76px;
+    min-width:76px;
     height:100%;
     /* padding-top:45px; */
     position:absolute;
@@ -149,6 +149,8 @@ body>#jd-topBar>.jd-hiddenMenu>li .pic4{
     z-index:10;
     background: rgb(243,243,243);
 }
+
+
 #jd-content>section>.jd-category-right>div{
     height:auto;
 }
@@ -160,7 +162,7 @@ body>#jd-topBar>.jd-hiddenMenu>li .pic4{
 }
 #jd-content>.jd-category-left>.jd-category-leftBox>ul>li{
     height:46px;
-    width:76px;
+    width:100%;
     line-height:46px;
     text-align:center;
     font-size:14px;
@@ -299,6 +301,19 @@ body>#jd-topBar>.jd-hiddenMenu>li .pic4{
     width: 12px;
     height: 12px;
     margin-right:5px;
+}
+@media screen and (min-width:640px){
+    #jd-content>.jd-category-left{
+    width:200px;
+}
+#jd-content>.jd-category-left>.jd-category-leftBox>ul>li{
+    width:200px;
+    height:60px;
+    line-height:60px;
+}
+    #jd-content>section>.jd-category-right{
+    padding-left:200px;
+}
 }
 
 

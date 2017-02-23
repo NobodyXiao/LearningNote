@@ -2,7 +2,7 @@
 * @Author: anchen
 * @Date:   2016-10-26 08:28:06
 * @Last Modified by:   anchen
-* @Last Modified time: 2016-11-09 08:05:39
+* @Last Modified time: 2017-02-23 17:45:21
 */
 
 'use strict';
@@ -31,7 +31,7 @@ function search(){
 }
 function secKill(){
     // 获取截止日期以及于当前日期的时间差
-   var deadlineTime = new Date("November 11,2016 20:44:00");
+   var deadlineTime = new Date("February 24,2017 20:44:00");
    var nowTime = new Date();
    var diffTime = (deadlineTime.getTime()-nowTime.getTime())/1000;
    var timeBox = document.getElementById("seckill-time");
@@ -88,9 +88,11 @@ function carousel(){
         imgsBox.style.transform='translateX('+t+'px)';
         imgsBox.style.webkitTransform='translateX('+t+'px)';
     }
+    // 定时器用于2秒钟控制一次图片位置改变
     timer = setInterval(function(){
         for(var i=0;i<pointList.length;i++){
             pointList[i].style.background = 'none';
+            // 去掉每个轮播控制按钮的背景色
         }
         index++;
         pointIndex++;
