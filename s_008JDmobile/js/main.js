@@ -90,6 +90,7 @@ function carousel(){
     }
     // 定时器用于2秒钟控制一次图片位置改变
     timer = setInterval(function(){
+        // clearInterval(timer2);
         for(var i=0;i<pointList.length;i++){
             pointList[i].style.background = 'none';
             // 去掉每个轮播控制按钮的背景色
@@ -103,7 +104,7 @@ function carousel(){
         }
         pointList[pointIndex-1].style.background = '#fff';
     },2000);
-
+    // 对图片盒子添加事件监听函数，当过渡结束之后去判断一下图片的位置，也就是index的数值
     imgsBox.addEventListener('transitionEnd', function(){
         if(index>6){
             index=1;
@@ -151,7 +152,7 @@ imgsBox.addEventListener('touchmove',function(e){
 })
 // 触摸结束事件
 imgsBox.addEventListener('touchend',function(e){
-    if(Math.abs(moveX)>1/3*width&&endX!=0){
+    if(Math.abs(moveX)>1/3*width&&moveX!=0){
         for(var i=0;i<pointList.length;i++){
             pointList[i].style.background = 'none';}
         // 向左滑动

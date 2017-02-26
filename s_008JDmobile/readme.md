@@ -249,17 +249,39 @@
 
    > **首页的逻辑比较少，顶部通栏部分透明度随着滚动条向上滚动逐渐增加至1，主要是轮播图原生js书写，另外一个是秒杀区块的逻辑**
    >
-   > 1.**顶部通栏的透明度变化** ，获取到**顶部通栏的元素#jd-search-box** 、**轮播图区块的元素#carousel-01** ，获取到其高度boxHeight，轮播图的高度bannerHeight，求得两个的高度差diffHeight，之后就是当页面滚动的高度scrollTop>diffHeight，顶部通栏的背景设置成透明度为1，之后其余情况根据scrollTop/diffHeight来进行透明度设置。
+   > 1.**顶部通栏的透明度变化** 
+   >
+   > 获取到**顶部通栏的元素#jd-search-box** 、**轮播图区块的元素#carousel-01** ，获取到其高度boxHeight，轮播图的高度bannerHeight，求得两个的高度差diffHeight，之后就是当页面滚动的高度scrollTop>diffHeight，顶部通栏的背景设置成透明度为1，之后其余情况根据scrollTop/diffHeight来进行透明度设置。
    >
    > 2.**秒杀区域** 
    >
    > 创建截止时间deadlineTime，获取现在时间nowTime，之后获取时间差的秒数，获取到填写时间的6个小的区块数组对象，之后就是对时间差进行操作，依次将数值填进相应数字块中，倒计时效果通过定时器实现，每一秒钟执行依次diffTime--即可。
    >
-   > 3.轮播图的实现效果其实使用bootstrap是最简单的，套用结构，更换一些数值和图片地址就可以了，但是我们也尝试了一下用原生的js书写，这边的原生js书写的轮播图有很多问题
+   > 3.**轮播图的实现效果**
+   >
+   > 其实使用bootstrap是最简单的，套用结构，更换一些数值和图片地址就可以了，但是我也尝试了一下用原生的js书写，轮播图页面的由两个无序列表ul组成，一个用来存放图片，另一个用来存放控制按钮；图片盒子里边存放8张图片是为了满足手动滑动的时候左滑和右滑图片能够连贯，控制按钮是有6个的。
+   >
+   > > **3.1**首先获取到页面的图片盒子和按钮盒子，获取到里边的li数组元素，定义了过度效果函数addTranstion和去除过度效果的函数removeTranstion，图片改变位置的函数setTransform，之后就是设置定时器，每两秒钟去改变一下图片的位置并改变控制按钮的样式。
+   > >
+   > > **3.2**对图片盒子添加事件监听函数，当过渡结束之后，对图片盒子的位置进行判断，也就是图片索引index的数值，如果index>6,说明在最后一张图片上，那么就设置index=1，如果是index<=0,图片向右反方向滑动，应该将index设置成6。
+   > >
+   > > **3.3**最后就是补充效果了，手动滑动轮播图，需要用到touchstart，touchmove，touchend事件，当触滑动开始的时候纪录一些开始触摸的位置，startX，在滑动过程中，记录一下移动的位置；这时候应该停止定时器，停止自动滑动，之后根据不放手情况下移动的距离，改变图片的位置；当触摸结束的时候，纪录一下结束的位置endX，之后根据移动差值moveX = startX-endX;当满足Math.abs(moveX)>1/3*width&&moveX!=0，认为产生了滑动，之后就是根据moveX正负进行改变，左滑一张或者是右滑一张，当判断结束之后，不要忘记将startX，endX清零，并开启定时器timer
 
    **分类页面逻辑**
 
-     >​
+     >1.**顶部通栏部分跳转类目的显示和隐藏**
+     >
+     >2.当滑动手机左边类目，和滑动右边商品展示区的时候，滑动到上下边界时候，会出现自动弹回的效果。
+     >
+     >> 2.1获取左边类目的parentDom父盒子**.jd-category-leftBox**,之后获取其子元素ul，并命名为childDom，之后定义边界值，upDownMax=150，downUpMax = -(childH - parentH + 150)
+     >>
+     >> 2.2定义currY,给childDom添加touchustart,touchmove,touchend事件，并在touchstart的时候记录一下startY，在touchmove的时候纪录一下endY，计算moveY,之后当每次满足(currY - moveY) <= upDownMax && (currY - moveY) >= downUpMax的时候，就将childDom进行移动translateY("+(currY - moveY)+"px)
+     >>
+     >> 2.3当滑动结束的时候，如果是满足(currY - moveY) <= 0 && (currY - moveY) >= -(childH - parentH)，那么说明在滑动范围内滑动，则重新给currY赋值，currY = currY - moveY，此时currY纪录的是累计移动的距离，当然正负代表方向；否则就是不让移动的范围，满足（currY - moveY) > 0的时候，说明向上弹回，设置currY = 0，并执行translateY("+(currY)+"px)；满足(currY - moveY) < -(childH - parentH)，说明该向下弹回，设置currY = -(childH - parentH)，并执行translateY("+(currY)+"px)
+     >
+     >3.
+     >
+     >4.右边的逻辑跟左边基本是一致的，但是需要加上当鼠标点击左边类目进行切换的时候，右边的类目切换并出现在初始位置，banner在最上边，这时候只需要将右边将处于展示状态的元素移动-currY的距离即可。
 
    **购物车页面逻辑** 
 
