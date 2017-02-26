@@ -135,9 +135,9 @@ function Product(){
            var currentSrc = $("#zoom_01").attr("src");
            if(i<=1){
                i=4;
-               $("#zoom_01").attr("src","imgs/small/image4.png");
+               $("#zoom_01").attr("src","../imgs/small/image4.png");
                $(".zoomContainer>.zoomWindowContainer>div")
-               .css("backgroundImage",'url("imgs/large/image4.jpg")');
+               .css("backgroundImage",'url("../imgs/large/image4.jpg")');
                // 设置最后一个图片的边框为红色
                $("#imageMenu").find("img").each(function(index,ele){
                    $(ele).removeClass("active");
@@ -145,10 +145,10 @@ function Product(){
 
             }else{
                 --i;
-                $("#zoom_01").attr("src","imgs/small/image"+i+".png");
+                $("#zoom_01").attr("src","../imgs/small/image"+i+".png");
 
                  $(".zoomContainer>.zoomWindowContainer>div")
-                .css("backgroundImage",'url("imgs/large/image'+i+'.jpg")');
+                .css("backgroundImage",'url("../imgs/large/image'+i+'.jpg")');
             }
 
             var activeImage = $("#imageMenu").find("img")[i-1];
@@ -163,9 +163,9 @@ function Product(){
             var currentSrc = $("#zoom_01").attr("src");
             if(i>=4){
                 i=1;
-                $("#zoom_01").attr("src","imgs/small/image1.png");
+                $("#zoom_01").attr("src","../imgs/small/image1.png");
                 $(".zoomContainer>.zoomWindowContainer>div")
-                .css("backgroundImage",'url("imgs/large/image1.jpg")');
+                .css("backgroundImage",'url("../imgs/large/image1.jpg")');
                 // 设置第一个图片边框为红色
 
                 var activeImage = $("#imageMenu").find("img")[i-1];
@@ -173,10 +173,10 @@ function Product(){
 
             }else{
             ++i;
-            $("#zoom_01").attr("src","imgs/small/image"+i+".png");
+            $("#zoom_01").attr("src","../imgs/small/image"+i+".png");
 
             $(".zoomContainer>.zoomWindowContainer>div")
-            .css("backgroundImage",'url("imgs/large/image'+i+'.jpg")');
+            .css("backgroundImage",'url("../imgs/large/image'+i+'.jpg")');
             }
 
             var activeImage = $("#imageMenu").find("img")[i-1];

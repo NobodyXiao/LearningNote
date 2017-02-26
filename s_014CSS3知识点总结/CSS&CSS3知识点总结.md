@@ -56,7 +56,7 @@
 
 ​			解决方法：要么**都** 不使用浮动；要么**都使用** float浮动；要么对没有使用float，
 
-​				    **浮动的DIV设置margin样式** ，浮动元素后边的元素设置margin属性。
+​			 **浮动的DIV设置margin样式** ，浮动元素后边的元素设置margin属性。
 
 ​			**上下结构div盒子重叠现象** 
 
@@ -407,15 +407,15 @@ background 简写属性在一个声明中设置所有的背景属性。
 
 -  **径向渐变（Radial Gradients）- 由它们的中心定义**
 
-       background: radial-gradient(*center, shape size, start-color, ..., last-color*);
+        background: radial-gradient(*center, shape size, start-color, ..., last-color*);
 
-       径向渐变的定位原点可以自己设置，另外形状可以自己设置，一般是圆形和椭圆
+        径向渐变的定位原点可以自己设置，另外形状可以自己设置，一般是圆形和椭圆
 
-       ​
+        ​
 
-         **6.2线性渐变和径向渐变都可以进行重复：** 
+          **6.2线性渐变和径向渐变都可以进行重复：** 
 
-       background: repeating-radial-gradient(red, yellow 10%, green 15%);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 background: repeating-linear-gradient(red, yellow 10%, green 20%);  
+        background: repeating-radial-gradient(red, yellow 10%, green 15%);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 background: repeating-linear-gradient(red, yellow 10%, green 20%);  
 
  #### 7.文本效果：####
 
@@ -456,7 +456,7 @@ background 简写属性在一个声明中设置所有的背景属性。
 
 -  matrix()：有六个参数，包含旋转，缩放，移动（平移）和倾斜功能。
 
-       **3D转化，translateX(*x*)，scaleY(*y*)，rotateZ(*angle*)等等，分为3个方向进行变化，X,Y,Z** 
+        **3D转化，translateX(*x*)，scaleY(*y*)，rotateZ(*angle*)等等，分为3个方向进行变化，X,Y,Z** 
 
  #### 10.过渡（transition）####
 
@@ -466,9 +466,9 @@ background 简写属性在一个声明中设置所有的背景属性。
 
 -  指定效果的持续时间。
 
-       **10.2**过渡有4个属性值：transition-delay，transition-duration，
+        **10.2**过渡有4个属性值：transition-delay，transition-duration，
 
-       ​				       transition-property，transition-timing-function
+        ​				       transition-property，transition-timing-function
 
  #### 11.动画 ：####
 
