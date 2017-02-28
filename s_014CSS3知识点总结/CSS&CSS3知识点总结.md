@@ -42,7 +42,7 @@
 
 ​	**1.4 浮动和清除浮动** 
 
-​		**1.4.1** 浮动元素设置了浮动，只会对其后边的元素产生影响，但是对block元素和inline元素的影响不同
+​		**1.4.1** 浮动元素设置了浮动![img](file:///C:/Users/acer/Desktop/LearningNote/s_014CSS3%E7%9F%A5%E8%AF%86%E7%82%B9%E6%80%BB%E7%BB%93/6162.tm.png?lastModify=1488206472)，只会对其后边的元素产生影响，但是对block元素和inline元素的影响不同
 
 ​		浮动的框之后的block元素元素会认为这个框不存在，但其中的文本依然会为这个元素让出位置。 
 
@@ -115,7 +115,7 @@
 
 #### 3.利用CSS进行元素的水平居中：####
 
-​	设置text-align center（只对行级元素起作用），要对其父级元素进行设置
+​	设置text-align:center（只对行级元素起作用），要对其父级元素进行设置
 
 或者是进行绝对定位，之后设置left:50%，margin设置一个负值（只对块级元素起作用）
 
@@ -123,17 +123,23 @@
 
 ​	4.1 **line-height:设置为高度** ，（一般会对文字，图片起作用）适用于高度一定的父级元素情况
 
-​	4.2 **vertical-align**（把元素放在父级元素的中部） ：center（只对inline-block元素起作用），适用于位置宽高的父级元素情况
+​	4.2 **vertical-align**（把元素放在父级元素的中部） ：center（只对inline-block元素起作用），适用有固定宽高的父级元素情况
 
 ​	用法一：父级元素进行设置{display:table-cell;vertical-align: middle;}，行级子元素设置成inline或者是inline-block;形式
 
 ​	用法二：对齐行内相邻元素，在不设置父级元素高度的同时，甚至其中一个元vertical-align:middle
 
+**同时设置垂直和水平居中**
+
 ​	4.3 **定位50%+margin负值**
 
-​	父级元素相对定位，子元素进行绝对定位，之后设置top:50%，margin设置一个负值（子元素此时要有宽高）
+​	父级元素相对定位，子元素进行绝对定位，之后设置top:50%，left:50%，margin-left,margin-top设置一个负值（子元素此时要有宽高）
 
-​	设置：table-cell;vertical-align: middle;（通用的）
+​	4.4**flex弹性盒子**
+
+​	给父级元素设置display:flex; align-items:center;justify-content:center;之后相应的子元素就会相对于父级元素进行垂直和水平居中定位了（IE10及其以上）
+
+​	4.5**display:table-cell**可以定位行级元素的垂直和水平居中，给父级元素设置display:table-cell,text-align:center;vertical-align:middle;即可(IE7及以下不支持此特性)
 
 #### 5.a链接(如果不遵循这个顺序，可能在不同浏览器会出现不起作用的bug)####
 
@@ -407,15 +413,15 @@ background 简写属性在一个声明中设置所有的背景属性。
 
 -  **径向渐变（Radial Gradients）- 由它们的中心定义**
 
-        background: radial-gradient(*center, shape size, start-color, ..., last-color*);
+         background: radial-gradient(*center, shape size, start-color, ..., last-color*);
 
-        径向渐变的定位原点可以自己设置，另外形状可以自己设置，一般是圆形和椭圆
+         径向渐变的定位原点可以自己设置，另外形状可以自己设置，一般是圆形和椭圆
 
-        ​
+         ​
 
-          **6.2线性渐变和径向渐变都可以进行重复：** 
+           **6.2线性渐变和径向渐变都可以进行重复：** 
 
-        background: repeating-radial-gradient(red, yellow 10%, green 15%);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 background: repeating-linear-gradient(red, yellow 10%, green 20%);  
+         background: repeating-radial-gradient(red, yellow 10%, green 15%);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 background: repeating-linear-gradient(red, yellow 10%, green 20%);  
 
  #### 7.文本效果：####
 
@@ -456,7 +462,7 @@ background 简写属性在一个声明中设置所有的背景属性。
 
 -  matrix()：有六个参数，包含旋转，缩放，移动（平移）和倾斜功能。
 
-        **3D转化，translateX(*x*)，scaleY(*y*)，rotateZ(*angle*)等等，分为3个方向进行变化，X,Y,Z** 
+         **3D转化，translateX(*x*)，scaleY(*y*)，rotateZ(*angle*)等等，分为3个方向进行变化，X,Y,Z** 
 
  #### 10.过渡（transition）####
 
@@ -466,9 +472,9 @@ background 简写属性在一个声明中设置所有的背景属性。
 
 -  指定效果的持续时间。
 
-        **10.2**过渡有4个属性值：transition-delay，transition-duration，
+         **10.2**过渡有4个属性值：transition-delay，transition-duration，
 
-        ​				       transition-property，transition-timing-function
+         ​				       transition-property，transition-timing-function
 
  #### 11.动画 ：####
 
