@@ -143,7 +143,7 @@ var ctx = canvas.getContext( '2d' );//注意：2d小写， 3d：webgl
     * 解释：填充，是将闭合的路径的内容填充具体的颜色。默认黑色。
 
 
-    * 注意：交叉路径的填充问题，“非零环绕原则”，顺逆时针穿插次数决定是否填充。
+    * 注意：交叉路径的填充问题，“非零环绕原则”，沿逆时针穿插次数决定是否填充。
 
         以下是非0环绕原则的原理：（了解即可，非常少会用到复杂的路径）
         “非零环绕规则”是这么来判断有自我交叉情况的路径的：对于路径中的任意给定区域，从该区域内部画一条足够长的线段，
@@ -200,10 +200,8 @@ var ctx = canvas.getContext( '2d' );//注意：2d小写， 3d：webgl
     * left  :    文本左对齐。
     * right :    文本右对齐。      
 ```
-    * 例如：ctx.textAlign = 'left';         
+    * 例如：ctx.textAlign = 'left';        
 ```
- ![1482460936(1](1482460936(1.png)
-
 + textBaseline      设置或返回在绘制文本时使用的当前文本基线   
     * alphabetic ：   默认。文本基线是普通的字母基线。
     * top        ：   文本基线是 em 方框的顶端。。
@@ -270,30 +268,8 @@ var ctx = canvas.getContext( '2d' );//注意：2d小写， 3d：webgl
             //图片加载完成后，执行此方法
         }
 
-### 2.6.5 面向对象基础复习补充：
-+ 创建对象的方式：
-```
-    * var o = { name: '123', age: 18 }; //json方式创建
-    * var o = new Object();  //通过new的方式创建
-    * var o = new Persion(); //通过类的构造函数创建
-```
-+ JS中对象的属性创建方式
-```
-    * json的方式： var o = { age: 19 };
-    * 直接添加属性：var o = {};  o.age = 19;//太分散了，不利于管理
-    * 由于js动态语言的特性，如果属性不存在的时候，直接添加属性。
-    * 构造函数添加属性
-    * 原型添加公共的属性
-```
-+ JS的构造函数的原型
-    构造函数的原型就是：构造对象的模板，构造函数原型里面的所有的属性和方法都会共享给所有的 构造函数构造出来的所有实例。
-  <img src="imgs/prototype.png" height="763" width="872" alt="">
 
-  ​
-
-
-
-## 2.6.6 补充 sublime制作代码段（推荐--已经讲过了）
+## 2.6.5 补充 sublime制作代码段（推荐--已经讲过了）
 
 第一步：sublime菜单栏→ 工具 → 制作代码段 
 
@@ -494,14 +470,14 @@ ctx.fillRect(100, 100, 500, 500);
         -  翻译.：屁股；烟头；笑柄；靶垛；粗大的一端  英 [bʌt]   美 [bʌt]
     *   round ：  向线条的每个末端添加圆形线帽。
     *   square：  向线条的每个末端添加正方形线帽。      
-                                        <img src="imgs/linecap.png" height="303" width="480" >  
-                                        参考：23线的样式.html
+                                          <img src="imgs/linecap.png" height="303" width="480" >  
+                                          参考：23线的样式.html
 +   lineJoin    设置或返回两条线相交时，所创建的拐角类型
     *   bevel:   创建斜角。
         - 翻译. 斜角；斜面；[测] 斜角规  英 ['bev(ə)l]   美 ['bɛvl]
     *   round:   创建圆角。
     *   miter:   默认。创建尖角         
-                                        <img src="imgs/linejoin.png" height="387" width="453" alt="">
+                                          <img src="imgs/linejoin.png" height="387" width="453" alt="">
 
 +   lineWidth   设置或返回当前的线条宽度
 +   miterLimit  设置或返回最大斜接长度
