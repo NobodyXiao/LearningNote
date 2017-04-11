@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>双向数据绑定</title>
+	<link rel="stylesheet" href="双向数据绑定.css">
+</head>
+<body>
+	<div id="main" v-cloak @click="hideTooltip" >
+	    <div class="tooltip" v-if="show_tooltip" @click.stop>
+	        <input type="text" v-model="text_content" />
+	    </div>
+	    <p @click.stop="toggleTooltip">{{text_content}}</p>			
+	</div>
+	<script src="http://cdn.bootcss.com/vue/2.2.4/vue.js"></script>
+	<!-- <script src="../s_01tableChange/vue.js"></script> -->
+	<script src="双向数据绑定.js"></script>
+</body>
+</html>

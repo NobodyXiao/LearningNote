@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>即时搜索</title>
+	<link rel="stylesheet" href="即时搜索.css">
+</head>
+<body>
+	<div id="app">
+		<div id="inputBox">
+			<input type="text" v-modle="searchStr" placeholder="搜索">
+		</div>
+		<div id="urlShow">
+			<div id="urlBox" v-for="a in articles | searchFor searchStr">
+				<a href="a.url"><img :src="a.image" ></a>
+				<span>{{a.title}}</span>
+			</div>
+		</div>
+	</div>
+	<script src="../../vue.js"></script>
+	<script src="即时搜索.js"></script>
+</body>
+</html>
