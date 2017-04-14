@@ -1,19 +1,20 @@
-Vue.filter('searchFor',function(value,searchStr){
-	var result = [];
-	if(!searchStr){
-		return value;
-	}
-	searchStr = searchStr.trim().toLowerCase();
-	result = value.filter(function(item){
-		if(item.title.toLowerCase().indexOf(searchStr)!== -1){
-			return item;
-		}
-	});
-	return result;
-});
+
 
 var demo = new Vue({
 	el:'#app',
+    computed:{
+      filterArticles:function(){
+         var value = this.searchStr;
+          if (!value) { return this.articles};
+          value = value.trim().toLowerCase();
+          var result = this.articles.filter(function(item){
+            if(item.title.toLowerCase().indexOf(value) !== -1){
+                return item;
+            }
+          })      
+        return result;
+      }  
+    },
 	data:{
 		searchStr:"",
 		articles:[
@@ -49,5 +50,5 @@ var demo = new Vue({
             }
 		]
 	}
-});
+})
 

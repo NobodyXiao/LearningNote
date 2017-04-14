@@ -52,3 +52,6 @@ input{
 	left: 70px;
 	margin-top: -40px;
 }
+.dismiss{
+	display: none;
+}
