@@ -6,7 +6,17 @@
 	<link rel="stylesheet" href="市级联动.css">
 </head>
 <body>
-	<div id="app" v-bind:id="item.ID">{{item.message}}</div>
+	<div id="app">
+		<select name="province" id="province" @change="provinceChange($event)">
+			<option v-for="item in items" >&nbsp&nbsp&nbsp{{item.name}}</option>
+		</select>省
+		<select name="city" id="city">
+			<option>&nbsp&nbsp&nbsp{{items.city}}</option>
+		</select>市
+		<select name="county" id="county">
+			<option  v-for="item in items.area">&nbsp&nbsp&nbsp{{item}}</option>
+		</select>县／区
+	</div>
 	<script src="../../vue.js"></script>
 	<script src="市级联动.js"></script>
 </body>
