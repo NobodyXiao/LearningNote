@@ -2,16 +2,20 @@
 var demo = new Vue({
 	el:'#app',
 	data:{
+		selected: '山西',
+		selected2:"山西",
 		items:[
+
 			{ 
 				"name":"北京", 
-				"city":"北京",
+				"city":[{"name":"北京",
 				"area":["东城区","西城区","崇文区","宣武区","朝阳区","丰台区","石景山区","海淀区","门头沟区","房山区","通州区","顺义区","昌平区","大兴区","平谷区","怀柔区","密云县","延庆县"]
+			}]
 			},
 
 			{ 
 				"name":"天津", 
-			  "city":[{"name":"天津", 
+			  	"city":[{"name":"天津", 
 			  		   "area":["和平区","河东区","河西区","南开区","河北区","红桥区","塘沽区","汉沽区","大港区","东丽区","西青区","津南区","北辰区","武清区","宝坻区","宁河县","静海县","蓟 县"
 			  		   		  ]}
 			  		  ]
@@ -47,9 +51,9 @@ var demo = new Vue({
 		   	},
 
 		    { 
-		    	"name": "山西", 
+		    	"name": "山西",
 		        "city":[
-		    		 {"name":"太原", 
+		    		 {"name":"太原",
 		    		  "area":
 		    		  ["小店区","迎泽区","杏花岭区","尖草坪区","万柏林区","晋源区","清徐县","阳曲县","娄烦县","古交市"]
 		    		 },
@@ -80,9 +84,37 @@ var demo = new Vue({
 			}
 		]
 	},
-	methods:{
-		provinceChange:function(event){
-				console.log;)
+	computed:{
+		selection:{
+			get:function(){
+				var that = this;
+				// console.log(this);
+				return this.items.filter(function(item){
+					// console.log(item.name);
+					if(item.name == that.selected)
+					return item;
+				})[0].city;
+			}
+		},
+		cityChange:{
+			get:function(){
+				var that = this;
+				// console.log(this);
+				var a = this.items.filter(function(item){
+					// console.log(item.name);
+					if(item.name == that.selected)
+					return item;
+				})[0].city;
+				return a.filter(function(item1){
+					
+					if(item1.name == that.selected2)
+					{
+						console.log(item1.area);	
+						return item1.arae;
+					}
+				});
+			}										
 		}
+
 	}
 });
