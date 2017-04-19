@@ -7,14 +7,14 @@
 </head>
 <body>
 	<div id="app">
-		<select id="province" v-model="selected">
-			<option v-for="item in items" v-once>{{item.name}}</option>
+		<select id="province" v-model="province">
+			<option v-for="item in provinceDate" v-once>{{item.name}}</option>
 		</select>省
-		<select id="city" v-model="selected2">
-			<option v-for="zy in selection" >{{zy.name}}</option>
+		<select id="city" v-model="city">
+			<option v-for="zy in cityData" >{{zy.name}}</option>
 		</select>市
 		<select id="county">
-			<option  v-for="index in cityChange">{{index}}</option>
+			<option  v-for="index in countyData">{{index}}</option>
 		</select>县／区
 	</div>
 	<script src="../../vue.js"></script>
