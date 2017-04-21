@@ -1,0 +1,26 @@
+#app{
+	height: 600px;
+	width: 600px;
+	background: #eee;
+	margin: 0 auto;
+	text-align: center;
+}
+h1{
+	background: green;
+	height: 10%;
+	line-height: 60px;
+}
+label{
+	font-size: 18px;
+}
+input{
+	display: inline-block;
+	width: 50%;
+	height: 5%;
+}
+ol{
+	background: pink;
+	height: 75%;
+	width: 60%;
+	margin: 5% auto;
+}

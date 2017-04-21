@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ToDoList</title>
+	<link rel="stylesheet" href="todolist.css">
+</head>
+<body>
+	<div id="app">
+		<h1>My ToDoList</h1>
+		<label for="inputName">请输入</label>
+		<input type="text" placeholder="do what" id="inputName">
+		<ol>
+			<li v-for="item in items" v-bind:class="{'finish':item.isFinished}">{{item.label}}</li>
+		</ol>
+	</div>
+	<script src="../../vue.js"></script>
+	<script src="todolist.js"></script>
+</body>
+</html>
