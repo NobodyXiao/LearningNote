@@ -9,9 +9,12 @@
 	<div id="app">
 		<h1>My ToDoList</h1>
 		<label for="inputName">请输入</label>
-		<input type="text" placeholder="do what" id="inputName">
+		<input type="text" placeholder="do what" id="inputName" v-on:keyup.13="addThings" v-model="text">
 		<ol>
-			<li v-for="item in items" v-bind:class="{'finish':item.isFinished}">{{item.label}}</li>
+			<li v-for="item in items" v-bind:class="{'finish':item.isFinished,'delete':item.isDelete}" v-on:click="changeClass(item)">
+				<span>{{item.label}}</span>
+				<span v-if="item.isFinished" v-on:click="deleteThing(item)">Delete</span>
+			</li>
 		</ol>
 	</div>
 	<script src="../../vue.js"></script>
