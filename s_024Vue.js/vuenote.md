@@ -118,21 +118,112 @@
      >
      >**6.2指令部分**
      >
-     >  >指令时带有**v-**前缀的特殊属性。指令的职责就是当表达式的值改变的时候，相应的将某些行为绑定到dom上，一些指令带有参数，**在指令后以冒号指令**，例如v-bind:href=“url”,此处出现的href属性就是参数，表明此处href属性和表达式url的值绑定。
+     >  >指令时带有**v-**前缀的特殊属性。指令的职责就是当表达式的值改变的时候，相应的将某些行为绑定到dom上，一些指令带有参数，**在指令后以冒号指令**，例如**v-bind**:href=“url”,此处出现的href属性就是参数，表明此处href属性和表达式url的值绑定。
      >  >
-     >  >另外v-on指令，后边绑定的事件名称：<a v-on:click="doSomething">
+     >  >另外**v-on指令**，后边绑定的事件名称：<a v-on:click="doSomething">，此处的click就是参数
+     >  >
+     >  >**v-for指令**，是进行列表渲染，通常的语法是`<li v-for="item in items">{{item.text}}<li>`
+     >  >
+     >  >**v-if指令**，条件渲染，根据条件的真假进行渲染，通常的写法是`<div v-if="seen">haha<div>`,其中参数值seen是一个布尔值，如果seen为真，那么div被渲染出来，否则就不被渲染
+     >  >
+     >  >**v-show指令**，同样也是条件渲染，写法类似`<div v-show="seen">haha<div>`，只是不被渲染只是操控html的css属性，将其设置成`display:none;`
      >
-     >​									
+     >**6.3计算属性**	
      >
-     >​
+     >模版内的表达式插值等等，只能实现简单的运算，如果想要放入更多复杂的逻辑，那么你就要用到计算属性。计算属性其实也是属性，可以使用vue的指令进行绑定。
+     >
+     >> **6.3.1 **通常计算属性是写在computed里边的，其对应着一个处理函数，如下所示：
+     >>
+     >> ```
+     >> <div id="example">
+     >>   <p>Original message: "{{ message }}"</p>
+     >>   <p>Computed reversed message: "{{ reversedMessage }}"</p>
+     >> </div>
+     >> //js 部分
+     >> var vm = new Vue({
+     >>   el: '#example',
+     >>   data: {
+     >>     message: 'Hello'
+     >>   },
+     >>   computed: {
+     >>     reversedMessage: function () {
+     >>       return this.message.split('').reverse().join('')
+     >>     }
+     >>   }
+     >> })
+     >> ```
+     >>
+     >> **6.3.2 计算缓存 vs Methods**
+     >>
+     >> 我们也可通过将某一个函数定义成一个method而不是一个计算属性，两种方式的结果是一样的，**不同的是计算属性是基于他们的依赖进行缓存的**，计算属性只有在他的相关依赖发生改变的时候才会重新求值，如果依赖message没发生改变，那么多次访问计算属性会立即返回结果，不用再次执行函数，而method只要重新渲染的时候，method调用总会执行函数。
+     >>
+     >> 这样做的好处就是，如果计算属性依赖的是一个极大的数据，这样只要数据不发生改变，那么就不用重新计算，而是依赖于缓存。
+     >>
+     >> **6.3.3computed属性 vs watched属性**
+     >>
+     >> watch属性也是用来观察数据变化的，但是一般监测数据变化还是使用computed属性，因为watch属性没有computed属性自动，容易使代码变得更加复杂。
+     >>
+     >> 以下的例子是当lastName和firstName其中任何一个发生变动的时候，fullName就要发生变化
+     >>
+     >> ```
+     >> watch: {
+     >>     firstName: function (val) {
+     >>       this.fullName = val + ' ' + this.lastName
+     >>     },
+     >>     lastName: function (val) {
+     >>       this.fullName = this.firstName + ' ' + val
+     >>     }
+     >> //computed属性
+     >> computed: {
+     >>     fullName: function () {
+     >>       return this.firstName + ' ' + this.lastName
+     >>     }
+     >>   }
+     >> ```
+     >>
+     >> **6.3.4计算属性同农场只有gettet，不过需要的时候也可以提供一个setter，但是通常要明确写出来**
+     >>
+     >> ```
+     >> computed: {
+     >>   fullName: {
+     >>     // getter
+     >>     get: function () {
+     >>       return this.firstName + ' ' + this.lastName
+     >>     },
+     >>     // setter
+     >>     set: function (newValue) {
+     >>       var names = newValue.split(' ')
+     >>       this.firstName = names[0]
+     >>       this.lastName = names[names.length - 1]
+     >>     }
+     >>   }
+     >> }
+     >> ```
+     >>
+     >> **6.3.5观察Watchers**
+     >>
+     >> 虽然计算属性在大多数情况下更佳合适，但是有时候也需要定义一个watcher，因为当你想要在数据变化响应时，执行大量的异步操作，或者开销大的操作时，会很有用的。
+     >>
+     >> 除了 `watch` 选项之外，您还可以使用 [vm.$watch API]命令。   
 
-   
+
+7. **class与style绑定**
 
    ​
 
-7. ​
+8. **条件渲染**
 
-   ​
+9. **列表渲染**
+
+10. **事件处理器**
+
+11. **表单控件绑定**
+
+12. **组件**
+
+13. ​
+
+    ​
 
 
 
