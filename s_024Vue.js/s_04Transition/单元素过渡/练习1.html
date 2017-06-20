@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>过渡效果练习</title>
+    <link rel="stylesheet" href="练习1.css">
+</head>
+<body>
+   <!-- <div id="demo">
+        <button v-on:click="show = !show">
+            Toggle
+        </button>
+        <transition name="fade">
+            <p v-if="show">hello</p>
+        </transition>
+   </div> -->
+   <!-- <div id="demo">
+        <button v-on:click="show = !show">
+            Toggle
+        </button>
+        <transition name="slide-fade">
+            <p v-if="show">hello</p>
+        </transition>
+   </div> -->
+   <div id="demo">
+        <button v-on:click="show = !show">
+            Toggle
+        </button>
+        <transition name="bounce">
+            <p v-if="show">hello</p>
+        </transition>
+   </div>    
+   <script src="http://cdn.bootcss.com/vue/2.2.4/vue.js"></script>
+   <script src="练习1.js"></script>
+</body>
+</html>

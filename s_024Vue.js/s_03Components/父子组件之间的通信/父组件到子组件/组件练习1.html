@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>双向数据绑定</title>
+	<link rel="stylesheet" href="组件练习1.css">
+</head>
+<body>
+
+	<div id="main">
+		<my-component v-bind:context = "text_content"></my-component>
+		<my-component v-bind:context = "text_content"></my-component>
+		<my-component v-bind:context = "text_content"></my-component>	
+		<p>{{text_content}}</p>	
+	</div>
+	<script src="http://cdn.bootcss.com/vue/2.2.4/vue.js"></script>
+	<!-- <script src="../s_01tableChange/vue.js"></script> -->
+	<script src="组件练习1.js"></script>
+</body>
+</html>

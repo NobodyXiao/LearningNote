@@ -64,7 +64,7 @@
 
 ###5. 静态网站和动态网站的区别 ![1](1.png)###
 
-###6. B/S模式和C/S模式:###    Browser/Server结构      Client/Server结构
+###6. B/S模式和C/S模式:  Browser/Server结构      Client/Server结构
 
    Client/Server结构：是大家熟知的软件系统体系结构
 
