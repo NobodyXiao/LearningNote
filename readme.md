@@ -31,6 +31,7 @@ Practice List
 - [面向对象总结](./s_021面向对象/faceToObject.md)
 - [TCP/IP协议总结](./s_022TCP协议和IP协议/readme.md)
 - [博客](./s_023myBlog/BlogNote.md)
+- [Vue的相关练习](./s_024Vue.js/vuenote.md)
 
 
 
