@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Watch选项</title>
+</head>
+<body>
+  <h1>Watch选项</h1>
+  <hr>
+  <!-- 构造器被挂在的dom元素 -->
+  <div id="app"><s></s>
+      <p>当前温度:{{temperature}}度</p>
+      <p>适合穿着:{{clothes}}</p>
+      <p>
+          <button @click="addtemp">升高温度</button>
+          <button @click="reducetemp">降低温度</button>
+      </p>
+  </div>
+  <script src="http://cdn.bootcss.com/vue/2.2.4/vue.js"></script>
+  <script src="练习1.js"></script>  
+</body>
+</html>

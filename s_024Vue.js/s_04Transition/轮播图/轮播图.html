@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue过渡实现轮播图</title>
+    <link rel="stylesheet" href="轮播图.css">
+</head>
+<body>
+  <div class="carousel-wrap" id="carousel">
+    <!-- 轮播图列表   -->
+    <transition-group tag="ul" class="slide-ul" name="list">
+      <li v-for="(list,index) in slideList" :key="index" v-show="index===currentIndex" @mouseenter="stop" @mouseleave="go">
+        <a href="list.clickUrl">
+          <img :src="list.image" alt="list.desc">
+        </a>
+      </li>
+    </transition-group>
+    <div class="carousel-items">
+      <span v-for="(item,index) in slideList" :class="{'active':currentIndex==index}" @mouseover="changeIndex(index)">{{item.selfIndex}}</span>
+    </div>
+  </div>   
+   <script src="http://cdn.bootcss.com/vue/2.2.4/vue.js"></script>
+   <script src="轮播图.js"></script>
+</body>
+</html>
