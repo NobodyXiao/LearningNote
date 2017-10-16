@@ -1,1 +1,0 @@
-document.write("<h1>我是入口文件2</h1>");
