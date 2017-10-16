@@ -1,0 +1,319 @@
+/*
+* @Author: anchen
+* @Date:   2016-10-30 20:44:06
+* @Last Modified by:   anchen
+* @Last Modified time: 2017-02-23 11:57:39
+*/
+body{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:#fff;
+    overflow:hidden;
+    font-family:PingFangSC-Regular,Helvetica,"Droid Sans",Arial,sans-serif;
+}
+body>#jd-topBar{
+    height:auto;
+    width:100%;
+    background:#e0e0e0 url('../images/category/header-bg.png') repeat-x 0 0;
+    background-size:1px 44px;
+    border-bottom:1px solid #e0e0e0;
+    /* position:absolute;使得topbar浮动起来之后下边的盒子才能占满整个body，再给一个topbar的高度，两个盒子就能完美的结合在一起
+    top:0;
+    left:0; */
+    position:relative;
+    z-index:100;
+}
+/* 返回按钮 */
+body>#jd-topBar>.icon-backup{
+    display:block;
+    background-position:-20px 0;
+    height:20px;
+    width:20px;
+    margin:12px 10px;
+    position:absolute;
+    top:0;
+    left:0;
+}
+/* form表单 */
+body>#jd-topBar>form{
+    height:100%;
+    width:100%;
+    padding:0 40px;
+}
+body>#jd-topBar>form>input{
+    margin:7px 0;
+    height:30px;
+    width:100%;
+    background:#fff;
+    border:1px solid #bfbfbf;
+    border-radius:5px;
+    font-size:12px;
+    padding-left:20px;
+}
+body>#jd-topBar>.icon-category{
+    display:block;
+    background-position:-60px 0;
+    height:44px;/* 把盒子设置的稍微大一些，可以领用另外一种方法给盒子添加背景 */
+    width:40px;
+    padding:12px 10px;
+    background-clip:content-box;
+    background-origin:content-box;/*只给盒子里边的部分添加背景，从左上角开始 */
+    position:absolute;
+    top:0;
+    right:0;
+}
+body>#jd-topBar>.jd-hiddenMenu{
+    height:57px;
+    width:100%;
+    background:#404042;
+    display: table;
+    margin:0;
+    padding:0;
+    display: none;
+}
+body>#jd-topBar>.jd-hiddenMenu>li{
+    float:left;
+    height:100%;
+    width:25%;
+    text-align:center;
+}
+body>#jd-topBar>.jd-hiddenMenu>li>a{
+    display:block;
+    height:100%;
+    width:100%;
+    padding-top:5px;
+}
+body>#jd-topBar>.jd-hiddenMenu>.selected{
+    background:#2d2d2d;
+}
+body>#jd-topBar>.jd-hiddenMenu>li strong{
+    color:#fff;
+    font-weight: normal;
+    font-size: 12px;
+}
+body>#jd-topBar>.jd-hiddenMenu>li span{
+    display:block;
+    height:30px;
+    width:30px;
+    margin:0 auto;
+    margin-top:6px;
+}
+body>#jd-topBar>.jd-hiddenMenu>li .pic1{
+    background:url("../images/cart/jd-sprites.png");
+    background-size:200px 200px;
+    background-position:-30px -27px;
+}
+body>#jd-topBar>.jd-hiddenMenu>li .pic2{
+    background:url("../images/cart/jd-sprites.png");
+    background-size:200px 200px;
+    background-position:-60px -27px;
+}
+body>#jd-topBar>.jd-hiddenMenu>li .pic3{
+    background:url("../images/cart/jd-sprites.png");
+    background-size:200px 200px;
+    background-position:-90px -27px;
+}
+body>#jd-topBar>.jd-hiddenMenu>li .pic4{
+    background:url("../images/cart/jd-sprites.png");
+    background-size:200px 200px;
+    background-position:-120px -27px;
+}
+
+/* 分类大盒子设置 */
+#jd-content{
+    width:100%;
+    height:100%;
+    /* padding-top:45px; */
+    position:relative;
+    z-index:99;/* 设置层，是为了下边的层不遮挡topbar上边的a链接 */
+}
+#jd-content>.jd-category-left{
+    min-width:76px;
+    height:100%;
+    /* padding-top:45px; */
+    position:absolute;
+    top:0;
+    left:0;
+    overflow:hidden;
+    z-index:20;
+}
+#jd-content>section{
+    height:100%;
+}
+#jd-content>section>.jd-category-right{
+    width:100%;
+    height:auto;
+    padding-left:76px;
+    position:relative;
+    z-index:10;
+    background: rgb(243,243,243);
+}
+
+
+#jd-content>section>.jd-category-right>.rightBox{
+    height:100%;
+}
+#jd-content>.jd-category-left>.jd-category-leftBox>ul{
+    height:100%;
+    width:100%;
+    margin-bottom:0;
+    padding-left:0;
+}
+#jd-content>.jd-category-left>.jd-category-leftBox>ul>li{
+    height:46px;
+    width:100%;
+    line-height:46px;
+    text-align:center;
+    font-size:14px;
+    border-bottom:1px solid #e0e0e0;
+    border-right:1px solid #e0e0e0;
+    background:#bfbfbf;
+}
+#jd-content>.jd-category-left>.jd-category-leftBox>ul>.now{
+    border-right:none;
+    background:#fff;
+}
+#jd-content>.jd-category-left>.jd-category-leftBox>ul>.now a{
+    color:red;
+}
+#jd-content>.jd-category-left>.jd-category-leftBox>ul>li>a{
+    display:block;
+    height:100%;
+    width:100%;
+    text-decoration: none;
+    color:#000;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size:11px;
+}
+/* 右边的分类内容区 */
+.initialHide{
+    display:none;
+}
+.jd-category-right>div>.jd-category-banner{
+    margin:7px 7px 0 7px;
+}
+.jd-category-right>div>.jd-category-banner img{
+    width:100%;
+    height:auto;
+}
+
+[class^="jd-category-content-"]{
+    margin:19px 7px 0 7px;
+}
+[class^="jd-category-content-"]>h4{
+    font-size:11px;
+    margin:0;
+}
+[class^="jd-category-content-"]>ul{
+    width:100%;
+    height:auto;
+    overflow:hidden;
+    margin-top:9px;
+    padding: 7px 10px 0 10px;
+    background:#fff;
+}
+[class^="jd-category-content-"]>ul>li{
+    width:32.5%;
+    float:left;
+    text-align:center;
+}
+[class^="jd-category-content-"]>ul>li>a{
+    display:inline-block;
+    height:100%;
+    width:100%;
+    text-decoration:none;
+    text-align:center;
+}
+[class^="jd-category-content-"]>ul>li>a img{
+    display:block;
+    height:55px;
+    width:55px;
+    margin:0 auto;
+}
+[class^="jd-category-content-"]>ul>li>a span{
+    display:block;
+    font-size:10px;
+    height:31px;
+    line-height:31px;
+    width:100%;
+    color: #686868;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+.jd-category-content-main{
+    position:relative;
+    overflow:hidden;
+}
+.jd-category-content-main>.rank-list{
+    color:#848689;
+    font-size:10px;
+    position:absolute;
+    top:0;
+    right:0;
+}
+.jd-category-content-main>.rank-list>.rank-logo{
+    background: url("../images/category/paihangbangbefore.png") no-repeat;
+    background-size: 12px 12px;
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-right:5px;
+}
+.jd-category-content-main>.rank-list>.rank-arrow{
+    background: url("../images/category/paihangbangafter.png") no-repeat;
+    background-size: 6px 10px;
+    display: inline-block;
+    width: 6px;
+    height: 10px;
+    margin-left:5px;
+}
+.jd-category-content-main>.rank-list span{
+    position: relative;
+    top: -2px;
+}
+.jd-category-content-bottom{
+    position:relative;
+    overflow:hidden;
+}
+.jd-category-content-bottom>.delete-box{
+    position:absolute;
+    overflow:hidden;
+    top:0;
+    right:0;
+}
+.jd-category-content-bottom>.delete-box>a{
+    display:block;
+    color:#848689;
+    font-size:10px;
+    padding-right:5px;
+}
+.jd-category-content-bottom>.delete-box>a>span{
+    position: relative;
+    top: -2px;
+}
+.jd-category-content-bottom>.delete-box>a>i{
+    background: url("../images/category/delete.png") no-repeat;
+    background-size: 12px 12px;
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin-right:5px;
+}
+@media screen and (min-width:640px){
+    #jd-content>.jd-category-left{
+    width:200px;
+}
+#jd-content>.jd-category-left>.jd-category-leftBox>ul>li{
+    width:200px;
+    height:60px;
+    line-height:60px;
+}
+    #jd-content>section>.jd-category-right{
+    padding-left:200px;
+}
+}
+
+

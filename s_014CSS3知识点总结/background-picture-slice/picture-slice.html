@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>裁剪图片</title>
+	<style>
+	html,body{
+		margin: 0;
+		padding: 0;
+		background: gray;
+	}
+	#backround{
+		height: 160px;
+		width: 160px;
+		padding: 70px;
+		margin: 100px auto;
+		position: relative;
+		box-sizing: content-box;
+		border: 2px dashed yellow;
+		background: url(autumn.jpg) no-repeat;
+	}
+	div::before,div::after{
+		content: "";
+		top: 0;
+		height: 160px;
+		width: 160px;
+		padding: 70px;
+		position: absolute;
+	}
+	div::before{
+		right: 0;
+		background: white;/* 覆盖上边的background,中间背景变成白色的*/
+		background-clip: content-box;/*从内容部分开始绘制背景 */
+	}
+	div::after{
+		background: url(autumn.jpg) no-repeat;
+		background-clip: content-box;/*从内容部分开始绘制背景 */
+		left: 50px;
+		top: 50px;
+	}
+
+	</style>
+</head>
+<body>
+<div id="backround"></div>
+</body>
+</html>

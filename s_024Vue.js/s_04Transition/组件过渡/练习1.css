@@ -1,0 +1,8 @@
+
+.fade-enter-active,.fade-leave-active {
+ transition: all 1s linear;
+}
+.fade-enter,.fade-leave-active {
+  opacity: 0;
+  transform:translateX(50px);
+}

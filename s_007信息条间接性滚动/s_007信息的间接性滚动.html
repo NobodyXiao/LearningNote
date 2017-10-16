@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>信息的间接性滚动</title>
+
+        <style type="text/css" media="screen">
+            *{
+                margin:0;
+                padding:0;
+            }
+            div{
+                margin:0 auto;
+            }
+            #title{
+                height:20px;
+                width:400px;
+                background:red;
+                text-align:center;
+                line-height:20px;
+                font-size:16px;
+                font-weight:bold;
+                border:3px solid #000;
+                border-bottom:none;
+            }
+            #content{
+                height:144px;
+                width:400px;
+                border:3px solid #000;
+                overflow:hidden;
+
+            }
+            li{
+                list-style:none;
+                padding-top:2px;
+                padding-left:10px;
+                line-height:24px;
+
+            }
+        </style>
+</head>
+<body>
+ <div id="title">今日头条</div>
+    <div id="content">
+        <ul id="text1">
+            <li>四川德阳市原常委、宣传部长杨建明被逮捕</li>
+            <li>媒体探访“巴铁”生产基地：荒草丛生从未开工</li>
+            <li>男子10米气步枪:中国排世界前二选手均止步资格赛</li>
+            <li>15省撤销廉政账户 反腐不再留余地</li>
+            <li>孙杨霍顿1500米自预赛同组 将再次正面较量</li>
+            <li>澳门旅游巴士交通事故30人伤 事发时司机不在车上</li>
+            <li>中国人巴西奥运游花钱不手软 人均消费7万人民币</li>
+            <li>巴基斯坦自杀式炸弹袭击已造成至少93人死亡</li>
+            <li>美一大学生低头玩Pokemon Go 遭“随机”枪杀</li>
+        </ul>
+    </div>
+  <script>
+        var Li1 = document.getElementById("text1");
+
+        var Con = document.getElementById("content");
+        Con.innerHTML+=Con.innerHTML;
+        Con.scrollTop = 0;
+        var iLiheight = 26;//每次向上连续卷曲的高度
+        var time = 50;//每次用来执行判断的频率
+        var timer;
+        var speed = 2000;//每次停顿的频率
+        var i;
+        function startMove(){
+        //每隔50ms去检测一次是否已经滚动一行，否则
+          timer=setInterval("scroll()",time);
+          Con.scrollTop++;
+          console.log(Con.scrollTop);
+
+        }
+
+        function scroll() {
+            //这一块用来实现间接滚动，当每滚动一行的时候，清楚定时器，之后2秒之后重新打开一个定时器，继续执行滚动
+             if(Con.scrollTop%iLiheight == 0){
+                clearInterval(timer);
+                setTimeout("startMove()",speed);
+                return;
+            }
+
+
+            if(Con.scrollTop >= Con.scrollHeight/2) {
+                Con.scrollTop = 0;
+            } else {
+                Con.scrollTop++;
+                console.log(Con.scrollTop);
+            }
+        }
+
+        setTimeout("startMove()",speed);
+ </script>
+
+</body>
+</html>

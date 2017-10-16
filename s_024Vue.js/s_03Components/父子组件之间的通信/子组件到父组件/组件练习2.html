@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>双向数据绑定</title>
+	<link rel="stylesheet" href="组件练习2.css">
+</head>
+<body>
+
+	<div id="main">
+		<button-counter v-on:add="incrementTotal"></button-counter>
+		<!-- 在html模版中，给组件中通过绑定，来触发父组件中的函数 -->
+		<span>+</span>
+		<button-counter v-on:add="incrementTotal"></button-counter>	
+		<span>=</span>
+		<span>{{total}}</span>
+		
+	</div>
+	<script src="http://cdn.bootcss.com/vue/2.2.4/vue.js"></script>
+	<!-- <script src="../s_01tableChange/vue.js"></script> -->
+	<script src="组件练习2.js"></script>
+</body>
+</html>

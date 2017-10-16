@@ -1,0 +1,17 @@
+html,body{
+	padding: 0;
+	margin: 0 auto;
+}
+#app{
+	width: 80%;
+	margin:0 10%;
+	position: relative;
+	text-align: center;
+}
+table{
+	width: 100%;
+	position: absolute;
+	left: 50%;
+	margin-left: -50%;
+}
+

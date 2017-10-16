@@ -1,0 +1,519 @@
+
+
+/*设置页面整体的样式*/
+html,body{
+    padding:0;
+    margin:0;
+
+}
+body{
+    font-size:14px;
+     /* 第二个是手机上默认的字体  */
+    background:#e0e0e0;
+    font-family:"微软雅黑";
+    min-height:650px;
+    min-width:980px;
+}
+@media (max-width:980px){
+    #content{
+        min-width:980px;
+    }
+}
+/* header部分 */
+#head{
+    height:5%;
+    width: auto;
+    min-height: 30px;
+    /* min-width:600px; */
+    line-height:200%;
+    text-align: right;
+    margin-right:5%;
+    background:#e0e0e0;
+    border-bottom: 1px solid #f0f0f0;
+
+}
+#head>span{
+    display: inline-block;
+    height: 50%;
+    margin-top: 0.7%;
+    padding-right: 1.5%;
+    margin-right: 1%;
+    border-right: 1px solid gray;
+}
+#head>span>a{
+    position: relative;
+    top: -4px;
+    text-decoration: none;
+    font-size: 12px;
+    color: gray;
+}
+
+
+#search{
+    height:10%;
+    min-height:80px;
+    /* width:100%; */
+    background: #f0f0f0;
+    /* border-bottom: 1px solid #c0c0c0; */
+    position:relative;
+    /* overflow:hidden; */
+}
+#search>div{
+    float: left;
+    vertical-align: middle;
+    margin: 0 5% 0 8%;
+}
+#search>#logo{
+    height: 80px;
+    width: 20%;
+    /* min-width:157px; */
+    background: url('../imgs/logo.jpg') no-repeat;
+    background-size: 160px 80px;
+}
+#search>#search-part{
+    width:30%;
+    min-width:400px;
+    height: 100%;
+    margin: 1.5% 0;
+    position:absolute;
+    left:30%;
+    top:0;
+}
+#search>#search-part>#textarea{
+    width: 80%;
+    height: 44%;
+    border: 1px solid red;
+}
+#search>#search-part>#btn{
+    width: 40px;
+    height: 46%;
+    background: #f10215;
+    color: #fff;
+    font-weight: bold;
+}
+
+#search>#cart{
+    width: 12%;
+    height: 100%;
+    min-width:120px;
+    position: absolute;
+    top:0;
+    left: 65%;
+}
+#search>#cart>span{
+    display: inline-block;
+    position: absolute;
+}
+#search>#cart>#cartLogo{
+    height: 70%;
+    width: 40%;
+    background: url("../imgs/cartLogo.png") no-repeat;
+    background-size: 86% 90%;
+    top: 20%;
+    left: 0;
+}
+#search>#cart>#cartText{
+    top: 35%;
+    left: 40%;
+    height:70%;
+    width:50%;
+}
+#search>#cart>#cartText>a{
+    font-size: 12px;
+    color: #000;
+    text-decoration: none;
+}
+#search>#cart>#cartNum{
+    top: 35%;
+    left: 130px;
+    height: 15px;
+    width: 15px;
+    border-radius: 15px;
+    background: red;
+    text-align: center;
+    line-height: 16px;
+    color: #fff;
+}
+
+
+
+#content{
+    position: absolute;
+    overflow: hidden;
+    padding: 0 8%;
+    width:100%;
+    height:85%;
+    min-height:699px;
+}
+
+/* 内容的左边区域样式 */
+
+#content-leftBox{
+    width:15%;
+    height:100%;
+    min-width:100px;
+    background:pink;
+    float: left;
+    line-height:200%;
+    text-align:center;
+}
+#content-leftBox>ul{
+    height:100%;
+    width:100%;
+    list-style: none;
+    padding:0;
+    margin:10% 0 0 0;
+}
+#content-leftBox>ul>li{
+    height:6.5%;
+    width:100%;
+}
+#content-leftBox>ul>li>a{
+    font-size: 14px;
+    font-family: "Microsoft YaHei";
+    color: #5C3317;
+    text-decoration: none;
+}
+/* 内容的右边区域样式 */
+#content-rightBox{
+    width:85%;
+    height:100%;
+    min-width:500px;
+    float: right;
+    position: relative;
+}
+
+/* 轮播图部分 */
+#carousel-01{
+    height:45%;
+    width:75%;
+    float: left;
+}
+#carousel-01 div{
+    height:100%;
+    width:100%;
+}
+
+#carousel-01>div img{
+    height:100%;
+    width:100%;
+    text-align:center;
+}
+/*主体内容部分*/
+
+#content-right{
+    width:25%;
+    height:45%;
+    background:pink;
+    float: left;
+}
+#content-right>#sales-title{
+    margin: 10px 0;
+    margin-left: 13%;
+    height: auto;
+    width: 87%;
+    line-height: 200%;
+    font-size: 15px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+#content-right>#sales-detials{
+    height: 72%;
+    width: 88%;
+    margin-left: 13%;
+    font-size: 13px;
+    overflow:hidden;
+}
+#content-right>#sales-detials>ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    height: auto;
+    width: 100%;
+}
+#content-right>#sales-detials>ul>li{
+    margin-top: 6px;
+}
+#content-right>#sales-detials>ul>li>a{
+    text-decoration: none;
+}
+
+/* 商品的详细信息样式 */
+#productDetials{
+    position:absolute;
+    height:55%;
+    width:100%;
+    top:45%;
+}
+#productDetials>#picBox{
+    position:absolute;
+    height:100%;
+    width:40%;
+    z-index:100;
+}
+#productDetials>#picBox>#smallPic{
+    height:100%;
+    width:100%;
+    position:absolute;
+    left:0;
+    top:0;
+}
+#productDetials>#picBox>#smallPic>img{
+    height:70%;
+    width:100%;
+    position:absolute;
+    left:0;
+    top:0;
+    border:3px solid #c0c0c0;
+}
+
+#imagesControll{
+    height:30%;
+    width:100%;
+    position:absolute;
+    left:0;
+    top:70%;
+}
+#imagesControll>div{
+    float:left;
+}
+#imagesControll>.smallImageUp{
+    height:100%;
+    width:4%;
+    background:url('../imgs/button1.png') no-repeat;
+    background-size:100% 100%;
+    position:absolute;
+    left:0;
+    top:0;
+}
+#imagesControll>.smallImageDown{
+    height:100%;
+    width:4%;
+    background:url('../imgs/button2.png') no-repeat;
+    background-size:100% 100%;
+    position:absolute;
+    right:0;
+    top:0;
+}
+#imageContainer{
+    height:100%;
+    width:92%;
+    position:absolute;
+    left:4%;
+    top:0;
+}
+#imageMenu{
+    height:100%;
+    width:100%;
+    position:absolute;
+    left:0;
+    top:0;
+    padding:0px;
+    margin-bottom:0;
+}
+#imageMenu>li{
+    list-style:none;
+    float:left;
+    border:1px solid #ccc;
+    height:100%;
+    width:25%;
+
+}
+#imageMenu>li>img{
+    height:100%;
+    width:100%;
+}
+#imageMenu>li>.active{
+    border:1px solid red;
+}
+
+
+/* 买车详细信息描述 */
+#productDetials>#proDes{
+    width:58%;
+    height:100%;
+    position:absolute;
+    left:42%;
+}
+#proDuctName{
+    font-size:16px;
+    font-weight:bold;
+    height:10%;
+    width:100%;
+    position:absolute;
+    top:3%;
+    left:0;
+    overflow:hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+#proDes>#money{
+    background-color: #fff;
+    height:15%;
+    width:100%;
+    padding-left:5%;
+    position:absolute;
+    top:14%;
+    left:0;
+}
+#proDes>#money>div{
+    height:100%;
+    width:100%;
+    line-height:380%;
+}
+
+#proDes>#money>div>span{
+    font-size:12px;
+    position:absolute;
+    left:55%;
+    width:45%;
+    height:100%;
+    line-height: 400%;
+}
+#proDes>#money>div strong{
+    color:red;
+    font-size:18px;
+    position:absolute;
+    left:27%;
+    width:28%;
+    height:100%;
+    line-height: 300%;
+}
+#proDes>#city{
+    height:10%;
+    width:100%;
+    line-height:200%;
+    position:absolute;
+    top:32%;
+    left:0;
+}
+#proDes>#year{
+    height:10%;
+    width:100%;
+    line-height:200%;
+    position:absolute;
+    top:42%;
+    left:0;
+}
+#proDes>#carStyle{
+    height:auto;
+    width:100%;
+    line-height:200%;
+    position:absolute;
+    top:53%;
+    left:0;
+
+}
+#proDes>#carStyle>span{
+    display:inline-block;
+    height:100%;
+    background:#fff;
+    line-height:200%;
+    padding:0 3%;
+    margin-right:5%;
+    border:1px solid #c0c0c0;
+}
+
+/* 此处还需要改写？？ */
+#proDes>#carStyle>span>a{
+    color:#000;
+    text-decoration:none;
+}
+#proDes>#carColor{
+    height:10%;
+    width:100%;
+    line-height:200%;
+    position:absolute;
+    top:74%;
+    left:0;
+
+}
+#proDes>#carColor>a{
+    display:inline-block;
+    height:100%;
+    width:20%;
+    background:#fff;
+    line-height:220%;
+    text-align: center;
+    border:1px solid #c0c0c0;
+    color:#000;
+    text-decoration:none;
+}
+#proDes>#carColor>a>i{
+    display:inline-block;
+    height:50%;
+    width:20%;
+    margin-right:5%;
+    vertical-align: middle;
+}
+#proDes>#submit{
+    height:8%;
+    width:150px;
+    line-height:180%;
+    text-align:center;
+    background:red;
+    font-size:16px;
+    font-weight:bold;
+    border-radius:5px;
+    position:absolute;
+    bottom:0;
+    left:0;
+}
+#proDes>#submit>a{
+    color:#fff;
+    text-decoration:none;
+}
+#proDes>#carStyle>.choosed,
+#proDes>#carColor>.choosed{
+    border:1px solid red;
+}
+
+#cartList{
+    position:absolute;
+    top:0;
+    right:0;
+    z-index:1000;
+    background:lightblue;
+    height:auto;
+    min-width:300px;
+}
+#cartList>#listTitle{
+    margin:10px 5px;
+}
+#cartPro{
+    height:auto;
+    width:100%;
+    border:1px solid #f0f0f0;
+}
+#cartPro>a{
+    display:inline-block;
+    margin:10px 5px;
+    color:#000;
+    text-decoration:none;
+}
+#cartPro>a>img{
+    display:inline-block;
+    height:auto;
+    width:auto;
+    margin-right:5px;
+}
+#cartPro>a>.cartProName{
+    display:inline-block;
+    height:auto;
+    width:180px;
+}
+#maskLayer{
+    height:100%;
+    width:100%;
+    position:absolute;
+    top:0;
+    left:0;
+    background:rgba(0,0,0,0.5);
+    z-index:500;
+}
+
+
+
+

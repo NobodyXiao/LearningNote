@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>绘制坐标系</title>
+    </head>
+    <body>
+        <canvas id="cavsElem">
+            您的浏览器不支持，请更新版本
+        </canvas>
+        <script>
+            var canvas = document.getElementById("cavsElem");
+            // 获取canvas对象
+            var ctx = canvas.getContext("2d");
+            // 获得canvas的上下文环境
+            canvas.width=600;// 设置标签宽高不用带单位
+            canvas.height = 600;
+            canvas.style.border = "1px solid #000";
+            var data =[0.4,0.5,0.7,0.8,0.6];
+            var maxHeight = 300;
+            var maxWidth = 300;
+            // 绘制折线图
+            // 绘制X轴
+            ctx.moveTo(100, 400);
+            ctx.strokeStyle = 'red';
+            ctx.lineTo(400, 400);
+            ctx.stroke();
+            ctx.lineTo(390, 390);
+            ctx.moveTo(400,400);
+            ctx.lineTo(390, 410);
+            ctx.stroke();
+            //绘制Y轴
+            ctx.beginPath();
+            ctx.strokeStyle = 'blue';
+            ctx.moveTo(100, 400);
+            ctx.lineTo(100, 100);
+            ctx.lineTo(90, 110);
+            ctx.moveTo(100,100);
+            ctx.lineTo(110, 110);
+            ctx.stroke();
+            // 绘制折线
+            var originalX = 50;
+            var pointWidth = 300/(data.length+1);
+            ctx.beginPath();
+            ctx.strokeStyle = 'green';
+            for(var i=0;i<data.length;i++){
+                var x=100+(i+1)*pointWidth;
+                var y=400-maxHeight*data[i];
+                ctx.lineTo(x,y);
+            }
+            ctx.stroke();
+
+
+        </script>
+    </body>
+</html>

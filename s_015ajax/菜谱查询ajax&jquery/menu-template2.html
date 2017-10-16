@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>菜谱查询</title>
+        <style>
+            html,body{
+                margin:0;
+                padding:0;
+            }
+            #wrap{
+                margin:50px auto;
+                min-height:500px;
+                width:500px;
+                background:pink;
+                font-family:"微软雅黑";
+                font-size:13px;
+                color:#000;
+                font-weight:bold;
+
+            }
+            #title{
+                font-size:25px;
+                color:purple;
+                padding-top:50px;
+                text-align:center;
+            }
+            #checkBox{
+                padding:20px 0 0 50px;
+
+            }
+            #resultBox{
+                padding:10px 0 0 50px;
+            }
+        </style>
+        <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="template.js"></script>
+    </head>
+    <body>
+        <div id ="wrap">
+            <div id ="title">菜谱查询</div>
+            <div id = "checkBox">
+                <input type="text" value placeholder = "请输入您需要查询的菜谱"  id = "name"/>
+                <input type="button" value = "查询" id = "btn"/>
+            </div>
+            <div id = "resultBox"></div>
+            </div>
+        </div>
+        <script>
+
+        window.onload = function(){
+            var btn = $('#btn');
+            var dishNode = $('#name');
+            btn.click(function(data){
+                var result = $("#resultBox");
+                result.text("");
+                var dishName = dishNode.val();
+                $.ajax({
+                    type:'get',
+                    url:"http://apis.juhe.cn/cook/query?key=58297f146126e1408565204163298642&rn=3&pn=0&dtype=jsonp&menu=" + dishName,
+                    dataType:"jsonp",
+                    success:function(data){
+                        if(data.resultcode !=200){
+                            result.text("亲，您的数据出错了，请稍后重新访问！");
+                            return;
+                        }else{
+                            var data = data.result;
+                            console.log(data);
+                            var html = template("tpl",data);
+                            result.html(html);
+                        }
+                    },
+                    error:function(){
+                        result.text("亲，您的数据出错了，请稍后重新访问！");
+                    }
+
+                })
+            })
+        }
+        </script>
+        <script id='tpl' type="text/html">
+
+                {{each data as value i}}
+                    <div>{{value.title}}</div>
+                    <p>{{value.imtro}}</p>
+                    <img src="{{value.albums[0]}}">
+                    <p>{{value.ingredients}}</p>
+                    <p>{{value.burden}}</p>
+                     <div class = "steps">
+                        {{each value.steps as value j}}
+                            <div class = "c">
+                            <p>{{value.step}}</p>
+                            <p><img src="{{value.img}}"></p>
+                            </div>
+                        {{/each}}
+                    </div>
+                {{/each}}
+                <hr >
+
+        </script>
+    </body>
+</html>

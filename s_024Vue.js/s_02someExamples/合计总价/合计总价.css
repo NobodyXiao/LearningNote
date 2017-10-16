@@ -1,0 +1,59 @@
+#app{
+	height: 500px;
+	width: 400px;
+	background: pink;
+	padding-top: 50px;
+}
+#app>#message>.checked{
+	background: purple;
+}
+#app>#article{
+	font-size: 24px;
+	text-align: center;
+	width: 80%;
+	margin: 0 10% 0 10%;
+	height: 60px;
+	line-height: 60px;
+	background: #eee;
+}
+#app>#message{
+	height: auto;
+	width: 80%;
+	margin: 0 10% 0 10%;
+}
+#app>#message>div{
+	height: 60px;
+	width: 100%;
+	background: green;
+	margin-top: 10px;
+	line-height: 60px;
+	position: relative;
+}
+.left{
+	position: absolute;
+	top: 0;
+	left: 20px;
+}
+.right{
+	position: absolute;
+	top: 0;
+	right: 20px;
+}
+#add{
+	height: 80px;
+	width: 80%;
+	margin: 0 10% 0 10%;
+	line-height: 80px;
+	border-top: 1px solid black;
+	margin-top: 30px;
+}
+#add>div{
+	height: 100%;
+	width: 100%;
+	position: relative;
+}
+#add>div>span{
+	display: inline-block;
+	height: 100%;
+	font-weight: bold;
+}

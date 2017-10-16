@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
+        <title>histogramAnimate</title>
+        <script src="../lib/konva/konva.min.js"></script>
+    </head>
+    <body>
+        <div id="container">
+        </div>
+        <script>
+            // 创建舞台
+             var stage = new Konva.Stage({
+                container:'container',
+                width:window.innerWidth,
+                height:window.innerHeight
+            });
+            // 创建层
+            var layer = new Konva.Layer();
+            stage.add(layer);
+            // 舞台的中心点坐标
+            var cenX = stage.width()/2;
+            var cenY = stage.height()/2;
+            //柱状图的数据
+            var data = [
+                { name: '前端', value: '.8', color: 'green'},
+                { name: 'PHP', value: '.3', color: 'blue'},
+                { name: 'Java', value: '.7', color: 'red'},
+                { name: 'UI', value: '.9', color: 'orange'},
+                { name: 'IOS', value: '.4', color: 'purple'},
+                { name: 'Android', value: '.9', color: 'pink'}
+            ];
+
+            var x0 = 1/8 * stage.width();       //柱状图原点的坐标
+            var y0 = 3/4 * stage.height();
+
+            var width = 3/4 * stage.width();    //柱状图的最大宽度
+            var height = 1/2 * stage.height();  //柱状图的高度
+            // 将基线按照data的长度等分
+            var histogramWidth = width/data.length;
+
+            // 绘制基线
+            var bsLine = new Konva.Line({
+                //x:从 1/8 x,  3/4
+                //y: 3/4 高度处
+                points: [x0,y0, x0+width, y0], //参数分别为起点坐标和中点坐标
+                strokeWidth: 1,//设置线宽
+                stroke: 'green',//设置线的样式
+            });
+            // 把底线添加到层上边去，之后画一下
+            layer.add(bsLine);
+
+            // 绘制矩形框，因为需要重复绘制，所以要用到循环
+            data.forEach(function(item,index){
+                var rect = new Konva.Rect({
+                    x:x0+(1/4+index)*histogramWidth,//绘制矩形的起点
+                    y:y0 - item.value * height,//绘制矩形是从上向下绘制，所以起始的y坐标应该是在上边
+                    width: 1/2 * histogramWidth,//绘制矩形的宽度
+                    height: item.value * height,//绘制矩形的高度
+                    fill:item.color,
+                    opacity: .8,         //设置透明度
+                    cornerRadius: 10,    //设置圆角
+                    shadowBlur: 10,       //设置阴影的模糊级别
+                    shadowColor: 'black',
+                });
+                // 把每个矩形都添加到层中
+                layer.add(rect);
+                // 绘制矩形框上边的文字层
+                var rectText = new Konva.Text({
+                    x:x0+index*histogramWidth,//绘制文字的起点
+                    y:y0 - item.value * height-14,
+                    width:histogramWidth,
+                    align:"center",
+                    fill:item.color,
+                    text:item.value*100+"%",
+                    fontSize:14,
+                    name: 'textPercent'  //给这层文字做一个标识，到时候做动画的时候好识别
+                });
+                layer.add(rectText);
+                // 绘制底部的文字，要求有旋转
+                var bottomText = new Konva.Text({
+                    x:x0+(1/4+index)*histogramWidth,//绘制文字的起点
+                    y:y0,
+                    fill:item.color,
+                    text:item.name,
+                    fontSize:14,
+                    rotation: 30,
+                });
+                layer.add(bottomText);
+            });
+            layer.draw();
+            // 给柱状图添加动画
+            stage.on('contentClick',function(){
+                layer.find('Rect').each(function(item,index){
+                    item.y(y0);//在konva中，如果传参数：设置值， 如果不传参代表取值
+                    item.height(0);
+                    // 以上两步代表点击的时候首先清空矩形
+
+                    //动画显示到 初始的状态
+                    item.to({
+                        duration: 1,
+                        y: y0 - data[index].value * height,//注意此处data[index]的用法，因为这边使用this已经不是data对象了，所以使用全局变量data[index]
+                        height: data[index].value * height
+                });
+                })
+            //把文字设置一下动画
+            // 类型选择器是通过 name属性来选取。
+            layer.find('.textPercent').each(function(item, index ){
+                // each函数第一个参数是元素对象，第二个参数是索引值
+                item.y(y0-14);
+                item.to({
+                    duration: 1,
+                    y: y0 - data[index].value * height - 14,
+                });
+            });
+            });
+        </script>
+    </body>
+</html>

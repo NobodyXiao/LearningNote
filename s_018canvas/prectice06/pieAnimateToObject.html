@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"/>
+        <title>pieAnimation</title>
+        <script src="../lib/konva/konva.min.js"></script>
+        <script src="faceToObject.js"></script>
+    </head>
+    <body>
+         <div id="container">
+        </div>
+        <script>
+            //创建舞台
+            var stage = new Konva.Stage({
+                container: 'container',
+                width: window.innerWidth,//全屏
+                height: window.innerHeight
+            });
+
+            //创建层
+            var layer = new Konva.Layer();
+            stage.add(layer);
+
+            //中心点坐标
+            var cenX = stage.width() / 2;
+            var cenY = stage.height() / 2;
+            var data = [
+            { name: "前端", value: .25, color: '#e0e'  },
+            { name: "php",  value: .2,  color: 'orange'},
+            { name: "UI",   value: .3,  color: 'blue'  },
+            { name: "C++",  value: .05, color: 'green' },
+            { name: "游戏",   value: .1,  color: 'purple'},
+            { name: "Java", value: .1,  color: 'red'   }
+            ];
+            var p = new pieAnimation({
+            x: cenX,
+            y: cenY,
+            radius: 200,
+            data: data
+            });
+
+            p.addToGroupOrLayer( layer );
+            layer.draw();
+
+            stage.on('contentClick',function(){
+                p.playAnimate();
+            });
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,47 @@
+#app{
+	height: 600px;
+	width: 600px;
+	background: #eee;
+	margin: 0 auto;
+	text-align: center;
+}
+h1{
+	background: green;
+	height: 10%;
+	line-height: 60px;
+}
+label{
+	font-size: 18px;
+}
+input{
+	display: inline-block;
+	width: 50%;
+	height: 5%;
+}
+ol{
+	height: 75%;
+	width: 60%;
+	margin: 5% auto;
+	text-align: left;
+}
+li{
+	margin-top: 3px;
+	height: 30px;
+	line-height: 30px;
+	background: pink;
+	padding-left: 0;
+	position: relative;
+}
+.finish{
+	text-decoration: line-through;
+	background: greenyellow;
+}
+li span:nth-child(2){
+	text-decoration: underline;
+	position: absolute;
+	right: 10px;
+}
+.delete{
+	/* visibility: hidden; */
+	display: none;
+}

@@ -1,0 +1,14 @@
+#province{
+	background: pink;
+}
+#city{
+	background: #eee;
+}
+#county{
+	background: green;
+}
+select{
+	display: inline-block;
+	height: 24px;
+	width: 80px;
+}
