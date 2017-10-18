@@ -209,6 +209,96 @@
 
    **AngularJS 提供很好的依赖注入机制。以下5个核心组件用来作为依赖注入：value，factory，service，provider，constant**
 
-   ​
+7. #### ​AngularJS路由####
 
-7. ​
+   AngularJS 路由允许我们通过不同的 URL 访问不同的内容，通过路由，我们可以实现多视图的单页Web应用，但是在单页应用中，AngularJS 通过 **# + 标记** 实现不同路由。
+
+   ```
+   <html>
+       <head>
+           <meta charset="utf-8">
+           <title>AngularJS 路由实例 - 菜鸟教程</title>
+       </head>
+       <body ng-app='routingDemoApp'>
+        
+           <h2>AngularJS 路由应用</h2>
+           <ul>
+               <li><a href="#/">首页</a></li>
+               <li><a href="#/computers">电脑</a></li>
+               <li><a href="#/printers">打印机</a></li>
+               <li><a href="#/blabla">其他</a></li>
+           </ul>
+            
+           <div ng-view></div>
+           <script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
+           <script src="http://apps.bdimg.com/libs/angular-route/1.3.13/angular-route.js"></script>
+           <script>
+               angular.module('routingDemoApp',['ngRoute'])
+               .config(['$routeProvider', function($routeProvider){
+                   $routeProvider
+                   .when('/',{template:'这是首页页面'})
+                   .when('/computers',{template:'这是电脑分类页面'})
+                   .when('/printers',{template:'这是打印机页面'})
+                   .otherwise({redirectTo:'/'});
+               }]);
+           </script>
+        
+       </body>
+   </html>
+   ```
+
+   首先，需要载入实现路由的js文件：angular-route.js，其次要包含ngRoute模块作为主应用模块的依赖模块。
+
+   ```
+   angular.module('routingDemoApp',['ngRoute'])
+   ```
+
+   第三步：使用 ngView 指令。
+
+   ```
+   <div ng-view></div>  //该 div 内的 HTML 内容会根据路由的变化而变化。
+   ```
+
+   第四部：配置 $routeProvider，AngularJS $routeProvider 用来定义路由规则。
+
+   ```
+   module.config(['$routeProvider', function($routeProvider){
+       $routeProvider
+           .when('/',{template:'这是首页页面'})
+           .when('/computers',{template:'这是电脑分类页面'})
+           .when('/printers',{template:'这是打印机页面'})
+           .otherwise({redirectTo:'/'});
+   }]);
+   ```
+
+   AngularJS 模块的 config 函数用于配置路由规则。通过使用 configAPI，我们请求把$routeProvider注入到我们的配置函数并且使用$routeProvider.whenAPI来定义我们的路由规则。
+
+   $routeProvider 为我们提供了 when(path,object) & otherwise(object) 函数按顺序定义所有路由，函数包含两个参数:
+
+   - 第一个参数是 URL 或者 URL 正则规则。
+   - 第二个参数是路由配置对象。
+
+   **路由设置对象**
+
+   AngularJS 路由也可以通过不同的模板来实现。$routeProvider.when 函数的第一个参数是 URL 或者 URL 正则规则，第二个参数为路由配置对象。
+
+   **路由配置对象语法规则如下：**
+
+   ```
+   $routeProvider.when(url, {
+       template: string,//如果我们只需要在 ng-view 中插入简单的 HTML 内容，则使用该参数
+       
+       templateUrl: string,//如果我们只需要在 ng-view 中插入 HTML 模板文件，则使用该参数
+       
+       controller: string, function 或 array,
+       //function、string或数组类型，在当前模板上执行的controller函数，生成新的scope。
+       
+       controllerAs: string,  //为controller指定别名。
+       
+       redirectTo: string, function, //重定向的地址。
+       
+       resolve: object<key, function> //指定当前controller所依赖的其他模块。
+   });
+   ```
+
+   ​
