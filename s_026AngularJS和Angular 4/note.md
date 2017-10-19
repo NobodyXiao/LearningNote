@@ -301,4 +301,218 @@
    });
    ```
 
-   ​
+   ## Angular 4
+
+   1. ####模块#### 
+
+      模块由一块代码组成，可用于执行一个简单的任务。Angular应用是有模块化的，有自己的模块系统，**NgModules** ，每个Angular应该至少要有一个**根模块** ，一般可以命名为AppModule，Angular模块是一个带有@NgModule装饰器的类，它接收一个用来描述模块属性的元数据对象。
+
+      简单的根模块
+
+      ```
+      import { NgModule }      from '@angular/core';
+      import { BrowserModule } from '@angular/platform-browser';
+      @NgModule({
+        imports:      [ BrowserModule ],
+        providers:    [ Logger ],
+        declarations: [ AppComponent ],
+        exports:      [ AppComponent ],
+        bootstrap:    [ AppComponent ]
+      })
+      export class AppModule { }
+      ```
+
+      其中@NgModule装饰器里边的几个重要的属性：
+
+      - **declarations （声明）** - 视图类属于这个模块。 Angular 有三种类型的视图类： 组件 、 指令 和 管道 。
+      - **exports** - 声明（ declaration ）的子集，可用于其它模块中的组件模板 。
+      - **imports** - 本模块组件模板中需要由其它导出类的模块。
+      - **providers** - 服务的创建者。本模块把它们加入全局的服务表中，让它们在应用中的任何部分都可被访问到。
+      - **bootstrap** - 应用的主视图，称为根组件，它是所有其它应用视图的宿主。只有根模块需要设置 bootstrap 属性中。
+
+      之后我们就可以在 main.ts 文件中来引导 AppModule ，启动应用
+
+      ```
+      import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';//导入需要模块
+      import { AppModule } from './app.module';// 根模块
+       
+      platformBrowserDynamic().bootstrapModule(AppModule);// 编译启动模块
+      ```
+
+      **模块中所有用到的组件，指令，管道，都需要在模块中事先声明好，才能在具体的组件中使用。服务可以在模块，组件，指令中的providers声明，也可以直接在运行时提供。**
+
+   2. #### 组件####
+
+      组件是一个模板的控制类用于处理应用和逻辑页面的视图部分，组件是构成 Angular 应用的基础和核心，可用于整个应用程序中。
+
+      **创建 Angular 组件的方法有三步：** 
+
+      - 从 @angular/core 中引入 Component 修饰器
+      - 建立一个普通的类，并用 @Component 修饰它
+      - 在 @Component 中，设置 selector **自定义标签**，以及 template **模板**
+
+      ```
+      // hello.component.ts
+
+      import { Component } from '@angular/core';
+
+      @Component({  //装饰器@Component告诉Angular这个类是组件类            
+          selector: 'hello',//，selector属性说明了该组件对外的使用标记
+          template: '<p> {{greeting}} </p>',
+          styles: [`p { color: red;}`]
+      })
+      export class HelloComponent{
+          private greeting: string;
+          constructor(){
+              this.greeting = 'Hello, Angular2!';
+          }
+      }
+      ```
+
+      **组件的生命周期：**
+
+      - constructor：构造器函数，一般用于注入服务
+
+      - ngOnChanges：检测到输入数据变化，首次触发发生在ngOnInit前。注意对象的属性发生变化时监听不到
+
+      - ngOnInit：组件初始化，通常会设置一些初始值
+
+      - ngDoCheck：手动触发更新检查
+
+      - - ngAfterContentInit：内容初始化到组件之后
+        - ngAfterContentChecked：内容变更检测之后
+        - ngAfterViewInit：视图 初始化之后
+        - ngAfterViewChecked：视图发生变化检测之后，这个可以用来保证用户视图的及时更新
+
+      - ngOnDestroy：组件注销时的清理工作，通常用于移除事件监听，退订可观察对象等
+
+   3. #### 注入服务####
+
+      3.1 **新建服务**
+
+      新建之后会出现两个文件mail.service.spec.ts - 用于单元测试，mail.service.ts - 新建的服务
+
+      ```
+      $ ng g s mail
+      ```
+
+      3.2**配置服务**
+
+      新建服务之后，我们需要到根模块去配置一下服务
+
+      ```
+      import {MailService} from "./mail.service";
+
+      @NgModule({
+        ...
+        providers: [MailService],
+        bootstrap: [AppComponent]
+      })
+      export class AppModule { }
+      ```
+
+      3.3**更新服务（在mail.service.ts 更新）**
+
+      ```
+      import { Injectable } from '@angular/core';
+
+      @Injectable()
+      export class MailService {
+        message: string  ='该消息来自MailService';
+        constructor() { }
+      }
+      ```
+
+      3.4**使用服务（在根组建中使用）**
+
+      ```
+      import { Component } from '@angular/core';
+      import {MailService} from "./mail.service";
+
+      @Component({
+        selector: 'app-root',
+        template: `
+          <h3>{{title}}</h3>
+          <div>
+            <app-simple-form></app-simple-form>
+            {{mailService.message}}
+          </div>
+        `
+      })
+      export class AppComponent {
+        title = 'Hello, Angular';
+        constructor(private mailService: MailService) {}
+      }
+      ```
+
+      除了使用 `constructor(private mailService: MailService)` 方式注入服务外，我们也可以使用 `Inject` 装饰器来注入 `MailService` 服务：
+
+      不过对于 `Type` 类型(函数类型) 的对象，我们一般使用 `constructor(private mailService: MailService)` 方式进行注入。而 `Inject `装饰器一般用来注入非 `Type` 类型的对象。
+
+      ```
+      import {Component, Inject} from '@angular/core';
+
+      @Component({...})
+      export class AppComponent {
+        title = 'Hello, Angular';
+        
+        constructor(@Inject(MailService) private mailService) {}
+      }
+      ```
+
+   4. #### Input装饰器####
+
+      Angular 为我们提供了 `Input` 装饰器，用于定义组件的输入属性。
+
+   5. #### Output装饰器####
+
+      `Output` 装饰器的作用是用来实现子组件将信息，通过事件的形式通知到父级组件。
+
+   6. #### Angular 指令####
+
+      Angular 的指令分为三种：
+
+      - 组件(Component directive)：用于构建UI组件，继承于 Directive 类
+      - 属性指令(Attribute directive)：用于改变组件的外观或行为
+      - 结构指令(Structural directive)：用于动态添加或删除 `DOM` 元素来改变 `DOM `布局
+
+      ​
+
+   7. #### Reactive Form简介####
+
+      如果要使用Reactive Form需要一下几个步骤：
+
+      7.1 导入ReactiveFormsModule
+
+      ```
+      import { ReactiveFormsModule } from "@angular/forms";
+      ```
+
+      7.2 在NgModule 的 `imports` 属性值对应的数组中，添加 `ReactiveFormsModule`
+
+      ```
+      @NgModule({
+        imports: [
+          BrowserModule,
+          ReactiveFormsModule
+        ],
+      })
+      export class AppModule { }
+      ```
+
+      7.3 绑定 form 元素的 `formGroup` 属性
+
+      ```
+      <form (ngSubmit)="save()" [formGroup]="signupForm"></form>
+      ```
+
+      7.4 关联input元素对应的`FormControl` 实例
+
+      ```
+      <input type="text" name="userName" placeholder="请输入用户名" 
+        formControlName="userName">
+      ```
+
+      7.5 使用FormGroup
+
+   8. ​
