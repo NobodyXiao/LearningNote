@@ -470,11 +470,17 @@
 
    6. #### Angular 指令####
 
-      Angular 的指令分为三种：
+      **6.1Angular 的指令分为三种：** 
 
       - 组件(Component directive)：用于构建UI组件，继承于 Directive 类
       - 属性指令(Attribute directive)：用于改变组件的外观或行为
       - 结构指令(Structural directive)：用于动态添加或删除 `DOM` 元素来改变 `DOM `布局
+
+      **6.2 创建指令** 
+
+      在Angular中，我们可以使用 `HostBinding` 装饰器，实现元素的属性绑定。
+
+      ​
 
       ​
 
@@ -515,4 +521,365 @@
 
       7.5 使用FormGroup
 
-   8. ​
+   8. #### 路由快速入门####
+
+      路由是 Angular 应用程序的核心，它加载与所请求路由相关联的组件，以及获取特定路由的相关数据。这允许我们通过控制不同的路由，获取不同的数据，从而渲染不同的页面。
+
+      **8.1 安装路由模块** 
+
+      安装 Angular Router，可以通过运行以下任一操作来执行此操作：npm i --save @angular/router，以上命令执行后，将会自动下载 `@angular/router` 模块到 `node_modules` 文件夹中。
+
+      **8.2 添加Base href标签** 
+
+      我们需要做的最后一件事，是将 `<base>` 标签添加到我们的 `index.html` 文件中。路由需要根据这个来确定应用程序的根目录。
+
+      ```
+      <!doctype html>
+      <html>
+        <head>
+          <base href="/">
+          <title>Application</title>
+        </head>
+        <body>
+          <app-root></app-root>
+        </body>
+      </html>
+      ```
+
+      这样我们就 Angular 路由，应用程序的根目录是 `/` 。
+
+      **8.3使用路由模块** 
+
+      要使用路由模块，我们需要在AppModule模块中，导入RouterModule，具体如下所示:
+
+      ```
+      import { NgModule } from '@angular/core';
+      import { BrowserModule } from '@angular/platform-browser';
+      import { RouterModule } from '@angular/router';
+
+      import { AppComponent } from './app.component';
+
+      @NgModule({
+        imports: [
+          BrowserModule,
+          RouterModule
+        ],
+        bootstrap: [
+          AppComponent
+        ],
+        declarations: [
+          AppComponent
+        ]
+      })
+      export class AppModule {}
+      ```
+
+      此时我们的路由还不能正常工作，因为我们还未配置应用程序路由的相关信息。`RouterModule` 对象为我们提供了两个静态的方法：`forRoot()` 和 `forChild()` 来配置路由信息。
+
+      **RouterModule.forRoot() 方法** 用于在主模块中定义主要的路由信息，通过调用该方法使得我们的主模块可以访问路由模块中定义的所有指令。
+
+      ```
+      // ...
+      import { Routes, RouterModule } from '@angular/router';
+
+      export const ROUTES: Routes = [];
+
+      @NgModule({
+        imports: [
+          BrowserModule,
+          RouterModule.forRoot(ROUTES)
+        ],
+        // ...
+      })
+      export class AppModule {}
+      ```
+
+      我们通过使用 `const` 定义路由的配置信息，然后把它作为参数调用 `RouterModule.forRoot()` 方法，而不是直接使用 `RouterModule.forRoot([...])` 这种方式，这样做的好处是方便我们在需要的时候导出 `ROUTES` 到其它模块中。
+
+      **RouterModule.forChild():** 根模块中使用 `forRoot()`，子模块中使用 `forChild()`
+
+      这个功能非常强大，因为我们不必在一个地方（我们的主模块）定义所有路由信息。反之，我们可以在特性模块中定义模块特有的路由信息，并在必要的时候将它们导入我们主模块。`RouterModule.forChild()` 的使用方法如下：
+
+      ```
+      import { NgModule } from '@angular/core';
+      import { CommonModule } from '@angular/common';
+      import { Routes, RouterModule } from '@angular/router';
+
+      export const ROUTES: Routes = [];
+
+      @NgModule({
+        imports: [
+          CommonModule,
+          RouterModule.forChild(ROUTES)
+        ],
+        // ...
+      })
+      export class ChildModule {}
+      ```
+
+      **8.4Configuring a route配置`ROUTES` 对象**
+
+      我们定义的所有路由都是作为ROUTES数组中的对象，首先为我们的主页定义一个路由：
+
+      ```
+      import { Routes, RouterModule } from '@angular/router';
+      import { HomeComponent } from './home/home.component';
+      export const ROUTES: Routes = [
+        { path: '', component: HomeComponent }
+      ];
+      @NgModule({
+        imports: [
+          BrowserModule,
+          RouterModule.forRoot(ROUTES)
+        ],
+        // ...
+      })
+      export class AppModule {}
+      ```
+
+      示例中我们通过 `path` 属性定义路由的匹配路径，而 `component` 属性用于定义路由匹配时需要加载的组件。
+
+      **配置完路由信息后，下一步是使用一个名为 `router-outlet` 的指令告诉 Angular 在哪里加载组件。当 Angular 路由匹配到响应路径，并成功找到需要加载的组件时，它将动态创建对应的组件，并将其作为兄弟元素，插入到 `router-outlet` 元素中，在跟组件和当前组件的模板中加入此标签**
+
+      ​
+
+      **8.5Dynamic routes动态模板**
+
+      如果路由始终是静态的，那没有多大用处，动态路由可以根据不同的路由参数，渲染不同的页面。
+
+      例如我们根据不同页面显示不同用户信息，可以使用一下方式
+
+      ```
+      import { HomeComponent } from './home/home.component';
+      import { ProfileComponent } from './profile/profile.component';
+
+      export const ROUTES: Routes = [
+        { path: '', component: HomeComponent },
+        { path: '/profile/:username', component: ProfileComponent }
+      ];
+      ```
+
+      这里的关键点在于冒号‘：’告诉Angular路由，:username是路由参数，而不是URL中实际的部分。
+
+      此时一个动态路由已经建好了，最重要的就是如何获取路由参数，要访问当前路由的相关信息，我们需要先从 `@angular/router` 模块中导入 `ActivatedRoute`，  然后在组件类的构造函数中注入该对象，最后通过订阅该对象的 `params` 属性，来获取路由参数，具体示例如下：
+
+      ```
+      import { Component, OnInit } from '@angular/core';
+      import { ActivatedRoute } from '@angular/router';
+
+      @Component({
+        selector: 'profile-page',
+        template: `
+          <div class="profile">
+            <h3>{{ username }}</h3>
+          </div>
+        `
+      })
+      export class SettingsComponent implements OnInit {
+        username: string;
+        constructor(private route: ActivatedRoute) {}
+        ngOnInit() {
+          this.route.params.subscribe((params) => this.username = params.username);
+        }
+      }
+      ```
+
+      **8.6子路由** 
+
+      设置子路由的方法，我们可以在根组件中修改路由对象，如下：
+
+      ```
+      export const ROUTES: Routes = [
+        { 
+          path: 'settings', 
+          component: SettingsComponent,
+          children: [
+            { path: 'profile', component: ProfileSettingsComponent },
+            { path: 'password', component: PasswordSettingsComponent }
+          ]
+        }
+      ];
+      ```
+
+      紧接着在SettingsComponent组件中添加`router-outlet` 指令即可。
+
+      **8.7Component-less路由**
+
+      另一个很有用的路由功能是 `component-less` 路由。使用 `component-less` 路由允许我们将路由组合在一起，并让它们共享路由配置信息和 outlet。
+
+      我们可以定义settings路由而不使用`SettingsComponent` 组件：
+
+      ```
+      export const ROUTES: Routes = [
+        {
+          path: 'settings',
+          children: [
+            { path: 'profile', component: ProfileSettingsComponent },
+            { path: 'password', component: PasswordSettingsComponent }
+          ]
+        }
+      ];
+      ```
+
+      **8.8 loadChildren**
+
+      告诉路由从另一个模块中获取子路由。具体代码如下
+
+      ```
+      export const ROUTES: Routes = [
+        {
+          path: '',
+          component: SettingsComponent,
+          children: [
+            { path: 'profile', component: ProfileSettingsComponent },
+            { path: 'password', component: PasswordSettingsComponent }
+          ]
+        }
+      ];
+      @NgModule({
+        imports: [
+          CommonModule,
+          RouterModule.forChild(ROUTES)
+        ],
+      })
+      ```
+
+      注意此处我们使用的是RouterModule.forChild(ROUTES)方法，因为`SettingsModule` 不是我们应用的主模块。另外一个区别是我们将`SettingsModule` 模块的主路径设置为空路径 ('')。那么 `/settings` 路由信息在 `AppModule` 中配置。这时我们就需要用到 `loadChildren` 属性，具体如下：
+
+      ```
+      export const ROUTES: Routes = [
+        {
+          path: 'settings',
+          loadChildren: './settings/settings.module#SettingsModule'
+        }
+      ];
+
+      @NgModule({
+        imports: [
+          BrowserModule,
+          RouterModule.forRoot(ROUTES)
+        ],
+        // ...
+      })
+      export class AppModule {}
+      ```
+
+      需要注意的是，我们没有将 `SettingsModule` 导入到我们的 `AppModule` 中，而是通过 `loadChildren` 属性，告诉 Angular 路由依据 `loadChildren` 属性配置的路径去加载 `SettingsModule` 模块。这就是模块懒加载功能的具体应用，当用户访问 `/settings/**` 路径的时候，才会加载对应的 `SettingsModule` 模块，这减少了应用启动时加载资源的大小。
+
+      **8.9路由指令**
+
+      除了 `router-outlet` 指令，路由模块中还提供了一些其它指令。
+
+      **routerLink：** 通过此指令，我们可以连接到我们的路由
+
+      ```
+      <nav>
+        <a routerLink="/">Home</a>
+        <a routerLink="/settings/password">Change password</a>
+        <a routerLink="/settings/profile">Profile Settings</a>
+      </nav>
+      其中/settings/password为路由的路径
+      ```
+
+      当我们点击以上的任意链接时，页面不会被重新加载。反之，我们的路径将在 URL 地址栏中显示，随后进行后续视图更新，以匹配 `routerLink` 中设置的值。
+
+      **routerLinkActive：** 
+
+      在实际开发中，我们需要让用户知道哪个路由处于激活状态，通常情况下我们通过向激活的链接添加一个 class 来实现该功能。为了解决上述问题，Angular 路由模块为我们提供了 `routerLinkActive`指令
+
+      ```
+      <nav>
+        <a routerLink="/settings" routerLinkActive="active">Home</a>
+        <a routerLink="/settings/password" routerLinkActive="active">Change password</a>
+        <a routerLink="/settings/profile" routerLinkActive="active">Profile Settings</a>
+      </nav>
+      ```
+
+      **8.10Router API**
+
+      我们可以通过路由还提供的 API 实现与 `routerLink` 相同的功能。要使用 Router API，我们需要在组件类中注入 `Router` 对象，具体如下：
+
+      ```
+      import { Component } from '@angular/core';
+      import { Router } from '@angular/router';
+
+      @Component({
+        selector: 'app-root',
+        template: `
+          <div class="app">
+            <h3>Our app</h3>
+            <router-outlet></router-outlet>
+          </div>
+        `
+      })
+      export class AppComponent {
+        constructor(private router: Router) {}
+      }
+      ```
+
+      组件类中注入的router对象有一个navigate()方法，该类型支持的参数类型与routerLink指令一样，调用该方法之后，页面将会自动跳转到对应的路由地址，具体使用如下：
+
+      ```
+      import { Component, OnInit } from '@angular/core';
+      import { Router } from '@angular/router';
+
+      @Component({
+        selector: 'app-root',
+        template: `
+          <div class="app">
+            <h3>Our app</h3>
+            <router-outlet></router-outlet>
+          </div>
+        `
+      })
+      export class AppComponent implements OnInit {
+        constructor(private router: Router) {}
+        ngOnInit() {
+          setTimeout(() => {
+            this.router.navigate(['/settings']);
+          }, 5000);
+        }
+      }
+      ```
+
+      若以上代码成功运行，用户界面将在 5 秒后被重定向到 `/settings` 页面。这个方法非常有用，例如当检测到用户尚未登录时，自动重定向到登录页面。
+
+      另外的一个示例是页面在跳转的时候如何传递数据，具体如下：
+
+      ```
+      import { Component, OnInit } from '@angular/core';
+      import { Router } from '@angular/router';
+
+      @Component({
+        selector: 'app-root',
+        template: `
+          <div class="app">
+            <h3>Users</h3>
+            <div *ngFor="let user of users">
+              <user-component 
+                [user]="user"
+                (select)="handleSelect($event)">
+              </user-component>
+            </div>
+            <router-outlet></router-outlet>
+          </div>
+        `
+      })
+      export class AppComponent implements OnInit {
+        users: Username[] = [
+          { name: 'toddmotto', id: 0 },
+          { name: 'travisbarker', id: 1 },
+          { name: 'tomdelonge', id: 2 }
+        ];
+        
+        constructor(private router: Router) {}
+        
+        handleSelect(event) {
+          this.router.navigate(['/profile', event.name]);
+        }
+      }
+      ```
+
+      ​
+
+   9. ​
