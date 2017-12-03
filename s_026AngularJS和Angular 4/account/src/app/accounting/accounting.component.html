@@ -1,0 +1,26 @@
+<!-- 标题 -->
+<weui-navbar >
+  <p>理财从记账开始</p>
+</weui-navbar>
+
+  <div style="margin-top: 50px;">
+    <!-- 金额输入框 -->
+    <weui-input type="number" name="num" placeholder="请输入金额" [(ngModel)]="service.money">
+      <label class="weui-label">￥:</label>
+    </weui-input>
+    <!-- 九宫格按钮 -->
+    <div class="weui-grids">
+      <a href="javascript:;" class="weui-grid" *ngFor="let b of billTypes" (click)="service.add($event,b.id)">
+        <div class="weui-grid__icon">
+          <i class="fa fa-2x" [ngClass]="b.fontStyle"></i>
+        </div>
+        <p class="weui-grid__label">{{b.name}}</p>
+      </a>
+    </div>
+  </div>
+  <div class="chooseDate">
+    <label for="chooseTime" style="font-size:12px;margin-right:10px">请选择消费时间</label>
+    <input  type="date"  [(ngModel)]="service.actualTime" value="" id="chooseTime"/>
+  </div>
+  <div class="button" (click)="service.addCountRecord($event)">加入</div>
+<weui-toptips [content]="toastText" #TopTip></weui-toptips>

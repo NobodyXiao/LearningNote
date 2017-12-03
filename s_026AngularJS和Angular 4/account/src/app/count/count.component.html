@@ -1,0 +1,15 @@
+<div class="weui-panel__hd" style="height:52px">
+  <span>当前记账金额为：</span>
+  <em>{{service.allMoney}}</em>
+</div>
+<weui-navbar style="position: relative" style="height:52px;margin-top:88px">
+  <a routerLink="/count" (click)="setActive(1)" class="weui-navbar__item" [ngClass]="{'weui-bar__item_on':activeIndex == 1}">
+    <h4>消费明细</h4>
+  </a>
+  <a routerLink="/count/year" (click)="setActive(2)" (click)="service.collect()" class="weui-navbar__item" [ngClass]="{'weui-bar__item_on':activeIndex == 2}">
+    <h4>年</h4>
+  </a>
+</weui-navbar>
+<div>
+  <router-outlet></router-outlet>
+</div>

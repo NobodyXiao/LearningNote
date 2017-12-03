@@ -1,0 +1,33 @@
+weui-navbar>p{
+    height:50px;
+    width:100%;
+    line-height:50px;
+    position:relative;
+    left:50%;
+    transform:translateX(-50%);
+}
+
+/* .content-part>.inputPart */
+.button{
+    height:30px;
+    width:80px;
+    background:rgb(190, 174, 26);
+    position:fixed;
+    bottom:70px;
+    border-radius: 5px; 
+    color:white;
+    left:50%;
+    transform:translateX(-50%);
+}
+.choosed{
+    background:#eee;
+}
+.chooseDate{
+    width:90%;
+    height:50px;
+    text-align: center;
+    background:pink;
+    margin:20px 5% 0 5%;
+    line-height: 50px;
+    border-radius: 5px;
+}

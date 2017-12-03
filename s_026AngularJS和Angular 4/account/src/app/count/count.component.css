@@ -1,0 +1,13 @@
+.weui-panel__hd{
+    padding:18px;
+    text-align: center;
+  }
+  .weui-panel__hd span{
+    font-size: 14px;
+  }
+  .weui-panel__hd em{
+    font-size: 20px;
+    color:  #09bb07;
+    display: inherit;
+    letter-spacing: 1px;
+  }

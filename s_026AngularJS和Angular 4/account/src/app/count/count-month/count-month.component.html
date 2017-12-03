@@ -1,0 +1,9 @@
+
+<div class="countList" [ngStyle]="scrollHeight" style="overflow:scroll">
+  <div *ngFor="let b of a let deleteNum=index " >
+      <span>{{deleteNum+1}}.&nbsp;{{b.item}}</span>
+      <span>{{b.date}}</span>
+      <span>&yen;{{b.money}}</span>
+      <button (click)="service.delete($event,deleteNum)">删除</button>
+  </div>
+</div>

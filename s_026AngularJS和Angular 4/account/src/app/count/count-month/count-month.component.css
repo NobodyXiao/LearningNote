@@ -1,0 +1,56 @@
+body{
+    background: gray;
+    height:100%;
+}
+.countList{
+    height:auto;
+    width:auto;
+    font-size:16px;
+    font-weight:bold;
+    margin:5px;
+}
+.countList>div{
+    height:40px;
+    width:100%;
+    vertical-align: middle;
+    position:relative;
+}
+.countList>div:nth-child(odd){
+    background:#eee;
+}
+.countList>div:nth-child(even){
+    background:#c0c0c0;
+}
+.countList>div>span:nth-child(1){
+    display:inline-block;
+    height:100%;
+    /* width:55px; */
+    font-style:italic;
+    position:absolute;
+    line-height:40px;
+    left:20px;
+}
+.countList>div>span:nth-child(2){
+    display:inline-block;
+    font-size:10px;
+    font-weight:normal;
+    position:absolute;
+    left:100px;
+    bottom:5px;   
+}
+.countList>div>span:nth-child(3){
+    font-weight:normal;
+    position:absolute;
+    right:60px;
+    top:20px;
+    transform: translateY(-50%);
+}
+.countList>div>button{
+    display:inline-block;
+    height:20px;
+    width:40px;
+    position:absolute;
+    right:10px;
+    top:50%;
+    margin-top:-10px;
+}
