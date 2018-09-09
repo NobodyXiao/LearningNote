@@ -114,13 +114,13 @@
 
 > 3.1设置text-align:center（只对行级元素起作用），要对其父级元素进行设置
 
-> 3.2进行绝对定位，之后设置left:50%，margin设置一个负值（只对块级元素起作用）
+> 3.2进行绝对定位，之后设置left:50%，margin设置一个负值（只对有宽高的需要定位的元素起作用）
 
 #### 4.利用CSS进行垂直居中：####
 
 > 4.1 **line-height:设置为高度** ，（一般会对文字，图片起作用）适用于高度一定的父级元素情况
 
-> 4.2 **vertical-align**（把元素放在父级元素的中部） ：center（只对inline-block元素起作用），适用有固定宽高的父级元素情况
+> 4.2 **vertical-align**（把元素放在父级元素的中部） ：middle（只对inline-block元素起作用），适用有固定宽高的父级元素情况
 >
 > 用法一：父级元素进行设置{display:table-cell;vertical-align: middle;}，行级子元素设置成inline或者是inline-block;形式
 >
@@ -134,7 +134,7 @@
 >
 >   >**flex弹性盒子**
 >   >
->   >给父级元素设置display:flex; align-items:center;justify-content:center;之后相应的子元素就会相对于父级元素进行垂直和水平居中定位了（IE10及其以上）
+>   > 给父级元素设置display:flex; align-items:center;justify-content:center;之后相应的子元素就会相对于父级元素进行垂直和水平居中定位了（IE10及其以上）
 >
 >   >**display:table-cell**
 >   >
@@ -146,6 +146,7 @@
 
 - a:hover 必须跟在 a:link 和 a:visited后面
 - a:active 必须跟在 a:hover后面
+- a链接的四种顺序是，lvha
 
 #### 6.列表的设置中list-style其实是简写属性，属性具体列表如下所示:####
 
@@ -473,7 +474,19 @@ IE浏览器内核：Trident内核；Firefox浏览器内核：Gecko；Ssfari，Go
 
 Opera 浏览器内核：Presto
 
-#### 21.CSShack####
+#### 21.margin重叠####
+
+margin重叠不会发生在水平方向上，只存在于垂直方向上。
+
+分为两种情况：兄弟元素块之间的margin重叠，父子级块中的margin重叠，两者都是以较大的一个margin为作为块之间的间距的，如果出现负值，正值>|负值|，间距那么就让正值-|负值|，如果正值<|负值|，重叠的距离就会是|负值|-正值，如果都是负值，那么两个元素会重叠较大的那个|负值|那样的距离。
+
+解决兄弟之间元素margin重叠的方法是：设置浮动（当然跟随着也有清除浮动的操作），设置inline-block，只要设置其中一个就行，当然这样块级元素就变成了行级元素，可能会涉及到设置宽高之类的。
+
+解决父子元素之间重叠的方法是：设置父元素的overflow：hidden，
+
+给父元素添加padding，给父元素添加border，如果只针对上边或者下边进行设置padding／border，那么没设置的一边还是会存在问题，子元素对应边的margin会消失。
+
+另外或者给子元素设置position:absolute，进行绝对定位。
 
 
 

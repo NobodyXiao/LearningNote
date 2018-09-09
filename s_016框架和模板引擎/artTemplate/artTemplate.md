@@ -21,7 +21,15 @@
     {{/each}}
 </ul>
 </script>
-原生模板：略
+原生模板：
+<script id="test" type="text/html">
+<h1><%= title %></h1>
+<ul>
+    <% for(var i=0; i<list.length; i++){ %> 
+        <%= i+1 %> <%= list[i] %>
+    <%} %>
+</ul>
+</script>
 ```
 
 ​	**c)** 渲染模板
@@ -59,7 +67,13 @@ document.getElementById('content').innerHTML = html;
 
 ​         用于嵌入子模板:  {{include 'template_name'}}
 
-​	 子模板默认共享当前数据，亦可以指定数据：{{include 'template_name' news_list}}
+​	 子模板默认共享当前数据，亦可以指定数据：{{include 'template_name' , news_list}}
+
+​		**a4) ** if判断
+
+​	
+
+
 
 ​	**b)** 原生语法：
 
