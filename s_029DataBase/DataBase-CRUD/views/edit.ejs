@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>edit user message</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <link rel="stylesheet" href="/../css/style.css">
+</head>
+<body>
+    <form method="post" action="" id="the-form">
+      <table cellpadding="11">
+        <tr>
+          <td class="label">Name</td>
+          <td>: <input type="text" name="name" value="<%= data.name %>"></td>
+        </tr>
+        <tr>
+          <td class="label">Email</td>
+          <td>: <input type="text" name="email" value="<%= data.email %>"></td>
+        </tr>
+        <tr>
+          <td class="label">Password</td>
+          <td>: <input type="text" name="password" value="<%= data.password %>"></td>
+        </tr>
+        <tr>
+          <td class="label"></td>
+          <td>
+            &nbsp; <input type="button" value="Save" onClick="updateUser('<%= data.user_id %>')">
+          </td>
+        </tr>
+      </table>
+    </form>
+    <div class="page-data">
+        <ul class="err-area"></ul>
+    </div>
+</body>
+<script>
+
+  function updateUser(user_id){
+    console.log(user_id);
+    $.ajax({
+      url:'/edit/update/' + user_id,
+      type:'put',
+      data:$('#the-form').serialize(),
+      success:function(res){
+        window.location = '/user';
+      },
+      error: function (xhr, status, error) {
+        if(xhr.status === 422){
+          var err = '';
+          $.each(JSON.parse(xhr.responseText), function (i, item) {
+            err += '<li>' + item.msg + '</li>';
+          });
+          $('.err-area').html(err);
+        } else {
+          alert("Error updating");
+        }
+        return false;
+      }
+    })
+  }
+</script>
+</html>

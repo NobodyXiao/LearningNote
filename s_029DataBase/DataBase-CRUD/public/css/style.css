@@ -1,0 +1,21 @@
+body{
+  background:#fff;
+  width:100%;
+}
+ul.err-area{
+  padding: 0 30px !important;
+} 
+ul>li{
+  color:red;
+}
+.data-table table{
+  border-collapse:collapse;
+  border:1px solid #ddd;
+}
+.page-data{
+  float:left;
+  display:block;
+}
+.query-section{
+  margin-bottom: 20px;
+}

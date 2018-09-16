@@ -1,0 +1,19 @@
+{
+  "name": "database-crud",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "NobodyXiao",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "1.9.0",
+    "ejs": "^1.0.0",
+    "express": "4.9.5",
+    "express-myconnection": "*",
+    "express-validator": "^2.6.0",
+    "mysql": "*"
+  }
+}

@@ -2,14 +2,14 @@
 
 **1)** artTemplate模板引擎的使用方法：
 
-​	**a)** 首页应该在页面中引入模板擎:
+	**a)** 首页应该在页面中引入模板擎:
 
 ```
 <script src="dist/template-native.js"></script>对应原生语法模板
 <script src="dist/template.js"></script>对应简洁语法模板
 ```
 
-​	**b)** 编写模板，使用一个type="text/html"的script标签存放模板，其中type类型是为了告诉浏览器此script中编写的HTML代码：
+	**b)** 编写模板，使用一个type="text/html"的script标签存放模板，其中type类型是为了告诉浏览器此script中编写的HTML代码：
 
 ```
 简洁模板：
@@ -24,7 +24,7 @@
 原生模板：略
 ```
 
-​	**c)** 渲染模板
+	**c)** 渲染模板
 
 ```
 var data = {
@@ -37,17 +37,17 @@ document.getElementById('content').innerHTML = html;
 
 **2)** 模板的语法：简洁语法（推荐使用的），原生语法
 
-​	**a)** 简洁语法：
+	**a)** 简洁语法：
 
-​		**a1)** 表达式：`{{` 与 `}}` 符号包裹起来的语句则为模板的逻辑表达式。
+		**a1)** 表达式：`{{` 与 `}}` 符号包裹起来的语句则为模板的逻辑表达式。
 
-​		输出表达式：
+		输出表达式：
 
-​			对内容编码输出：{{content}}
+			对内容编码输出：{{content}}
 
-​			不编码输出：{{#content}}
+			不编码输出：{{#content}}
 
-​		**a2)** 逻辑：遍历表达式
+		**a2)** 逻辑：遍历表达式
 
 ```
 {{each list as value index}}
@@ -55,26 +55,26 @@ document.getElementById('content').innerHTML = html;
 {{/each}}
 ```
 
-​		**a3)** 模板包含表达式
+		**a3)** 模板包含表达式
 
-​         用于嵌入子模板:  {{include 'template_name'}}
+         用于嵌入子模板:  {{include 'template_name'}}
 
-​	 子模板默认共享当前数据，亦可以指定数据：{{include 'template_name' news_list}}
+	 子模板默认共享当前数据，亦可以指定数据：{{include 'template_name' news_list}}
 
-​		**a4)** if判断
+		**a4)** if判断
 
 ```
 {{if value}}...{{/if}}
 {{if v1}}... {{else if v2}}... {{/if}}
 ```
 
-​		**a5)** 变量
+		**a5)** 变量
 
 ```
 {{set temp = data.sub.content}}
 ```
 
-​		**a6)**继承
+		**a6)**继承
 
 ```
 {{extend './layout.art'}}
@@ -118,7 +118,7 @@ document.getElementById('content').innerHTML = html;
 
 第二段部分的block分别替换相应上边继承模版中的block部分，实现自己的模版。
 
-​		**a7)** 过滤
+		**a7)** 过滤
 
 定义过滤器
 
@@ -131,17 +131,17 @@ template.defaults.imports.timestamp = function(value){return value * 1000};
 {{date | timestamp | dateFormat 'yyyy-MM-dd hh:mm:ss'}}
 ```
 
-​	**b)** 原生语法：
+	**b)** 原生语法：
 
-​		**b1)** 表达式：`<%` 与 `%>` 符号包裹起来的语句则为模板的逻辑表达式。
+		**b1)** 表达式：`<%` 与 `%>` 符号包裹起来的语句则为模板的逻辑表达式。
 
-​	        输出表达式：
+	        输出表达式：
 
-​			对内容编码输出：<%=content%>
+			对内容编码输出：<%=content%>
 
-​			不编码输出：<%=#content%>
+			不编码输出：<%=#content%>
 
-​		**b2)** 循环	
+		**b2)** 循环	
 
 ```
 <h1><%=title%></h1>
@@ -152,33 +152,33 @@ template.defaults.imports.timestamp = function(value){return value * 1000};
 </ul>
 ```
 
-​		**b3)** 子模版
+		**b3)** 子模版
 
-​                用于嵌入子模板:  <% include('template_name') %>
+                用于嵌入子模板:  <% include('template_name') %>
 
-​	        子模板默认共享当前数据，亦可以指定数据：<% include('template_name', news_list) %>
+	        子模板默认共享当前数据，亦可以指定数据：<% include('template_name', news_list) %>
 
-​		**b4)** if判断
+		**b4)** if判断
 
 ```
 <% if (value) {%> ... <%} %>
 <% if (value) {%> ... <%} else {%> ... <%} %>
 ```
 
-​		**b5)**定义变量
+		**b5)**定义变量
 
 ```
 <% var temp = data.sub.content; %>
 ```
 
-​		**b6)** 继承
+		**b6)** 继承
 
 ```
 <% extend('./layout.art') %>
 <% block('head', function(){ %> ... <% }) %>
 ```
 
-​		**b7)**过滤
+		**b7)**过滤
 
 ```
 <%= $imports.dateFormat($imports.timestamp(date), 'yyyy-MM-dd hh:mm:ss') %>
@@ -186,31 +186,31 @@ template.defaults.imports.timestamp = function(value){return value * 1000};
 
 **3)** 渲染的方法（在渲染模板中使用的）
 
-​        **template(id, data)** :
+        **template(id, data)** :
 
-​	        根据 id 渲染模板。内部会根据document.getElementById(id)查找模板(所以不支持传入的路径参数)，渲染完成之后就可以将此模板添加到HTML文档中进行显示。
+	        根据 id 渲染模板。内部会根据document.getElementById(id)查找模板(所以不支持传入的路径参数)，渲染完成之后就可以将此模板添加到HTML文档中进行显示。
 
-​	        其中data数据在渲染模板中是直接使用的，一般传入的是一个对象，直接拿里边的数据进行使用。
+	        其中data数据在渲染模板中是直接使用的，一般传入的是一个对象，直接拿里边的数据进行使用。
 
-​		例如data是object类型
+		例如data是object类型
 
-​		object{
+		object{
 
-​			error_code:0
+			error_code:0
 
-​			reason:"Success"
+			reason:"Success"
 
-​			result{
+			result{
 
-​			data:[{},{},{}]
+			data:[{},{},{}]
 
-​				}
+				}
 
-​			}
+			}
 
-​		那么如果在编写模板的时候，需要引用result对象中的data数组的时候，直接写result.data[i]即可，相当于是比template(id, data)中的data缩进一级，少表示一级
+		那么如果在编写模板的时候，需要引用result对象中的data数组的时候，直接写result.data[i]即可，相当于是比template(id, data)中的data缩进一级，少表示一级
 
-​	        如果没有 data 参数，那么将返回一渲染函数。
+	        如果没有 data 参数，那么将返回一渲染函数。
 
 用法：
 
@@ -251,7 +251,7 @@ template.defaults.imports.timestamp = function(value){return value * 1000};
     </script>
 ```
 
-​        **template.helper(name, callback) :** 添加公用辅助方法
+        **template.helper(name, callback) :** 添加公用辅助方法
 
 使用方法
 
@@ -281,7 +281,7 @@ template.helper('getJquery', function () {
 <% getJquery(); %>
 ```
 
-​	 **template.config：** 更改引擎的默认配置
+	 **template.config：** 更改引擎的默认配置
 
 用法：**template.config(name, value)**
 
@@ -293,9 +293,9 @@ escape        Boolean        true         是否编码输出 HTML 字符
 cache          Boolean        true         是否开启缓存（依赖 options 的 filename 字段）
 compress     Boolean       false         是否压缩 HTML 多余空白字符	
 
-​	 **template.compile(source, options)：** 预编译模版，返回一个渲染函数
+	 **template.compile(source, options)：** 预编译模版，返回一个渲染函数
 
-​	 **template.render(source, options)：** 结合渲染函数和所需数据，渲染模版	
+	 **template.render(source, options)：** 结合渲染函数和所需数据，渲染模版	
 
 使用方法：
 
@@ -311,7 +311,7 @@ var html = render({list: ['摄影', '电影', '民谣', '旅行', '吉他']});
 
 ```
 
-​	 **template.defaults:**模板引擎默认配置
+	 **template.defaults:**模板引擎默认配置
 
 options选项：
 
@@ -403,14 +403,15 @@ imports: runtime
 2. 可以自定义分隔符
 
     ```
-   var ejs = require('ejs'),
+       var ejs = require('ejs'),
        users = ['geddy', 'neil', 'alex'];
-   
+    ```
+
    // 单个模板文件
    ejs.render('<?= users.join(" | "); ?>', {users: users},
        {delimiter: '?'});
    // => 'geddy | neil | alex'
-   
+
    // 全局
    ejs.delimiter = '$';
    ejs.render('<$= users.join(" | "); $>', {users: users});
@@ -523,5 +524,4 @@ imports: runtime
      <%- include('components/nav') %>
      ```
 
-   * 
 
