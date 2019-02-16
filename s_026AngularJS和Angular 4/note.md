@@ -1,8 +1,8 @@
-## AngularJS和Angular 4##
+## AngularJS和Angular 4
 
-## AngularJS 1##
+## AngularJS 1
 
-1. #### AngularJS服务####
+1. #### AngularJS服务
 
    在AngularJS中，服务是一个函数或者对象，可在你的AngularJS应用中使用，其中AngularJS內建了30多个服务。
 
@@ -42,7 +42,7 @@
 
    **$interval 服务：**AngularJS **$interval** 服务对应了 JS **window.setInterval** 函数。
 
-2. #### AngularJS Http####
+2. #### AngularJS Http
 
    **$http** 是 AngularJS 中的一个核心服务，用于读取远程服务器的数据。
 
@@ -60,7 +60,7 @@
 
    $http.get(url) 是用于读取服务器数据的函数。
 
-3. #### AngularJS模块####
+3. #### AngularJS模块
 
    模块定义了一个应用程序，是应用程序中不同部分的容器，是应用控制器的容器，控制器通常属于一个模块。
 
@@ -112,30 +112,30 @@
 
    3.5在我们的实例中，所有 AngularJS 库都在 HTML 文档的头部载入，因为对 angular.module 的调用只能在库加载完成后才能进行。另一个解决方案是在 <body> 元素中加载 AngularJS 库，但是必须放置在您的 AngularJS 脚本前面。
 
-4. #### AngularJS表单输入验证####
+4. #### AngularJS表单输入验证
 
    AngularJS 表单和控件可以验证输入的数据。AngularJS 表单和控件可以提供验证功能，并对用户输入的非法数据进行警告。
 
    **客户端的验证不能确保用户输入数据的安全，所以服务端的数据验证也是必须的。**
 
-   ```
+   ```html
    <!DOCTYPE html>
    <html>
    <script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
    <body>
-
+   
    <h2>Validation Example</h2>
-
+   
    <form  ng-app="myApp"  ng-controller="validateCtrl"
    name="myForm" novalidate>
-
+   
    <p>用户名:<br>
      <input type="text" name="user" ng-model="user" required>
      <span style="color:red" ng-show="myForm.user.$dirty && myForm.user.$invalid">
      <span ng-show="myForm.user.$error.required">用户名是必须的。</span>
      </span>
    </p>
-
+   
    <p>邮箱:<br>
      <input type="email" name="email" ng-model="email" required>
      <span style="color:red" ng-show="myForm.email.$dirty && myForm.email.$invalid">
@@ -143,15 +143,15 @@
      <span ng-show="myForm.email.$error.email">非法的邮箱。</span>
      </span>
    </p>
-
+   
    <p>
      <input type="submit"
      ng-disabled="myForm.user.$dirty && myForm.user.$invalid ||
      myForm.email.$dirty && myForm.email.$invalid">
    </p>
-
+   
    </form>
-
+   
    <script>
    var app = angular.module('myApp', []);
    app.controller('validateCtrl', function($scope) {
@@ -159,7 +159,7 @@
        $scope.email = 'john.doe@gmail.com';
    });
    </script>
-
+   
    </body>
    </html>
    ```
@@ -173,7 +173,7 @@
    | $invalid  | 字段内容是非法的 |
    | $pristine | 表单没有填写记录 |
 
-5. #### AngularJS API####
+5. #### AngularJS API
 
    API 意为 **A**pplication **P**rogramming **I**nterface（应用程序编程接口）。
 
@@ -186,12 +186,12 @@
    | angular.isString()  | 判断给定的对象是否为字符串，如果是返回 true。 |
    | angular.isNumber()  | 判断给定的对象是否为数字，如果是返回 true。  |
 
-   ```
+   ```html
    <div ng-app="myApp" ng-controller="myCtrl">
    <p>{{ x1 }}</p>
    <p>{{ x2 }}</p>
    </div>
-
+   
    <script>
    var app = angular.module('myApp', []);
    app.controller('myCtrl', function($scope) {
@@ -201,7 +201,7 @@
    </script>
    ```
 
-6. #### AngularJS依赖注入：####
+6. #### AngularJS依赖注入：
 
    依赖注入（Dependency Injection，简称DI）是一种软件设计模式，在这种模式下，一个或更多的依赖（或服务）被注入（或者通过引用传递）到一个独立的对象（或客户端）中，然后成为了该客户端状态的一部分。
 
@@ -209,11 +209,11 @@
 
    **AngularJS 提供很好的依赖注入机制。以下5个核心组件用来作为依赖注入：value，factory，service，provider，constant**
 
-7. #### ​AngularJS路由####
+7. #### ​AngularJS路由
 
    AngularJS 路由允许我们通过不同的 URL 访问不同的内容，通过路由，我们可以实现多视图的单页Web应用，但是在单页应用中，AngularJS 通过 **# + 标记** 实现不同路由。
 
-   ```
+   ```html
    <html>
        <head>
            <meta charset="utf-8">
@@ -303,7 +303,7 @@
 
    ## Angular 4
 
-   1. ####模块#### 
+   1. ####模块
 
       模块由一块代码组成，可用于执行一个简单的任务。Angular应用是有模块化的，有自己的模块系统，**NgModules** ，每个Angular应该至少要有一个**根模块** ，一般可以命名为AppModule，Angular模块是一个带有@NgModule装饰器的类，它接收一个用来描述模块属性的元数据对象。
 
@@ -341,7 +341,7 @@
 
       **模块中所有用到的组件，指令，管道，都需要在模块中事先声明好，才能在具体的组件中使用。服务可以在模块，组件，指令中的providers声明，也可以直接在运行时提供。**
 
-   2. #### 组件####
+   2. #### 组件
 
       组件是一个模板的控制类用于处理应用和逻辑页面的视图部分，组件是构成 Angular 应用的基础和核心，可用于整个应用程序中。
 
@@ -353,9 +353,9 @@
 
       ```
       // hello.component.ts
-
+      
       import { Component } from '@angular/core';
-
+      
       @Component({  //装饰器@Component告诉Angular这个类是组件类            
           selector: 'hello',//，selector属性说明了该组件对外的使用标记
           template: '<p> {{greeting}} </p>',
@@ -386,7 +386,7 @@
 
       - ngOnDestroy：组件注销时的清理工作，通常用于移除事件监听，退订可观察对象等
 
-   3. #### 注入服务####
+   3. #### 注入服务
 
       3.1 **新建服务**
 
@@ -402,7 +402,7 @@
 
       ```
       import {MailService} from "./mail.service";
-
+      
       @NgModule({
         ...
         providers: [MailService],
@@ -415,7 +415,7 @@
 
       ```
       import { Injectable } from '@angular/core';
-
+      
       @Injectable()
       export class MailService {
         message: string  ='该消息来自MailService';
@@ -428,7 +428,7 @@
       ```
       import { Component } from '@angular/core';
       import {MailService} from "./mail.service";
-
+      
       @Component({
         selector: 'app-root',
         template: `
@@ -451,7 +451,7 @@
 
       ```
       import {Component, Inject} from '@angular/core';
-
+      
       @Component({...})
       export class AppComponent {
         title = 'Hello, Angular';
@@ -460,15 +460,15 @@
       }
       ```
 
-   4. #### Input装饰器####
+   4. #### Input装饰器
 
       Angular 为我们提供了 `Input` 装饰器，用于定义组件的输入属性。
 
-   5. #### Output装饰器####
+   5. #### Output装饰器
 
       `Output` 装饰器的作用是用来实现子组件将信息，通过事件的形式通知到父级组件。
 
-   6. #### Angular 指令####
+   6. #### Angular 指令
 
       **6.1Angular 的指令分为三种：** 
 
@@ -480,11 +480,7 @@
 
       在Angular中，我们可以使用 `HostBinding` 装饰器，实现元素的属性绑定。
 
-      ​
-
-      ​
-
-   7. #### Reactive Form简介####
+   7. #### Reactive Form简介
 
       如果要使用Reactive Form需要一下几个步骤：
 
@@ -521,7 +517,7 @@
 
       7.5 使用FormGroup
 
-   8. #### 路由快速入门####
+   8. #### 路由快速入门
 
       路由是 Angular 应用程序的核心，它加载与所请求路由相关联的组件，以及获取特定路由的相关数据。这允许我们通过控制不同的路由，获取不同的数据，从而渲染不同的页面。
 
@@ -556,9 +552,9 @@
       import { NgModule } from '@angular/core';
       import { BrowserModule } from '@angular/platform-browser';
       import { RouterModule } from '@angular/router';
-
+      
       import { AppComponent } from './app.component';
-
+      
       @NgModule({
         imports: [
           BrowserModule,
@@ -581,9 +577,9 @@
       ```
       // ...
       import { Routes, RouterModule } from '@angular/router';
-
+      
       export const ROUTES: Routes = [];
-
+      
       @NgModule({
         imports: [
           BrowserModule,
@@ -604,9 +600,9 @@
       import { NgModule } from '@angular/core';
       import { CommonModule } from '@angular/common';
       import { Routes, RouterModule } from '@angular/router';
-
+      
       export const ROUTES: Routes = [];
-
+      
       @NgModule({
         imports: [
           CommonModule,
@@ -652,7 +648,7 @@
       ```
       import { HomeComponent } from './home/home.component';
       import { ProfileComponent } from './profile/profile.component';
-
+      
       export const ROUTES: Routes = [
         { path: '', component: HomeComponent },
         { path: '/profile/:username', component: ProfileComponent }
@@ -666,7 +662,7 @@
       ```
       import { Component, OnInit } from '@angular/core';
       import { ActivatedRoute } from '@angular/router';
-
+      
       @Component({
         selector: 'profile-page',
         template: `
@@ -753,7 +749,7 @@
           loadChildren: './settings/settings.module#SettingsModule'
         }
       ];
-
+      
       @NgModule({
         imports: [
           BrowserModule,
@@ -802,7 +798,7 @@
       ```
       import { Component } from '@angular/core';
       import { Router } from '@angular/router';
-
+      
       @Component({
         selector: 'app-root',
         template: `
@@ -822,7 +818,7 @@
       ```
       import { Component, OnInit } from '@angular/core';
       import { Router } from '@angular/router';
-
+      
       @Component({
         selector: 'app-root',
         template: `
@@ -849,7 +845,7 @@
       ```
       import { Component, OnInit } from '@angular/core';
       import { Router } from '@angular/router';
-
+      
       @Component({
         selector: 'app-root',
         template: `
@@ -881,5 +877,3 @@
       ```
 
       ​
-
-   9. ​

@@ -1,18 +1,18 @@
 ## artTemplate：高性能的JavaScript模板引擎## 
 
-**1)** artTemplate模板引擎的使用方法：
+**1) artTemplate模板引擎的使用方法：**
 
-	**a)** 首页应该在页面中引入模板擎:
+- **a) 首页应该在页面中引入模板擎:**
 
-```
+```html
 <script src="dist/template-native.js"></script>对应原生语法模板
 <script src="dist/template.js"></script>对应简洁语法模板
 ```
 
-	**b)** 编写模板，使用一个type="text/html"的script标签存放模板，其中type类型是为了告诉浏览器此script中编写的HTML代码：
+- **b) 编写模板，使用一个type="text/html"的script标签存放模板，其中type类型是为了告诉浏览器此script中编写的HTML代码：**
 
-```
-简洁模板：
+```html
+<!-- 简洁模板：-->
 <script id="test" type="text/html">
 <h1>{{title}}</h1>
 <ul>
@@ -21,12 +21,12 @@
     {{/each}}
 </ul>
 </script>
-原生模板：略
+<!-- 原生模板：略 -->
 ```
 
-	**c)** 渲染模板
+- **c) 渲染模板**
 
-```
+```javascript
 var data = {
     title: '标签',
     list: ['文艺', '博客', '摄影', '电影', '民谣', '旅行', '吉他']
@@ -35,352 +35,288 @@ var html = template('test', data);
 document.getElementById('content').innerHTML = html;
 ```
 
-**2)** 模板的语法：简洁语法（推荐使用的），原生语法
+**2) 模板的语法：简洁语法（推荐使用的），原生语法**
 
-	**a)** 简洁语法：
+- **a)** 简洁语法：
 
-		**a1)** 表达式：`{{` 与 `}}` 符号包裹起来的语句则为模板的逻辑表达式。
+ - **a1)** 表达式：`{{` 与 `}}` 符号包裹起来的语句则为模板的逻辑表达式。
 
-		输出表达式：
+    >
+     > 输出表达式：
+     >
+     >对内容编码输出：{{content}}
+     >
+     > 不编码输出：{{#content}}
 
-			对内容编码输出：{{content}}
+ - **a2)** 逻辑：遍历表达式
 
-			不编码输出：{{#content}}
+    ```html
+    {{each list as value index}}
+        <li>{{index}} - {{value.user}}</li>
+    {{/each}}
+    ```
 
-		**a2)** 逻辑：遍历表达式
+ - **a3)** 模板包含表达式:
 
-```
-{{each list as value index}}
-    <li>{{index}} - {{value.user}}</li>
-{{/each}}
-```
+    > 用于嵌入子模板:  {{include 'template_name'}}
+    >
+    > 子模板默认共享当前数据，亦可以指定数据：{{include 'template_name' news_list}}
 
-		**a3)** 模板包含表达式
+ -  **a4)** if判断
 
-         用于嵌入子模板:  {{include 'template_name'}}
+    > {{if value}}...{{/if}}
+    > {{if v1}}... {{else if v2}}... {{/if}}
 
-	 子模板默认共享当前数据，亦可以指定数据：{{include 'template_name' news_list}}
+ - **a5)** 变量
 
-		**a4)** if判断
+    > {{set temp = data.sub.content}}
 
-```
-{{if value}}...{{/if}}
-{{if v1}}... {{else if v2}}... {{/if}}
-```
+ - **a6)**继承
 
-		**a5)** 变量
+    ```
+    {{extend './layout.art'}}
+    {{block 'head'}} ... {{/block}}
+    ```
 
-```
-{{set temp = data.sub.content}}
-```
+    继承语法允许你定义一个基础模版的骨架，之后可以在别的模版中继承此模版，用例如下所示：
 
-		**a6)**继承
+    ```html
+    <!--layout.art-->
+    <!doctype html>
+    <html>
+    <head>
+       <meta charset="utf-8">
+       <title>{{block 'title'}}My Site{{/block}}</title>
+       {{block 'head'}}
+       <link rel="stylesheet" href="main.css">
+       {{/block}}
+    </head>
+    <body>
+        {{block 'content'}}{{/block}}
+    </body>
+    </html>
+    ```
 
-```
-{{extend './layout.art'}}
-{{block 'head'}} ... {{/block}}
-```
-
-继承语法允许你定义一个基础模版的骨架，之后可以在别的模版中继承此模版，用例如下所示：
-
-```
-<!--layout.art-->
-<!doctype html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <title>{{block 'title'}}My Site{{/block}}</title>
-
+    ```html
+    <!--index.art-->
+    {{extend './layout.art'}}
+    {{block 'title'}}{{title}}{{/block}}
     {{block 'head'}}
-    <link rel="stylesheet" href="main.css">
+        <link rel="stylesheet" href="custom.css">
     {{/block}}
-</head>
-<body>
-    {{block 'content'}}{{/block}}
-</body>
-</html>
-```
+    	{{block 'content'}}
+    
+    <p>This is just an awesome page.</p>
+    
+    {{/block}}
+    ```
 
-```
-<!--index.art-->
-{{extend './layout.art'}}
+    第二段部分的block分别替换相应上边继承模版中的block部分，实现自己的模版。
 
-{{block 'title'}}{{title}}{{/block}}
+ - **a7)** 过滤
 
-{{block 'head'}}
-    <link rel="stylesheet" href="custom.css">
-{{/block}}
+    > 定义过滤器
+    >
+    > ```
+    > template.defaults.imports.dateFormat = function(date, format){/*[code..]*/};
+    > template.defaults.imports.timestamp = function(value){return value * 1000};
+    > {{date | timestamp | dateFormat 'yyyy-MM-dd hh:mm:ss'}}
+    > ```
 
-{{block 'content'}}
-<p>This is just an awesome page.</p>
-{{/block}}
-```
+**b)** 原生语法：
 
-第二段部分的block分别替换相应上边继承模版中的block部分，实现自己的模版。
+- **b1)** 表达式：`<%` 与 `%>` 符号包裹起来的语句则为模板的逻辑表达式。
 
-		**a7)** 过滤
+  > 输出表达式：
+  >
+  > 	对内容编码输出：<%=content%>
+  > 	
+  > 	不编码输出：<%=#content%>
 
-定义过滤器
+- **b2)** 循环	
 
-```
-template.defaults.imports.dateFormat = function(date, format){/*[code..]*/};
-template.defaults.imports.timestamp = function(value){return value * 1000};
-```
+  ```html
+  <h1><%=title%></h1>
+  <ul>
+      <%for(i = 0; i < list.length; i ++) {%>
+          <li>条目内容 <%=i + 1%> ：<%=list[i]%></li>
+      <%}%>
+  </ul>
+  ```
 
-```
-{{date | timestamp | dateFormat 'yyyy-MM-dd hh:mm:ss'}}
-```
+- **b3)** 子模版
 
-	**b)** 原生语法：
+  > 用于嵌入子模板:  <% include('template_name') %>
+  >
+  > 子模板默认共享当前数据，亦可以指定数据：<% include('template_name', news_list) %>
 
-		**b1)** 表达式：`<%` 与 `%>` 符号包裹起来的语句则为模板的逻辑表达式。
+- **b4)** if判断
 
-	        输出表达式：
+  ```html
+  <% if (value) {%> ... <%} %>
+  <% if (value) {%> ... <%} else {%> ... <%} %>
+  ```
 
-			对内容编码输出：<%=content%>
+- **b5)**定义变量
 
-			不编码输出：<%=#content%>
+  ```html
+  <% var temp = data.sub.content; %>
+  ```
 
-		**b2)** 循环	
+- **b6)** 继承
 
-```
-<h1><%=title%></h1>
-<ul>
-    <%for(i = 0; i < list.length; i ++) {%>
-        <li>条目内容 <%=i + 1%> ：<%=list[i]%></li>
-    <%}%>
-</ul>
-```
+  ```html
+  <% extend('./layout.art') %>
+  <% block('head', function(){ %> ... <% }) %>
+  ```
 
-		**b3)** 子模版
+- **b7)**过滤
 
-                用于嵌入子模板:  <% include('template_name') %>
+  ```html
+  <%= $imports.dateFormat($imports.timestamp(date), 'yyyy-MM-dd hh:mm:ss') %>
+  ```
 
-	        子模板默认共享当前数据，亦可以指定数据：<% include('template_name', news_list) %>
-
-		**b4)** if判断
-
-```
-<% if (value) {%> ... <%} %>
-<% if (value) {%> ... <%} else {%> ... <%} %>
-```
-
-		**b5)**定义变量
-
-```
-<% var temp = data.sub.content; %>
-```
-
-		**b6)** 继承
-
-```
-<% extend('./layout.art') %>
-<% block('head', function(){ %> ... <% }) %>
-```
-
-		**b7)**过滤
-
-```
-<%= $imports.dateFormat($imports.timestamp(date), 'yyyy-MM-dd hh:mm:ss') %>
-```
+  
 
 **3)** 渲染的方法（在渲染模板中使用的）
 
-        **template(id, data)** :
+- **template(id, data)** :
 
-	        根据 id 渲染模板。内部会根据document.getElementById(id)查找模板(所以不支持传入的路径参数)，渲染完成之后就可以将此模板添加到HTML文档中进行显示。
+  > 根据 id 渲染模板。内部会根据document.getElementById(id)查找模板(所以不支持传入的路径参数)，渲染完成之后就可以将此模板添加到HTML文档中进行显示。
+  >
+  > 其中data数据在渲染模板中是直接使用的，一般传入的是一个对象，直接拿里边的数据进行使用。
+  >
+  > ```
+  > //例如data是object类型
+  > object{
+  > 	error_code:0
+  > 	reason:"Success"
+  > 	result{
+  > 		data:[{},{},{}]
+  > 	}
+  > }
+  > ```
+  >
+  > 那么如果在编写模板的时候，需要引用result对象中的data数组的时候，直接写result.data[i]即可，相当于是比template(id, data)中的data缩进一级，少表示一级, 如果没有 data 参数，那么将返回一渲染函数。
+  >
+  > 用法：
+  >
+  > ```html
+  > <!DOCTYPE html>
+  > <html lang="en">
+  > <head>
+  >     <meta charset="UTF-8">
+  >     <title>template使用</title>
+  >     <!--导入引擎模板-->
+  >     <script src="js/template-native.js"></script>
+  > </head>
+  > <body>
+  > <div id="content"></div>
+  >     <!--定义模板-->
+  >      <script id="test" type="text/html">
+  >          <h1><%=title%></h1>
+  >          <ul>
+  >              <%for (var i =0;i<list.length;i++){%>
+  >                  <li>索引<%=i+1%>:<%=list[i]%></li>
+  >              <% } %>
+  >          </ul>
+  >      </script>
+  > 
+  >   <!--定义对象-->
+  >     <script>
+  >         var data ={
+  >             title:"artTemplate",
+  >             isTemplate:"true",
+  >             list:['读书', '听歌', '摄影', '旅行', '跑步', '爬山', '骑行']
+  >         };
+  > //        调用模板引擎提供的方法
+  >      /*   参数1：模板的id
+  >         参数2：对象（注意是  对象）*/
+  >         var html = template('test',data);
+  >         //找到并替换
+  >         document.getElementById('content').innerHTML = html;
+  >     </script>
+  > ```
 
-	        其中data数据在渲染模板中是直接使用的，一般传入的是一个对象，直接拿里边的数据进行使用。
+- **template.helper(name, callback) :** 添加公用辅助方法
 
-		例如data是object类型
+  > 使用方法:
+  >
+  > ```js
+  > //定义
+  > template.helper( 'fn' , function( a , b  ){
+  >   if( b == 'level' ){
+  >     return a>90 ? '优':'中' ;
+  >   }
+  > });
+  > 
+  > //使用
+  > <script type="text/html" id="template">
+  >   <h1>{{ 100 | fn:'level' }}</h1>
+  > </script>
+  > 
+  > //原生语法使用
+  > <script type="text/html" id="template">
+  >   <h1><%= 100 | fn:'level' %></h1>
+  > </script>
+  > 
+  > //another example
+  > template.helper('getJquery', function () {
+  >     return $;
+  > });
+  > 
+  > <% getJquery(); %>
+  > ```
 
-		object{
+- **template.config：** 更改引擎的默认配置
 
-			error_code:0
+  >  用法：**template.config(name, value)**
+  >
+  > 参数如下：
+  >
+  > - openTag     String          {{            语法开始标签
+  > - closeTag     String          }}            语法结束标签
+  > - escape        Boolean        true         是否编码输出 HTML 字符
+  > - cache          Boolean        true         是否开启缓存（依赖 options 的 filename 字段）
+  > - compress     Boolean       false         是否压缩 HTML 多余空白字符
 
-			reason:"Success"
+- **template.compile(source, options)：** 预编译模版，返回一个渲染函数
 
-			result{
+- **template.render(source, options)：** 结合渲染函数和所需数据，渲染模版
 
-			data:[{},{},{}]
+  ```js
+  var render = template.compile(tpl); // 传入模板
+  var html = render(data); // 传入数据给render
+  
+  var source =    '<% for (var i = 0; i < list.length; i ++) { %>'
+      	+        '<li><%= list[i].name %></li>'
+      	+    '<% } %>';
+  var render = template.compile(source);
+  var html = render({list: ['摄影', '电影', '民谣', '旅行', '吉他']}); 
+  ```
 
-				}
+- **template.defaults:**模板引擎默认配置
 
-			}
-
-		那么如果在编写模板的时候，需要引用result对象中的data数组的时候，直接写result.data[i]即可，相当于是比template(id, data)中的data缩进一级，少表示一级
-
-	        如果没有 data 参数，那么将返回一渲染函数。
-
-用法：
-
-```
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>template使用</title>
-    <!--导入引擎模板-->
-    <script src="js/template-native.js"></script>
-</head>
-<body>
-<div id="content"></div>
-    <!--定义模板-->
-     <script id="test" type="text/html">
-         <h1><%=title%></h1>
-         <ul>
-             <%for (var i =0;i<list.length;i++){%>
-                 <li>索引<%=i+1%>:<%=list[i]%></li>
-             <% } %>
-         </ul>
-     </script>
-
-  <!--定义对象-->
-    <script>
-        var data ={
-            title:"artTemplate",
-            isTemplate:"true",
-            list:['读书', '听歌', '摄影', '旅行', '跑步', '爬山', '骑行']
-        };
-//        调用模板引擎提供的方法
-     /*   参数1：模板的id
-        参数2：对象（注意是  对象）*/
-        var html = template('test',data);
-        //找到并替换
-        document.getElementById('content').innerHTML = html;
-    </script>
-```
-
-        **template.helper(name, callback) :** 添加公用辅助方法
-
-使用方法
-
-```
-//定义
-template.helper( 'fn' , function( a , b  ){
-  if( b == 'level' ){
-    return a>90 ? '优':'中' ;
-  }
-});
-
-//使用
-<script type="text/html" id="template">
-  <h1>{{ 100 | fn:'level' }}</h1>
-</script>
-
-//原生语法使用
-<script type="text/html" id="template">
-  <h1><%= 100 | fn:'level' %></h1>
-</script>
-
-//another example
-template.helper('getJquery', function () {
-    return $;
-});
-
-<% getJquery(); %>
-```
-
-	 **template.config：** 更改引擎的默认配置
-
-用法：**template.config(name, value)**
-
-参数如下：
-
-openTag     String          {{            语法开始标签
-closeTag     String          }}            语法结束标签
-escape        Boolean        true         是否编码输出 HTML 字符
-cache          Boolean        true         是否开启缓存（依赖 options 的 filename 字段）
-compress     Boolean       false         是否压缩 HTML 多余空白字符	
-
-	 **template.compile(source, options)：** 预编译模版，返回一个渲染函数
-
-	 **template.render(source, options)：** 结合渲染函数和所需数据，渲染模版	
-
-使用方法：
-
-```
-var render = template.compile(tpl); // 传入模板
-var html = render(data); // 传入数据给render
-
-var source =    '<% for (var i = 0; i < list.length; i ++) { %>'
-    	+        '<li><%= list[i].name %></li>'
-    	+    '<% } %>';
-var render = template.compile(source);
-var html = render({list: ['摄影', '电影', '民谣', '旅行', '吉他']}); 
-
-```
-
-	 **template.defaults:**模板引擎默认配置
-
-options选项：
-
-```
-// 模板名
-filename: null,
-
-// 模板语法规则列表
-rules: [nativeRule, artRule],
-
-// 是否开启对模板输出语句自动编码功能。为 false 则关闭编码输出功能
-// escape 可以防范 XSS 攻击
-escape: true,
-
-// 启动模板引擎调试模式。如果为 true: {cache:false, minimize:false, compileDebug:true}
-debug: detectNode ? process.env.NODE_ENV !== 'production' : false,
-
-// bail 如果为 true，编译错误与运行时错误都会抛出异常
-bail: true,
-
-// 是否开启缓存
-cache: true,
-
-// 是否开启压缩。它会运行 htmlMinifier，将页面 HTML、CSS、CSS 进行压缩输出
-// 如果模板包含没有闭合的 HTML 标签，请不要打开 minimize，否则可能被 htmlMinifier 修复或过滤
-minimize: true,
-
-// 是否编译调试版
-compileDebug: false,
-
-// 模板路径转换器
-resolveFilename: resolveFilename,
-
-// 子模板编译适配器
-include: include,
-
-// HTML 压缩器。仅在 NodeJS 环境下有效
-htmlMinifier: htmlMinifier,
-
-// HTML 压缩器配置。参见 https://github.com/kangax/html-minifier
-htmlMinifierOptions: {
-    collapseWhitespace: true,
-    minifyCSS: true,
-    minifyJS: true,
-    // 运行时自动合并：rules.map(rule => rule.test)
-    ignoreCustomFragments: []
-},
-
-// 错误事件。仅在 bail 为 false 时生效
-onerror: onerror,
-
-// 模板文件加载器
-loader: loader,
-
-// 缓存中心适配器（依赖 filename 字段）
-caches: caches,
-
-// 模板根目录。如果 filename 字段不是本地路径，则在 root 查找模板
-root: '/',
-
-// 默认后缀名。如果没有后缀名，则会自动添加 extname
-extname: '.art',
-
-// 忽略的变量。被模板编译器忽略的模板变量列表
-ignore: [],
-
-// 导入的模板变量
-imports: runtime
-```
+  > options选项：
+  >
+  > - filename: null, // 模板名
+  > - rules: [nativeRule, artRule], // 模板语法规则列表
+  > - **escape: true,**  // 是否开启对模板输出语句自动编码功能。为 false 则关闭编码输出功能, escape 可以防范 XSS 攻击
+  > - **debug: detectNode ? process.env.NODE_ENV !== 'production' : false, **  // 启动模板引擎调试模式。如果为 true: {cache:false, minimize:false, compileDebug:true}
+  > - bail: true, // bail 如果为 true，编译错误与运行时错误都会抛出异常
+  > - cache: true,  // 是否开启缓存
+  > - **minimize: true, **  // 是否开启压缩。它会运行 htmlMinifier，将页面 HTML、CSS、CSS 进行压缩输出, 如果模板包含没有闭合的 HTML 标签，请不要打开 minimize，否则可能被 htmlMinifier 修复或过滤
+  > - compileDebug: false,  // 是否编译调试版
+  > - resolveFilename: resolveFilename,  // 模板路径转换器
+  > - include: include,  // 子模板编译适配器
+  > - **htmlMinifier: htmlMinifier,  **  // HTML 压缩器。仅在 NodeJS 环境下有效,HTML 压缩器配置。参见 https://github.com/kangax/html-minifier
+  > - onerror: onerror,  // 错误事件。仅在 bail 为 false 时生效
+  > - loader: loader,  // 模板文件加载器
+  > - caches: caches,  // 缓存中心适配器（依赖 filename 字段)
+  > - root: '/',   // 模板根目录。如果 filename 字段不是本地路径，则在 root 查找模板
+  > - extname: '.art',   // 默认后缀名。如果没有后缀名，则会自动添加 extname
+  > - ignore: [],   // 忽略的变量。被模板编译器忽略的模板变量列表
+  > - imports: runtime,   // 导入的模板变量
 
 ## ejs
 
@@ -402,27 +338,22 @@ imports: runtime
 
 2. 可以自定义分隔符
 
-    ```
-       var ejs = require('ejs'),
-       users = ['geddy', 'neil', 'alex'];
-    ```
-
+   ```js
+   var ejs = require('ejs'),
+   users = ['geddy', 'neil', 'alex'];
    // 单个模板文件
-   ejs.render('<?= users.join(" | "); ?>', {users: users},
-       {delimiter: '?'});
-   // => 'geddy | neil | alex'
-
+   ejs.render('<?= users.join(" | "); ?>', {users: users},{delimiter: '?'});
+   
    // 全局
    ejs.delimiter = '$';
    ejs.render('<$= users.join(" | "); $>', {users: users});
-   // => 'geddy | neil | alex'
-    ```
+   ```
 
 3. 可以包含子模版
 
    通过include指令可以将指定相对路径文件中的模版子片段包含进来，例如：<%- include('user/show'); %>
 
-   ```
+   ```html
    <ul>
      <% users.forEach(function(user){ %>
        <%- include('user/show', {user: user}); %>
@@ -436,19 +367,19 @@ imports: runtime
 
    * 引入ejs模块
 
-   ```
-   let ejs = require('ejs');
-   let template = ejs.compile(str, options);
-   template(data);
-   // => Rendered HTML string
-   
-   ejs.render(str, data, options);
-   // => Rendered HTML string
-   
-   ejs.renderFile(filename, data, options, function(err, str){
-       // str => Rendered HTML string
-   });
-   ```
+     ```
+     let ejs = require('ejs');
+     let template = ejs.compile(str, options);
+     template(data);
+     // => Rendered HTML string
+     
+     ejs.render(str, data, options);
+     // => Rendered HTML string
+     
+     ejs.renderFile(filename, data, options, function(err, str){
+         // str => Rendered HTML string
+     });
+     ```
 
    * 支持客户端
 
@@ -491,7 +422,7 @@ imports: runtime
 
    如果要清除EJS缓存，请调用ejs.clearCache。如果使用LRU缓存并需要不同的限制，则简单地将ejs.cache重新设置为LRU的新实例。
 
-6. 使用方法
+6. 使用方法:
 
    * 插值
 

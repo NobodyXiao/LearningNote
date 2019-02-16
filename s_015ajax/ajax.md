@@ -7,27 +7,27 @@
 
    域名服务器来完成域名地址到IP地址转化，域名服务器运行着一个数据库，其中存储着域名和IP，访问百度首页的时候，其实发生了两件事:  **进行域名解析 （DNS）通过解析得到的IP地址找到对应的计算机**
 
-   ####IP与域名的对应关系是：####
+- ####IP与域名的对应关系是：
 
    （1）一对一：
 
-   Internet上IP地址是唯一的，一个IP地址对应着唯一的一台主机。
+   > Internet上IP地址是唯一的，一个IP地址对应着唯一的一台主机。
 
-   给定一个域名地址能找到一个唯一对应的IP地址。
+   > 给定一个域名地址能找到一个唯一对应的IP地址。
 
    （2）一对多：
 
-   一台计算机提供多个服务，既作www服务器又作邮件服务器。
+   > 一台计算机提供多个服务，既作www服务器又作邮件服务器。
 
-   IP地址还是唯一，但可根据计算机提供的多个服务给予不同域名。
+   > IP地址还是唯一，但可根据计算机提供的多个服务给予不同域名。
 
-   一个IP地址可以对应多个域名。
+   > 一个IP地址可以对应多个域名。
 
 ###3. URL地址###
 
    **URL组成部分：** `<scheme>://<user>:<password>@<host>:<port>/<path>;<params>?<query>#<frag>`
 
-   **scheme	协议方案：**
+   - **scheme	协议方案：**
 
    ```
    http            #超文本传输协议，我们浏览网站都是用这个
@@ -37,23 +37,23 @@
    rtsp.rtspu      #这个可能看见的少，是因为这是流传输，譬如视频流
    ```
 
-  **user: password：**
+  - **user: password：**
 
    权限访问的时候使用帐号密码，譬如你的网站没配置好权限，有的时候你打开的时候就需要输入帐号密码
 
-   **host：**简单的来说就是IP（域名）或者主机名domain
+ - **host：**简单的来说就是IP（域名）或者主机名domain
 
-   **port：**端口，我们访问的端口，譬如 8080等等
+ - **port：**端口，我们访问的端口，譬如 8080等等
 
-   **path：**访问资源的路径，相当于组件路径
+ - **path：**访问资源的路径，相当于组件路径
 
-   **params：**参数，但是这个不常用，指定一些参数，譬如指定传输方式
+ - **params：**参数，但是这个不常用，指定一些参数，譬如指定传输方式
 
-   **query：**查询参数，譬如我们get username=widuu&password=11111
+ - **query：**查询参数，譬如我们get username=widuu&password=11111
 
-   **frag：**html资源片段，譬如html文档过大的时候，frag定位到html的一部分
+ - **frag：**html资源片段，譬如html文档过大的时候，frag定位到html的一部分
 
-###4. IPV4和IPV6###
+###4. IPV4和IPV6
   IPv6是Internet Protocol Version 6的缩写，其中Internet Protocol译为 ”互联网协议“。IPv6是IETF（互联网工程任务组，Internet Engineering Task Force）设计的用于替代现行版本IP协议（IPv4）的下一代IP协议，规范IP的样式 。
 
   IPv4的地址位数为32位，也就是最多有2的32次方的电脑可以联到Internet上，IPV6是128位的，由于IPv4最大的问题在于网络地址资源有限，严重制约了互联网的应用和发展。
@@ -64,7 +64,7 @@
 
 ###5. 静态网站和动态网站的区别 ![1](1.png)###
 
-###6. B/S模式和C/S模式:  Browser/Server结构      Client/Server结构
+###6. B/S模式和C/S模式:  Browser/Server结构和Client/Server结构
 
    Client/Server结构：是大家熟知的软件系统体系结构
 
@@ -87,7 +87,7 @@
 ###7. ajax演示图###
 ajax异步的JavaScript和XML，通过和服务器进行数据交换来实现在不重复加载页面的情况下，更新局部网页，网页实现异步最早的时候使用iframe进行实现，现在使用ajax
 
-   	 ![2](2.png)
+![2](./2.png)
 
 ###8. JS中异步执行例子###
 JavaScript中不按照程序中的顺序执行的函数都有定时器，回调函数，以及ajax代码等等。
@@ -106,7 +106,7 @@ readyState：存有 XMLHttpRequest 的状态。从 0 到 4 发生变化。
     - 3: 请求处理中
     - 4: 请求已完成，且响应已就绪
 
-###11. 节点类型回顾：###  ![3](3.png)
+###11. 节点类型回顾： ![3](3.png)
 
 ###12. GET和POST的区别：###
 
@@ -225,11 +225,11 @@ Content-Type: text/html; charset=utf-8
 
 #####d.withCredentials 属性#####
 
-d1.CORS请求默认不发送Cookie和HTTP认证信息。如果要把Cookie发到服务器，**一方面要服务器同意，指定Access-Control-Allow-Credential:ture,另一方面开发者必须在AJAX请求中打开withCredentials属性，即设置xhr.withCredentials = true;**
+- d1.CORS请求默认不发送Cookie和HTTP认证信息。如果要把Cookie发到服务器，**一方面要服务器同意，指定Access-Control-Allow-Credential:ture,另一方面开发者必须在AJAX请求中打开withCredentials属性，即设置xhr.withCredentials = true;**
 
-d2.如果**省略withCredentials设置**，有的浏览器还是会一起发送Cookie。这时，可以显式关闭withCredentials，设置xhr.withCredentials = false即可。
+- d2.如果**省略withCredentials设置**，有的浏览器还是会一起发送Cookie。这时，可以显式关闭withCredentials，设置xhr.withCredentials = false即可。
 
-d3.需要注意的是**，如果要发送Cookie，**Access-Control-Allow-Origin就不能设为星号**，必须指定明确的、与请求网页一致的域名。同时，Cookie依然遵循同源政策，只有用服务器域名设置的Cookie才会上传，其他域名的Cookie并不会上传，且（跨源）原网页代码中的document.cookie也无法读取服务器域名下的Cookie。
+- d3.需要注意的是**，如果要发送Cookie，**Access-Control-Allow-Origin就不能设为星号**，必须指定明确的、与请求网页一致的域名。同时，Cookie依然遵循同源政策，只有用服务器域名设置的Cookie才会上传，其他域名的Cookie并不会上传，且（跨源）原网页代码中的document.cookie也无法读取服务器域名下的Cookie。
 
 ####17.6非简单请求的流程和需要注意的知识点####
 
@@ -301,7 +301,7 @@ Access-Control-Allow-Credentials: true
 Access-Control-Max-Age: 1728000
 ```
 
-####17.7CORS和JSONP的优缺点比较####
+####17.7CORS和JSONP的优缺点比较
 
   a.JSONP只支持GET请求，CORS支持所有类型的HTTP请求     
   b.JSONP的优势在于支持老式浏览器，以及可以向不支持CORS的网站请求数据。      

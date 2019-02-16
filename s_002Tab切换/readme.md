@@ -1,4 +1,4 @@
-### Practice-Of-Tab-Switch###
+# Practice-Of-Tab-Switch
 
 1. 获取LI选项卡元素和相对应的内容div，通过类名控制LI选项卡元素的样式和对应内容div的显示和隐藏。
 

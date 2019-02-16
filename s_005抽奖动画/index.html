@@ -8,6 +8,8 @@
         div {
             height: 500px;
             width: 500px;
+            position: relative;
+            overflow: hidden;
         }
 
         li {
@@ -31,16 +33,21 @@
         }
 
         .selected {
+            /* 透明度的兼容性写法 */
             filter: alpha(opacity=100);
             opacity: 1;
-            height: 102px;
-            width: 102px;
         }
 
         ul {
             float: left;
             display: inline;
             margin: 0px;
+        }
+        .mask{
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: none;
         }
     </style>
 </head>
@@ -65,6 +72,7 @@
             <li id="gift8">美的电饭煲</li>
 
         </ul>
+        <div class="mask"></div>
     </div>
     <script>
     window.onload=function(){
@@ -72,6 +80,7 @@
         items[4].onclick=Start;
     }
     var i=0; // this indicator which one is currently selected
+    var maskDiv = document.getElementsByClassName('mask')[0];
     var Start=function(){
         var timer=null;
         var times=0;
@@ -85,6 +94,7 @@
         //指定轮转的次数
         var items=document.getElementsByTagName("li");
         items[4].innerHTML="Wait";
+        maskDiv.style.display = 'block';
         //点击之后，开始抽奖变成wait
         var subscriptArray=[0,1,2,5,8,7,6,3];
         //指定一个数组，进行循环顺序的指定
@@ -102,6 +112,7 @@
             if(times==loop_times) {
                 // 当轮转结束之后，中间抽奖按钮进行高亮设置
                 items[4].innerHTML="开始抽奖";
+                maskDiv.style.display = 'none';
                 items[4].className="selected";
             } else {
                 // 否则接着轮转，50毫秒轮转一次，进行循环

@@ -12,51 +12,50 @@
 
    使用 @media 查询，你可以针对不同的媒体类型定义不同的样式。
 
-   @media 可以针对不同的屏幕尺寸设置不同的样式，特别是如果你需要设置设计响应式的页面，@media 是非常有用的。
+   @media 可以针对不同的屏幕尺寸设置不同的样式，特别是如果你需要设置设计响应式的页面，@media 是非常有用的, 当你重置浏览器大小的过程中，页面也会根据浏览器的宽度和高度重新渲染页面。
 
-   当你重置浏览器大小的过程中，页面也会根据浏览器的宽度和高度重新渲染页面。
-
-   当屏幕的宽度小于800px的时候媒体查询就会重新渲染页面，背景变成绿色，字体12px
-
-   	<style>
-   		html,body{
-   			margin:0;
-   			padding:0;
-   		}
+   ```html
+   <!-- 当屏幕的宽度小于800px的时候媒体查询就会重新渲染页面，背景变成绿色，字体12px -->
+   <style>
+   	html,body{
+   		margin:0;
+   		padding:0;
+   	}
+   	#wrap{
+   		height:200px;
+   		font-size:16px;
+   		background:red;
+   	}
+   	@media (max-width:800px){
    		#wrap{
-   			height:200px;
-   			font-size:16px;
-   			background:red;
-   		}
-   		@media (max-width:800px){
-   			#wrap{
-   					height:100px;
-   					font-size:12px;
-   					background:green;
-   				}
-   		}
-   	</style>
-   	</head>
-   	<body>
-   		<div id = "wrap">内容</div>
-   	</body>
-   	</html>
+   				height:100px;
+   				font-size:12px;
+   				background:green;
+   			}
+   	}
+   </style>
+   </head>
+   <body>
+   	<div id = "wrap">内容</div>
+   </body>
+   </html>
+   ```
 
 3. **Bootstrap包的内容主要有以下这些：**
 
-   基本结构：Bootstrap提供了一个带有网格系统、链接样式、背景的基本结构。
-
-   CSS：Bootstrap自带以下的特性:全局的CSS设置、定义基本的HTML元素样式、可扩展的class，以及一个先进的网格系统,就是一些CSS类名，之后引入文件的时候，可以被引用到HTML文档中，产生一定的效果
-
-   组件：Bootstrap包含了十几个可重用的组件，用于创建图像、下拉菜单、导航、警告框、弹出框等等。
-
-   JavaScript插件：Bootstrap包含了十几个自定义的jquery插件。可以直接包含多有的插件，也可以逐个包含这些插件
-
-   定制：Bootstrap允许定制Bootstrap的组件、LESS变量和jquery插件来得到自己的版本。
+   > - 基本结构：Bootstrap提供了一个带有网格系统、链接样式、背景的基本结构。
+   >
+   > - CSS：Bootstrap自带以下的特性:全局的CSS设置、定义基本的HTML元素样式、可扩展的class，以及一个先进的网格系统,就是一些CSS类名，之后引入文件的时候，可以被引用到HTML文档中，产生一定的效果
+   >
+   > - 组件：Bootstrap包含了十几个可重用的组件，用于创建图像、下拉菜单、导航、警告框、弹出框等等。
+   >
+   > - JavaScript插件：Bootstrap包含了十几个自定义的jquery插件。可以直接包含多有的插件，也可以逐个包含这些插件
+   >
+   > - 定制：Bootstrap允许定制Bootstrap的组件、LESS变量和jquery插件来得到自己的版本。
 
 4. **使用Bootstrap的基本HTML模板** 
 
-   ```
+   ```html
    <!DOCTYPE html>
    <html>
       <head>
@@ -65,10 +64,10 @@
          <meta http-equiv="X-UA-Compatible" content="IE=edge">
          <meta name="viewport" content="width=device-width, initial-scale=1.0" user-scalable = no>
          <!-- 上述的3个meta标签必须放在最前面，任何其他内容都必须跟随其后 -->
-
+   
          <!-- 引入 Bootstrap -->
          <link href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-
+   
          <!-- HTML5 Shim 和 Respond.js 用于让 IE8 支持 HTML5元素（识别）和媒体查询（让低版本的浏览器可以使用媒体查询） -->
          <!-- 注意： 如果通过 file://  引入 Respond.js 文件，则该文件无法起效果 -->
          <!--[if lt IE 9]>
@@ -78,7 +77,7 @@
       </head>
       <body>
          <h1>Hello, world!</h1>
-
+   
          <!-- jQuery (Bootstrap 的 JavaScript 插件需要引入 jQuery) -->
          <script src="https://code.jquery.com/jquery.js"></script>
          <!-- 包括所有已编译的插件 -->
@@ -89,11 +88,9 @@
 
    ​	**4-1**<meta charset = "utf-8">： 设置当前HTML文件的字符编码
 
-   ​	**4-2**<meta http-equiv="X-UA-Compatible" content="IE=edge">: 设置浏览器的兼容模式版本（让IE使用	最新的渲染引擎工作)
+   ​	**4-2**<meta http-equiv="X-UA-Compatible" content="IE=edge">: 设置浏览器的兼容模式版本（让IE使用最新的渲染引擎工作)
 
-   ​	**4-3**<meta name="viewport" content="width=device-width, initial-scale=1.0" user-scalable = no>:
-
-   声明当前网页在移动端浏览器中展示的相关设置，包括宽度，初始化缩放，是否允许用户自行缩放。
+   ​	**4-3**<meta name="viewport" content="width=device-width, initial-scale=1.0" user-scalable = no>:声明当前网页在移动端浏览器中展示的相关设置，包括宽度，初始化缩放，是否允许用户自行缩放。
 
    ​	**4-4**视口的知识点
 

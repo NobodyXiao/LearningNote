@@ -1,4 +1,4 @@
-## artTemplate：高性能的JavaScript模板引擎## 
+## artTemplate：高性能的JavaScript模板引擎 
 
 **1)** artTemplate模板引擎的使用方法：
 
@@ -45,49 +45,42 @@ document.getElementById('content').innerHTML = html;
 
 **2)** 模板的语法：简洁语法（推荐使用的），原生语法
 
-​	**a)** 简洁语法：
+**a)** 简洁语法：
 
-​		**a1)** 表达式：`{{` 与 `}}` 符号包裹起来的语句则为模板的逻辑表达式。
+- **a1)表达式：`{{` 与 `}}` 符号包裹起来的语句则为模板的逻辑表达式。**
 
-​		输出表达式：
+	> 输出表达式：
+	> 对内容编码输出：{{content}}	
+	不编码输出：{{#content}}
 
-​			对内容编码输出：{{content}}
+- **a2)逻辑：遍历表达式**
 
-​			不编码输出：{{#content}}
-
-​		**a2)** 逻辑：遍历表达式
-
-```
+```html
 {{each list as value index}}
     <li>{{index}} - {{value.user}}</li>
 {{/each}}
 ```
 
-​		**a3)** 模板包含表达式
+- **a3)模板包含表达式** 
+ > 用于嵌入子模板:  {{include 'template_name'}} 
+ >
+ >子模板默认共享当前数据，亦可以指定数据：{{include 'template_name' , news_list}}
 
-​         用于嵌入子模板:  {{include 'template_name'}}
+- **a4)if判断**
 
-​	 子模板默认共享当前数据，亦可以指定数据：{{include 'template_name' , news_list}}
+**b)** 原生语法：
 
-​		**a4) ** if判断
+- **b1)** 表达式：`<%` 与 `%>` 符号包裹起来的语句则为模板的逻辑表达式。
 
-​	
+	> 输出表达式：
+	
+	> 对内容编码输出：<%=content%>
+	
+	> 不编码输出：<%=#content%>
 
+- **b2)** 逻辑：支持使用 js 原生语法	
 
-
-​	**b)** 原生语法：
-
-​		**b1)** 表达式：`<%` 与 `%>` 符号包裹起来的语句则为模板的逻辑表达式。
-
-​	        输出表达式：
-
-​			对内容编码输出：<%=content%>
-
-​			不编码输出：<%=#content%>
-
-​		**b2)** 逻辑：支持使用 js 原生语法	
-
-```
+```html
 <h1><%=title%></h1>
 <ul>
     <%for(i = 0; i < list.length; i ++) {%>
@@ -96,38 +89,36 @@ document.getElementById('content').innerHTML = html;
 </ul>
 ```
 
-​		**b3)** 模板包含表达式
+- **b3)** 模板包含表达式
 
-​                用于嵌入子模板:  <% include('template_name') %>
+	> 用于嵌入子模板:  <% include('template_name') %>
+	
+	> 子模板默认共享当前数据，亦可以指定数据：<% include('template_name', news_list) %>
 
-​	        子模板默认共享当前数据，亦可以指定数据：<% include('template_name', news_list) %>
+**3) 渲染的方法（在渲染模板中使用的）template(id, data):**
 
-**3)** 渲染的方法（在渲染模板中使用的）
+​根据 id 渲染模板。内部会根据document.getElementById(id)查找模板，渲染完成之后就可以将此         模板添加到HTML文档中进行显示。
 
-​        **template(id, data)** :
+​其中data数据在渲染模板中是直接使用的，一般传入的是一个对象，直接拿里边的数据进行使用。
 
-​	        根据 id 渲染模板。内部会根据document.getElementById(id)查找模板，渲染完成之后就可以将此         模板添加到HTML文档中进行显示。
+​例如data是object类型
 
-​	        其中data数据在渲染模板中是直接使用的，一般传入的是一个对象，直接拿里边的数据进行使用。
+	​		object{
+	
+	​			error_code:0
+	
+	​			reason:"Success"
+	
+	​			result{
+	
+	​			data:[{},{},{}]
+	
+	​			}
+	
+	​		}
 
-​		例如data是object类型
+那么如果在编写模板的时候，需要引用result对象中的data数组的时候，直接写result.data[i]即可，相当于是比template(id, data)中的data缩进一级，少表示一级
 
-​		object{
+​如果没有 data 参数，那么将返回一渲染函数。
 
-​			error_code:0
-
-​			reason:"Success"
-
-​			result{
-
-​			data:[{},{},{}]
-
-​				}
-
-​			}
-
-​		那么如果在编写模板的时候，需要引用result对象中的data数组的时候，直接写result.data[i]即可，相当于是比template(id, data)中的data缩进一级，少表示一级
-
-​	        如果没有 data 参数，那么将返回一渲染函数。
-
-​        **template.helper(name, callback) :** 添加辅助方法
+**template.helper(name, callback) :** 添加辅助方法

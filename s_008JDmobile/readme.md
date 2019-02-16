@@ -1,4 +1,4 @@
-### JD mobile website###
+#JD mobile website
 
 1. **移动端开发一般会用到 3种布局模式** 
 

@@ -1,8 +1,8 @@
-## 组件##
+## 组件
 
 1. 组件（Component）是 Vue.js 最强大的功能之一。组件可以扩展 HTML 元素，封装可重用的代码。在较高层面上，组件是自定义元素， Vue.js 的编译器为它添加特殊功能。在有些情况下，组件也可以是原生 HTML 元素的形式，以 is 特性扩展。
 
-2. #### 注册组件####
+2. #### 注册组件
 
    > 全局注册组件（**组件注册必须保证在初始化跟实例之前**）
    >
@@ -37,7 +37,7 @@
 
    ​
 
-3. #### DOM模版解析说明####
+3. #### DOM模版解析说明
 
    当使用DOM作为模版的时候，后出现一些HTML模版方面的限制，因为Vue只有在浏览器解析和标准化HTML之后才能获取模版的内容，尤其是像这样的元素`<ul>` ，`<ol>`，`<table>` ，`<select>` 限制了能被它包裹的元素， 而一些像 `<option>` 这样的元素只能出现在某些其它元素内部。
 
@@ -58,17 +58,17 @@
 
    因此有必要的话，尽量使用字符串模版。
 
-4. #### 组件中的data属性必须是函数####
+4. #### 组件中的data属性必须是函数
 
    这个是必要条件，否则Vue会停止工作，这样也可以保证每个实例的data属性都是独立的。
 
-5. #### 构成组件####
+5. #### 构成组件
 
    组件意味着协同工作，通常父子组件会是这样的关系：组件 A 在它的模版中使用了组件 B 。它们之间必然需要相互通信：父组件要给子组件传递数据，子组件需要将它内部发生的事情告知给父组件。然而，在一个良好定义的接口中尽可能将父子组件解耦是很重要的。这保证了每个组件可以在相对隔离的环境中书写和理解，也大幅提高了组件的可维护性和可重用性。
 
    在 Vue.js 中，父子组件的关系可以总结为 **props down, events up** 。父组件通过 **props** 向下传递数据给子组件，子组件通过 **events** 给父组件发送消息。看看它们是怎么工作的。
 
-6. #### Prop####
+6. #### Prop
 
    组件的作用域是孤立的，这意味着不能在子组件的模版内直接引用父组件的数据，如果想使用父组件的数据，那么我们子组件可以使用props选项。
 
@@ -183,7 +183,7 @@
 
    `type` 可以是下面原生构造器：String，Number，Boolean，Function，Object，Array；`type` 也可以是一个自定义构造器函数，使用 `instanceof` 检测。
 
-7. #### 自定义事件####
+7. #### 自定义事件
 
    父组件通过props传递数组给子组件，子组件通过**自定义事件**把数据传递回去。
 
@@ -226,7 +226,7 @@
 
    在复杂的情况下，	我们应该考虑使用专门的状态管理模式。
 
-8. #### 使用Slot分发内容：####
+8. #### 使用Slot分发内容：
 
    内容分发实际上就是混合父组件的内容和子组件的模版，把组件中的上下文内容（HTML 模版）插入到父组件中。（分发内容是在父组件作用域中编译的,但是slot标签是写在子组件中的）
 
@@ -285,7 +285,7 @@
    >
    > 作用域插槽更具代表性的用例是列表组件，允许组件自定义应该如何渲染列表每一项
 
-9. #### 动态组件####
+9. #### 动态组件
 
    > 通过使用保留的 `<component>` 元素，动态地绑定到它的 `is` 特性，我们让多个组件可以使用同一个挂载点，并动态切换：
    >
@@ -340,63 +340,63 @@
 
    ​
 
-10. #### 组件杂记####
+10. #### 组件杂记
 
-   **12.9.1在template选项中拼接HTML元素比较麻烦**，这也导致了HTML和JS的高耦合性。庆幸的是，vue.提供了两种方式将定义在js中的HTML模版分离出来。
+  **10.1在template选项中拼接HTML元素比较麻烦**，这也导致了HTML和JS的高耦合性。庆幸的是，vue.提供了两种方式将定义在js中的HTML模版分离出来。
 
-   **第一种方法是使用：script标签**
+  **第一种方法是使用：script标签**
 
-   ```
-   html部分：
+  ```
+  html部分：
+  <div id="app">
+        <my-component></my-component>
+  </div>
+          
+  <script type="text/x-template" id="myComponent">
+        <div>This is a component!</div>
+  </script>
+  js部分：
+  Vue.component('my-component',{
+        template: '#myComponent'
+  })
+  ```
+
+  这时template选项不再是HTML元素，而是一个id，Vue.js根据这个id查找对应的元素，然后将这个元素内的HTML作为模板进行编译。
+
+  **第二种方法是使用：template标签**
+
+  如果使用`<template>`标签，则不需要指定type属性，只需要一个id就行了。
+
+  ```
    <div id="app">
-         <my-component></my-component>
+        <my-component></my-component>
    </div>
-           
-   <script type="text/x-template" id="myComponent">
-         <div>This is a component!</div>
-   </script>
+          
+   <template id="myComponent">
+        <div>This is a component!</div>
+   </template>
    js部分：
    Vue.component('my-component',{
-         template: '#myComponent'
+        template: '#myComponent'
    })
-   ```
+  ```
 
-   这时template选项不再是HTML元素，而是一个id，Vue.js根据这个id查找对应的元素，然后将这个元素内的HTML作为模板进行编译。
+  **10.2prop的绑定类型**
 
-   **第二种方法是使用：template标签**
+  单向绑定：prop默认是单向绑定：当父组件的属性变化时，将传导给子组件，但是反过来不会。这是为了防止子组件无意修改了父组件的状态
 
-   如果使用`<template>`标签，则不需要指定type属性，只需要一个id就行了。
+  双向绑定：如果想实现双向绑定，那么就可以使用`.sync`显式地指定双向绑定，这使得子组件的数据修改会回传给父组件。
 
-   ```
-    <div id="app">
-         <my-component></my-component>
-    </div>
-           
-    <template id="myComponent">
-         <div>This is a component!</div>
-    </template>
-    js部分：
-    Vue.component('my-component',{
-         template: '#myComponent'
-    })
-   ```
+  ```
+  <my-component v-bind:my-name.sync="name" v-bind:my-age.sync="age"></my-component>
+  ```
 
-   **12.9.2prop的绑定类型**
+  单次绑定：
 
-   单向绑定：prop默认是单向绑定：当父组件的属性变化时，将传导给子组件，但是反过来不会。这是为了防止子组件无意修改了父组件的状态
+  可以使用`.once`显式地指定单次绑定，单次绑定在建立之后不会同步之后的变化，这意味着即使父组件修改了数据，也不会传导给子组件。
 
-   双向绑定：如果想实现双向绑定，那么就可以使用`.sync`显式地指定双向绑定，这使得子组件的数据修改会回传给父组件。
+  ```
+  <my-component v-bind:my-name.once="name" v-bind:my-age.once="age"></my-component>
+  ```
 
-   ```
-   <my-component v-bind:my-name.sync="name" v-bind:my-age.sync="age"></my-component>
-   ```
-
-   单次绑定：
-
-   可以使用`.once`显式地指定单次绑定，单次绑定在建立之后不会同步之后的变化，这意味着即使父组件修改了数据，也不会传导给子组件。
-
-   ```
-   <my-component v-bind:my-name.once="name" v-bind:my-age.once="age"></my-component>
-   ```
-
-   ​
+  ​

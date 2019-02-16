@@ -1,4 +1,4 @@
-## ES6知识点总结##
+## ES6知识点总结
 
 1. **将ES6转换成ES5的方法**
 
@@ -650,68 +650,68 @@
 
 10. **ES6中的对象**
 
-   10.1ES6允许把声明的变量直接复制给对象
+  10.1ES6允许把声明的变量直接复制给对象
 
-   ```
-   let name="jspang";
-   let skill= 'web';
-   var obj= {name,skill};
-   console.log(obj);
-   ```
+  ```
+  let name="jspang";
+  let skill= 'web';
+  var obj= {name,skill};
+  console.log(obj);
+  ```
 
-   10.2对象Key值构建
+  10.2对象Key值构建
 
-   有时候我们会在后台取出key值，而不是我们前台定义好的，这时候我们如何构建我们的key值？比如我们在后台取了一个key值，然后可以用[ ] 的形式，进行对象的构建。
+  有时候我们会在后台取出key值，而不是我们前台定义好的，这时候我们如何构建我们的key值？比如我们在后台取了一个key值，然后可以用[ ] 的形式，进行对象的构建。
 
-   ```
-   let key='skill';
-   var obj={
-       [key]:'web'
-   }
-   console.log(obj.skill);
-   ```
+  ```
+  let key='skill';
+  var obj={
+      [key]:'web'
+  }
+  console.log(obj.skill);
+  ```
 
-   10.3自定义对象
+  10.3自定义对象
 
-   对象方法就是把兑现中的属性，用匿名函数的形式编程方法。这个在以前就有应用，我们这里只是简单的复习一下。
+  对象方法就是把兑现中的属性，用匿名函数的形式编程方法。这个在以前就有应用，我们这里只是简单的复习一下。
 
-   ```
-   var obj={
-       add:function(a,b){
-           return a+b;
-       }
-   }
-   console.log(obj.add(1,2));  //3
-   ```
+  ```
+  var obj={
+      add:function(a,b){
+          return a+b;
+      }
+  }
+  console.log(obj.add(1,2));  //3
+  ```
 
-   10.4Object.is()对象比较
+  10.4Object.is()对象比较
 
-   ```
-   var obj1 = {name:'jspang'};
-   var obj2 = {name:'jspang'};
-   console.log(obj1.name === obj2.name);//true
-   console.log(Object.is(obj1.name,obj2.name)); //true
-   ```
+  ```
+  var obj1 = {name:'jspang'};
+  var obj2 = {name:'jspang'};
+  console.log(obj1.name === obj2.name);//true
+  console.log(Object.is(obj1.name,obj2.name)); //true
+  ```
 
-   ```
-   console.log(+0 === -0);  //true
-   console.log(NaN === NaN ); //false
-   console.log(Object.is(+0,-0)); //false
-   console.log(Object.is(NaN,NaN)); //true
-   ```
+  ```
+  console.log(+0 === -0);  //true
+  console.log(NaN === NaN ); //false
+  console.log(Object.is(+0,-0)); //false
+  console.log(Object.is(NaN,NaN)); //true
+  ```
 
-   ===为同值相等(类型相同，值还相同)，is()为严格相等。
+  ===为同值相等(类型相同，值还相同)，is()为严格相等。
 
-   10.5Object.assign()合并对象
+  10.5Object.assign()合并对象
 
-   ```
-   var a={a:'jspang'};
-   var b={b:'技术胖'};
-   var c={c:'web'};
-    
-   let d=Object.assign(a,b,c)
-   console.log(d);
-   ```
+  ```
+  var a={a:'jspang'};
+  var b={b:'技术胖'};
+  var c={c:'web'};
+   
+  let d=Object.assign(a,b,c)
+  console.log(d);
+  ```
 
 11. **Symbol在对象中的作用**
 
@@ -964,9 +964,5 @@
     }
     引入
     import {port, getAccounts} from 'module'
-    console.log(port) // 3000
+    console.log(port) // 3000​
     ```
-
-    ​
-
-15. ​

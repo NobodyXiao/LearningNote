@@ -29,22 +29,16 @@
   >
   >**语义性元素**：article，nav，section，header，footer，aside，progress，time，label
 
-**3.<label> 标签为 input 元素定义标注（标记） **
+**3.<label> 标签为 input 元素定义标注（标记）**
 
-```
-    <form>
-
-      <label for="male">Male</label>
-
-      <input type="radio" name="sex" id="male" />
-
-      <br />
-
-      <label for="female">Female</label>
-
-      <input type="radio" name="sex" id="female" />
-
-    </form>
+```html
+<form>
+	<label for="male">Male</label>
+	<input type="radio" name="sex" id="male" />
+	<br />
+	<label for="female">Female</label>
+	<input type="radio" name="sex" id="female" />
+</form>
 ```
 
 **4.sublime快捷键，ctrl+D连选, ctrl+K跳过**
@@ -55,25 +49,25 @@
 
 **6.html5表单变动**
 
-  >**1)**  新的 Input 类型
+  >**1)  新的 Input 类型**
   >
   >- email：用于应该包含 e-mail 地址的输入域，在提交表单时，会自动验证 email 域的值。
   >- url：类型用于应该包含 URL 地址的输入域，在提交表单时，会自动验证 url 域的值。
   >- number：类型用于应该包含数值的输入域，您还能够设定对所接受的数字的限定：最大值，最小值，步长，默认值等等。
   >- range：类型用于应该包含一定范围内数字值的输入域，类型显示为滑动条，您还能够设定对所接受的数字的限定：最大值，最小值，步长，默认值等等。
   >- Date pickers (date, month, week, time, datetime, datetime-local)
-    >-- date - 选取日、月、年
-      - month - 选取月、年
-      - week - 选取周和年
-      - time - 选取时间（小时和分钟）
-      - datetime - 选取时间、日、月、年（UTC 时间）
-      - datetime-local - 选取时间、日、月、年（本地时间）
-  >-search：用于搜索域，比如站点搜索或 Google 搜索。
-  >-color：选取颜色 
-  >
-  >  >**虚拟键盘适配 ，根据type类型的不同，弹出的键盘模式不一样** 
-  >
-  >**2)**  新的表单元素
+    - date - 选取日、月、年
+    - month - 选取月、年
+    - week - 选取周和年
+    - time - 选取时间（小时和分钟）
+    - datetime - 选取时间、日、月、年（UTC 时间）
+    - datetime-local - 选取时间、日、月、年（本地时间）
+    - search：用于搜索域，比如站点搜索或 Google 搜索。
+    - color：选取颜色 
+    
+  >- **虚拟键盘适配 ，根据type类型的不同，弹出的键盘模式不一样** 
+  
+  >**2)  新的表单元素**
   >
   >- datalist：元素规定输入域的选项列表，列表是通过 datalist 内的 option 元素创建的，option 元素永远都要设置 value 属性，而不是设置内容。
   >
@@ -85,27 +79,27 @@
   >  >
   >  >  私钥（private key）存储于客户端，公钥（public key）则被发送到服务器。公钥可用于之后验证用户的客户端证书（client certificate）。
   >
-  >**3)**  新的表单属性
+  >**3)  新的表单属性**
   >
-  >  新的 input 属性：
-     > autocomplete
-     > autofocus
-     > form
-     > form overrides (formaction, formenctype, formmethod, formnovalidate, formtarget)
-     > height 和 width
-     > list
-     > min, max 和 step
-     > multiple
-     > pattern (regexp)
-     > placeholder
-     > required
-  >  新的form属性：
-     > autocomplete：自动补全
-     > novalidate：不校验
+  >- 新的 input 属性：
+     - autocomplete
+     - autofocus
+     - form
+     - form overrides (formaction, formenctype, formmethod, formnovalidate, formtarget)
+     - height 和 width
+     - list
+     - min, max 和 step
+     - multiple
+     - pattern (regexp)
+     - placeholder
+     - required
+  >-  新的form属性：
+     - autocomplete：自动补全
+     - novalidate：不校验
 
 **7.自定义属性的代码和示例**
 
- ```
+ ```html
  <ul>
  	<li data-target =.panel-news>新闻</li>
  	<li data-target =.panel-sport>体育</li>
@@ -174,51 +168,49 @@
 
 HTML5 web 存储,一个比cookie更好的本地存储方式，在本地存储浏览的数据，这些数据不会被保存在服务器上，但是这些数据只用于用户请求网站数据上.它也可以存储大量的数据，而不影响网站的性能。数据以 键/值 对存在, web网页的数据只允许该网页访问使用。
 
-  >**客户端存储数据的两个对象**
+**客户端存储数据的两个对象: localStorage和sessionStorage**
   >
-  >**localStorage和sessionStorage**
+  >**常用的API：**
   >
-  >不管是 localStorage，还是 sessionStorage，可使用的API都相同，常用的有如下几个（以localStorage为例）：
+  - 保存数据：localStorage.setItem(key,value);
   >
-  >保存数据：localStorage.setItem(key,value);
+  - 读取数据：localStorage.getItem(key);
   >
-  >读取数据：localStorage.getItem(key);
+  - 删除单个数据：localStorage.removeItem(key);
   >
-  >删除单个数据：localStorage.removeItem(key);
+  - 删除所有数据：localStorage.clear();
   >
-  >删除所有数据：localStorage.clear();
+  - 得到某个索引的key：localStorage.key(index);
   >
-  >得到某个索引的key：localStorage.key(index);
+  >**数据保存的期限**
   >
-  >  >**localStorage对象**
-  >  >
-  >  >localStorage 对象存储的数据没有时间限制。第二天、第二周或下一年之后，数据依然可用。
-  >  >
-  >  >**sessionStorage对象**
-  >  >
-  >  >sessionStorage 方法针对一个 session 进行数据存储。当用户关闭浏览器窗口后，数据会被删除。
+  - localStorage 对象存储的数据没有时间限制。第二天、第二周或下一年之后，数据依然可用。
+  >
+  - sessionStorage 方法针对一个 session 进行数据存储。当用户关闭浏览器窗口后，数据会被删除。
 
 **10.web Sql**
 
 Web SQL 数据库 API 并不是 HTML5 规范的一部分，但是它是一个独立的规范，引入了一组使用 SQL 操作客户端数据库的 APIs。
 
-**核心方法**
+**核心方法:**
 
-  >1. **openDatabase**：这个方法使用现有的数据库或者新建的数据库创建一个数据库对象。
-  >2. **transaction**：这个方法让我们能够控制一个事务，以及基于这种情况执行提交或者回滚。
-  >3. **executeSql**：这个方法用于执行实际的 SQL 查询。
+  >**openDatabase**：这个方法使用现有的数据库或者新建的数据库创建一个数据库对象。
+  >
+  >**transaction**：这个方法让我们能够控制一个事务，以及基于这种情况执行提交或者回滚。
+  >
+  >**executeSql**：这个方法用于执行实际的 SQL 查询。
 
-实例：
+**实例：**
 
 **如果数据库存在，那么就打开这个数据库，如果数据库不存在，就创建一个新的数据库**
 
-```
+```javascript
 var db = openDatabase('mydb', '1.0', 'Test DB', 2 * 1024 * 1024);
 ```
 
 **增删改查操作**
 
-```
+```javascript
 db.transaction(function (tx) {
    tx.executeSql('CREATE TABLE IF NOT EXISTS LOGS (id unique, log)');//创建
    tx.executeSql('INSERT INTO LOGS (id, log) VALUES (1, "菜鸟教程")');//插入
@@ -230,9 +222,9 @@ db.transaction(function (tx) {
 
 HTML5 服务器发送事件（server-sent event）允许网页自动获得来自服务器的更新，属于单向消息传递。
 
-实例
+**实例:**
 
-```
+```javascript
 var source=new EventSource("demo_sse.php");
 source.onmessage=function(event)
 {
@@ -240,7 +232,7 @@ source.onmessage=function(event)
 };
 ```
 
-实例解析：
+**实例解析：**
 
 - 创建一个新的 EventSource 对象，然后规定发送更新的页面的 URL（本例中是 "demo_sse.php"）
 - 每接收到一次更新，就会发生 onmessage 事件
@@ -248,7 +240,7 @@ source.onmessage=function(event)
 
 为了让实例运行，您还需要能够发送数据更新的服务器，此处使用PHP写的服务器,php代码如下
 
-```
+```php
 <?php 
 header('Content-Type: text/event-stream'); 
 header('Cache-Control: no-cache'); 
@@ -268,31 +260,31 @@ flush();
 
 > **创建Websocket对象**
 >
-> ```
+> ```javascript
 > var Socket = new WebSocket(url, [protocol] );
 > ```
 >
-> **Websocket属性 **
+> **Websocket属性**
 >
->  Socket.readyState：只读属性 **readyState** 表示连接状态
+>- Socket.readyState：只读属性 **readyState** 表示连接状态
 >
-> Socket.bufferedAmount:只读属性 **bufferedAmount** 已被 send() 放入正在队列中等待传输，但是还没有发出的 UTF-8 文本字节数。
+>- Socket.bufferedAmount:只读属性 **bufferedAmount** 已被 send() 放入正在队列中等待传输，但是还没有发出的 UTF-8 文本字节数。
 >
 > **Websocket事件**
 >
-> Socket.onopen：连接建立时触发
+>- Socket.onopen：连接建立时触发
 >
-> Socket.onmessage：客户端接收服务端数据时触发
+>- Socket.onmessage：客户端接收服务端数据时触发
 >
-> Socket.onerror：通信发生错误时触发
+>- Socket.onerror：通信发生错误时触发
 >
-> Socket.onclose：连接关闭时触发
+>- Socket.onclose：连接关闭时触发
 >
 > **Websocket方法**
 >
-> Socket.send()：使用连接发送数据
+>- Socket.send()：使用连接发送数据
 >
-> Socket.close()：关闭连接
+>- Socket.close()：关闭连接
 
 
 

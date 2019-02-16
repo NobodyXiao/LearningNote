@@ -105,7 +105,11 @@
 
    **字符串转化成字符数组** 
 
-   **1) ** function toArray(str){
+   **1) 逐个字符遍历**
+    
+   ```javascript
+   
+   function toArray(str){
 
        if(typeof str !="string"){
 
@@ -124,14 +128,13 @@
        return arr;
 
    }
+```
 
-   **2)** var arr=str.match(/./g); 
+   **2) var arr=str.match(/./g) **
 
    strObj.match（reg）方法对字符串对象进行检索,返回包含所有匹配结果的数组。而 正则表达式 /./g 匹配的是所有的字符， 所以str.match(/./g)返回的是由字符串str中所有的字符组成的数组，以此达到将字符串转换为数组的目的。
 
-   **3)** str.split("")	
-
-   **字符数组转化成字符串** 
+   **3) str.split("")	字符数组转化成字符串** 
 
    使用strObj.join（）方法可以指定数组元素之间的连接符，默认为"," 
 

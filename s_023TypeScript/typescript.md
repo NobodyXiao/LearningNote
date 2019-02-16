@@ -1,14 +1,14 @@
-## 学习TypeScript小记##
+## 学习TypeScript小记
 
 Typescript是JavaScript的一个超集，主要提供**类型系统** 和**对ES6的支持** ，它可以编译成纯 JavaScript。编译出来的 JavaScript 可以运行在任何浏览器上。TypeScript 编译工具可以运行在任何服务器和任何系统上。TypeScript 是开源的。
 
-1. #### TypeScript 增加了代码的可读性和可维护性### #
+1. #### TypeScript 增加了代码的可读性和可维护性 #
 
    - 类型系统实际上是最好的文档，大部分的函数看看类型的定义就可以知道如何使用了
    - 可以在编译阶段就发现大部分错误，这总比在运行时候出错好
    - 增强了编辑器和 IDE 的功能，包括代码补全、接口提示、跳转到定义、重构等
 
-2.  #### TypeScript非常包容####
+2. #### TypeScript非常包容
 
    - TypeScript 是 JavaScript 的超集，`.js` 文件可以直接重命名为 `.ts` 即可
    - 即使不显式的定义类型，也能够自动做出类型推断
@@ -16,25 +16,25 @@ Typescript是JavaScript的一个超集，主要提供**类型系统** 和**对ES
    - 即使 TypeScript 编译报错，也可以生成 JavaScript 文件
    - 兼容第三方库，即使第三方库不是用 TypeScript 写的，也可以编写单独的类型文件供 TypeScript 读取
 
-3.  #### 安装TypeScript####
+3. #### 安装TypeScript
 
    在命令行直接使用Node.js包来安装,安装：npm install -g typescript；编译：tsc helloworld.ts
 
-   #### TypeScript的基础###
+   #### TypeScript的基础
 
-4.  #### 原始数据类型 ####
+4. #### 原始数据类型 ####
 
-   **布尔型** ：let isDone: boolean = false;
+   - ** 布尔型** ：let isDone: boolean = false;
 
-   **数值类型** ：let decLiteral: number = 6; let hexLiteral: number = 0xf00d;
+   - **数值类型** ：let decLiteral: number = 6; let hexLiteral: number = 0xf00d;
 
-   **字符串类型** ：let myName: string = 'Xcat Liu';
+   - **字符串类型** ：let myName: string = 'Xcat Liu';
 
-   **空类型** ：在TS中，可以用void表示没有任何返回值的函数，另外生命一个void类型的变量没有什么用，因为你只能给它赋值undefined和null。
+   - **空类型** ：在TS中，可以用void表示没有任何返回值的函数，另外生命一个void类型的变量没有什么用，因为你只能给它赋值undefined和null。
 
-   **Null和Undefined** :在TS中，可以使用null和undefined来定义这两个原始数据类型，与void是区别是：`undefined` 和 `null` 是所有类型的子类型。也就是说 `undefined` 类型的变量，可以赋值给 `number` 类型，string类型等等的变量：
+   - **Null和Undefined** :在TS中，可以使用null和undefined来定义这两个原始数据类型，与void是区别是：`undefined` 和 `null` 是所有类型的子类型。也就是说 `undefined` 类型的变量，可以赋值给 `number` 类型，string类型等等的变量：
 
-5. #### 任意值####
+5. #### 任意值 
 
    在TS里边使用any来表示允许赋值为任意类型。
 
@@ -44,7 +44,7 @@ Typescript是JavaScript的一个超集，主要提供**类型系统** 和**对ES
 
    如果一个变量在生命的时候，没有指定类型，那么这个变量会被识别为任意值类型。
 
-6. #### 类型推论####
+6. #### 类型推论
 
    如果没有明确的指定类型，那么TS会依照类型推论的规则推断出一个类型。
 
@@ -64,7 +64,7 @@ Typescript是JavaScript的一个超集，主要提供**类型系统** 和**对ES
 
    **TypeScript 2.1 中，编译器会考虑对 myFavoriteNumber 的最后一次赋值来检查类型**
 
-7.  #### 联合类型####
+7. #### 联合类型 
 
    7.1 联合类型（Union Types）表示取值可以为多种类型中的一种。联合类型使用 `|` 分隔每个类型。
 
@@ -86,7 +86,7 @@ Typescript是JavaScript的一个超集，主要提供**类型系统** 和**对ES
    console.log(myFavoriteNumber.length); //此处myFavoriteNumber被推断为string类型
    ```
 
-8. #### 接口####
+8. #### 接口
 
    8.1 在TS中我们使用接口定义对象的类型（形状），它是对行为的抽象，具体由**类** 去实现。**接口一般是首字母大写** 
 
@@ -136,18 +136,18 @@ Typescript是JavaScript的一个超集，主要提供**类型系统** 和**对ES
      age?: number;
      [propName: string]: any;
    }
-
+   
    let xcatliu: Person = {
      id: 89757,
      name: 'Xcat Liu',
      website: 'http://xcatliu.com',
    };
-
+   
    xcatliu.id = 9527;
    //此处会报错，因为接口中的ID属性是只读类型
    ```
 
-9.  #### 数组类型####
+9. #### 数组类型 
 
    两种定义方式：
 
@@ -171,40 +171,40 @@ Typescript是JavaScript的一个超集，主要提供**类型系统** 和**对ES
    let list: any[] = ['Xcat Liu', 25, { website: 'http://xcatliu.com' }];
    ```
 
-10. #### 函数类型####
+10. #### 函数类型
 
-   10.1 定义函数类型的时候，需要把输入和输出都要考虑到，其中有两种定义函数类型的方式
+  10.1 定义函数类型的时候，需要把输入和输出都要考虑到，其中有两种定义函数类型的方式
 
-   ```
-   function sum(x: number, y: number): number {
-     return x + y;
-   }//函数声明
-   let mySum = function (x: number, y: number): number {
-     return x + y;
-   };//函数表达式
-   ```
+  ```
+  function sum(x: number, y: number): number {
+    return x + y;
+  }//函数声明
+  let mySum = function (x: number, y: number): number {
+    return x + y;
+  };//函数表达式
+  ```
 
-   等号左边的mySum的类型是通过赋值操作进行类型推断出来的。如果手动添加类型的
+  等号左边的mySum的类型是通过赋值操作进行类型推断出来的。如果手动添加类型的
 
-   ```
-   let mySum: (x: number, y: number) => number = function (x: number, y: number): number {
-     return x + y;
-   };
-   ```
+  ```
+  let mySum: (x: number, y: number) => number = function (x: number, y: number): number {
+    return x + y;
+  };
+  ```
 
-   `=>` 用来表示函数的定义，左边是输入类型，需要用括号括起来，右边是输出类型。
+  `=>` 用来表示函数的定义，左边是输入类型，需要用括号括起来，右边是输出类型。
 
-   10.2可选参数和默认参数
+  10.2可选参数和默认参数
 
-   可选参数和接口中的可选属性类似，我们用？表示可选参数，**可选参数必须接在必需参数后边** 
+  可选参数和接口中的可选属性类似，我们用？表示可选参数，**可选参数必须接在必需参数后边** 
 
-   参数默认值：当函数默认参数的位置 没有传入参数或者是undefined的时候，我们函数中是默认使用默认参数来参与计算。
+  参数默认值：当函数默认参数的位置 没有传入参数或者是undefined的时候，我们函数中是默认使用默认参数来参与计算。
 
-   10.3 剩余参数
+  10.3 剩余参数
 
-   ES6 中，可以使用 `...rest` 的方式获取函数中的剩余参数（rest 参数），rest 参数只能是最后一个参数。
+  ES6 中，可以使用 `...rest` 的方式获取函数中的剩余参数（rest 参数），rest 参数只能是最后一个参数。
 
-11. #### 类型断言####
+11. #### 类型断言
 
     类型断言就是可以绕过编译器的类型推断，手动制定一个值的类型。
 
@@ -224,7 +224,7 @@ Typescript是JavaScript的一个超集，主要提供**类型系统** 和**对ES
 
     当然给这个变量断言一个联合类型中没有的子类型，是不可以的。
 
-12. #### 声明文件#### 
+12. #### 声明文件  
 
     当使用第三方库时，我们需要引用它的声明文件。
 
@@ -234,7 +234,7 @@ Typescript是JavaScript的一个超集，主要提供**类型系统** 和**对ES
 
     ```
     declare var jQuery: (string) => any;
-
+    
     jQuery('#foo');
     ```
 
@@ -246,7 +246,7 @@ Typescript是JavaScript的一个超集，主要提供**类型系统** 和**对ES
 
     ```
     /// <reference path="./jQuery.d.ts" />
-
+    
     jQuery('#foo');
     ```
 
@@ -260,7 +260,7 @@ Typescript是JavaScript的一个超集，主要提供**类型系统** 和**对ES
     npm install @types/jquery --save-dev
     ```
 
-13. #### 内置对象####
+13. #### 内置对象
 
     JavaScript中很多内置对象，可以直接在TS中当做定义好了的类型使用，内置对象是指根据标准在全局作用域上存在的对象。
 
@@ -282,7 +282,7 @@ Typescript是JavaScript的一个超集，主要提供**类型系统** 和**对ES
       // Do something
     ```
 
-14. #### 类型别名####
+14. #### 类型别名
 
     类型别名用来给一个类型起一个新名字，使用type来重新定义别名，类型别名经常用于联合类型
 
@@ -300,7 +300,7 @@ Typescript是JavaScript的一个超集，主要提供**类型系统** 和**对ES
     }
     ```
 
-15. #### 字符串字面量类型####
+15. #### 字符串字面量类型
 
     字符字面量类型用来约束取值只能是某几个字符串中的一个。
 
@@ -309,13 +309,13 @@ Typescript是JavaScript的一个超集，主要提供**类型系统** 和**对ES
     function handleEvent(ele: Element, event: EventNames) {
       // do something
     }
-
+    
     handleEvent(document.getElementById('hello'), 'scroll');  // 没问题
     ```
 
     注意：类型别名与字符字面量类型都是使用type进行定义的。
 
-16. #### 元组####
+16. #### 元组
 
     数组合并了相同类型的对象，而元组合并了不同类型的对象。
 
@@ -341,7 +341,7 @@ Typescript是JavaScript的一个超集，主要提供**类型系统** 和**对ES
 
     数组中的第三项满足联合类型`string | number`。那么当访问一个越界元素的时候，也会识别为元组中每个类型的联合类型，访问它属性的时候可能会出错，因为联合类型只能访问联合类型里所有类型的共有属性和方法。
 
-17. #### 枚举类型####
+17. #### 枚举类型
 
     17.1 枚举类型其实就是用对象表示，每个成员都会被付给一个对应的数值，枚举值和枚举名相互映射。
 
@@ -387,7 +387,7 @@ Typescript是JavaScript的一个超集，主要提供**类型系统** 和**对ES
 
     常数枚举如果包含计算成员，就会报错。
 
-18. #### 类####
+18. #### 类
 
     JavaScript 通过构造函数实现类的概念，通过原型链实现继承。而在 ES6 中，我们终于迎来了 `class`。
 
@@ -422,7 +422,7 @@ Typescript是JavaScript的一个超集，主要提供**类型系统** 和**对ES
         return a instanceof Animal;
       }
     }
-
+    
     let a = new Animal('Jack');
     Animal.isAnimal(a); // true
     a.isAnimal(a); // TypeError: a.isAnimal is not a function
@@ -458,7 +458,7 @@ Typescript是JavaScript的一个超集，主要提供**类型系统** 和**对ES
         this.name = name;
       }
     }
-
+    
     let a = new Animal('Jack');
     console.log(a.name); // Jack
     a.name = 'Tom';
@@ -481,17 +481,17 @@ Typescript是JavaScript的一个超集，主要提供**类型系统** 和**对ES
       }
       public abstract sayHi();
     }
-
+    
     class Cat extends Animal {
       public sayHi() {
         console.log(`Meow, My name is ${this.name}`);
       }//此处抽象类中的抽象方法被子类实现了
     }
-
+    
     let cat = new Cat('Tom');//没有去实例化Animal类，而是去实例化子类Cat
     ```
 
-19. #### 类与接口####
+19. #### 类与接口
 
     接口（Interfaces）可以用于对「对象的形状（Shape）」进行描述，也可以对类的一部分行为进行抽象。	
 
@@ -505,12 +505,12 @@ Typescript是JavaScript的一个超集，主要提供**类型系统** 和**对ES
     interface Alarm {
       alert();
     }
-
+    
     interface Light {
       lightOn();
       lightOff();
     }
-
+    
     class Car implements Alarm, Light {
       alert() {
         console.log('Car alert');
@@ -530,7 +530,7 @@ Typescript是JavaScript的一个超集，主要提供**类型系统** 和**对ES
     interface Alarm {
       alert();
     }
-
+    
     interface LightableAlarm extends Alarm {
       lightOn();
       lightOff();
@@ -544,11 +544,11 @@ Typescript是JavaScript的一个超集，主要提供**类型系统** 和**对ES
       x: number;
       y: number;
     }
-
+    
     interface Point3d extends Point {
       z: number;
     }
-
+    
     let point3d: Point3d = {x: 1, y: 2, z: 3};
     ```
 
@@ -562,21 +562,21 @@ Typescript是JavaScript的一个超集，主要提供**类型系统** 和**对ES
         interval: number;
         reset(): void;
     }
-
+    
     function getCounter(): Counter {
         let counter = <Counter>function (start: number) { };
         counter.interval = 123;
         counter.reset = function () { };
         return counter;
     }
-
+    
     let c = getCounter();
     c(10);
     c.reset();
     c.interval = 5.0;
     ```
 
-20. #### 泛型####
+20. #### 泛型
 
     20.1 泛型（Generics）是指在定义函数、接口或类的时候，不预先指定具体的类型，而在使用的时候再指定类型的一种特性。
 
@@ -588,7 +588,7 @@ Typescript是JavaScript的一个超集，主要提供**类型系统** 和**对ES
       }
       return result;
     }
-
+    
     createArray<string>(3, 'x'); // ['x', 'x', 'x']
     ```
 
@@ -602,7 +602,7 @@ Typescript是JavaScript的一个超集，主要提供**类型系统** 和**对ES
     function swap<T, U>(tuple: [T, U]): [U, T] {
       return [tuple[1], tuple[0]];
     }
-
+    
     swap([7, 'seven']); // ['seven', 7]
     ```
 
@@ -614,7 +614,7 @@ Typescript是JavaScript的一个超集，主要提供**类型系统** 和**对ES
     interface Lengthwise {
       length: number;
     }
-
+    
     function loggingIdentity<T extends Lengthwise>(arg: T): T {
       console.log(arg.length);
       return arg;
@@ -632,7 +632,7 @@ Typescript是JavaScript的一个超集，主要提供**类型系统** 和**对ES
     interface CreateArrayFunc {
       <T>(length: number, value: T): Array<T>;
     }
-
+    
     let createArray: CreateArrayFunc;
     createArray = function<T>(length: number, value: T): Array<T> {
       let result = [];
@@ -641,7 +641,7 @@ Typescript是JavaScript的一个超集，主要提供**类型系统** 和**对ES
       }
       return result;
     }
-
+    
     createArray(3, 'x'); // ['x', 'x', 'x']
     ```
 
@@ -654,13 +654,13 @@ Typescript是JavaScript的一个超集，主要提供**类型系统** 和**对ES
         zeroValue: T;
         add: (x: T, y: T) => T;
     }
-
+    
     let myGenericNumber = new GenericNumber<number>();
     myGenericNumber.zeroValue = 0;
     myGenericNumber.add = function(x, y) { return x + y; };
     ```
 
-21. #### 声明合并####
+21. #### 声明合并
 
     如果定义了两个相同名字的函数、接口或类，那么它们会合并成一个类型：
 
@@ -689,7 +689,7 @@ Typescript是JavaScript的一个超集，主要提供**类型系统** 和**对ES
       price: number;
     }
     合并之后是下边这样
-
+    
     interface Alarm {
       price: number;
       weight: number;

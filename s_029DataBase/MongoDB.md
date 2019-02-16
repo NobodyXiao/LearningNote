@@ -55,84 +55,84 @@ db.mycol2.drop()
     MongoDB AND 条件:
         db.col.find({key1:value1, key2:value2}).pretty();
     MongoDB OR 条件:
-        db.col.find({$or: [{key1: value1}, {key2:value2}]}).pretty();
+        db.col.find({​$or: [{key1: value1}, {key2:value2}]}).pretty();
 8.条件操作符
-    MangoDB中的条件操作符：(>) 大于 - $gt,(<) 小于 - $lt,(>=) 大于等于 - $gte,(<= ) 小于等于 - $lte
+    MangoDB中的条件操作符：(>) 大于 - $gt,(<) 小于 - ​$lt,(>=) 大于等于 - $gte,(<= ) 小于等于 - ​$lte
     假设数据库是这样的，里边有3个文档，那么需要进行相应的查询，示例如下：
     { "_id" : ObjectId("584d5ada795c78e18374c6e7"), "name" : "lili", "age" : "19", "sex" : "woman" }
     { "_id" : ObjectId("584d5aff795c78e18374c6e8"), "name" : "lynn", "age" : "18", "sex" : "woman" }
     { "_id" : ObjectId("584d5b16795c78e18374c6e9"), "name" : "jack", "age" : "22", "sex" : "man" }
     1) db.col.find({"age" : {$gt : "20"}}),需要特别注意一下此处是否由双引号，会影响查询的结果
 之后的命令以此类推
-	2)MongoDB 使用 (<) 和 (>) 查询 - $lt 和 $gt
+	2)MongoDB 使用 (<) 和 (>) 查询 - ​$lt 和 $gt
 	db.col.find({"age" : {$lt :"22", $gt : "19"}})
-9.$type条件操作符
+9.​$type条件操作符
 
 ​    $type操作符是基于BSON类型来检索集合中匹配的数据类型，并返回结果. 假设数据库中的文档是这样的：
-     { "_id" : ObjectId("584d5ada795c78e18374c6e7"), "name" : "lili", "age" : 19, "sex" : "woman" }
-     { "_id" : ObjectId("584d5aff795c78e18374c6e8"), "name" : "lynn", "age" : "18", "sex" : "woman" }
-     { "_id" : ObjectId("584d5b16795c78e18374c6e9"), "name" : "jack", "age" : 22, "sex" : "man" }
-     db.col.find({"age" : {$type : 2}}):那么就是获取 "col" 集合中 age 为 String 的数据；
+​     { "_id" : ObjectId("584d5ada795c78e18374c6e7"), "name" : "lili", "age" : 19, "sex" : "woman" }
+​     { "_id" : ObjectId("584d5aff795c78e18374c6e8"), "name" : "lynn", "age" : "18", "sex" : "woman" }
+​     { "_id" : ObjectId("584d5b16795c78e18374c6e9"), "name" : "jack", "age" : 22, "sex" : "man" }
+​     db.col.find({"age" : {$type : 2}}):那么就是获取 "col" 集合中 age 为 String 的数据；
 10.MongoDB Limit与Skip方法
-     Limit方法：如果你想从数据库中读取指定数量的数据，那么可以使用Limit()方法：
-    基本语法是这样的：db.COLLECTION_NAME.find().limit(NUMBER):NUMBER指定读取的数量,如果没有指定limit的参数，那么默认是输出所有的数据
-     假设数据库中的文档是这样的：
-     { "_id" : ObjectId("584d5ada795c78e18374c6e7"), "name" : "lili", "age" : 19, "sex" : "woman" }
-     { "_id" : ObjectId("584d5aff795c78e18374c6e8"), "name" : "lynn", "age" : "18", "sex" : "woman" }
-     { "_id" : ObjectId("584d5b16795c78e18374c6e9"), "name" : "jack", "age" : 22, "sex" : "man" }
-     db.col.find({},{"name":1,_id:0}).limit(2),那么只会输出前两行数据中的name键值对???
-     Skip() 方法:使用skip()方法来跳过指定数量的数据，skip方法同样接受一个数字参数作为跳过的记录条数。
-    基本语法是这样的：db.COLLECTION_NAME.find().limit(NUMBER).skip(NUMBER)
-        如果依然是上边的数据库不变，那么 db.col.find({},{"name":1,_id:0}).limit(2).skip(1),那么就会先跳过是一条数据，之后输出后边的两条数据
+​     Limit方法：如果你想从数据库中读取指定数量的数据，那么可以使用Limit()方法：
+​    基本语法是这样的：db.COLLECTION_NAME.find().limit(NUMBER):NUMBER指定读取的数量,如果没有指定limit的参数，那么默认是输出所有的数据
+​     假设数据库中的文档是这样的：
+​     { "_id" : ObjectId("584d5ada795c78e18374c6e7"), "name" : "lili", "age" : 19, "sex" : "woman" }
+​     { "_id" : ObjectId("584d5aff795c78e18374c6e8"), "name" : "lynn", "age" : "18", "sex" : "woman" }
+​     { "_id" : ObjectId("584d5b16795c78e18374c6e9"), "name" : "jack", "age" : 22, "sex" : "man" }
+​     db.col.find({},{"name":1,_id:0}).limit(2),那么只会输出前两行数据中的name键值对???
+​     Skip() 方法:使用skip()方法来跳过指定数量的数据，skip方法同样接受一个数字参数作为跳过的记录条数。
+​    基本语法是这样的：db.COLLECTION_NAME.find().limit(NUMBER).skip(NUMBER)
+​        如果依然是上边的数据库不变，那么 db.col.find({},{"name":1,_id:0}).limit(2).skip(1),那么就会先跳过是一条数据，之后输出后边的两条数据
 11.MongoDB 排序
-    在MongoDB中使用使用sort()方法对数据进行排序，sort()方法可以通过参数指定排序的字段，
-    并使用 1 和 -1 来指定排序的方式，其中 1 为升序排列，而-1是用于降序排列。
-    基本语法是这样的：db.COLLECTION_NAME.find().sort({KEY:1})	
-    假设数据库中的文档是这样的：
-     { "_id" : ObjectId("584d5ada795c78e18374c6e7"), "name" : "lili", "age" : 19, "sex" : "woman" }
-     { "_id" : ObjectId("584d5aff795c78e18374c6e8"), "name" : "lynn", "age" : 18, "sex" : "woman" }
-     { "_id" : ObjectId("584d5b16795c78e18374c6e9"), "name" : "jack", "age" : 22, "sex" : "man" }
-    db.col.find({},{"name":1,_id:0}).sort({"age":-1}),那么就会按照age降序的顺序输出name筛选出来的3条信息
+​    在MongoDB中使用使用sort()方法对数据进行排序，sort()方法可以通过参数指定排序的字段，
+​    并使用 1 和 -1 来指定排序的方式，其中 1 为升序排列，而-1是用于降序排列。
+​    基本语法是这样的：db.COLLECTION_NAME.find().sort({KEY:1})	
+​    假设数据库中的文档是这样的：
+​     { "_id" : ObjectId("584d5ada795c78e18374c6e7"), "name" : "lili", "age" : 19, "sex" : "woman" }
+​     { "_id" : ObjectId("584d5aff795c78e18374c6e8"), "name" : "lynn", "age" : 18, "sex" : "woman" }
+​     { "_id" : ObjectId("584d5b16795c78e18374c6e9"), "name" : "jack", "age" : 22, "sex" : "man" }
+​    db.col.find({},{"name":1,_id:0}).sort({"age":-1}),那么就会按照age降序的顺序输出name筛选出来的3条信息
 12.MongoDB 索引
-    MongoDB使用 ensureIndex() 方法来创建索引。
-    ensureIndex()方法基本语法格式如下所示：db.COLLECTION_NAME.ensureIndex({KEY:1})
-    索引实际就是为了快速找到数据库当中的数据而增加的一个编号而已，类似于数组的下标，语法中 
-    Key 值为你要创建的索引字段，1为指定按升序创建索引，如果你想按降序来创建索引指定为-1即可。
-    当然你也可以通过多个字段来创建索引:db.col.ensureIndex({"title":1,"description":-1})
-    在后台创建索引：
-        db.values.ensureIndex({open: 1, close: 1}, {background: true})
-    通过在创建索引时加background:true 的选项，让创建工作在后台执行,建索引过程会阻塞其它数据库操作，background可指定以后台方式创建索引，即增加      	"background" 可选参数。 "background" 默认值为false。
+​    MongoDB使用 ensureIndex() 方法来创建索引。
+​    ensureIndex()方法基本语法格式如下所示：db.COLLECTION_NAME.ensureIndex({KEY:1})
+​    索引实际就是为了快速找到数据库当中的数据而增加的一个编号而已，类似于数组的下标，语法中 
+​    Key 值为你要创建的索引字段，1为指定按升序创建索引，如果你想按降序来创建索引指定为-1即可。
+​    当然你也可以通过多个字段来创建索引:db.col.ensureIndex({"title":1,"description":-1})
+​    在后台创建索引：
+​        db.values.ensureIndex({open: 1, close: 1}, {background: true})
+​    通过在创建索引时加background:true 的选项，让创建工作在后台执行,建索引过程会阻塞其它数据库操作，background可指定以后台方式创建索引，即增加      	"background" 可选参数。 "background" 默认值为false。
 13.MongoDB 聚合
-    MongoDB中聚合(aggregate)主要用于处理数据(诸如统计平均值,求和等)，并返回计算后的数据结果。基本语法如下所示：
-    db.COLLECTION_NAME.aggregate(AGGREGATE_OPERATION)
-    例如，集合中的数据如下所示：
-    {
-    "_id" : ObjectId("584de00334ffeeca89ed5ff7"),
-    "name" : "jack",
-    "school" : "middle-school1"
-    }
-    {
-    "_id" : ObjectId("584de01834ffeeca89ed5ff8"),
-    "name" : "lili",
-    "school" : "middle-school2"
-    }
-    {
-    "_id" : ObjectId("584de02434ffeeca89ed5ff9"),
-    "name" : "mary",
-    "school" : "middle-school2"
-    }
-    输入db.database2.aggregate([{$group:{_id:"$school",num_tutorial:{$sum:1}}}])之后，输出结果如下所示：
-    { "_id" : "middle-school2", "num_tutorial" : 2 }
-    { "_id" : "middle-school1", "num_tutorial" : 1 }
-    我们通过字段school字段对数据进行分组，并计算school字段相同值的总和。
+​    MongoDB中聚合(aggregate)主要用于处理数据(诸如统计平均值,求和等)，并返回计算后的数据结果。基本语法如下所示：
+​    db.COLLECTION_NAME.aggregate(AGGREGATE_OPERATION)
+​    例如，集合中的数据如下所示：
+​    {
+​    "_id" : ObjectId("584de00334ffeeca89ed5ff7"),
+​    "name" : "jack",
+​    "school" : "middle-school1"
+​    }
+​    {
+​    "_id" : ObjectId("584de01834ffeeca89ed5ff8"),
+​    "name" : "lili",
+​    "school" : "middle-school2"
+​    }
+​    {
+​    "_id" : ObjectId("584de02434ffeeca89ed5ff9"),
+​    "name" : "mary",
+​    "school" : "middle-school2"
+​    }
+​    输入db.database2.aggregate([{$group:{_id:"$school",num_tutorial:{$sum:1}}}])之后，输出结果如下所示：
+​    { "_id" : "middle-school2", "num_tutorial" : 2 }
+​    { "_id" : "middle-school1", "num_tutorial" : 1 }
+​    我们通过字段school字段对数据进行分组，并计算school字段相同值的总和。
 14.MongoDB 监控
-    MongoDB中提供了mongostat 和 mongotop 两个命令来监控MongoDB的运行情况。
-    mongostat 命令:mongostat是mongodb自带的状态检测工具，在命令行下使用。它会间隔固定时间获取mongodb的当前运行状态，并输出。
-    如果你发现数据库突然变慢或者有其他问题的话，你第一手的操作就考虑采用mongostat来查看mongo的状态。 
-    在ubuntu系统下直接输入mongostat即可运行此命令
-    mongotop 命令:mongotop也是mongodb下的一个内置工具，mongotop提供了一个方法，用来跟踪一个MongoDB的实例
-    查看哪些大量的时间花费在读取和写入数据。 mongotop提供每个集合的水平的统计数据。默认情况下，mongotop返回值的每一秒。 
-    在ubuntu系统下输入mongotop即可运行此命令
+​    MongoDB中提供了mongostat 和 mongotop 两个命令来监控MongoDB的运行情况。
+​    mongostat 命令:mongostat是mongodb自带的状态检测工具，在命令行下使用。它会间隔固定时间获取mongodb的当前运行状态，并输出。
+​    如果你发现数据库突然变慢或者有其他问题的话，你第一手的操作就考虑采用mongostat来查看mongo的状态。 
+​    在ubuntu系统下直接输入mongostat即可运行此命令
+​    mongotop 命令:mongotop也是mongodb下的一个内置工具，mongotop提供了一个方法，用来跟踪一个MongoDB的实例
+​    查看哪些大量的时间花费在读取和写入数据。 mongotop提供每个集合的水平的统计数据。默认情况下，mongotop返回值的每一秒。 
+​    在ubuntu系统下输入mongotop即可运行此命令
 
 15.MongoDB 备份(mongodump)与恢复(mongorestore)
     MongoDB数据备份:在Mongodb中我们使用mongodump命令来备份MongoDB数据。该命令可以导出所有数据到指定目录中。

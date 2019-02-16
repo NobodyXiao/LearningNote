@@ -1,4 +1,4 @@
-### Lottery draw###
+# Lottery draw
 
 1. 获取中间的开始抽奖的LI元素，绑定函数Start(),之后每次抽奖的轮转的次数都是随机获得的。
 

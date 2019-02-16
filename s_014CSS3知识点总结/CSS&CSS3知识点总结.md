@@ -1,6 +1,6 @@
-## CSS&CSS3知识点总结## 
+# CSS&CSS3知识点总结 
 
-### 一.CSS2知识点总结###
+## 一.CSS2知识点总结
 
 #### 1.脱离文档流分析####
 
@@ -205,7 +205,7 @@ CSS outline 属性规定元素轮廓的样式、颜色和宽度，和border是�
 
 #### 15.伪类和伪元素（伪元素一般在html中添加新元素，伪类只是个伪类名）:####
 
-> **15.1 CSS伪类** 是用来添加一些选择器的特殊效果的。
+> **15.1 CSS伪类 是用来添加一些选择器的特殊效果的。**
 >
 >   >例如a链接的4种样式就是使用伪类来定义的
 >   >
@@ -235,7 +235,7 @@ CSS outline 属性规定元素轮廓的样式、颜色和宽度，和border是�
 
 #### 16.opacity属性（CSS3中）代表透明度，不同浏览器使用，注意兼容性:####
 
- ```
+ ```css
 {
  		opacity:0.4;
   		filter:alpha(opacity=40); /*  IE8 及其更早版本 */
@@ -274,7 +274,7 @@ CSS outline 属性规定元素轮廓的样式、颜色和宽度，和border是�
 
 **19.1任何一个容器都可以指定为Flex布局，无论块级元素还是行级元素**
 
-```
+```css
 .box{
   display: flex;
 }
@@ -285,7 +285,7 @@ CSS outline 属性规定元素轮廓的样式、颜色和宽度，和border是�
 
 另外针对Webkit要加上hack
 
-```
+```css
 .box{
   display: -webkit-flex; /* Safari */
   display: flex;
@@ -367,17 +367,17 @@ CSS outline 属性规定元素轮廓的样式、颜色和宽度，和border是�
   >  >
   >  >它可能取5个值。具体的对齐方式与交叉轴的方向有关，下面假设交叉轴从上到下。
   >  >
-  >  >> - `flex-start`：交叉轴的起点对齐。
-  >  >> - `flex-end`：交叉轴的终点对齐。
-  >  >> - `center`：交叉轴的中点对齐。
-  >  >> - `baseline`: 项目的第一行文字的基线对齐。
-  >  >> - `stretch`（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。
+  >  >- `flex-start`：交叉轴的起点对齐。
+  >  >- `flex-end`：交叉轴的终点对齐。
+  >  >- `center`：交叉轴的中点对齐。
+  >  >- `baseline`: 项目的第一行文字的基线对齐。
+  >  >- `stretch`（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。
   >
   >**align-content**
   >
   >  >`align-content`属性定义了多根轴线的对齐方式。如果项目只有一根轴线，该属性不起作用。
   >  >
-  >  >```
+  >  >```css
   >  >.box {
   >  >  align-content: flex-start | flex-end | center | space-between | space-around | stretch;
   >  >}
@@ -385,12 +385,12 @@ CSS outline 属性规定元素轮廓的样式、颜色和宽度，和border是�
   >  >
   >  >该属性可能取6个值。
   >  >
-  >  >  >- `flex-start`：与交叉轴的起点对齐。
-  >  >  >- `flex-end`：与交叉轴的终点对齐。
-  >  >  >- `center`：与交叉轴的中点对齐。
-  >  >  >- `space-between`：与交叉轴两端对齐，轴线之间的间隔平均分布。
-  >  >  >- `space-around`：每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍。
-  >  >  >- `stretch`（默认值）：轴线占满整个交叉轴。   
+  >  >- `flex-start`：与交叉轴的起点对齐。
+  >  >- `flex-end`：与交叉轴的终点对齐。
+  >  >- `center`：与交叉轴的中点对齐。
+  >  >- `space-between`：与交叉轴两端对齐，轴线之间的间隔平均分布。
+  >  >- `space-around`：每根轴线两侧的间隔都相等。所以，轴线之间的间隔比轴线与边框的间隔大一倍。
+  >  >- `stretch`（默认值）：轴线占满整个交叉轴。   
 
 **19.5flex布局容器中项目的6个属性**
 
@@ -400,7 +400,7 @@ CSS outline 属性规定元素轮廓的样式、颜色和宽度，和border是�
   >
   >  >`order`属性定义项目的排列顺序。数值越小，排列越靠前，默认为0。
   >  >
-  >  >```
+  >  >```css
   >  >.item {
   >  >  order: <integer>;
   >  >}
@@ -412,7 +412,7 @@ CSS outline 属性规定元素轮廓的样式、颜色和宽度，和border是�
   >
   >  >`flex-grow`属性定义项目的放大比例，默认为`0`，即如果存在剩余空间，也不放大。
   >  >
-  >  >```
+  >  >```css
   >  >.item {
   >  >  flex-grow: <number>; /* default 0 */
   >  >}
@@ -426,7 +426,7 @@ CSS outline 属性规定元素轮廓的样式、颜色和宽度，和border是�
   >
   >`flex-shrink`属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。
   >
-  >```
+  >```css
   >.item {
   >  flex-shrink: <number>; /* default 1 */
   >}
@@ -434,21 +434,21 @@ CSS outline 属性规定元素轮廓的样式、颜色和宽度，和border是�
   >
   >如果所有项目的`flex-shrink`属性都为1，当空间不足时，都将等比例缩小。如果一个项目的`flex-shrink`属性为0，其他项目都为1，则空间不足时，前者不缩小，属性为零相当于是最大的
   >
-  >**4.4 flex-basis属性**
+  >**flex-basis属性**
   >
   >  >`flex-basis`属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为`auto`，即项目的本来大小。
   >  >
-  >  >```
+  >  >```css
   >  >.item {
   >  >  flex-basis: <length> | auto; /* default auto */
   >  >}
   >  >```
   >
-  >**4.5 flex属性**
+  >**flex属性**
   >
   >`flex`属性是`flex-grow`, `flex-shrink` 和 `flex-basis`的简写，默认值为`0 1 auto`。后两个属性可选。
   >
-  >```
+  >```css
   >.item {
   >  flex: none | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ]
   >}
@@ -462,7 +462,7 @@ CSS outline 属性规定元素轮廓的样式、颜色和宽度，和border是�
   >
   >`align-self`属性允许单个项目有与其他项目不一样的对齐方式，可覆盖`align-items`属性。默认值为`auto`，表示继承父元素的`align-items`属性，如果没有父元素，则等同于`stretch`
   >
-  >```
+  >```css
   >.item {
   >  align-self: auto | flex-start | flex-end | center | baseline | stretch;
   >}
@@ -470,27 +470,37 @@ CSS outline 属性规定元素轮廓的样式、颜色和宽度，和border是�
 
 #### 20.各大浏览器的内核####
 
-IE浏览器内核：Trident内核；Firefox浏览器内核：Gecko；Ssfari，Google浏览器内核：WebKit；
-
-Opera 浏览器内核：Presto
+IE浏览器内核：Trident内核；Firefox浏览器内核：Gecko；Ssfari，Google浏览器内核：WebKit；Opera 浏览器内核：Presto
 
 #### 21.margin重叠####
 
-margin重叠不会发生在水平方向上，只存在于垂直方向上。
-
-分为两种情况：兄弟元素块之间的margin重叠，父子级块中的margin重叠，两者都是以较大的一个margin为作为块之间的间距的，如果出现负值，正值>|负值|，间距那么就让正值-|负值|，如果正值<|负值|，重叠的距离就会是|负值|-正值，如果都是负值，那么两个元素会重叠较大的那个|负值|那样的距离。
-
-解决兄弟之间元素margin重叠的方法是：设置浮动（当然跟随着也有清除浮动的操作），设置inline-block，只要设置其中一个就行，当然这样块级元素就变成了行级元素，可能会涉及到设置宽高之类的。
-
-解决父子元素之间重叠的方法是：设置父元素的overflow：hidden，
-
-给父元素添加padding，给父元素添加border，如果只针对上边或者下边进行设置padding／border，那么没设置的一边还是会存在问题，子元素对应边的margin会消失。
-
-另外或者给子元素设置position:absolute，进行绝对定位。
+**margin重叠不会发生在水平方向上，只存在于垂直方向上。分为两种情况：兄弟元素块之间的margin重叠，父子级块中的margin重叠**
 
 
 
-### 二.CSS3的一些新特性### 
+重叠之后，间距的取值情况：
+>
+- 两者都是正值,以较大的一个margin为作为块之间的间距
+- 如果出现负值，正值>|负值|，间距那么就让正值-|负值|，如果正值<|负值|，重叠的距离就会是|负值|-正值
+- 如果都是负值，那么两个元素会重叠较大的那个|负值|那样的距离。
+
+解决重叠的方法：
+>
+解决兄弟之间元素margin重叠的方法是：
+
+>- 设置浮动（当然跟随着也有清除浮动的操作），设置inline-block，只要设置其中一个就行，当然这样块级元素就变成了行级元素，可能会涉及到设置宽高之类的。
+>
+解决父子元素之间重叠的方法是：
+> 
+- 设置父元素的overflow：hidden，
+
+>- 给父元素添加padding，给父元素添加border，如果只针对上边或者下边进行设置padding／border，那么没设置的一边还是会存在问题，子元素对应边的margin会消失。
+
+>- 另外或者给子元素设置position:absolute，进行绝对定位。
+
+
+
+##二.CSS3的一些新特性 
 
 #### 1.CSS3背景 background####
 
@@ -516,7 +526,7 @@ background 简写属性在一个声明中设置所有的背景属性。
 
   案例：
 
-  ```
+  ```html
   <!DOCTYPE html>
   <html lang="en">
   <head>
@@ -568,43 +578,45 @@ background 简写属性在一个声明中设置所有的背景属性。
 
   效果：
 
-   ![效果图](background-picture-slice\效果图.png)
+   ![效果图](./background-picture-slice/效果图.png)
 
   2.边框圆角
 
 
 
-#### 2.边框图片#### 
+####2.边框图片
 
 **border-image：** 允许你指定一个图片作为边框
 
 语法：border-image: *source slice width outset repeat*;
 
-source:指的是边框图片的资源，也就是用来作为边框的图片
+- source:指的是边框图片的资源，也就是用来作为边框的图片
 
-slice（不加单位）:边框图像的顶部，右侧，底部，左侧的内偏移量，
+- slice（不加单位）:边框图像的顶部，右侧，底部，左侧的内偏移量，
 
- width:图片边框的宽度（实际取决于设置的边框的宽度）
+- width:图片边框的宽度（实际取决于设置的边框的宽度）
 
-outset:边框图像区域超出边框的量。
+- outset:边框图像区域超出边框的量。
 
- repeat:图像边框是否应平铺(repeated)、铺满(rounded)或拉伸(stretched)。
+- repeat:图像边框是否应平铺(repeated)、铺满(rounded)或拉伸(stretched)。
 
 #### 3.边框圆角####
 
 border-radius：让边框产生圆角,如果只有一个数值的时候，那么会在四个角产生圆角，如果是想要在某个角不产生圆角，那么可以不在那个角设置数值
 
- 方位写法:border-top-left-radius,左上
+ 方位写法:
+ 
+- border-top-left-radius,左上
 
- ​		border-top-right-radius,右上
+- border-top-right-radius,右上
 
- ​		border-bottom-right-radius,右下
+- border-bottom-right-radius,右下
 
- 		border-bottom-left-radius，左下 
+- border-bottom-left-radius，左下 
 
- #### 4.盒阴影#### 
+####4.盒阴影 
 
- box-shadow：box-shadow: *h-shadow v-shadow blur spread color* inset;
+ box-shadow: *h-shadow v-shadow blur spread color* inset;
 
   分别代表水平阴影，垂直阴影，模糊度，阴影的大小，颜色，从外层的阴影（开始时）改变阴影内侧阴影
 
@@ -620,9 +632,9 @@ border-radius：让边框产生圆角,如果只有一个数值的时候，那么
 >
 > **3）**inherit，规定应从父元素继承 box-sizing 属性的值。
 
- #### 6.CSS3渐变#### 
+####6.CSS3渐变
 
- **6.1** CSS3定义了两种类型的渐变
+ **6.1 CSS3定义了两种类型的渐变**
 
   >- **线性渐变（Linear Gradients）- 向下/向上/向左/向右/对角方向（默认是上到下，左到右）**
   >
@@ -631,20 +643,17 @@ border-radius：让边框产生圆角,如果只有一个数值的时候，那么
   >  background: linear-gradient(*direction*, *color-stop1*, *color-stop2, ...*)；
   >
   >- **径向渐变（Radial Gradients）- 由它们的中心定义**
+  > 径向渐变的定位原点可以自己设置，另外形状可以自己设置，一般是圆形和椭圆。
   >
-  >  ```
   >  background: radial-gradient(*center, shape size, start-color, ..., last-color*);
-  >  ```
-  >
-  >  径向渐变的定位原点可以自己设置，另外形状可以自己设置，一般是圆形和椭圆
 
  **6.2线性渐变和径向渐变都可以进行重复：** 
 
-  >```
+  >```css
   >background: repeating-radial-gradient(red, yellow 10%, green 15%);                                                                                                                   background: repeating-linear-gradient(red, yellow 10%, green 20%);  
   >```
 
- #### 7.文本效果：####
+####7.文本效果:
 
  CSS3文本效果：text-shadow，box-shadow，text-overflow，word-wrap，word-break
 
@@ -664,14 +673,14 @@ border-radius：让边框产生圆角,如果只有一个数值的时候，那么
 
  我们自己的字体是使用@font-face 规则进行定义的，**使用之前必须定义名称，还要指向相应的字体文件** 
 
-```
+```css
 @font-face{
  		font-family: myFirstFont;
  		src: url(sansation_light.woff);//在指定文件类型的时候，可以多指定一些类型，方便浏览器识别
 }
 ```
 
- #### 9.CSS3转换（transform）####
+#### 9.CSS3转换（transform）
 
 **我们可以移动，比例化，反过来，旋转，和拉伸元素。**
 
@@ -683,7 +692,7 @@ border-radius：让边框产生圆角,如果只有一个数值的时候，那么
 
 **3D转化，translateX(*x*)，scaleY(*y*)，rotateZ(*angle*)等等，分为3个方向进行变化，X,Y,Z**  
 
- #### 10.过渡（transition）####
+#### 10.过渡（transition）
 
 **10.1** 过渡是从一种效果变换到另外一种效果，要实现这一点必须规定两项内容：	
 
@@ -694,31 +703,34 @@ border-radius：让边框产生圆角,如果只有一个数值的时候，那么
 
 transition-property，transition-timing-function
 
- #### 11.动画 ####
+#### 11.动画
 
 **语法：@keyframes myfirst{动画效果}** ，动画效果可以使用from to选择器,也可以使用各个百分比选择器，**动画必须绑定到某个选择器，并且规定名称和时长，才能有效果。** 
 
-    @keyframes myfirst{
-         from {background: red;}
-         to {background: yellow;}
-     }
-    div{
-         animation: myfirst 5s;
-         -webkit-animation: myfirst 5s; /* Safari 与 Chrome */
-     }
- #### 12.多列布局####
+```css
+@keyframes myfirst{
+   from {background: red;}
+   to {background: yellow;}
+   }
+div{
+   animation: myfirst 5s;
+   -webkit-animation: myfirst 5s; /* Safari 与 Chrome */
+}
+```
+    
+#### 12.多列布局
 
 多列布局可以将文本内容设计的像报纸那样的排版
 
-#### 13 . CSS3有很多图片滤镜可以使用，可以制作出模糊，变亮等等各种效果####
+#### 13 . CSS3有很多图片滤镜可以使用，可以制作出模糊，变亮等等各种效果
 
-#### 14.button标签的设置:####
+#### 14.button标签的设置:
 
 button标签可以使用background-color来设置背景色，可以使用font-size来设置大小，
 
 使用border-radius来设置圆角，也可以用CSS3各种效果做出各种按钮。
 
-#### 15.弹性盒子用到的时候自己查文档，内容比较多####
+#### 15.弹性盒子用到的时候自己查文档，内容比较多
 
 #### 16.多媒体查询####
 
@@ -744,7 +756,7 @@ button标签可以使用background-color来设置背景色，可以使用font-si
 - 在监听函数中计算元素的layout属性，可用setTimeout在定时器队列尾插入任务，异步渲染
 - ios设备实现了一个属性－position：sticky，可以不用js来完成粘性布局
 
-  **17.4** sticky属性使用条件：	
+**17.4** sticky属性使用条件：	
 
 + 元素并不会脱离文档流，当元素被粘在视口的顶部时，原来在文档流中的位置仍然占据着（在屏幕范围（viewport）内时该元素的位置并不受到定位影响（设置top、left等属性无效），当该元素的位置将要移出偏移范围时，定位又会变成fixed，根据设置的left、top等属性成固定位置的效果。）
 
@@ -753,7 +765,7 @@ button标签可以使用background-color来设置背景色，可以使用font-si
 + 元素最近的祖先元素overflow设置为非默认值visible时，则元素相对于该祖先元素进行sticky定位。若最近的祖先元素设置为overflow:hidden，则元素不会sticky定位。
 
 
-#### 18.渐进增强和优雅降级####
+#### 18.渐进增强和优雅降级
 
 渐进增强：一开始就针对低版本浏览器进行构建页面，完成基本的功能，然后再针对高级浏览器进行效果、交互、追加功能达到更好的体验。（向上兼容）
 
