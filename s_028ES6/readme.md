@@ -768,89 +768,89 @@
 
     Set是一种数据类型，Set的数据结构是以数组的形式构建的。它与Array的区别在于，Set不允许内部有重复的值，如果有的话，只会显示一个。
 
-      >12.1创建Set类型的数据
-      >
-      >```
-      >let setArr = new Set(['jspang','技术胖','web','jspang']);
-      >console.log(setArr);//Set {"jspang", "技术胖", "web"}
-      >```
-      >
-      >12.2Set值的增删查
-      >
-      >  >**追加add**
-      >  >
-      >  >Set和数组有一点不一样的就是，不能使用push进行追加值，需要使用add进行追加
-      >  >
-      >  >```
-      >  >let setArr = new Set(['jspang','技术胖','web','jspang']);
-      >  >console.log(setArr);//Set {"jspang", "技术胖", "web"}
-      >  > 
-      >  >setArr.add('前端职场');
-      >  >console.log(setArr);//Set {"jspang", "技术胖", "web","前端职场"}
-      >  >```
-      >  >
-      >  >**删除delete**
-      >  >
-      >  >```
-      >  >let setArr = new Set(['jspang','技术胖','web','jspang']);
-      >  >console.log(setArr);//Set {"jspang", "技术胖", "web"}
-      >  > 
-      >  >setArr.add('前端职场');
-      >  >console.log(setArr); //Set {"jspang", "技术胖", "web", "前端职场"}
-      >  > 
-      >  >setArr.delete('前端职场');
-      >  >console.log(setArr); //Set {"jspang", "技术胖", "web"}
-      >  >```
-      >  >
-      >  >**全部删除clear**
-      >  >
-      >  >```
-      >  >let setArr = new Set(['jspang','技术胖','web','jspang']);
-      >  >console.log(setArr);//Set {"jspang", "技术胖", "web"}
-      >  >setArr.clear();
-      >  > 
-      >  >console.log(setArray);//true
-      >  >```
-      >  >
-      >  >**查找has**
-      >  >
-      >  >```
-      >  >let setArr = new Set(['jspang','技术胖','web','jspang']);
-      >  >console.log(setArr);//Set {"jspang", "技术胖", "web"}
-      >  > 
-      >  >console.log(setArr.has('jspang'));//true
-      >  >```
-      >
-      >12.3Set循环
-      >
-      >  >**For…of...循环**
-      >  >
-      >  >```
-      >  >let setArr = new Set(['jspang','技术胖'，'web','js']);
-      >  >for(let item of setArr){
-      >  >  console.log(item);
-      >  >}
-      >  >```
-      >  >
-      >  >**size属性**
-      >  >
-      >  >size属性可以获得Set值的数量
-      >  >
-      >  >```
-      >  >let setArr = new Set(['jspang','技术胖','web','jspang']);
-      >  >for (let item of setArr){
-      >  >    console.log(item);
-      >  >}
-      >  > 
-      >  >console.log(setArr.size);
-      >  >```
-      >  >
-      >  >**forEach循环**
-      >  >
-      >  >```
-      >  >let setArr = new Set(['jspang','技术胖','web','jspang']);
-      >  >setArr.forEach((value)=>console.log(value);
-      >  >```
+    > 12.1创建Set类型的数据
+    >
+    > ```
+    > let setArr = new Set(['jspang','技术胖','web','jspang']);
+    > console.log(setArr);//Set {"jspang", "技术胖", "web"}
+    > ```
+    >
+    > 12.2Set值的增删查
+    >
+    > > **追加add**
+    > >
+    > > Set和数组有一点不一样的就是，不能使用push进行追加值，需要使用add进行追加
+    > >
+    > > ```
+    > > let setArr = new Set(['jspang','技术胖','web','jspang']);
+    > > console.log(setArr);//Set {"jspang", "技术胖", "web"}
+    > > 
+    > > setArr.add('前端职场');
+    > > console.log(setArr);//Set {"jspang", "技术胖", "web","前端职场"}
+    > > ```
+    > >
+    > > **删除delete**
+    > >
+    > > ```
+    > > let setArr = new Set(['jspang','技术胖','web','jspang']);
+    > > console.log(setArr);//Set {"jspang", "技术胖", "web"}
+    > > 
+    > > setArr.add('前端职场');
+    > > console.log(setArr); //Set {"jspang", "技术胖", "web", "前端职场"}
+    > > 
+    > > setArr.delete('前端职场');
+    > > console.log(setArr); //Set {"jspang", "技术胖", "web"}
+    > > ```
+    > >
+    > > **全部删除clear**
+    > >
+    > > ```
+    > > let setArr = new Set(['jspang','技术胖','web','jspang']);
+    > > console.log(setArr);//Set {"jspang", "技术胖", "web"}
+    > > setArr.clear();
+    > > 
+    > > console.log(setArray);//true
+    > > ```
+    > >
+    > > **查找has**
+    > >
+    > > ```
+    > > let setArr = new Set(['jspang','技术胖','web','jspang']);
+    > > console.log(setArr);//Set {"jspang", "技术胖", "web"}
+    > > 
+    > > console.log(setArr.has('jspang'));//true
+    > > ```
+    >
+    > 12.3Set循环
+    >
+    > > **For…of...循环**
+    > >
+    > > ```
+    > > let setArr = new Set(['jspang','技术胖'，'web','js']);
+    > > for(let item of setArr){
+    > > console.log(item);
+    > > }
+    > > ```
+    > >
+    > > **size属性**
+    > >
+    > > size属性可以获得Set值的数量
+    > >
+    > > ```
+    > > let setArr = new Set(['jspang','技术胖','web','jspang']);
+    > > for (let item of setArr){
+    > > console.log(item);
+    > > }
+    > > 
+    > > console.log(setArr.size);
+    > > ```
+    > >
+    > > **forEach循环**
+    > >
+    > > ```
+    > > let setArr = new Set(['jspang','技术胖','web','jspang']);
+    > > setArr.forEach((value)=>console.log(value);
+    > > ```
 
     WeakSet的声明
 
@@ -866,7 +866,78 @@
 
     WeakSet里边的值也是不允许重复的，这里指的是不能放引用同一内存地址的数据，否则就会报错。
 
-13. **Promise对象**
+13. **Map和WeakMap的数据结构**
+
+    >+ **Map数据结构类似于JavaScript中的对象，以键值对呈现，但是不同于JavaScript中的对象，Map数据结构的键可以是字符串，也可以是一个对象等各种类型的值。**
+    >
+    >+ Map实例属性和操作方法
+    >
+    >  >+ size:返回 Map 结构的成员总数。
+    >  >+ set(key, value): 设置键名`key`对应的键值为`value`，然后返回整个 Map 结构。如果`key`已经有值，则键值会被更新，否则就新生成该键。
+    >  >+ get(key): 读取`key`对应的键值，如果找不到`key`，返回`undefined`。
+    >  >+ has(key): 返回一个布尔值，表示某个键是否在当前 Map 对象之中。
+    >  >+ delete(key): 删除某个键，返回`true`。如果删除失败，返回`false`。
+    >  >+ clear(): 清除所有成员，没有返回值。
+    >
+    >+ Map的遍历方法： 
+    >
+    >  >- keys()：返回键名的遍历器。
+    >  >- values()：返回键值的遍历器。
+    >  >- entries()：返回所有成员的遍历器。
+    >  >- forEach()：遍历 Map 的所有成员。
+    >  >
+    >  >Map遍历的顺序是按照插入顺序遍历的，Map 结构转为数组结构，比较快速的方法是使用扩展运算符（`...`）
+    >  >
+    >  >```js
+    >  >const map = new Map([
+    >  >  [1, 'one'],
+    >  >  [2, 'two'],
+    >  >  [3, 'three'],
+    >  >]);
+    >  >
+    >  >[...map.keys()]
+    >  >// [1, 2, 3]
+    >  >```
+    >
+    >+ 需要注意的点：只有对同一个对象的引用，Map 结构才将其视为同一个键。
+    >
+    >+ ```js
+    >  const map = new Map();
+    >  
+    >  map.set(['a'], 555);
+    >  map.get(['a']) // undefined
+    >  
+    >  //要像下边这样取值
+    >  const map = new Map();
+    >  
+    >  const k1 = ['a'];
+    >  const k2 = ['a'];
+    >  
+    >  map
+    >  .set(k1, 111)
+    >  .set(k2, 222);
+    >  
+    >  map.get(k1) // 111
+    >  map.get(k2) // 222
+    >  ```
+    >
+    >  
+    >
+    >+ **WeakMap数据类型：与Map数据类型相似，也是用来生成键值对的集合，但是不同点在于，WeakMap只接受对象作为键名（null除外），不接受其他类型的值作为键名。其次WeakMap的键名所指向的对象，不计入垃圾回收机制。**
+    >
+    >+ WeakMap的语法：
+    >
+    >  >+ 没有遍历操作（即没有keys()、values()和entries()方法），也没有size属性。
+    >  >+ 无法清空，即不支持clear方法.
+    >  >+ 只有get()、set()、has()、delete()四个方法
+    >  >
+    >  >
+    >
+    >+ 
+    >
+    >
+
+14. **Promise对象**
 
     一个Promise对象可以理解成一次将要执行的操作(常常被用于异步操作)，使用了Promise对象之后可以用一种链式调用的方式来组织代码，让代码更加直观。而且由于Promise.all这样的方法存在，可以让同时执行多个操作变得更加简单。
 
@@ -936,7 +1007,7 @@
        >
        >还有一个和 `Promise.all` 相类似的方法 `Promise.race`，它同样接收一个数组，不同的是只要该数组中的 Promise 对象的状态发生变化（无论是 resolve 还是 reject）该方法都会返回。
 
-14. **ES6中的模块化**
+15. **ES6中的模块化**
 
     ES6之前JavaScript并没有对模块化有过原生的支持，人们想出来`AMD`，`RequireJS`，`CommenJS`等等，现在终于有`import`和`export`运算符来实现了。
 
@@ -966,3 +1037,20 @@
     import {port, getAccounts} from 'module'
     console.log(port) // 3000​
     ```
+
+    **这些模块化规则之间的区别：**
+
+    
+
+16. **async和await**
+
+    
+
+17. **generator生成器**
+
+18. **Class语法和Class继承**
+
+19. 
+
+    
+

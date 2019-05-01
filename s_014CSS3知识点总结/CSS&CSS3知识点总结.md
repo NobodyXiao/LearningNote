@@ -76,11 +76,10 @@
   >  >
   >  >**b)**clear:both,给浮动元素后边加上一个空白块，之后给这个块设置一个clear:both属性
   >  >
-  >  >**c)**给浮动元素的父元素设置overflow：hidden来清除浮动。
   >
   >**1.6定位** 
   >
-  >  >position:  static，relative，absolute，fix
+  >  >position:  static，relative，absolute，fixed
   >  >
   >  >（1）static 默认值，无定位，不能当作绝对定位的参照物，并且设置标签对象的left、top等值是不起作用的。
   >  >
@@ -115,6 +114,10 @@
 > 3.1设置text-align:center（只对行级元素起作用），要对其父级元素进行设置
 
 > 3.2进行绝对定位，之后设置left:50%，margin设置一个负值（只对有宽高的需要定位的元素起作用）
+>
+> 3.3进行绝对定位，left设置成50%，之后使用translateX(-50%)
+>
+> 3.4使用flex布局
 
 #### 4.利用CSS进行垂直居中：
 
@@ -139,6 +142,8 @@
 >   >**display:table-cell**
 >   >
 >   >可以定位行级元素的垂直和水平居中，给父级元素设置display:table-cell,text-align:center;vertical-align:middle;即可(IE7及以下不支持此特性)
+>
+>   >**进行绝对定位，top设置成50%，之后使用translateY(-50%)**
 
 #### 5.a链接(如果不遵循这个顺序，可能在不同浏览器会出现不起作用的bug)
 
@@ -196,7 +201,7 @@ CSS outline 属性规定元素轮廓的样式、颜色和宽度，和border是�
 
 #### 14.CSS组合选择符：
 
-​ 在 CSS3 中包含了四种组合方式:
+ 在 CSS3 中包含了四种组合方式:
 
 - 后代选取器(以**空格** 分隔)
 - 子元素选择器(以**大于号** 分隔）
@@ -479,7 +484,6 @@ IE浏览器内核：Trident内核；Firefox浏览器内核：Gecko；Ssfari，Go
 
 
 重叠之后，间距的取值情况：
->
 - 两者都是正值,以较大的一个margin为作为块之间的间距
 - 如果出现负值，正值>|负值|，间距那么就让正值-|负值|，如果正值<|负值|，重叠的距离就会是|负值|-正值
 - 如果都是负值，那么两个元素会重叠较大的那个|负值|那样的距离。
@@ -696,16 +700,22 @@ border-radius：让边框产生圆角,如果只有一个数值的时候，那么
 
 **10.1** 过渡是从一种效果变换到另外一种效果，要实现这一点必须规定两项内容：	
 
-- 指定要添加效果的CSS属性
+- 指定要添加效果的CSS属性(可以多个)
 - 指定效果的持续时间。
 
    **10.2**过渡有4个属性值：transition-delay，transition-duration，
 
 transition-property，transition-timing-function
 
+**10.3过渡效果一般需要动作触发**
+
 #### 11.动画
 
-**语法：@keyframes myfirst{动画效果}** ，动画效果可以使用from to选择器,也可以使用各个百分比选择器，**动画必须绑定到某个选择器，并且规定名称和时长，才能有效果。** 
+**语法：@keyframes myfirst{动画效果}** ，动画效果可以使用from to选择器,也可以使用各个百分比选择器，**动画必须绑定到某个选择器，并且规定名称和时长，才能有效果。**
+
+动画的一些属性：animation-duration，animation-timing-function，animation-delay，animation-iteration-count，animation-direction，animation-play-state，animation-fill-mode
+
+**动画可以不使用动作触发，自执行**
 
 ```css
 @keyframes myfirst{
@@ -741,35 +751,69 @@ button标签可以使用background-color来设置背景色，可以使用font-si
 
 除非你使用not 或 only 操作符，否则所有的样式会适应在所有设备上显示效果，此处all是经常用到的。
 
-#### 17.position定位的新属性值：sticky
 
-**17.1** sticky属性值不是W3C标准推荐的用法，主要应用在移动端，另外PC和ios的safari中也兼容此属性。用于解决因scroll监听引起的问题。
-
-**17.2** scroll监听问题：
-
-- 在浏览器端和安卓设备上，scroll事件连续触发，如果在监听函数中做过于复杂的判断，肯定会暂时阻塞ui（主）线程的渲染，造成卡顿
-- 在ios设备中，scroll事件在上下滑动的过程中js不会连续执行，只在滑动结束的时刻执行一次，并且不支持左右滑动事件的触发
-
-**17.3** scroll监听问题解决办法：
-
-- 针对scroll做throttle节流（窗口变化resize，滚动scroll等等），避免每次滑动都执行，可以设置时间间隔，如50ms
-- 在监听函数中计算元素的layout属性，可用setTimeout在定时器队列尾插入任务，异步渲染
-- ios设备实现了一个属性－position：sticky，可以不用js来完成粘性布局
-
-**17.4** sticky属性使用条件：	
-
-+ 元素并不会脱离文档流，当元素被粘在视口的顶部时，原来在文档流中的位置仍然占据着（在屏幕范围（viewport）内时该元素的位置并不受到定位影响（设置top、left等属性无效），当该元素的位置将要移出偏移范围时，定位又会变成fixed，根据设置的left、top等属性成固定位置的效果。）
-
-+ 元素相对于其最近可滚动的祖先元素“粘性定位”，如果其祖先元素都不能滚动，则相对于适口定位
-
-+ 元素最近的祖先元素overflow设置为非默认值visible时，则元素相对于该祖先元素进行sticky定位。若最近的祖先元素设置为overflow:hidden，则元素不会sticky定位。
-
-
-#### 18.渐进增强和优雅降级
+#### 17.渐进增强和优雅降级
 
 渐进增强：一开始就针对低版本浏览器进行构建页面，完成基本的功能，然后再针对高级浏览器进行效果、交互、追加功能达到更好的体验。（向上兼容）
 
 优雅降级：一开始就构建站点的完整功能，然后针对浏览器测试和修复。比如一开始使用 CSS3 的特性构建了一个应用，然后逐步针对各大浏览器进行 hack 使其可以在低版本浏览器上正常浏览。（向下兼容）
+
+####18.BFC块级格式化上下文
+
++ 块状格式化上下文是CSS中独立渲染的一块区域，能够让处于BFC中的元素和外部的元素隔离，不相互影响。**一个BFC包含创建该上下文元素的所有子元素，但不包括创建了新BFC的子元素的内部元素**
+
++ 触发BFC的条件有以下这些：
+
+  >position:不为static 和relative
+  >
+  >overflow:不是visible
+  >
+  >float：不是none
+  >
+  >display：inline-block；table-cell；flex；inline-flex
+
++ 主要应用
+
+  >1.解决父元素高度坍塌的问题
+  >
+  >当父元素中有浮动元素的时候，会造成父元素的高度不能包住子元素，这时候可以给父元素设置overflow:hidden;或者display：inline-block使父元素变成一个BFC元素，这样可以撑起高度
+  >
+  >2.垂直方向上margin重叠
+  >
+  >如果是父子元素之间，可以将父元素或者子元素设置成BFC元素；如果是兄弟元素之间，可以把其中一个设置成BFC元素
+
+#### 19.link和import的区别
+
++ link的使用方法
+
+  >作为html的原生标签，只能在html中使用
+  >
+  >```html
+  ><link rel="stylesheet" href="">
+  >```
+
++ @import的使用方法
+
+  >看作一种css的样式，可以写在html中，也可以写在css文件中
+  >
+  >```html
+  ><style type="text/css">@import url("")</style>
+  >```
+  >
+  >```css
+  >@import url("")
+  >#divBox{}
+  >```
+
++ link和@import的区别
+
+  >link在引入css时候是在页面载入过程中同步加载，而@import需要页面完全载入之后再加载
+  >
+  >link是html原生标签，@import是css2.1之后才有的
+  >
+  >link支持使用JavaScript控制DOM去改变样式，而@import不支持
+
+
 
 
 
